@@ -6,11 +6,9 @@ import cz.craftmania.crafteconomy.api.VoteTokensAPI;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
 import cz.wake.manager.utils.TimeUtils;
+import io.github.jorelali.commandapi.api.CommandAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -21,20 +19,21 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class Profil_command implements CommandExecutor {
+public class Profil_command {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
-        if (Sender instanceof Player) {
-            Player p = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("profil"))) {
+    public static void registerCommand() {
+
+        CommandAPI.getInstance().register("profil", new String[]{"profile"}, null, (sender, args) -> {
+            if (sender instanceof Player) {
+                Player p = (Player) sender;
                 openMenu(p);
+            } else {
+                sender.sendMessage("§cTento příkaz je jen pro hráče!");
             }
-        }
-        return true;
+        });
     }
 
-    public void openMenu(Player p) {
+    public static void openMenu(Player p) {
 
         Inventory menu = Bukkit.createInventory(null, 45, "Profil");
 
@@ -138,7 +137,7 @@ public class Profil_command implements CommandExecutor {
         p.openInventory(inv);
     }
 
-    private String getDate(long time) {
+    private static String getDate(long time) {
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(time);
         return new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(cal.getTime());

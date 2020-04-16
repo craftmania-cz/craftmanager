@@ -3,85 +3,84 @@ package cz.wake.manager.commads;
 import cz.wake.manager.Main;
 import cz.wake.manager.managers.RecipeManager;
 import cz.wake.manager.utils.IntegerUtil;
+import io.github.jorelali.commandapi.api.CommandAPI;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.*;
 import org.bukkit.plugin.Plugin;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class Recipe_command implements CommandExecutor {
+public class Recipe_command {
 
+    public static void registerCommand() {
 
-    @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
+        CommandAPI.getInstance().register("recipe", new String[]{}, null, (sender, args) -> {
 
-        commandSender.sendMessage("§c§l[!] §cTento prikaz je z duvodu kritickeho bugu docasne vypnut!");
-        return true;
-        
-        /*ItemStack itemType = null;
-        Plugin pl = Main.getInstance();
-        Player p = (Player) commandSender;
-        try {
-            itemType = Main.getInstance().getItemdb().get(args[0]);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        int recipeNo = 0;
+            sender.sendMessage("§c§l[!] §cTento prikaz je z duvodu kritickeho bugu docasne vypnut!");
+            return;
 
-        if(args.length <= 0) {
-            p.sendMessage("§cPouzij /recipe <item> nebo /recipe <id>");
-            return true;
-        }
-
-        final List<Recipe> recipesOfType = pl.getServer().getRecipesFor(itemType);
-
-        if (args.length > 1) {
-            if (IntegerUtil.isInt(args[1])) {
-                recipeNo = Integer.parseInt(args[1]) - 1;
-
-            } else {
-                p.sendMessage("§cNezname cislo!");
+            /*ItemStack itemType = null;
+            Plugin pl = Main.getInstance();
+            Player p = (Player) commandSender;
+            try {
+                itemType = Main.getInstance().getItemdb().get(args[0]);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }
-        if (recipeNo < 0 || recipeNo >= recipesOfType.size() ) {
-            if (IntegerUtil.isInt(args[0])) {
-                p.sendMessage("§cNeexistuje zadny recept pro toto id!");
-                return true;
-            } else if (recipesOfType.size() < 1) {
-                p.sendMessage("§cNeexistuje zadny recept pro tento item!");
-                return true;
+            int recipeNo = 0;
+
+            if(args.length <= 0) {
+                p.sendMessage("§cPouzij /recipe <item> nebo /recipe <id>");
+                return;
             }
-        }
 
+            final List<Recipe> recipesOfType = pl.getServer().getRecipesFor(itemType);
 
-        final Recipe selectedRecipe = recipesOfType.get(recipeNo);
+            if (args.length > 1) {
+                if (IntegerUtil.isInt(args[1])) {
+                    recipeNo = Integer.parseInt(args[1]) - 1;
 
-        if (selectedRecipe instanceof FurnaceRecipe) {
-            furnaceRecipe(commandSender, (FurnaceRecipe) selectedRecipe);
-        } else if (selectedRecipe instanceof ShapedRecipe) {
-            shapedRecipe(commandSender, (ShapedRecipe) selectedRecipe, true);
-        } else if (selectedRecipe instanceof ShapelessRecipe) {
-            if (recipesOfType.size() == 1 && itemType.getType() == Material.FIREWORK_ROCKET) {
-                ShapelessRecipe shapelessRecipe = new ShapelessRecipe(itemType);
-                shapelessRecipe.addIngredient(Material.LEGACY_SULPHUR);
-                shapelessRecipe.addIngredient(Material.PAPER);
-                shapelessRecipe.addIngredient(Material.LEGACY_FIREWORK_CHARGE);
-                shapelessRecipe(commandSender, shapelessRecipe, true);
-            } else {
-                shapelessRecipe(commandSender, (ShapelessRecipe) selectedRecipe, true);
+                } else {
+                    p.sendMessage("§cNezname cislo!");
+                }
             }
-        }
+            if (recipeNo < 0 || recipeNo >= recipesOfType.size() ) {
+                if (IntegerUtil.isInt(args[0])) {
+                    p.sendMessage("§cNeexistuje zadny recept pro toto id!");
+                    return;
+                } else if (recipesOfType.size() < 1) {
+                    p.sendMessage("§cNeexistuje zadny recept pro tento item!");
+                    return;
+                }
+            }
 
-        if (recipesOfType.size() > 1 && args.length == 1) {
-        }
-        return true;*/
+
+            final Recipe selectedRecipe = recipesOfType.get(recipeNo);
+
+            if (selectedRecipe instanceof FurnaceRecipe) {
+                furnaceRecipe(commandSender, (FurnaceRecipe) selectedRecipe);
+            } else if (selectedRecipe instanceof ShapedRecipe) {
+                shapedRecipe(commandSender, (ShapedRecipe) selectedRecipe, true);
+            } else if (selectedRecipe instanceof ShapelessRecipe) {
+                if (recipesOfType.size() == 1 && itemType.getType() == Material.FIREWORK_ROCKET) {
+                    ShapelessRecipe shapelessRecipe = new ShapelessRecipe(itemType);
+                    shapelessRecipe.addIngredient(Material.LEGACY_SULPHUR);
+                    shapelessRecipe.addIngredient(Material.PAPER);
+                    shapelessRecipe.addIngredient(Material.LEGACY_FIREWORK_CHARGE);
+                    shapelessRecipe(commandSender, shapelessRecipe, true);
+                } else {
+                    shapelessRecipe(commandSender, (ShapelessRecipe) selectedRecipe, true);
+                }
+            }
+
+            if (recipesOfType.size() > 1 && args.length == 1) {
+            }
+            return;*/
+        });
     }
 
     public void furnaceRecipe(final CommandSender sender, final FurnaceRecipe recipe) {

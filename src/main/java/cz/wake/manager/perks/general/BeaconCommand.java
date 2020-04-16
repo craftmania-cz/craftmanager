@@ -3,11 +3,9 @@ package cz.wake.manager.perks.general;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
 import cz.wake.manager.utils.ServerType;
+import io.github.jorelali.commandapi.api.CommandAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,18 +15,18 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class BeaconCommand implements CommandExecutor, Listener {
+public class BeaconCommand implements Listener {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
-        if (Sender instanceof Player) {
-            Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("beacon"))) {
+    public static void registerCommand() {
+
+        CommandAPI.getInstance().register("beacon", new String[]{}, null, (sender, args) -> {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
                 if (player.hasPermission("craftmanager.vip.beacon")) {
 
                     if (Main.getServerType() == ServerType.VANILLA) {
                         player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
-                        return true;
+                        return;
                     }
 
                     Inventory inv = Bukkit.createInventory(null, InventoryType.DISPENSER, "Zvol si efekt");
@@ -46,10 +44,10 @@ public class BeaconCommand implements CommandExecutor, Listener {
                 } else {
                     player.sendMessage("§c§l[!] §cK ziskani pristupu potrebujes mit aktivni minimalne Gold VIP.");
                 }
-
+            } else {
+                sender.sendMessage("§cTento příkaz je jen pro hráče!");
             }
-        }
-        return true;
+        });
     }
 
     @EventHandler

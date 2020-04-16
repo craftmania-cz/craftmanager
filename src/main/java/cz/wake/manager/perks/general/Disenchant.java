@@ -2,11 +2,9 @@ package cz.wake.manager.perks.general;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ServerType;
+import io.github.jorelali.commandapi.api.CommandAPI;
 import n3kas.ae.api.AEAPI;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -16,18 +14,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class Disenchant implements CommandExecutor {
+public class Disenchant {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
-        if (Sender instanceof Player) {
-            Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("disenchant"))) {
+    public static void registerCommand() {
+
+        CommandAPI.getInstance().register("disenchant", new String[]{}, null, (sender, args) -> {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
                 if (player.hasPermission("craftmanager.vip.disenchant")) {
 
                     if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.SKYCLOUD) {
                         player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
-                        return true;
+                        return;
                     }
 
                     ItemStack itemInHand = player.getItemInHand();
@@ -46,7 +44,7 @@ public class Disenchant implements CommandExecutor {
                         if (itemInHand.getEnchantments().containsKey(Enchantment.DURABILITY)) {
                             if (itemInHand.getEnchantments().get(Enchantment.DURABILITY) == 0) {
                                 player.sendMessage("§c§l[!] §cNelze pouzit Disenchant na item, ktery ma na sobe Glowing.");
-                                return true;
+                                return;
                             }
                         }
 
@@ -102,12 +100,13 @@ public class Disenchant implements CommandExecutor {
                 } else {
                     player.sendMessage("§c§l[!] §cK pouziti tohoto prikazu musis mit zakoupene VIP!");
                 }
+            } else {
+                sender.sendMessage("§cTento příkaz je jen pro hráče!");
             }
-        }
-        return false;
+        });
     }
 
-    private ItemStack addBookEnchantment(ItemStack item, Enchantment enchantment, int level) {
+    private static ItemStack addBookEnchantment(ItemStack item, Enchantment enchantment, int level) {
         EnchantmentStorageMeta meta = (EnchantmentStorageMeta) item.getItemMeta();
         meta.addStoredEnchant(enchantment, level, true);
         item.setItemMeta(meta);

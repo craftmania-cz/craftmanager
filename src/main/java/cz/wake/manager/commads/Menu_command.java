@@ -1,29 +1,19 @@
 package cz.wake.manager.commads;
 
 import cz.wake.manager.Main;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import io.github.jorelali.commandapi.api.CommandAPI;
 import org.bukkit.entity.Player;
 
-public class Menu_command implements CommandExecutor {
+public class Menu_command {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
-        if (Sender instanceof Player) {
-            Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("menu"))) {
-                try {
-                    if (ArrayOfString.length == 0) {
-                        Main.getInstance().getMainGUI().openMainMenu(player);
-                        return true;
-                    }
-                    return true;
-                } catch (NullPointerException e) {
-                    e.printStackTrace();
-                }
+    public static void registerCommand() {
+
+        CommandAPI.getInstance().register("menu", new String[]{}, null, (sender, args) -> {
+            if (sender instanceof Player) {
+                Main.getInstance().getMainGUI().openMainMenu((Player) sender);
+            } else {
+                sender.sendMessage("§cTento příkaz je jen pro hráče!");
             }
-        }
-        return true;
+        });
     }
 }

@@ -10,72 +10,26 @@ commands:
     cm:
       description: Reload pluginu
       aliases: [craftmanager]
-    menu:
-      description: Zakladni prikaz
-    coinshop:
-      description: Prikaz na otevreni coinshopu
-      aliases: [cshop]
-    particles:
-      description: Prikaz na otevreni particles menu
-      aliases: [part]
-    glow:
-      description: Prikaz pro VIP
     fakevote:
       description: Fakevote
     chatcolor:
       description: Zmena barvy
+    votes:
+      description: Prehled o hlasovani
     help:
       description: Help pro servery
-    survival:
-      description: Server teleport
-    survival2:
-      description: Server teleport
-    skyblock:
-      description: Server teleport
-    creative:
-      description: Server teleport
-    prison:
-      description: Server teleport
-    vanilla:
-      description: Server teleport
-    skycloud:
-      description: Server teleport
-    disenchant:
-      description: Prikaz pro VIP
-    vote:
-      description: Prikaz na zobrazeni odkazu k hlasovani
-      aliases: [hlasovani,hlasovat]
     skull:
       description: Prikaz pro hrace na ziskani svoji hlavy
-    profil:
-      description: Nastaveni uctu
-      aliases: [profile]
-    navody:
-      description: Navody pro hrace
+
     checkfly:
       description: Kontrola zakoupeneho fly
-    beacon:
-      description: Beacon pro HERO VIP
-    recipe:
-      description: Recipe prikaz
     restartmanager:
       description: Restart manager
       aliases: [rm]
     dontdrop:
       description: Prikaz na aktivaci a deaktivaci dropu ve svete pro VIP
-    glowitem:
-      description: Prikaz na aplikovani glowing efektu na itemy
-      aliases: [gi]
     rawbroadcast:
       description: Broadcast pro VIP nebo konzoli
-    blocks:
-      description: Prikaz pro precrafteni itemu na blocky
-    repair:
-      description: Repair command
-    votes:
-      description: Prehled o hlasovani
-    vip:
-      description: Zobrazí VIP menu! test
 
 permissions:
     craftmanager.*:

@@ -28,6 +28,7 @@ import cz.wake.manager.utils.prometheus.MetricsController;
 import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.*;
 import cz.wake.manager.commads.VIP_command;
+import io.github.jorelali.commandapi.api.CommandAPI;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
@@ -263,40 +264,42 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private void loadCommands() {
 
         // CommandAPI 1.13+
-        if (Bukkit.getPluginManager().isPluginEnabled("CommandAPI")) {
-            Log.withPrefix("CommandsAPI detekovano, prikazy budou registrovany!");
+        if (!Bukkit.getPluginManager().isPluginEnabled("CommandAPI")) {
+            Log.withPrefix("[ERROR] CommandAPI nenalezeno, příkazy NEBUDOU registrovány!");
+        } else {
+            Log.withPrefix("CommandAPI nalezeno, příkazy BUDOU registrovány!");
             ServerSlots_command.registerCommand();
             VIPMenu.registerCommand();
+            Profil_command.registerCommand();
+            Menu_command.registerCommand();
+            Navody_command.registerCommand();
+            Coinshop_command.registerCommand();
+            Particles_command.registerCommand();
+            Glow_command.registerCommand();
+
+            Survival_command.registerCommand();
+            Survival2_command.registerCommand();
+            Skyblock_command.registerCommand();
+            Creative_command.registerCommand();
+            Prison_command.registerCommand();
+            Vanilla_command.registerCommand();
+            Skycloud_command.registerCommand();
+            Disenchant.registerCommand(); //TODO: Deep test needed
+            Vote_command.registerCommand();
+            BeaconCommand.registerCommand();
+            Recipe_command.registerCommand();
+            GlowItemCommand.registerCommand();
+            Blocks_command.registerCommand();
+            VIP_command.registerCommand();
         }
 
         //TODO: Kompletni rewrite na 1.13 CommandAPI
-        getCommand("menu").setExecutor(new Menu_command());
-        getCommand("coinshop").setExecutor(new Coinshop_command());
-        getCommand("particles").setExecutor(new Particles_command());
-        getCommand("glow").setExecutor(new Glow_command());
-        getCommand("help").setExecutor(new Help_command());
-        getCommand("survival").setExecutor(new Survival_command());
-        getCommand("survival2").setExecutor(new Survival2_command());
-        getCommand("skyblock").setExecutor(new Skyblock_command());
-        getCommand("creative").setExecutor(new Creative_command());
-        getCommand("prison").setExecutor(new Prison_command());
-        getCommand("vanilla").setExecutor(new Vanilla_command());
-        getCommand("skycloud").setExecutor(new Skycloud_command());
-        getCommand("disenchant").setExecutor(new Disenchant()); //TODO: Deep test needed
-        getCommand("vote").setExecutor(new Vote_command());
         getCommand("skull").setExecutor(new SkullCommand());
-        getCommand("profil").setExecutor(new Profil_command());
-        getCommand("navody").setExecutor(new Navody_command());
-        getCommand("beacon").setExecutor(new BeaconCommand());
-        getCommand("recipe").setExecutor(new Recipe_command());
         getCommand("restartmanager").setExecutor(new RestartManager_command()); //TODO: Nenačítat, pokud nebude CraftCore na serveru?
         getCommand("cm").setExecutor(new Cm_command());
-        getCommand("glowitem").setExecutor(new GlowItemCommand());
         getCommand("rawbroadcast").setExecutor(new RawBroadcast());
-        getCommand("blocks").setExecutor(new Blocks_command());
-        getCommand("repair").setExecutor(new Repair_command());
         getCommand("votes").setExecutor(new Votes_command());
-        getCommand("vip").setExecutor(new VIP_command());
+        getCommand("help").setExecutor(new Help_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani
         if (getConfig().getBoolean("hlasovani")) {

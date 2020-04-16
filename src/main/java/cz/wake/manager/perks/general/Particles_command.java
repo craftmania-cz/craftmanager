@@ -1,31 +1,20 @@
 package cz.wake.manager.perks.general;
 
 import cz.craftmania.craftcore.spigot.inventory.builder.SmartInventory;
-import cz.wake.manager.Main;
 import cz.wake.manager.menu.ParticlesMainGUI;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import io.github.jorelali.commandapi.api.CommandAPI;
 import org.bukkit.entity.Player;
 
-public class Particles_command implements CommandExecutor {
+public class Particles_command{
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
-        if (Sender instanceof Player) {
-            Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("particles"))) {
-                try {
-                    if (ArrayOfString.length == 0) {
-                        SmartInventory.builder().provider(new ParticlesMainGUI()).title("Particles").size(5, 9).build().open(player);
-                        return true;
-                    }
-                    return true;
-                } catch (NullPointerException e) {
-                    e.printStackTrace();
-                }
+    public static void registerCommand() {
+        CommandAPI.getInstance().register("particles", new String[]{"part"}, null, (sender, args) -> {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                SmartInventory.builder().provider(new ParticlesMainGUI()).title("Particles").size(5, 9).build().open(player);
+            } else {
+                sender.sendMessage("§cTento příkaz je jen pro hráče!");
             }
-        }
-        return true;
+        });
     }
 }

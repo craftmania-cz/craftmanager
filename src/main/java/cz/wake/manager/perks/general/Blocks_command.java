@@ -1,34 +1,32 @@
 package cz.wake.manager.perks.general;
 
+import io.github.jorelali.commandapi.api.CommandAPI;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.Dye;
 
-public class Blocks_command implements CommandExecutor {
+public class Blocks_command {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
-        if (Sender instanceof Player) {
-            Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("blocks"))) {
+    public static void registerCommand() {
+
+        CommandAPI.getInstance().register("blocks", new String[]{}, null, (sender, args) -> {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
                 if (player.hasPermission("craftmanager.vip.blocks")) {
                     craftBlocks(player);
                 } else {
                     player.sendMessage("§c§l[!] §cK ziskani pristupu potrebujes aktivni minimalne Diamond VIP.");
                 }
-
+            } else {
+                sender.sendMessage("§cTento příkaz je jen pro hráče!");
             }
-        }
-        return true;
+        });
     }
 
-    public void craftBlocks(Player player) {
+    public static void craftBlocks(Player player) {
         try {
             //Přidat obilí a nastavit kontrolu místa v inventáři - za každý přeměňovaný druh jeden slot volného místa
             int amountOfDiamonds = 0;

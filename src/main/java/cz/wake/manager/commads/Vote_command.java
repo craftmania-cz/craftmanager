@@ -1,22 +1,19 @@
 package cz.wake.manager.commads;
 
+import io.github.jorelali.commandapi.api.CommandAPI;
 import org.bukkit.Sound;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Vote_command implements CommandExecutor {
+public class Vote_command {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
-        if (Sender instanceof Player) {
-            Player p = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("vote"))) {
+    public static void registerCommand() {
+
+        CommandAPI.getInstance().register("vote", new String[]{}, null, (sender, args) -> {
+            if (sender instanceof Player) {
+                Player p = (Player) sender;
                 sendVoteLink(p);
             }
-        }
-        return true;
+        });
     }
 
     public static void sendVoteLink(final Player p) {

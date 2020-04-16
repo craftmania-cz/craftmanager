@@ -1,23 +1,21 @@
 package cz.wake.manager.commads;
 
 import cz.wake.manager.managers.MenuManager;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import io.github.jorelali.commandapi.api.CommandAPI;
 import org.bukkit.entity.Player;
 
 
-public class Navody_command implements CommandExecutor {
+public class Navody_command {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
-        if (Sender instanceof Player) {
-            Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("navody"))
-                    && (ArrayOfString.length == 0)) {
+    public static void registerCommand() {
+
+        CommandAPI.getInstance().register("navody", null, (sender, args) -> {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
                 MenuManager.openNavody(player);
+            } else {
+                sender.sendMessage("§cTento příkaz je jen pro hráče!");
             }
-        }
-        return true;
+        });
     }
 }
