@@ -3,6 +3,7 @@ package cz.wake.manager.commads;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
 import cz.wake.manager.utils.ServerType;
+import io.github.jorelali.commandapi.api.CommandAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -30,7 +31,7 @@ public class Help_command implements CommandExecutor {
         return true;
     }
 
-    private void openHelpMenu(Player p) {
+    private static void openHelpMenu(Player p) {
         if (Main.getServerType() == ServerType.SKYBLOCK) {
             Inventory inv = Bukkit.createInventory(null, 45, "Help pro Skyblock");
 

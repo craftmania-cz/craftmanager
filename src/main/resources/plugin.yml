@@ -7,20 +7,12 @@ api-version: "1.15"
 version: "1.5.0"
 
 commands:
-    cm:
-      description: Reload pluginu
-      aliases: [craftmanager]
     fakevote:
       description: Fakevote
     chatcolor:
       description: Zmena barvy
-    votes:
-      description: Prehled o hlasovani
-    help:
-      description: Help pro servery
     skull:
       description: Prikaz pro hrace na ziskani svoji hlavy
-
     checkfly:
       description: Kontrola zakoupeneho fly
     restartmanager:
@@ -28,8 +20,8 @@ commands:
       aliases: [rm]
     dontdrop:
       description: Prikaz na aktivaci a deaktivaci dropu ve svete pro VIP
-    rawbroadcast:
-      description: Broadcast pro VIP nebo konzoli
+    help:
+      description: Pomoc na serveru
 
 permissions:
     craftmanager.*:

@@ -4,11 +4,9 @@ import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
 import cz.wake.manager.utils.TimeUtils;
+import io.github.jorelali.commandapi.api.CommandAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,20 +18,19 @@ import org.bukkit.inventory.meta.SkullMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Votes_command implements CommandExecutor, Listener {
+public class Votes_command implements Listener {
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
-        if (Sender instanceof Player) {
-            Player player = (Player) Sender;
-            if ((Command.getName().equalsIgnoreCase("votes"))) {
+    public static void registerCommand() {
+
+        CommandAPI.getInstance().register("votes", null, (sender, args) -> {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
                 openVotesMenu(player);
             }
-        }
-        return true;
+        });
     }
 
-    public void openVotesMenu(final Player player) {
+    public static void openVotesMenu(final Player player) {
         Inventory inventory = Bukkit.createInventory(null, 45, "TOP Hlasovani");
 
         SkullMeta headItemMeta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.PLAYER_HEAD);
@@ -149,7 +146,7 @@ public class Votes_command implements CommandExecutor, Listener {
 
     }
 
-    private String resolveTime(final Player player) {
+    private static String resolveTime(final Player player) {
         long time = Main.getInstance().getMySQL().getLastVote(player);
 
         if (time + 7200000 < System.currentTimeMillis()) {

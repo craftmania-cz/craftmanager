@@ -276,7 +276,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Coinshop_command.registerCommand();
             Particles_command.registerCommand();
             Glow_command.registerCommand();
-
             Survival_command.registerCommand();
             Survival2_command.registerCommand();
             Skyblock_command.registerCommand();
@@ -291,14 +290,14 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             GlowItemCommand.registerCommand();
             Blocks_command.registerCommand();
             VIP_command.registerCommand();
+            RawBroadcast.registerCommand();
+            Votes_command.registerCommand();
+            Cm_command.registerCommand();
         }
 
         //TODO: Kompletni rewrite na 1.13 CommandAPI
         getCommand("skull").setExecutor(new SkullCommand());
         getCommand("restartmanager").setExecutor(new RestartManager_command()); //TODO: Nenačítat, pokud nebude CraftCore na serveru?
-        getCommand("cm").setExecutor(new Cm_command());
-        getCommand("rawbroadcast").setExecutor(new RawBroadcast());
-        getCommand("votes").setExecutor(new Votes_command());
         getCommand("help").setExecutor(new Help_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani

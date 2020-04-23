@@ -1,34 +1,33 @@
 package cz.wake.manager.commads.staff;
 
+import io.github.jorelali.commandapi.api.CommandAPI;
+import io.github.jorelali.commandapi.api.CommandPermission;
+import io.github.jorelali.commandapi.api.arguments.Argument;
+import io.github.jorelali.commandapi.api.arguments.GreedyStringArgument;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class RawBroadcast implements CommandExecutor {
+import java.util.LinkedHashMap;
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender.hasPermission("craftmanager.rawbroadcast")) {
-            if (args.length == 0) {
-                sender.sendMessage("§c§l[!] §cSpatne pouziti prikazu! Zkus /rawbroadcast [text]");
-            } else {
-                StringBuilder sb = new StringBuilder();
-                for (String arg : args) {
-                    sb.append(arg);
-                    sb.append(" ");
-                }
-                String text = sb.toString();
-                for(Player p : Bukkit.getOnlinePlayers()) {
-                    p.sendMessage("");
-                    p.sendMessage(text);
-                    p.sendMessage("");
-                }
-                sender.sendMessage("§e§l[*] §eText byl odeslan vsem online hracum!");
+public class RawBroadcast {
+
+    public static void registerCommand() {
+
+        //Default: /rawbroadcast
+        CommandAPI.getInstance().register("rawbroadcast", CommandPermission.fromString("craftmanager.rawbroadcast"), new String[]{"rb"}, null, (sender, args) -> {
+            sender.sendMessage("§c§l[!] §cSpatne pouziti prikazu! Zkus /rawbroadcast [text]");
+        });
+
+        //Default: /rawbroadcast [text]
+        LinkedHashMap<String, Argument> rbArgs = new LinkedHashMap<>();
+        rbArgs.put("text", new GreedyStringArgument());
+        CommandAPI.getInstance().register("rawbroadcast", CommandPermission.fromString("craftmanager.rawbroadcast"), new String[]{"rb"}, rbArgs, (sender, args) -> {
+            for(Player p : Bukkit.getOnlinePlayers()) {
+                p.sendMessage("");
+                p.sendMessage((String)args[0]);
+                p.sendMessage("");
             }
-
-        }
-        return true;
+            sender.sendMessage("§e§l[*] §eText byl odeslan vsem online hracum!");
+        });
     }
 }
