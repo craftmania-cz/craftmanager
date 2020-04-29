@@ -2,6 +2,7 @@ package cz.wake.manager.perks.general;
 
 import cz.wake.manager.Main;
 import cz.wake.manager.listener.ChatListener;
+import io.github.jorelali.commandapi.api.CommandAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,21 +12,21 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 
-public class SkullCommand implements CommandExecutor {
+public class SkullCommand {
 
-    private HashMap<Player, Double> _time = new HashMap<>();
-    private HashMap<Player, BukkitRunnable> _cdRunnable = new HashMap<>();
+    private static HashMap<Player, Double> _time = new HashMap<>();
+    private static HashMap<Player, BukkitRunnable> _cdRunnable = new HashMap<>();
 
-    @Override
-    public boolean onCommand(CommandSender Sender, Command Command, String String, String[] array) {
-        if (Sender instanceof Player) {
-            Player player = (Player) Sender;
-            if (Command.getName().equalsIgnoreCase("skull")) {
+    public static void registerCommand() {
+
+        CommandAPI.getInstance().register("skull", new String[]{"hlava"}, null, (sender, args) -> {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
                 if (player.hasPermission("craftmanager.vip.skull")) {
-                    if (!this._time.containsKey(player)) {
-                        this._time.put(player, 600D + 0.1D);
+                    if (!_time.containsKey(player)) {
+                        _time.put(player, 600D + 0.1D);
                         giveHead(player);
-                        this._cdRunnable.put(player, new BukkitRunnable() {
+                        _cdRunnable.put(player, new BukkitRunnable() {
                             @Override
                             public void run() {
                                 _time.put(player, (_time.get(player)) - 0.1D);
@@ -36,18 +37,16 @@ public class SkullCommand implements CommandExecutor {
                                 }
                             }
                         });
-                        (this._cdRunnable.get(player)).runTaskTimer(Main.getInstance(), 2L, 2L);
+                        (_cdRunnable.get(player)).runTaskTimer(Main.getInstance(), 2L, 2L);
                     } else {
                         player.sendMessage("§c§l[!] §cTento prikaz muzes provadet pouze kazdych 10 minut!");
                     }
                 }
-                return true;
             }
-        }
-        return true;
+        });
     }
 
-    private void giveHead(Player p) {
+    private static void giveHead(Player p) {
         try {
             //String command = "minecraft:give %creator% skull 1 3 {SkullOwner:\"%name%\",display:{Name:\"§b§l%name%\",Lore:[\"§7Vygenerovano pomoci §e/skull\",\"§8Vytvoril: %creator%\"]}}"
             //        .replaceAll("%creator%", p.getName()).replaceAll("%name%", p.getName());

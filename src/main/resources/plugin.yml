@@ -11,13 +11,8 @@ commands:
       description: Fakevote
     chatcolor:
       description: Zmena barvy
-    skull:
-      description: Prikaz pro hrace na ziskani svoji hlavy
     checkfly:
       description: Kontrola zakoupeneho fly
-    restartmanager:
-      description: Restart manager
-      aliases: [rm]
     dontdrop:
       description: Prikaz na aktivaci a deaktivaci dropu ve svete pro VIP
     help:

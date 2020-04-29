@@ -293,11 +293,12 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             RawBroadcast.registerCommand();
             Votes_command.registerCommand();
             Cm_command.registerCommand();
+            SkullCommand.registerCommand();
+            RestartManager_command.registerCommand(); //TODO: Nenačítat, pokud nebude CraftCore na serveru?
+            //Help_command.registerCommand(); //BUG: /help ukáže /bukkit:help
         }
 
         //TODO: Kompletni rewrite na 1.13 CommandAPI
-        getCommand("skull").setExecutor(new SkullCommand());
-        getCommand("restartmanager").setExecutor(new RestartManager_command()); //TODO: Nenačítat, pokud nebude CraftCore na serveru?
         getCommand("help").setExecutor(new Help_command());
 
         // Aktivace test prikazu, pouze pokud je povolene hlasovani

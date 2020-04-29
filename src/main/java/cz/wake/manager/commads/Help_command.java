@@ -15,6 +15,21 @@ import org.bukkit.inventory.ItemStack;
 
 public class Help_command implements CommandExecutor {
 
+    public static void registerCommand() {
+
+        CommandAPI.getInstance().register("help", new String[]{"pomoc"}, null, (sender, args) -> {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                if (Main.getServerType() == ServerType.PRISON) {
+                    player.performCommand("tutorial");
+                } else {
+                    openHelpMenu(player);
+                }
+            }
+        });
+    }
+
+
     @Override
     public boolean onCommand(CommandSender Sender, Command Command, String String, String[] ArrayOfString) {
         if (Sender instanceof Player) {
