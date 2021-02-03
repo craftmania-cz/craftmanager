@@ -58,10 +58,10 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("§7Velká tlama, velký zuby a všichni utekli!", "", "§aZískáno: §f/cshop", "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.trex"));
 
-        list.add(new CosmeticItem().setName("§eXXXTENCATION")
+        list.add(new CosmeticItem().setName("§eXXXTentacion")
                 .setItemStack(Hats.XXXTENCATION.getPureItemStack())
                 .setLore("§7Pořádný vlasy, a rap co ti zvedne tep.", "", "§aZískáno: §f/cshop", "", "§eKlikni pro nasazení")
-                .setRequiredPermission("craftmanager.hats.xxxtencation"));
+                .setRequiredPermission("craftmanager.hats.xxxtencation")); // Old název, bug wake je boomer a posral název no
 
         return list;
     }
