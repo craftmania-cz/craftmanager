@@ -28,7 +28,7 @@ public class ChatListener implements Listener {
         String msg = e.getMessage();
 
         if (Main.getInstance().at_afk.containsKey(writingPlayer)) {
-            if(Main.getInstance().at_afk.get(writingPlayer) != 0) {
+            if (Main.getInstance().at_afk.get(writingPlayer) != 0) {
                 Main.getInstance().at_afk.put(e.getPlayer(), 0);
             }
         }
