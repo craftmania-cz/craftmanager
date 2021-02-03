@@ -115,6 +115,10 @@ public class CshopManager {
         cosmeticsShopItems.add(new PermissionItem().setName("§fKoala").setLore("§7Čepice koaly pro kamaráda pandy!").setItemStack(Material.BOOK).setPrice(350).setPermision("craftmanager.hats.koala"));
         cosmeticsShopItems.add(new PermissionItem().setName("§fPanda").setLore("§7Čepice pandy pro kamaráda koaly!").setItemStack(Material.BOOK).setPrice(350).setPermision("craftmanager.hats.panda"));
         cosmeticsShopItems.add(new PermissionItem().setName("§dKlaun").setLore("§7Chceš vypadat jako klaun? Nebo už jsi?!").setItemStack(Material.BOOK).setPrice(500).setPermision("craftmanager.hats.clown"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§fUnicorn").setLore("§7Čepice se kterou si nasadíš na hlavu roh.").setItemStack(Material.BOOK).setPrice(350).setPermision("craftmanager.hats.unicorn"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§bBeer Hat").setLore("§7S touto čepicí už nikdy nebudeš mít žízeň.").setItemStack(Material.BOOK).setPrice(400).setPermision("craftmanager.hats.beer_hat"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§6Trex").setLore("§7Velká tlama, velký zuby a všichni utekli!").setItemStack(Material.BOOK).setPrice(750).setPermision("craftmanager.hats.trex"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§eXXXTENCATION").setLore("§7Pořádný vlasy, a rap co ti zvedne tep.").setItemStack(Material.BOOK).setPrice(500).setPermision("craftmanager.hats.xxxtencation"));
     }
 
 }

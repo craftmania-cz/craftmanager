@@ -43,6 +43,26 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("§7Speciální čepice, která ti připomene", "§7jak křehký je čas a sklo...", "", "§aZískáno: §fDokončení mapy od Command Builders (Limited)", "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.last_breath"));
 
+        list.add(new CosmeticItem().setName("§fUnicorn")
+                .setItemStack(Hats.UNICORN.getPureItemStack())
+                .setLore("§7Čepice ve tvaru rohu jednorožce!", "", "§aZískáno: §f/cshop", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.unicorn"));
+
+        list.add(new CosmeticItem().setName("§bBeer Hat")
+                .setItemStack(Hats.BEER_HAT.getPureItemStack())
+                .setLore("§7Žízeň? Tak s touto čepicí nikdy!", "", "§aZískáno: §f/cshop", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.beer_hat"));
+
+        list.add(new CosmeticItem().setName("§6Trex")
+                .setItemStack(Hats.TREX.getPureItemStack())
+                .setLore("§7Velká tlama, velký zuby a všichni utekli!", "", "§aZískáno: §f/cshop", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.trex"));
+
+        list.add(new CosmeticItem().setName("§eXXXTENCATION")
+                .setItemStack(Hats.XXXTENCATION.getPureItemStack())
+                .setLore("§7Pořádný vlasy, a rap co ti zvedne tep.", "", "§aZískáno: §f/cshop", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.xxxtencation"));
+
         return list;
     }
 
