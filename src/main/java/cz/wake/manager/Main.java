@@ -68,7 +68,11 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private CshopManager cshopManager;
     private static ScoreboardManager scoreboardManager = null;
     private static ScoreboardProvider scoreboardProvider = null;
+
+    // Plugin dependencies
     private static boolean isPremiumVanishEnabled = false;
+    private static boolean isCraftPackEnabled = false;
+    private static boolean isLibsDisguiseEnabled = false;
 
     // Commands manager
     private PaperCommandManager manager;
@@ -114,6 +118,14 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Premium Vanish
         if (this.getServer().getPluginManager().isPluginEnabled("PremiumVanish")) {
             isPremiumVanishEnabled = true;
+        }
+
+        if (this.getServer().getPluginManager().isPluginEnabled("CraftPack")) {
+            isCraftPackEnabled = true;
+        }
+
+        if (this.getServer().getPluginManager().isPluginEnabled("LibsDisguise")) {
+            isLibsDisguiseEnabled = true;
         }
 
         // Register eventu a prikazu
@@ -465,8 +477,16 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         return scoreboardProvider;
     }
 
-    public static boolean isIsPremiumVanishEnabled() {
+    public static boolean isPremiumVanishEnabled() {
         return isPremiumVanishEnabled;
+    }
+
+    public static boolean isCraftPackEnabled() {
+        return isCraftPackEnabled;
+    }
+
+    public static boolean isLibsDisguiseEnabled() {
+        return isLibsDisguiseEnabled;
     }
 
     /**
