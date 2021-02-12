@@ -18,6 +18,54 @@ public class HatsGUI implements InventoryProvider {
 
     public List<CosmeticItem> prepareList() {
         List<CosmeticItem> list = new ArrayList<>();
+
+        // Admin team Hats
+        list.add(new CosmeticItem().setName("§eOwner Crown")
+                .setItemStack(Hats.AT_OWNER.getPureItemStack())
+                .setLore("§7Speciální Admin Team čepice.", "", "§aZískáno: §fČlen AT - Owner", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.at_owner"));
+
+        list.add(new CosmeticItem().setName("§eStaff Crown")
+                .setItemStack(Hats.AT_STAFF.getPureItemStack())
+                .setLore("§7Speciální Admin Team čepice.", "", "§aZískáno: §fČlen AT - Staff", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.at_staff"));
+
+        list.add(new CosmeticItem().setName("§eEventer Crown")
+                .setItemStack(Hats.AT_EVENTER.getPureItemStack())
+                .setLore("§7Speciální Admin Team čepice.", "", "§aZískáno: §fČlen AT - Eventer", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.at_eventer"));
+
+        list.add(new CosmeticItem().setName("§eDeveloper Crown")
+                .setItemStack(Hats.AT_DEVELOPER.getPureItemStack())
+                .setLore("§7Speciální Admin Team čepice.", "", "§aZískáno: §fČlen AT - Developer", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.at_developer"));
+
+        list.add(new CosmeticItem().setName("§eBuilder Crown")
+                .setItemStack(Hats.AT_BUILDER.getPureItemStack())
+                .setLore("§7Speciální Admin Team čepice.", "", "§aZískáno: §fČlen AT - Builder", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.at_builder"));
+
+        list.add(new CosmeticItem().setName("§eArtist Crown")
+                .setItemStack(Hats.AT_ARTIST.getPureItemStack())
+                .setLore("§7Speciální Admin Team čepice.", "", "§aZískáno: §fČlen AT - Artist", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.at_artist"));
+
+        list.add(new CosmeticItem().setName("§eAdmin Crown")
+                .setItemStack(Hats.AT_ADMIN.getPureItemStack())
+                .setLore("§7Speciální Admin Team čepice.", "", "§aZískáno: §fČlen AT - Admin", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.at_admin"));
+
+        list.add(new CosmeticItem().setName("§eHelper Crown")
+                .setItemStack(Hats.AT_HELPER.getPureItemStack())
+                .setLore("§7Speciální Admin Team čepice.", "", "§aZískáno: §fČlen AT - Helper", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.at_helper"));
+
+        list.add(new CosmeticItem().setName("§cBanHammer")
+                .setItemStack(Hats.AT_BANHAMMER.getPureItemStack())
+                .setLore("§7Speciální Admin Team čepice.", "", "§aZískáno: §fČlen AT", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.at_banhammer"));
+
+        // Coinshop Hats
         list.add(new CosmeticItem().setName("§fKoala")
                 .setItemStack(Hats.KOALA.getPureItemStack())
                 .setLore("§7Čepice v designu Koaly z babusových lesů!", "", "§aZískáno: §f/cshop", "", "§eKlikni pro nasazení")
@@ -63,6 +111,11 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("§7Pořádný vlasy, a rap co ti zvedne tep.", "", "§aZískáno: §f/cshop", "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.xxxtencation")); // Old název, bug wake je boomer a posral název no
 
+        list.add(new CosmeticItem().setName("§6Bunny Ears")
+                .setItemStack(Hats.BUNNY_EARS.getPureItemStack())
+                .setLore("§7Velké uši, velký čumák..", "", "§aZískáno: §f/cshop", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.bunny_ears"));
+
         return list;
     }
 
@@ -100,7 +153,7 @@ public class HatsGUI implements InventoryProvider {
         ClickableItem[] c = new ClickableItem[items.size()];
         c = items.toArray(c);
         pagination.setItems(c);
-        pagination.setItemsPerPage(18);
+        pagination.setItemsPerPage(36);
 
         if (items.size() > 0 && !pagination.isLast()) {
             contents.set(5, 7, ClickableItem.of(new ItemBuilder(Material.PAPER).setName("§f§lDalší stránka").build(), e -> {

@@ -1,5 +1,6 @@
 package cz.wake.manager.managers;
 
+import cz.craftmania.craftpack.api.Hats;
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.PermissionItem;
 import cz.wake.manager.shop.types.RewardType;
@@ -119,6 +120,8 @@ public class CshopManager {
         cosmeticsShopItems.add(new PermissionItem().setName("§bBeer Hat").setLore("§7S touto čepicí už nikdy nebudeš mít žízeň.").setItemStack(Material.BOOK).setPrice(400).setPermision("craftmanager.hats.beer_hat"));
         cosmeticsShopItems.add(new PermissionItem().setName("§6Trex").setLore("§7Velká tlama, velký zuby a všichni utekli!").setItemStack(Material.BOOK).setPrice(750).setPermision("craftmanager.hats.trex"));
         cosmeticsShopItems.add(new PermissionItem().setName("§eXXXTentacion").setLore("§7Pořádný vlasy, a rap co ti zvedne tep.").setItemStack(Material.BOOK).setPrice(500).setPermision("craftmanager.hats.xxxtencation")); // Old název, bug wake je boomer a posral název no
+        cosmeticsShopItems.add(new PermissionItem().setName("§dBunny Ears").setLore("§7Velké uši, velký čumák.. králíček!").setItemStack(Material.BOOK).setPrice(600).setPermision("craftmanager.hats.bunny_ears"));
+
     }
 
 }
