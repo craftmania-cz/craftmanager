@@ -1,4 +1,0 @@
-# Regexy pro blokovane tagy
-blocked-tags:
-  - \b(s+(\W|\d|_)*r+(\W|\d|_)*a+(\W|\d|_)*c+(\W|\d|_)*k+(\W|\d|_)*)
-  - \b(v+(\W|\d|_)*o+(\W|\d|_)*l+(\W|\d|_)*e+(\W|\d|_)*)

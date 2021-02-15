@@ -13,13 +13,11 @@ import cz.wake.manager.managers.CshopManager;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.general.*;
 import cz.wake.manager.perks.particles.ParticlesAPI;
-import cz.wake.manager.perks.twerking.TwerkEvent;
 import cz.wake.manager.servers.global.LeaveDecayListener;
 import cz.wake.manager.servers.hvanilla.BanTimesListener;
 import cz.wake.manager.servers.skycloud.ItemDropListener;
 import cz.wake.manager.servers.skycloud.VillagerDamageListener;
 import cz.wake.manager.servers.skycloud.VillagerManager;
-import cz.wake.manager.servers.vanilla.LecternBookTakeListener;
 import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
@@ -57,7 +55,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private List<String> dontdrop_worlds = new ArrayList<>();
     public static Long restartTime = null;
     public static String restartReason = null;
-    private MainGUI gui = new MainGUI();
     private ServerFactory sf = new ServerFactory();
     private static ByteArrayOutputStream b = new ByteArrayOutputStream();
     private static DataOutputStream out = new DataOutputStream(b);
@@ -232,11 +229,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new InventoryListener(), this);
         pm.registerEvents(new ParticlesAPI(), this);
         pm.registerEvents(new PlayerListener(), this);
-        pm.registerEvents(new MainGUI(), this);
         pm.registerEvents(new ChatListener(), this);
         pm.registerEvents(new TempShop(), this);
         pm.registerEvents(new DeathListener(), this); //TODO: Zkontrolovat damage, pry se pkazdy posle zprava
-        pm.registerEvents(new TwerkEvent(), this);
         pm.registerEvents(new BeaconCommand(), this);
         pm.registerEvents(new PlayerSwapListener(), this);
         pm.registerEvents(new SignClickListener(), this);
@@ -274,14 +269,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             pm.registerEvents(new LeaveDecayListener(), this);
         }
 
-        if (serverType == ServerType.VANILLA) {
-            pm.registerEvents(new LecternBookTakeListener(), this);
-        }
-
         if (serverType == ServerType.HARDCORE_VANILLA) {
-            Log.withPrefix("Aktivace hardcore zobrazování HP.");
-            //ProtocolLibrary.getProtocolManager().addPacketListener(new HardcorePacketListener(this, ListenerPriority.NORMAL, PacketType.Play.Server.LOGIN));
-            Log.withPrefix("Aktivace banování hráčů za smrt.");
             pm.registerEvents(new BanTimesListener(), this);
         }
 
@@ -292,7 +280,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     private void loadCommands() {
         manager.registerCommand(new SkullCommand());
-        manager.registerCommand(new Menu_command());
         manager.registerCommand(new Coinshop_command());
         manager.registerCommand(new Glow_command());
         manager.registerCommand(new Help_command());
@@ -325,12 +312,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new Vanilla_command());
         manager.registerCommand(new Skycloud_command());
         manager.registerCommand(new HardcoreVanilla_command());
-
-
-        // Aktivace test prikazu, pouze pokud je povolene hlasovani
-        if (getConfig().getBoolean("hlasovani")) {
-            //manager.registerCommand(new Fakevote_command());
-        }
     }
 
     public ConfigAPI getConfigAPI() {
@@ -356,10 +337,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         Config scoreboardFile = new Config(this.configAPI, "scoreboardConfig");
         configAPI.registerConfig(scoreboardFile);
-    }
-
-    public Config getBlockedTagsFile() {
-        return this.configAPI.getConfig("blockedTags");
     }
 
     public Config getDeathMessFile() {
@@ -390,10 +367,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         return particlesAPI;
     }
 
-    public MainGUI getMainGUI() {
-        return gui;
-    }
-
     public SQLManager getMySQL() {
         return sql;
     }
@@ -415,14 +388,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             e.printStackTrace();
         }
         player.sendPluginMessage(Main.getInstance(), "BungeeCord", b.toByteArray());
-    }
-
-    public boolean isValidMaterial(Material material) {
-        String name = String.valueOf(material);
-        return name.endsWith("_AXE") || name.endsWith("_PICKAXE") || name.endsWith("_SHOVEL") || name.endsWith("_SWORD") || name.endsWith("_HOE")
-                || name.endsWith("_HELMET") || name.endsWith("_CHESTPLATE") || name.endsWith("_LEGGINGS") || name.endsWith("_BOOTS")
-                || name.equalsIgnoreCase("FISHING_ROD") || name.equalsIgnoreCase("FLINT_AND_STEEL") || name.equalsIgnoreCase("BOW") || name.equalsIgnoreCase("CARROT_STICK")
-                || name.equalsIgnoreCase("SHIELD") || name.equalsIgnoreCase("SHEARS");
     }
 
     private void initDatabase() {

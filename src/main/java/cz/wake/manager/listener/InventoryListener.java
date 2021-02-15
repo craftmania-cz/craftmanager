@@ -72,9 +72,6 @@ public class InventoryListener implements Listener {
             if(e.getSlot() == 7){
                 MenuManager.prepareNavodLink(p, "Replacementy", "https://wiki.craftmania.cz/replacementy/");
             }
-            if(e.getSlot() == 31){
-                Main.getInstance().getMainGUI().openMainMenu(p);
-            }
 
         }
         if (e.getView().getTitle().equals("Help pro Survival")) {
