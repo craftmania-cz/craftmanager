@@ -8,7 +8,7 @@ softdepend:
   - ProtocolLibs
   - XoreboardUtil
   - CraftPack
-  - LibsDisguise
+  - LibsDisguises
 api-version: "1.15"
 version: "1.6.0"
 

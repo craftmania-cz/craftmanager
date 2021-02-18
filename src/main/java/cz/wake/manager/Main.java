@@ -121,7 +121,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             isCraftPackEnabled = true;
         }
 
-        if (this.getServer().getPluginManager().isPluginEnabled("LibsDisguise")) {
+        if (this.getServer().getPluginManager().isPluginEnabled("LibsDisguises")) {
             isLibsDisguiseEnabled = true;
         }
 
