@@ -115,6 +115,16 @@ public class HatsGUI implements InventoryProvider {
                 .setItemStack(Hats.BUNNY_EARS.getPureItemStack())
                 .setLore("§7Velké uši, velký čumák..", "", "§aZískáno: §f/cshop", "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.bunny_ears"));
+        
+        list.add(new CosmeticItem().setName("§aŽabička")
+                .setItemStack(Hats.ZABICKA.getPureItemStack())
+                .setLore("§7Žabičky ze všech bažin jsou zde!", "", "§aZískáno: §f/cshop", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.zabicka"));
+
+        list.add(new CosmeticItem().setName("§eKachnička")
+                .setItemStack(Hats.KACHNICKA.getPureItemStack())
+                .setLore("§7Kachničky od řeky přímo na hlavu.", "", "§aZískáno: §f/cshop", "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.kachnicka"));
 
         return list;
     }

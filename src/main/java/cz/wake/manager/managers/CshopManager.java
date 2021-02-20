@@ -108,7 +108,7 @@ public class CshopManager {
         eventShopItems.add(new VoteItem().setName("280x CraftCoins").setPrice(12).setEconomyReward(280, RewardType.CRAFTCOINS));
         eventShopItems.add(new VoteItem().setName("1x CraftToken").setPrice(125).setEconomyReward(1, RewardType.CRAFTTOKEN));
         if (Main.getServerType() == ServerType.CREATIVE || Main.getServerType() == ServerType.SKYCLOUD || Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK) {
-            eventShopItems.add(new VoteItem().setName("ArmorStandEditor (2h)").setPrice(10).setCommandToExecute("lp user %player% permission settemp asedit.* true 2h %server%"));
+            //eventShopItems.add(new VoteItem().setName("ArmorStandEditor (2h)").setPrice(10).setCommandToExecute("lp user %player% permission settemp asedit.* true 2h %server%"));
         }
     }
 
@@ -116,12 +116,13 @@ public class CshopManager {
         cosmeticsShopItems.add(new PermissionItem().setName("§fKoala").setLore("§7Čepice koaly pro kamaráda pandy!").setItemStack(Material.BOOK).setPrice(350).setPermision("craftmanager.hats.koala"));
         cosmeticsShopItems.add(new PermissionItem().setName("§fPanda").setLore("§7Čepice pandy pro kamaráda koaly!").setItemStack(Material.BOOK).setPrice(350).setPermision("craftmanager.hats.panda"));
         cosmeticsShopItems.add(new PermissionItem().setName("§dKlaun").setLore("§7Chceš vypadat jako klaun? Nebo už jsi?!").setItemStack(Material.BOOK).setPrice(500).setPermision("craftmanager.hats.clown"));
-        cosmeticsShopItems.add(new PermissionItem().setName("§fUnicorn").setLore("§7Čepice se kterou si nasadíš na hlavu roh.").setItemStack(Material.BOOK).setPrice(350).setPermision("craftmanager.hats.unicorn"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§fUnicorn").setLore("§7Čepice se kterou si nasadíš na hlavu roh.").setItemStack(Material.BOOK).setPrice(250).setPermision("craftmanager.hats.unicorn"));
         cosmeticsShopItems.add(new PermissionItem().setName("§bBeer Hat").setLore("§7S touto čepicí už nikdy nebudeš mít žízeň.").setItemStack(Material.BOOK).setPrice(400).setPermision("craftmanager.hats.beer_hat"));
-        cosmeticsShopItems.add(new PermissionItem().setName("§6Trex").setLore("§7Velká tlama, velký zuby a všichni utekli!").setItemStack(Material.BOOK).setPrice(750).setPermision("craftmanager.hats.trex"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§6Trex").setLore("§7Velká tlama, velký zuby a všichni utekli!").setItemStack(Material.BOOK).setPrice(850).setPermision("craftmanager.hats.trex"));
         cosmeticsShopItems.add(new PermissionItem().setName("§eXXXTentacion").setLore("§7Pořádný vlasy, a rap co ti zvedne tep.").setItemStack(Material.BOOK).setPrice(500).setPermision("craftmanager.hats.xxxtencation")); // Old název, bug wake je boomer a posral název no
         cosmeticsShopItems.add(new PermissionItem().setName("§dBunny Ears").setLore("§7Velké uši, velký čumák.. králíček!").setItemStack(Material.BOOK).setPrice(600).setPermision("craftmanager.hats.bunny_ears"));
-
+        cosmeticsShopItems.add(new PermissionItem().setName("§aŽabička").setLore("§7Žabičky ze všech bažin jsou zde!").setItemStack(Material.BOOK).setPrice(500).setPermision("craftmanager.hats.zabicka"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§eKachnička").setLore("§7Kachničky od řeky přímo na hlavu.").setItemStack(Material.BOOK).setPrice(500).setPermision("craftmanager.hats.kachnicka"));
     }
 
 }
