@@ -39,7 +39,7 @@ public class BeaconCommand extends BaseCommand implements Listener {
             Player player = (Player) Sender;
             if (player.hasPermission("craftmanager.vip.beacon")) {
 
-                if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.SKYCLOUD || Main.getServerType() == ServerType.HARDCORE_VANILLA) {
+                if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.ANARCHY || Main.getServerType() == ServerType.HARDCORE_VANILLA) {
                     player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
                     return;
                 }

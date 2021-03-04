@@ -36,7 +36,7 @@ public class Disenchant extends BaseCommand {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
             if (player.hasPermission("craftmanager.vip.disenchant")) {
-                if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.SKYCLOUD || Main.getServerType() == ServerType.HARDCORE_VANILLA) {
+                if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.ANARCHY || Main.getServerType() == ServerType.HARDCORE_VANILLA) {
                     player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
                     return true;
                 }

@@ -597,6 +597,8 @@ public class VIPMenu_inv implements InventoryProvider {
             server = "Vanilla";
         else if (currentServer == ServerType.HARDCORE_VANILLA)
             server = "Hardcore Vanilla";
+        else if (currentServer == ServerType.ANARCHY)
+            server = "Anarchy";
         else if (currentServer == ServerType.UNKNOWN)
             server = "Unknown";
         return server;

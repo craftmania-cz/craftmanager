@@ -5,6 +5,7 @@ import cz.wake.manager.Main;
 import cz.wake.manager.utils.Log;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.ChatColor;
+import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -308,6 +309,8 @@ public class SQLManager {
             name = "vanilla";
         } else if (Main.getServerType() == ServerType.SKYCLOUD) {
             name = "skycloud";
+        } else if (Main.getServerType() == ServerType.ANARCHY) {
+            name = "anarchy";
         } else if (Main.getServerType() == ServerType.HARDCORE_VANILLA) {
             name = "hardcore_vanilla";
         }
