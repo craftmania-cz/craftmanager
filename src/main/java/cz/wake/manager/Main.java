@@ -9,6 +9,7 @@ import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.commads.staff.ServerSlots_command;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
+import cz.wake.manager.managers.CompassManager;
 import cz.wake.manager.managers.CshopManager;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.general.*;
@@ -37,6 +38,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -65,6 +67,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private CshopManager cshopManager;
     private static ScoreboardManager scoreboardManager = null;
     private static ScoreboardProvider scoreboardProvider = null;
+    private CompassManager compassManager = null;
 
     // Plugin dependencies
     private static boolean isPremiumVanishEnabled = false;
@@ -206,6 +209,11 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         } else {
             Log.withPrefix("Scoreboard je deaktivovaná...");
         }
+
+        if (serverType == ServerType.ANARCHY) {
+            this.compassManager = new CompassManager();
+            getServer().getScheduler().runTaskTimerAsynchronously(this, new CompassTask(), 20, 20);
+        }
     }
 
     public void onDisable() {
@@ -302,6 +310,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         if (serverType != ServerType.HARDCORE_VANILLA) {
             manager.registerCommand(new GetXP_command());
+        }
+
+        if (serverType == ServerType.ANARCHY) {
+            manager.registerCommand(new Hud_Command());
         }
 
         //Servers
@@ -465,5 +477,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             return;
         }
         sentry.sendException(exception);
+    }
+
+    @Nullable
+    public CompassManager getCompassManager() {
+        return compassManager;
     }
 }

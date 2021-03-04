@@ -7,6 +7,7 @@ import cz.wake.manager.utils.ServerType;
 import cz.wake.manager.utils.scoreboard.ScoreboardManager;
 //import de.myzelyam.api.vanish.PlayerShowEvent;
 import org.bukkit.GameMode;
+import org.bukkit.Server;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -66,15 +67,28 @@ public class PlayerListener implements Listener {
             }
         }
 
-        /*if (Main.getServerType() == ServerType.HARDCORE_VANILLA) {
+        if (Main.getServerType() == ServerType.HARDCORE_VANILLA) {
             p.sendMessage("");
             p.sendMessage("§c§lUpozornění");
-            p.sendMessage("§7Tento server je označený jako §b§lBETA");
-            p.sendMessage("§7Mohou se zde vyskytovat lagy, bugy a jiné problémy!");
-            p.sendMessage("§7Pokud nějaký najdeš, nahlaš nám ho na Discordu!");
-            p.sendMessage("§eDiscord: §6https://discord.gg/craftmania -> #bugy_a_problemy");
+            p.sendMessage("§7Tento server bude ukončený dne: §f10.3.2021");
+            p.sendMessage("§7Záloha světa bude k dispozici v ten den na Discordu.");
             p.sendMessage("");
-        }*/
+        }
+
+        if (Main.getServerType() == ServerType.SKYCLOUD) {
+            p.sendMessage("");
+            p.sendMessage("§c§lUpozornění");
+            p.sendMessage("§7Tento server bude ukončený dne: §f1.3.2021");
+            p.sendMessage("§7Záloha světa bude k dispozici v ten den na Discordu.");
+            p.sendMessage("");
+        }
+
+        if (Main.getServerType() == ServerType.ANARCHY) {
+            if (Main.getInstance().getMySQL().getSettings(e.getPlayer(), "hud_bossbar") == 1) {
+                assert Main.getInstance().getCompassManager() != null;
+                Main.getInstance().getCompassManager().addPlayer(e.getPlayer());
+            }
+        }
 
         if (Main.restartReason != null) {
             long min = Main.restartTime - System.currentTimeMillis();
@@ -129,6 +143,11 @@ public class PlayerListener implements Listener {
             //ScoreboardManager
             if (Main.getInstance().getScoreboardManager() != null) {
                 Main.getInstance().getScoreboardManager().removePlayer(p);
+            }
+
+            if (Main.getServerType() == ServerType.ANARCHY) {
+                assert Main.getInstance().getCompassManager() != null;
+                Main.getInstance().getCompassManager().removePlayer(e.getPlayer());
             }
         } catch (Exception exception) {
             exception.printStackTrace();
