@@ -24,7 +24,6 @@ import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
 import cz.wake.manager.utils.configs.Config;
 import cz.wake.manager.utils.configs.ConfigAPI;
-import cz.wake.manager.utils.prometheus.MetricsController;
 import cz.wake.manager.utils.scoreboard.ScoreboardManager;
 import cz.wake.manager.utils.scoreboard.ScoreboardProvider;
 import cz.wake.manager.utils.tasks.ATAfkTask;
@@ -54,16 +53,16 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     public HashMap<Player, Integer> at_afk = new HashMap<>();
     public ArrayList<Player> death_messages = new ArrayList<>();
     private ParticlesAPI particlesAPI = new ParticlesAPI();
-    private List<String> dontdrop_worlds = new ArrayList<>();
     public static Long restartTime = null;
     public static String restartReason = null;
-    private ServerFactory sf = new ServerFactory();
     private static ByteArrayOutputStream b = new ByteArrayOutputStream();
     private static DataOutputStream out = new DataOutputStream(b);
     private SQLManager sql;
     private boolean testing = false;
     private static String mentionPrefix;
     private ConfigAPI configAPI;
+
+    // Managers
     private CshopManager cshopManager;
     private static ScoreboardManager scoreboardManager = null;
     private static ScoreboardProvider scoreboardProvider = null;
@@ -79,6 +78,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     private static Main instance;
 
+    // Servery type
     private static ServerType serverType = ServerType.UNKNOWN;
 
     // Sentry
@@ -179,12 +179,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             mentionPrefix = "@";
         }
         Log.withPrefix("Mention prefix nastaven na: " + mentionPrefix);
-
-        // Prometheus
-        if (getConfig().getBoolean("prometheus.state", false)) {
-            MetricsController.setup(this);
-            Log.withPrefix("Aktivace Prometheus Endpointu na portu: " + getConfig().get("prometheus.port").toString());
-        }
 
         // SkyCloud nastaveni
         if (serverType == ServerType.SKYCLOUD) {
@@ -338,9 +332,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     private void loadConfiguration() {
-        Config blockedTagsFile = new Config(this.configAPI,  "blockedTags");
-        configAPI.registerConfig(blockedTagsFile);
-
         Config deathMessagesFile = new Config(this.configAPI, "deathMessages");
         configAPI.registerConfig(deathMessagesFile);
 
@@ -381,10 +372,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public SQLManager getMySQL() {
         return sql;
-    }
-
-    public ServerFactory getServerFactory() {
-        return sf;
     }
 
     @Override
