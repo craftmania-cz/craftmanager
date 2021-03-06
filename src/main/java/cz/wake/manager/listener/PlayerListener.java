@@ -88,6 +88,13 @@ public class PlayerListener implements Listener {
                 assert Main.getInstance().getCompassManager() != null;
                 Main.getInstance().getCompassManager().addPlayer(e.getPlayer());
             }
+
+            p.sendMessage("");
+            p.sendMessage("§c§lVanilla: Anarchy");
+            p.sendMessage("§7Na tomto serveru není žádná ochrana regionů.");
+            p.sendMessage("§7Kdokoliv na tebe může udělat tpa-kill, jakkoliv tě zabít.");
+            p.sendMessage("§7Používání cheatů, xraye atd. je stále zakázáno.");
+            p.sendMessage("");
         }
 
         if (Main.restartReason != null) {

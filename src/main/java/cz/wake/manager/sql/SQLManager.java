@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.Log;
 import cz.wake.manager.utils.ServerType;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
@@ -214,11 +215,11 @@ public class SQLManager {
                     conn = pool.getConnection();
                     ps = conn.prepareStatement("INSERT INTO stav_survival_server (nazev, pocet_hracu, pocet_slotu, verze, pocet_pluginu) VALUES (?,?,?,?,?) ON DUPLICATE KEY UPDATE pocet_hracu = ?;");
                     ps.setString(1, Main.getInstance().getConfig().getString("server")); // Kvůli 1.13+
-                    ps.setInt(2, Main.getInstance().getServerFactory().getOnlinePlayers());
-                    ps.setInt(3, Main.getInstance().getServerFactory().getMaxPlayers());
-                    ps.setString(4, Main.getInstance().getServerFactory().getVersion());
-                    ps.setInt(5, Main.getInstance().getServerFactory().getCountPlugins());
-                    ps.setInt(6, Main.getInstance().getServerFactory().getOnlinePlayers());
+                    ps.setInt(2, Bukkit.getOnlinePlayers().size());
+                    ps.setInt(3, Bukkit.getMaxPlayers());
+                    ps.setString(4, Bukkit.getVersion());
+                    ps.setInt(5, Bukkit.getPluginManager().getPlugins().length);
+                    ps.setInt(6, Bukkit.getOnlinePlayers().size());
                     ps.executeUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();
