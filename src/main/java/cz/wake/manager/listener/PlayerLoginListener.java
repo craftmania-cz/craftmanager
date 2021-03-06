@@ -1,6 +1,7 @@
 package cz.wake.manager.listener;
 
 import cz.wake.manager.Main;
+import cz.wake.manager.utils.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,8 +17,13 @@ public class PlayerLoginListener implements Listener {
         int reservedSlots = Main.getInstance().getConfig().getInt("reservedSlots");
         int playerCount = Bukkit.getOnlinePlayers().size();
 
-        if (!player.hasPermission("craftmanager.beta_access.vanilla_anarchy") || !player.hasPermission("craftmania.at")) {
-            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "§aVanilla Anarchy: §ePro přístup na server musíš mít 20 hlasů v VotePassu!");
+        if (Main.getServerType() == ServerType.ANARCHY) {
+            if (player.hasPermission("craftmania.at")) {
+                return;
+            }
+            if (!player.hasPermission("craftmanager.beta_access.vanilla_anarchy")) {
+                event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "§aVanilla Anarchy: §ePro přístup na server musíš mít 20 hlasů v VotePassu!");
+            }
         }
 
         if (playerCount < totalSlots || player.hasPermission("craftmania.at")) { //Jestli momentálních hráčů je méně než slotů povolených, hráče to připojí
