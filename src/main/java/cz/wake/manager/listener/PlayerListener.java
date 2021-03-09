@@ -16,6 +16,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.*;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.concurrent.TimeUnit;
 
@@ -245,6 +246,17 @@ public class PlayerListener implements Listener {
                 if(Main.getInstance().at_afk.get(player) != 0) {
                     Main.getInstance().at_afk.put(player, 0);
                 }
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onHit(EntityDamageByEntityEvent event) {
+        if (event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
+            Player damager = (Player) event.getDamager();
+            if (damager.hasPotionEffect(PotionEffectType.INVISIBILITY)) {
+                damager.sendMessage("§c§l[!] §cNelze zabíjet hráče s Invisibility Potionem.");
+                event.setCancelled(true);
             }
         }
     }
