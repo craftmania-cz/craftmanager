@@ -22,6 +22,11 @@ public class Repair {
             return;
         }
 
+        if (item.getItemMeta().hasCustomModelData()) {
+            p.sendMessage("§c§l[!] §cNelze opravovat item, který má nastavený styl.");
+            return;
+        }
+
         if (!(item.getItemMeta() instanceof Damageable)) {
             p.sendMessage("§c§l[!] §cNemáš v ruce item, který by šel opravit.");
             return;
