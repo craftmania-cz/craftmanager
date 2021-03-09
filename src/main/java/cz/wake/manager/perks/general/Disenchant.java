@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.Random;
 
 @CommandAlias("disenchant")
-@Description("Otevře ti tvůj profil")
+@Description("Získání zpět enchantů na nástroji")
 public class Disenchant extends BaseCommand {
 
     @HelpCommand
@@ -32,15 +32,23 @@ public class Disenchant extends BaseCommand {
     }
 
     @Default
-    public boolean disenchant(CommandSender Sender) {
+    public void disenchant(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
             if (player.hasPermission("craftmanager.vip.disenchant")) {
                 if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.ANARCHY || Main.getServerType() == ServerType.HARDCORE_VANILLA) {
                     player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
-                    return true;
+                    return;
                 }
-                ItemStack itemInHand = player.getItemInHand();
+                ItemStack itemInHand = player.getInventory().getItemInMainHand();
+                if (itemInHand.getItemMeta() == null) {
+                    player.sendMessage("§c§l[!] §cTento item není poničen nebo provést disenchant.");
+                    return;
+                }
+                if (itemInHand.getItemMeta().hasCustomModelData()) {
+                    player.sendMessage("§c§l[!] §cNelze disenchantovat item, který má nastavený styl.");
+                    return;
+                }
                 short durability = itemInHand.getDurability();
                 if ((!itemInHand.getEnchantments().isEmpty()) && (itemInHand.getType() != Material.BOOK)
                         && (itemInHand.getType() != Material.TRIPWIRE_HOOK)) {
@@ -56,7 +64,7 @@ public class Disenchant extends BaseCommand {
                     if (itemInHand.getEnchantments().containsKey(Enchantment.DURABILITY)) {
                         if (itemInHand.getEnchantments().get(Enchantment.DURABILITY) == 0) {
                             player.sendMessage("§c§l[!] §cNelze pouzit Disenchant na item, ktery ma na sobe Glowing.");
-                            return true;
+                            return;
                         }
                     }
 
@@ -90,7 +98,6 @@ public class Disenchant extends BaseCommand {
                 player.sendMessage("§c§l[!] §cK pouziti tohoto prikazu musis mit zakoupene VIP!");
             }
         }
-        return false;
     }
 
     private ItemStack addBookEnchantment(ItemStack item, Enchantment enchantment, int level) {
