@@ -31,8 +31,8 @@ public class CshopCosmeticShop implements InventoryProvider {
             lore.addAll(cosmeticItem.getLore());
 
             if (player.hasPermission(cosmeticItem.getPermision())) { // Již má koupeno
-                items.add(ClickableItem.empty(new ItemBuilder(cosmeticItem.getItemStack())
-                        .setName("§a" + cosmeticItem.getName()).setGlowing().hideAllFlags().setLore("§7Již máš zakoupeno!").build()));
+                //items.add(ClickableItem.empty(new ItemBuilder(cosmeticItem.getItemStack())
+                //        .setName("§a" + cosmeticItem.getName()).setGlowing().hideAllFlags().setLore("§7Již máš zakoupeno!").build()));
                 return;
             }
 

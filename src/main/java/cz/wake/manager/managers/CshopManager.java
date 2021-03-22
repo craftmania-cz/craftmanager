@@ -113,16 +113,20 @@ public class CshopManager {
     }
 
     private void loadCosmeticShopItems() {
-        cosmeticsShopItems.add(new PermissionItem().setName("§fKoala").setLore("§7Čepice koaly pro kamaráda pandy!").setItemStack(Material.BOOK).setPrice(350).setPermision("craftmanager.hats.koala"));
-        cosmeticsShopItems.add(new PermissionItem().setName("§fPanda").setLore("§7Čepice pandy pro kamaráda koaly!").setItemStack(Material.BOOK).setPrice(350).setPermision("craftmanager.hats.panda"));
-        cosmeticsShopItems.add(new PermissionItem().setName("§dKlaun").setLore("§7Chceš vypadat jako klaun? Nebo už jsi?!").setItemStack(Material.BOOK).setPrice(500).setPermision("craftmanager.hats.clown"));
-        cosmeticsShopItems.add(new PermissionItem().setName("§fUnicorn").setLore("§7Čepice se kterou si nasadíš na hlavu roh.").setItemStack(Material.BOOK).setPrice(250).setPermision("craftmanager.hats.unicorn"));
-        cosmeticsShopItems.add(new PermissionItem().setName("§bBeer Hat").setLore("§7S touto čepicí už nikdy nebudeš mít žízeň.").setItemStack(Material.BOOK).setPrice(400).setPermision("craftmanager.hats.beer_hat"));
-        cosmeticsShopItems.add(new PermissionItem().setName("§6Trex").setLore("§7Velká tlama, velký zuby a všichni utekli!").setItemStack(Material.BOOK).setPrice(850).setPermision("craftmanager.hats.trex"));
-        cosmeticsShopItems.add(new PermissionItem().setName("§eXXXTentacion").setLore("§7Pořádný vlasy, a rap co ti zvedne tep.").setItemStack(Material.BOOK).setPrice(500).setPermision("craftmanager.hats.xxxtencation")); // Old název, bug wake je boomer a posral název no
-        cosmeticsShopItems.add(new PermissionItem().setName("§dBunny Ears").setLore("§7Velké uši, velký čumák.. králíček!").setItemStack(Material.BOOK).setPrice(600).setPermision("craftmanager.hats.bunny_ears"));
-        cosmeticsShopItems.add(new PermissionItem().setName("§aŽabička").setLore("§7Žabičky ze všech bažin jsou zde!").setItemStack(Material.BOOK).setPrice(500).setPermision("craftmanager.hats.zabicka"));
-        cosmeticsShopItems.add(new PermissionItem().setName("§eKachnička").setLore("§7Kachničky od řeky přímo na hlavu.").setItemStack(Material.BOOK).setPrice(500).setPermision("craftmanager.hats.kachnicka"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§fKoala").setLore("§7Čepice koaly pro kamaráda pandy!").setItemStack(Hats.KOALA.getPureItemStack()).setPrice(400).setPermision("craftmanager.hats.koala"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§fPanda").setLore("§7Čepice pandy pro kamaráda koaly!").setItemStack(Hats.PANDA.getPureItemStack()).setPrice(400).setPermision("craftmanager.hats.panda"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§dKlaun").setLore("§7Chceš vypadat jako klaun? Nebo už jsi?!").setItemStack(Hats.CLOWN.getPureItemStack()).setPrice(750).setPermision("craftmanager.hats.clown"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§fUnicorn").setLore("§7Čepice se kterou si nasadíš na hlavu roh.").setItemStack(Hats.UNICORN.getPureItemStack()).setPrice(150).setPermision("craftmanager.hats.unicorn"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§bBeer Hat").setLore("§7S touto čepicí už nikdy nebudeš mít žízeň.").setItemStack(Hats.BEER_HAT.getPureItemStack()).setPrice(400).setPermision("craftmanager.hats.beer_hat"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§6Trex").setLore("§7Velká tlama, velký zuby a všichni utekli!").setItemStack(Hats.TREX.getPureItemStack()).setPrice(1000).setPermision("craftmanager.hats.trex"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§eXXXTentacion").setLore("§7Pořádný vlasy, a rap co ti zvedne tep.").setItemStack(Hats.XXXTENCATION.getPureItemStack()).setPrice(800).setPermision("craftmanager.hats.xxxtencation")); // Old název, bug wake je boomer a posral název no
+        cosmeticsShopItems.add(new PermissionItem().setName("§dBunny Ears").setLore("§7Velké uši, velký čumák.. králíček!").setItemStack(Hats.BUNNY_EARS.getPureItemStack()).setPrice(500).setPermision("craftmanager.hats.bunny_ears"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§aŽabička").setLore("§7Žabičky ze všech bažin jsou zde!").setItemStack(Hats.ZABICKA.getPureItemStack()).setPrice(500).setPermision("craftmanager.hats.zabicka"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§eKachnička").setLore("§7Kachničky od řeky přímo na hlavu.").setItemStack(Hats.KACHNICKA.getPureItemStack()).setPrice(500).setPermision("craftmanager.hats.kachnicka"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§bDiamond Block na prutu").setLore("§7Každý jde za diamanty, půjdeš i za tímhle?").setItemStack(Hats.DIAMOND_PRUT.getPureItemStack()).setPrice(400).setPermision("craftmanager.hats.diamond_prut"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§9Nerdy Glasses").setLore("§7Koukáním do počítače časem ztratíš zrak...", "§7s těmito brýlemi ne!").setItemStack(Hats.NERD_GLASSES.getPureItemStack()).setPrice(400).setPermision("craftmanager.hats.nerdy_glasses"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§cDeer").setLore("§7Jelenovipivonelej").setItemStack(Hats.DEER.getPureItemStack()).setPrice(500).setPermision("craftmanager.hats.deer"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§aShrek").setLore("§7Správný vládce bažiny má svojí čepici!").setItemStack(Material.BOOK).setPrice(400).setPermision("craftmanager.hats.shrek"));
     }
 
 }

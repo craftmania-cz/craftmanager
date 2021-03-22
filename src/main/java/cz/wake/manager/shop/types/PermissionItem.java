@@ -71,4 +71,9 @@ public class PermissionItem {
         this.itemStack = new ItemBuilder(material).build();
         return this;
     }
+
+    public PermissionItem setItemStack(ItemStack itemStack) {
+        this.itemStack = new ItemBuilder(itemStack).build();
+        return this;
+    }
 }

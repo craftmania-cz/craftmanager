@@ -182,8 +182,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // SkyCloud nastaveni
         if (serverType == ServerType.SKYCLOUD) {
-            VillagerManager.loadChunksAndKill();
-            VillagerManager.spawnVillagers();
+            //VillagerManager.loadChunksAndKill();
+            //VillagerManager.spawnVillagers();
         }
 
         Bukkit.getWorlds().forEach(world -> {
