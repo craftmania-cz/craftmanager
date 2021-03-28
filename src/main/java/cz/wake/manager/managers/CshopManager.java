@@ -1,6 +1,9 @@
 package cz.wake.manager.managers;
 
+import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.craftmania.craftpack.api.Hats;
+import cz.craftmania.craftpack.api.Items;
+import cz.craftmania.craftpack.api.Swords;
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.PermissionItem;
 import cz.wake.manager.shop.types.RewardType;
@@ -110,6 +113,8 @@ public class CshopManager {
         if (Main.getServerType() == ServerType.CREATIVE || Main.getServerType() == ServerType.SKYCLOUD || Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK) {
             //eventShopItems.add(new VoteItem().setName("ArmorStandEditor (2h)").setPrice(10).setCommandToExecute("lp user %player% permission settemp asedit.* true 2h %server%"));
         }
+        eventShopItems.add(new VoteItem().setName("§bPomlázka (bez Knockbacku)").setItemStack(Material.STICK).setPrice(15).setCommandToExecute("minecraft:give %player% stick{CustomModelData:100001,display:{Name:'[{\"text\":\"Pomlázka\",\"italic\":false,\"color\":\"blue\"}]'}} 1"));
+        eventShopItems.add(new VoteItem().setName("§bPomlázka (Knockback 1)").setItemStack(Material.STICK).setPrice(25).setCommandToExecute("minecraft:give %player% stick{CustomModelData:100001,display:{Name:'[{\"text\":\"Pomlázka\",\"italic\":false,\"color\":\"blue\"}]'},Enchantments:[{id:knockback,lvl:1}]} 1"));
     }
 
     private void loadCosmeticShopItems() {

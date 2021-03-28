@@ -69,6 +69,11 @@ public class VoteItem {
         return this;
     }
 
+    public VoteItem setItemStack(ItemStack itemStack) {
+        this.itemStack = new ItemBuilder(itemStack).build();
+        return this;
+    }
+
     public RewardType getRewardType() {
         return rewardType;
     }

@@ -164,7 +164,7 @@ public class HatsGUI implements InventoryProvider {
 
         list.add(new CosmeticItem().setName("§6Egg Head")
                 .setItemStack(Hats.EGG_HEAD.getPureItemStack())
-                .setLore("§7Vejce na hlavu? OK! Ale bacha na kuřátka!", "", "§aZískáno: §fVelikonoční Event Shop", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(),  "", "§eKlikni pro nasazení")
+                .setLore("§7Vejce na hlavu? OK! Ale bacha na kuřátka!", "", "§aZískáno: §fEvent server - Velikonoce 2021", "§aRarita: §f" + TextureItems.RARITY_LIMITED.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.egg_head"));
 
         return list;
