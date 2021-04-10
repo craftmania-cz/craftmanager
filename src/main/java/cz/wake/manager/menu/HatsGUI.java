@@ -7,6 +7,7 @@ import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryContent
 import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryProvider;
 import cz.craftmania.craftcore.spigot.inventory.builder.content.Pagination;
 import cz.craftmania.craftcore.spigot.inventory.builder.content.SlotIterator;
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.craftmania.craftpack.api.Hats;
 import cz.craftmania.craftpack.api.TextureItems;
 import org.bukkit.Material;
@@ -188,14 +189,14 @@ public class HatsGUI implements InventoryProvider {
 
             items.add(ClickableItem.of(new ItemBuilder(cosmeticItem.getItemStack()).setName(cosmeticItem.getName()).setLore(cosmeticItem.getLore()).hideAllFlags().build(), item -> {
                 if (player.getInventory().getHelmet() != null && !player.getInventory().getHelmet().getItemMeta().hasCustomModelData()) {
-                    player.sendMessage("§c§l[!] §cNelze si nasadit čepici, když máš již něco na hlavě!");
+                    ChatInfo.DANGER.send(player, "Nelze si nasadit čepici, když máš již něco na hlavě!");
                     return;
                 }
                 ItemBuilder finalItem = new ItemBuilder(cosmeticItem.getItemStack());
                 finalItem.hideAllFlags();
                 finalItem.setLore("§7Nasazeno: §f" + player.getName());
                 player.getInventory().setHelmet(finalItem.build());
-                player.sendMessage("§e§l[*] §eNasadil jsi si na hlavu: §r" + cosmeticItem.getName());
+                ChatInfo.INFO.send(player, "Nasadil jsi si na hlavu: §r" + cosmeticItem.getName());
                 player.closeInventory();
             }));
 
@@ -223,12 +224,12 @@ public class HatsGUI implements InventoryProvider {
 
         contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.BARRIER).setName("§cDeaktivovat").build(), e -> {
             if (player.getInventory().getHelmet() != null && !player.getInventory().getHelmet().getItemMeta().hasCustomModelData()) {
-                player.sendMessage("§c§l[!] §cSundat si lze čepice pouze z Cosmetic menu.");
+                ChatInfo.DANGER.send(player, "Sundat si lze čepice pouze z Cosmetic menu.");
                 return;
             }
             player.getInventory().setHelmet(null);
             player.getOpenInventory().close();
-            player.sendMessage("§e§l[*] §eSundal jsi si čepici z hlavy.");
+            ChatInfo.INFO.send(player, "Sundal jsi si čepici z hlavy.");
         }));
 
         SlotIterator slotIterator = contents.newIterator("hats-gui", SlotIterator.Type.HORIZONTAL, 1, 0);
