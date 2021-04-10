@@ -15,7 +15,6 @@ import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.general.*;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.servers.global.LeaveDecayListener;
-import cz.wake.manager.servers.hvanilla.BanTimesListener;
 import cz.wake.manager.servers.skycloud.ItemDropListener;
 import cz.wake.manager.servers.skycloud.VillagerDamageListener;
 import cz.wake.manager.servers.skycloud.VillagerManager;
@@ -179,15 +178,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
         Log.withPrefix("Mention prefix nastaven na: " + mentionPrefix);
 
-        // SkyCloud nastaveni
-        if (serverType == ServerType.SKYCLOUD) {
-            //VillagerManager.loadChunksAndKill();
-            //VillagerManager.spawnVillagers();
-        }
-
-        Bukkit.getWorlds().forEach(world -> {
-            world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
-        });
+        Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false));
 
         // Načtení Cshopu
         this.cshopManager = new CshopManager(this);
@@ -234,11 +225,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new TempShop(), this);
         pm.registerEvents(new DeathListener(), this); //TODO: Zkontrolovat damage, pry se pkazdy posle zprava
         pm.registerEvents(new BeaconCommand(), this);
-        pm.registerEvents(new PlayerSwapListener(), this);
         pm.registerEvents(new SignClickListener(), this);
         pm.registerEvents(new Votes_command(), this);
         pm.registerEvents(new PlayerCommandSendListener(this), this);
-        pm.registerEvents(new CommandListener(), this);
         pm.registerEvents(new PlayerLoginListener(), this);
         pm.registerEvents(new InvisibleItemFrameListener(), this);
 
@@ -265,10 +254,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             pm.registerEvents(new VillagerDamageListener(), this);
             pm.registerEvents(new ItemDropListener(), this);
             pm.registerEvents(new LeaveDecayListener(), this);
-        }
-
-        if (serverType == ServerType.HARDCORE_VANILLA) {
-            pm.registerEvents(new BanTimesListener(), this);
         }
 
         if (isPremiumVanishEnabled) {

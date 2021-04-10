@@ -68,22 +68,6 @@ public class PlayerListener implements Listener {
             }
         }
 
-        if (Main.getServerType() == ServerType.HARDCORE_VANILLA) {
-            p.sendMessage("");
-            p.sendMessage("§c§lUpozornění");
-            p.sendMessage("§7Tento server bude ukončený dne: §f10.3.2021");
-            p.sendMessage("§7Záloha světa bude k dispozici v ten den na Discordu.");
-            p.sendMessage("");
-        }
-
-        if (Main.getServerType() == ServerType.SKYCLOUD) {
-            p.sendMessage("");
-            p.sendMessage("§c§lUpozornění");
-            p.sendMessage("§7Tento server bude ukončený dne: §f1.3.2021");
-            p.sendMessage("§7Záloha světa bude k dispozici v ten den na Discordu.");
-            p.sendMessage("");
-        }
-
         if (Main.getServerType() == ServerType.ANARCHY) {
             if (Main.getInstance().getMySQL().getSettings(e.getPlayer(), "hud_bossbar") == 1) {
                 assert Main.getInstance().getCompassManager() != null;

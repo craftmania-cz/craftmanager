@@ -7,6 +7,7 @@ import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
 import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.Material;
@@ -29,38 +30,43 @@ public class GlowItemCommand extends BaseCommand {
         if (sender instanceof Player) {
             final Player player = (Player) sender;
             if (!player.hasPermission("craftmanager.vip.glowingitems")) {
-                player.sendMessage("§c§l[!] §cNedostatecna prava, na toto musis mit VIP. §f/vip");
+                ChatInfo.DANGER.send(player, "Nemáš dostatek práv, na toto musíš mít VIP. §f/vip");
                 return;
             }
             if (Main.getServerType() == ServerType.VANILLA  || Main.getServerType() == ServerType.HARDCORE_VANILLA) {
-                player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
+                ChatInfo.DANGER.send(player, "Na tomto serveru tato výhoda neplati!");
                 return;
             }
             ItemStack item = player.getInventory().getItemInMainHand();
             if (item == null) {
-                player.sendMessage("§c§l[!] §cMusis drzet item, na ktery chces dat glowing efekt.");
+                ChatInfo.DANGER.send(player, "Musíš držet item, na který chceš dat glowing efekt.");
                 return;
             }
             //Přidat blacklist všech itemů, na které jde dávat ve Vanilla MC enchanty. Viz: https://youtrack.waked.cz/issue/CMD-845
             if (item.isSimilar(new ItemStack(Material.GOLDEN_APPLE, 1, (short) 1))) {
-                player.sendMessage("§c§l[!] §cNa tento item nelze pouzit prikaz /gi");
+                ChatInfo.DANGER.send(player, "Na tento item nelze použít příkaz /gi");
                 return;
             }
 
             if (item.hasItemMeta()) {
                 if (item.getItemMeta().hasLore()) {
-                    player.sendMessage("§c§l[!] §cNa tento item nelze pouzit prikaz /gi");
+                    ChatInfo.DANGER.send(player, "Na tento item nelze použít příkaz /gi");
                     return;
                 }
             }
 
             if (item.getAmount() > 1) {
-                player.sendMessage("§c§l[!] §cGlowItem lze pouzit pouze na jeden item!");
+                ChatInfo.DANGER.send(player, "GlowItem lze použít pouze na jeden item!");
                 return;
             }
 
             if (!item.getEnchantments().isEmpty()) {
-                player.sendMessage("§c§l[!] §cNelze pouzit GlowItem na item, ktery jiz ma enchant!");
+                ChatInfo.DANGER.send(player, "Nelze použít GlowItem na item, který již má enchant!");
+                return;
+            }
+
+            if (item.getItemMeta() != null && item.getItemMeta().hasCustomModelData()) {
+                ChatInfo.DANGER.send(player, "Nelze aplikovat glowing efekt na kosmetický item.");
                 return;
             }
 
@@ -69,7 +75,7 @@ public class GlowItemCommand extends BaseCommand {
             itemBuilder.setGlowing();
             itemBuilder.setAmount(1);
             player.getInventory().setItemInMainHand(itemBuilder.build());
-            player.sendMessage("§e§l[*] §eItem byl zmenen na Glowing!");
+            ChatInfo.SUCCESS.send(player, "Item byl změněn na Glowing!");
         }
     }
 }

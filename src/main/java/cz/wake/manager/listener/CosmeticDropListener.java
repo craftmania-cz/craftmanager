@@ -50,8 +50,6 @@ public class CosmeticDropListener implements Listener {
         final Player player = event.getPlayer();
         final ItemStack itemStack = event.getItem();
 
-        if (!event.getHand().equals(EquipmentSlot.HAND)) return;
-
         if (itemStack == null) {
             return;
         }
@@ -70,6 +68,12 @@ public class CosmeticDropListener implements Listener {
 
         if (((event.getAction() == Action.RIGHT_CLICK_AIR) || (event.getAction() == Action.RIGHT_CLICK_BLOCK))) {
             if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.SUGAR) {
+
+                if (player.getInventory().getHelmet() != null) {
+                    ChatInfo.DANGER.send(player, "Nelze si nasadit čepici, když máš již něco na hlavě!");
+                    return;
+                }
+
                 if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
                     if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 100001) {
                         player.getInventory().setHelmet(itemStack);

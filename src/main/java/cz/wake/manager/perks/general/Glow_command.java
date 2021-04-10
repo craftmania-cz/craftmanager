@@ -6,6 +6,7 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.command.CommandSender;
@@ -26,19 +27,19 @@ public class Glow_command extends BaseCommand {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
             if (Main.getServerType() == ServerType.VANILLA  || Main.getServerType() == ServerType.HARDCORE_VANILLA) {
-                player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
+                ChatInfo.DANGER.send(player, "Na tomto serveru tato výhoda neplatí!");
                 return;
             }
             if (player.hasPermission("craftmanager.glow")) {
                 if (!player.isGlowing()) {
                     player.setGlowing(true);
-                    player.sendMessage("§e§l[*] §eAktivoval jsi efekt §5Glowing!");
+                    ChatInfo.SUCCESS.send(player, "Aktivoval jsi efekt §5Glowing!");
                 } else {
                     player.setGlowing(false);
-                    player.sendMessage("§e§l[*] §eDeaktivoval jsi efekt §5Glowing!");
+                    ChatInfo.SUCCESS.send(player, "Deaktivoval jsi efekt §5Glowing!");
                 }
             } else {
-                player.sendMessage("§c§l[!] §cK pouziti teto schopnosti musis vlastnit VIP!");
+                ChatInfo.DANGER.send(player, "K použití této schopnosti musíš vlastnit VIP!");
             }
         }
     }

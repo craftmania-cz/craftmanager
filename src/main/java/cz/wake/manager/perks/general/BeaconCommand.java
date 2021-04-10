@@ -6,6 +6,7 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ItemFactory;
 import cz.wake.manager.utils.ServerType;
@@ -39,12 +40,12 @@ public class BeaconCommand extends BaseCommand implements Listener {
             Player player = (Player) Sender;
             if (player.hasPermission("craftmanager.vip.beacon")) {
 
-                if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.ANARCHY || Main.getServerType() == ServerType.HARDCORE_VANILLA) {
-                    player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
+                if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.ANARCHY) {
+                    ChatInfo.DANGER.send(player, "Na tomto serveru tato výhoda neplatí.");
                     return;
                 }
 
-                Inventory inv = Bukkit.createInventory(null, InventoryType.DISPENSER, "Zvol si efekt");
+                Inventory inv = Bukkit.createInventory(null, InventoryType.DISPENSER, "Vyber si potion efekt");
 
                 inv.setItem(0, ItemFactory.create(Material.FEATHER, "§f§lSpeed"));
                 inv.setItem(1, ItemFactory.create(Material.GOLDEN_PICKAXE, "§e§lHaste"));
@@ -53,47 +54,47 @@ public class BeaconCommand extends BaseCommand implements Listener {
                 inv.setItem(4, ItemFactory.create(Material.ENDER_EYE, "§9§lNight Vision"));
                 inv.setItem(5, ItemFactory.create(Material.PRISMARINE_CRYSTALS, "§3§lWater Breathing"));
 
-                inv.setItem(7, ItemFactory.create(Material.BARRIER, "§c§lZrusit","§7Kliknutim deaktivujes."));
+                inv.setItem(7, ItemFactory.create(Material.BARRIER, "§c§lZrušit","§7Kliknutím efekt deaktivuješ"));
 
                 player.openInventory(inv);
             } else {
-                player.sendMessage("§c§l[!] §cK ziskani pristupu potrebujes mit aktivni minimalne Gold VIP.");
+                ChatInfo.DANGER.send(player, "K získání přístupu potřebuješ mít minimálně Gold VIP.");
             }
         }
     }
 
     @EventHandler
     private void onClick(InventoryClickEvent e) {
-        final Player p = (Player) e.getWhoClicked();
-        if (e.getView().getTitle().equals("Zvol si efekt")) {
+        final Player player = (Player) e.getWhoClicked();
+        if (e.getView().getTitle().equals("Vyber si potion efekt")) {
             if(e.getSlot() == 0){
-                activateEffect(p, PotionEffectType.SPEED, 2);
-                p.sendMessage("§e§l[*] §eAktivoval jsi permanentni §bSpeed!");
+                activateEffect(player, PotionEffectType.SPEED, 2);
+                ChatInfo.SUCCESS.send(player, "Aktivoval jsi permanentní §bSpeed!");
             }
             if(e.getSlot() == 1){
-                activateEffect(p, PotionEffectType.FAST_DIGGING, 2);
-                p.sendMessage("§e§l[*] §eAktivoval jsi permanentni §bHaste!");
+                activateEffect(player, PotionEffectType.FAST_DIGGING, 2);
+                ChatInfo.SUCCESS.send(player, "Aktivoval jsi permanentní §bHaste!");
             }
             if(e.getSlot() == 2){
-                activateEffect(p, PotionEffectType.JUMP, 3);
-                p.sendMessage("§e§l[*] §eAktivoval jsi permanentni §bJump Boost!");
+                activateEffect(player, PotionEffectType.JUMP, 3);
+                ChatInfo.SUCCESS.send(player, "Aktivoval jsi permanentní §bJump Boost!");
             }
             if(e.getSlot() == 3){
-                activateEffect(p, PotionEffectType.FIRE_RESISTANCE, 3);
-                p.sendMessage("§e§l[*] §eAktivoval jsi permanentni §bFire Resistance!");
+                activateEffect(player, PotionEffectType.FIRE_RESISTANCE, 3);
+                ChatInfo.SUCCESS.send(player, "Aktivoval jsi permanentní §bFire Resistance!");
             }
             if(e.getSlot() == 4){
-                activateEffect(p, PotionEffectType.NIGHT_VISION, 5);
-                p.sendMessage("§e§l[*] §eAktivoval jsi permanentni §bNight Vision!");
+                activateEffect(player, PotionEffectType.NIGHT_VISION, 5);
+                ChatInfo.SUCCESS.send(player, "Aktivoval jsi permanentní §bNight Vision!");
             }
             if(e.getSlot() == 5){
-                activateEffect(p, PotionEffectType.WATER_BREATHING, 3);
-                p.sendMessage("§e§l[*] §eAktivoval jsi permanentni §bWater Breathing!");
+                activateEffect(player, PotionEffectType.WATER_BREATHING, 3);
+                ChatInfo.SUCCESS.send(player, "Aktivoval jsi permanentní §bWater Breathing!");
             }
             if(e.getSlot() == 7){
-                p.getActivePotionEffects().stream().map(PotionEffect::getType).forEach(p::removePotionEffect);
-                p.sendMessage("§c§l[!] §cOdebral jsi vsechny aktivni efekty!");
-                p.closeInventory();
+                player.getActivePotionEffects().stream().map(PotionEffect::getType).forEach(player::removePotionEffect);
+                ChatInfo.SUCCESS.send(player, "Odebral jsi všechny aktivní efekty!");
+                player.closeInventory();
             }
         }
     }

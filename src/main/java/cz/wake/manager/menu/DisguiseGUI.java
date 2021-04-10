@@ -7,6 +7,7 @@ import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryContent
 import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryProvider;
 import cz.craftmania.craftcore.spigot.inventory.builder.content.Pagination;
 import cz.craftmania.craftcore.spigot.inventory.builder.content.SlotIterator;
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import me.libraryaddict.disguise.DisguiseAPI;
 import me.libraryaddict.disguise.disguisetypes.DisguiseType;
 import me.libraryaddict.disguise.disguisetypes.FlagWatcher;
@@ -79,6 +80,7 @@ public class DisguiseGUI implements InventoryProvider {
                     localLivingWatcher.setCustomNameVisible(true);
                     player.getOpenInventory().close();
                     DisguiseAPI.disguiseToAll(player, localDisguise);
+                    ChatInfo.INFO.send(player, "Přeměnil jsi se na: " + cosmeticItem.getName());
                 }));
                 return;
             }
@@ -91,6 +93,7 @@ public class DisguiseGUI implements InventoryProvider {
                 localLivingWatcher.setCustomNameVisible(true);
                 player.getOpenInventory().close();
                 DisguiseAPI.disguiseToAll(player, localDisguise);
+                ChatInfo.INFO.send(player, "Přeměnil jsi se na: " + cosmeticItem.getName());
             }));
 
         }));
@@ -118,6 +121,7 @@ public class DisguiseGUI implements InventoryProvider {
         contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.BARRIER).setName("§cDeaktivovat").build(), e -> {
             DisguiseAPI.undisguiseToAll(player);
             player.getOpenInventory().close();
+            ChatInfo.SUCCESS.send(player, "Přeměna byla zrušena.");
         }));
 
         SlotIterator slotIterator = contents.newIterator("disguise-gui", SlotIterator.Type.HORIZONTAL, 1, 0);
