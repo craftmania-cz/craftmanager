@@ -43,7 +43,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Objects;
 
 public class Main extends JavaPlugin implements PluginMessageListener {
@@ -250,13 +249,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Skyblock PVP listener
         if (serverType == ServerType.SKYBLOCK) {
-            pm.registerEvents(new SkyblockPVPListener(), this);
             pm.registerEvents(new LeaveDecayListener(), this);
-        }
-
-        // Survival PVP listener
-        if (serverType == ServerType.SURVIVAL) {
-            pm.registerEvents(new SurvivalPVPListener(), this);
         }
 
         // Colored Anvils (VIP vyhoda)
