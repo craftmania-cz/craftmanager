@@ -43,3 +43,12 @@ ats-commands:
 # Nastaveni oznacovani
 mentions:
   prefix: "@"
+
+# Ochrana na drop kosmetických itemů
+protect-drop-cosmetic:
+ - NETHERITE_SWORD
+ - NETHERITE_SHOVEL
+ - NETHERITE_AXE
+ - NETHERITE_PICKAXE
+ - NETHERITE_HOE
+ - SUGAR

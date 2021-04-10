@@ -241,7 +241,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new CommandListener(), this);
         pm.registerEvents(new PlayerLoginListener(), this);
         pm.registerEvents(new InvisibleItemFrameListener(), this);
+
+        // Cosmetic items
         pm.registerEvents(new CustomItemsListener(), this);
+        pm.registerEvents(new CosmeticDropListener(), this);
 
         if (serverType != ServerType.HARDCORE_VANILLA) {
             pm.registerEvents(new OnEXPBottleThrownListener(), this);
