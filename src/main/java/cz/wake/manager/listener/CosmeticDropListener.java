@@ -2,11 +2,15 @@ package cz.wake.manager.listener;
 
 import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -37,6 +41,42 @@ public class CosmeticDropListener implements Listener {
                 event.setCancelled(false);
                 ChatInfo.DANGER.send(player, "Vyhodil jsi chráněný item na zem!");
                 dropRequests.remove(player);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onCosmeticInteract(final PlayerInteractEvent event) {
+        final Player player = event.getPlayer();
+        final ItemStack itemStack = event.getItem();
+
+        if (!event.getHand().equals(EquipmentSlot.HAND)) return;
+
+        if (itemStack == null) {
+            return;
+        }
+
+        if (itemStack.getType() != Material.SUGAR) {
+            return;
+        }
+
+        if (itemStack.getItemMeta() == null) {
+            return;
+        }
+
+        if (!itemStack.getItemMeta().hasCustomModelData()) {
+            return;
+        }
+
+        if (((event.getAction() == Action.RIGHT_CLICK_AIR) || (event.getAction() == Action.RIGHT_CLICK_BLOCK))) {
+            if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.SUGAR) {
+                if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
+                    if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 100001) {
+                        player.getInventory().setHelmet(itemStack);
+                        ChatInfo.SUCCESS.send(player, "Nasadil jsi si na hlavu: §f" + itemStack.getItemMeta().getDisplayName());
+                        player.getInventory().setItemInHand(null);
+                    }
+                }
             }
         }
     }
