@@ -4,6 +4,7 @@ import co.aikar.commands.PaperCommandManager;
 import cz.craftmania.craftlibs.sentry.CraftSentry;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
+import cz.wake.manager.commads.staff.CosAdmin_command;
 import cz.wake.manager.commads.staff.RawBroadcast;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.commads.staff.ServerSlots_command;
@@ -282,6 +283,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new Discord_command());
         manager.registerCommand(new Wiki_command());
         manager.registerCommand(new Cosmetics_command());
+        manager.registerCommand(new CosAdmin_command());
 
         if (serverType != ServerType.HARDCORE_VANILLA) {
             manager.registerCommand(new GetXP_command());
