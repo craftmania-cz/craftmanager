@@ -6,6 +6,7 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.Bukkit;
@@ -33,7 +34,7 @@ public class SkullCommand extends BaseCommand {
         if (sender instanceof Player) {
             Player player = (Player) sender;
             if (Main.getServerType() == ServerType.HARDCORE_VANILLA) {
-                player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
+                ChatInfo.DANGER.send(player, "Na tomto serveru tato výhoda neplatí!");
                 return;
             }
             if (player.hasPermission("craftmanager.vip.skull")) {
@@ -53,7 +54,7 @@ public class SkullCommand extends BaseCommand {
                     });
                     (this._cdRunnable.get(player)).runTaskTimer(Main.getInstance(), 2L, 2L);
                 } else {
-                    player.sendMessage("§c§l[!] §cTento prikaz muzes provadet pouze kazdych 10 minut!");
+                    ChatInfo.INFO.send(player, "Tento příkaz lze použít pouze 1x za 10 minut.");
                 }
             }
         }
@@ -61,14 +62,9 @@ public class SkullCommand extends BaseCommand {
 
     private void giveHead(Player p) {
         try {
-            //String command = "minecraft:give %creator% skull 1 3 {SkullOwner:\"%name%\",display:{Name:\"§b§l%name%\",Lore:[\"§7Vygenerovano pomoci §e/skull\",\"§8Vytvoril: %creator%\"]}}"
-            //        .replaceAll("%creator%", p.getName()).replaceAll("%name%", p.getName());
-            // 1.14+
-            //String command = "give %creator% minecraft:player_head{SkullOwner:\"%creator%\",display:{Lore:[\"{\"text\":\"Vygenerováno pomocí \",\"color\":\"blue\",\"extra\":[{\"text\":\"/skull\",\"color\":\"green\"}]}\"]}}"
-            //        .replaceAll("%creator%", p.getName()).replaceAll("%name%", p.getName());
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "give %creator% minecraft:player_head{\"SkullOwner\":\"%creator%\"}".replaceAll("%creator%", p.getName()));
         } catch (Exception e) {
-            p.sendMessage("§c§l[!] §cChyba v API Mojangu! Zkus to znova zachvilku! :)");
+            ChatInfo.DANGER.send(p, "Chyba v API Mojangu! Zkus to znova zachvilku! :)");
         }
     }
 

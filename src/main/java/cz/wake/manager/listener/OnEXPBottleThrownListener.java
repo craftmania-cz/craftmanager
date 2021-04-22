@@ -1,6 +1,6 @@
 package cz.wake.manager.listener;
 
-import cz.craftmania.craftcore.spigot.messages.chat.ChatInfo;
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.craftmania.craftlibs.utils.ExperienceUtil;
 import cz.wake.manager.Main;
 import org.bukkit.NamespacedKey;
@@ -31,7 +31,7 @@ public class OnEXPBottleThrownListener implements Listener {
                     ExperienceUtil.changeExp(player, expToGive - 1);
                     removeExpBottleFromPlayer(player);
                     event.setCancelled(true);
-                    ChatInfo.success(player, "Bylo ti přidáno §e" + expToGive + "EXP§a!");
+                    ChatInfo.SUCCESS.send(player, "Bylo ti přidáno §e" + expToGive + "EXP");
                 }
             }
         }

@@ -6,6 +6,7 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.Material;
@@ -37,16 +38,16 @@ public class Disenchant extends BaseCommand {
             Player player = (Player) Sender;
             if (player.hasPermission("craftmanager.vip.disenchant")) {
                 if (Main.getServerType() == ServerType.ANARCHY) {
-                    player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
+                    ChatInfo.DANGER.send(player, "Na tomto serveru tato výhoda neplatí.");
                     return;
                 }
                 ItemStack itemInHand = player.getInventory().getItemInMainHand();
                 if (itemInHand.getItemMeta() == null) {
-                    player.sendMessage("§c§l[!] §cTento item není poničen nebo provést disenchant.");
+                    ChatInfo.DANGER.send(player, "Tento item není poničen nebo provést disenchant.");
                     return;
                 }
                 if (itemInHand.getItemMeta().hasCustomModelData()) {
-                    player.sendMessage("§c§l[!] §cNelze disenchantovat item, který má nastavený styl.");
+                    ChatInfo.DANGER.send(player, "Nelze disenchantovat item, který má nastavený styl.");
                     return;
                 }
                 short durability = itemInHand.getDurability();
@@ -63,7 +64,7 @@ public class Disenchant extends BaseCommand {
                     // Kontrola Glowing items
                     if (itemInHand.getEnchantments().containsKey(Enchantment.DURABILITY)) {
                         if (itemInHand.getEnchantments().get(Enchantment.DURABILITY) == 0) {
-                            player.sendMessage("§c§l[!] §cNelze pouzit Disenchant na item, ktery ma na sobe Glowing.");
+                            ChatInfo.DANGER.send(player, "Nelze použít Disenchant na item, který má na sobě Glowing efekt.");
                             return;
                         }
                     }
@@ -82,20 +83,20 @@ public class Disenchant extends BaseCommand {
 
                         player.sendMessage("§e\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac");
                         player.sendMessage("");
-                        player.sendMessage("§aPredmet byl disenchantovan za §6" + finalPriceLvls + " LVL");
-                        player.sendMessage("§7Standartni enchant - 5 LVL");
+                        player.sendMessage("§aPředmět byl disenchantován za §6" + finalPriceLvls + " LVL");
+                        player.sendMessage("§7Enchant = 5 LVL");
                         player.sendMessage("");
                         player.sendMessage("§e\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac");
                         withoutEnchant.setDurability(durability);
                         player.getInventory().addItem(withoutEnchant);
                     } else {
-                        player.sendMessage("§c§l[!] §cMusis mit minimalne " + finalPriceLvls + " levlu na disenchant tohoto itemu!");
+                        ChatInfo.INFO.send(player, "Musíš mít minimálně " + finalPriceLvls + " levelů na disenchant totoho itemu!");
                     }
                 } else {
-                    player.sendMessage("§c§l[!] §cNa pozadovany item nelze pouzit Disenchant!");
+                    ChatInfo.DANGER.send(player, "Na požadovaný item nelze použít Disenchant!");
                 }
             } else {
-                player.sendMessage("§c§l[!] §cK pouziti tohoto prikazu musis mit zakoupene VIP!");
+                ChatInfo.DANGER.send(player, "K použití tohoto příkazu musíš mít zakoupené VIP!");
             }
         }
     }

@@ -19,7 +19,6 @@ import cz.wake.manager.servers.global.LeaveDecayListener;
 import cz.wake.manager.servers.skycloud.ItemDropListener;
 import cz.wake.manager.servers.skycloud.VillagerDamageListener;
 import cz.wake.manager.servers.skycloud.VillagerManager;
-import cz.wake.manager.shop.TempShop;
 import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
 import cz.wake.manager.utils.configs.Config;
@@ -223,10 +222,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new ParticlesAPI(), this);
         pm.registerEvents(new PlayerListener(), this);
         pm.registerEvents(new ChatListener(), this);
-        pm.registerEvents(new TempShop(), this);
         pm.registerEvents(new DeathListener(), this); //TODO: Zkontrolovat damage, pry se pkazdy posle zprava
         pm.registerEvents(new BeaconCommand(), this);
-        pm.registerEvents(new SignClickListener(), this);
         pm.registerEvents(new Votes_command(), this);
         pm.registerEvents(new PlayerCommandSendListener(this), this);
         pm.registerEvents(new PlayerLoginListener(), this);

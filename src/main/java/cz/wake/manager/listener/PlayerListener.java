@@ -1,5 +1,6 @@
 package cz.wake.manager.listener;
 
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.perks.particles.ParticlesAPI;
@@ -210,7 +211,7 @@ public class PlayerListener implements Listener {
         // Deaktivace Spectatoru
         if (e.getNewGameMode() == GameMode.SPECTATOR && !p.hasPermission("craftmanager.spectatorallow")) {
             e.setCancelled(true);
-            p.sendMessage("§c§l[!] §cNelze si zmenit GM na Spectatora!");
+            ChatInfo.DANGER.send(p, "Nelze si změnit GameMode na Spectatora!");
         }
     }
 
@@ -239,7 +240,7 @@ public class PlayerListener implements Listener {
         if (event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
             Player damager = (Player) event.getDamager();
             if (damager.hasPotionEffect(PotionEffectType.INVISIBILITY)) {
-                damager.sendMessage("§c§l[!] §cNelze zabíjet hráče s Invisibility Potionem.");
+                ChatInfo.DANGER.send(damager, "Nelze zabíjet hráče s Invisibility Potionem.");
                 event.setCancelled(true);
             }
         }
