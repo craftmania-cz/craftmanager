@@ -33,7 +33,7 @@ public class GlowItemCommand extends BaseCommand {
                 ChatInfo.DANGER.send(player, "Nemáš dostatek práv, na toto musíš mít VIP. §f/vip");
                 return;
             }
-            if (Main.getServerType() == ServerType.VANILLA  || Main.getServerType() == ServerType.HARDCORE_VANILLA) {
+            if (Main.getServerType() == ServerType.ANARCHY) {
                 ChatInfo.DANGER.send(player, "Na tomto serveru tato výhoda neplati!");
                 return;
             }
