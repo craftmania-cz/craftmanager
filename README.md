@@ -1,3 +1,12 @@
-# CraftManager [![License](https://img.shields.io/github/license/mashape/apistatus.svg?style=square)](LICENSE) [![Maintenance](https://img.shields.io/maintenance/yes/2020.svg?style=square)]()
+<p align="center">
+      <h1 align="center">CraftManager</h1>
+</p>
+<p align="center">
+  <a href="https://java.com/">
+    <img src="http://ForTheBadge.com/images/badges/made-with-java.svg" alt="Made with Java">
 
-Tento plugin je primárně určený ke správě survival serverů, měny, VIP práv a statistik. Plugin je přímo dělaný pro server, nebude tedy fungovat nikde jinde.
+  </a>
+</p>
+<p align="center">
+    Plugin sloužící k spravování serverů, připojení, VIP, CoinShopu a jiných základních věcí.
+</p>
