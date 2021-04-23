@@ -14,6 +14,9 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Blokace na custom items = čepice => Material.PAPER
+ */
 public class CustomItemsListener implements Listener {
 
     @EventHandler

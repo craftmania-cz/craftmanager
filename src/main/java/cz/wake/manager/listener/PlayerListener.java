@@ -5,10 +5,7 @@ import cz.wake.manager.Main;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.ServerType;
-import cz.wake.manager.utils.scoreboard.ScoreboardManager;
-//import de.myzelyam.api.vanish.PlayerShowEvent;
 import org.bukkit.GameMode;
-import org.bukkit.Server;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,6 +13,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.potion.PotionEffectType;
 
@@ -242,6 +240,21 @@ public class PlayerListener implements Listener {
             if (damager.hasPotionEffect(PotionEffectType.INVISIBILITY)) {
                 ChatInfo.DANGER.send(damager, "Nelze zabíjet hráče s Invisibility Potionem.");
                 event.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onSplash(EntityPotionEffectEvent event) {
+        if (event.getEntity() instanceof  Player) {
+            if (event.getAction() == EntityPotionEffectEvent.Action.ADDED || event.getAction() == EntityPotionEffectEvent.Action.CHANGED) {
+                if (event.getCause() == EntityPotionEffectEvent.Cause.AREA_EFFECT_CLOUD
+                        || event.getCause() == EntityPotionEffectEvent.Cause.POTION_SPLASH
+                        || event.getCause() == EntityPotionEffectEvent.Cause.ARROW) {
+                    if (event.getModifiedType().equals(PotionEffectType.INVISIBILITY)) {
+                        event.setCancelled(true);
+                    }
+                }
             }
         }
     }
