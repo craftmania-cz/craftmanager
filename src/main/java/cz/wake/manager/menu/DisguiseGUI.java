@@ -50,6 +50,11 @@ public class DisguiseGUI implements InventoryProvider {
                 .setLore("§8Kliknutím se změníš na Zombie: Husk.")
                 .setDisguiseType(DisguiseType.HUSK)
                 .setRequiredPermission("craftmanager.disguise.husk"));
+        list.add(new CosmeticItem().setName("§9Enderman")
+                .setItemStack(Material.ENDER_PEARL)
+                .setLore("§8Kliknutím se změníš na Endermana.")
+                .setDisguiseType(DisguiseType.ENDERMAN)
+                .setRequiredPermission("craftmanager.disguise.enderman"));
 
         return list;
     }
