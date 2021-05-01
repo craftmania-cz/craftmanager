@@ -21,9 +21,6 @@ public class PlayerLoginListener implements Listener {
             if (player.hasPermission("craftmania.at")) {
                 return;
             }
-            if (!player.hasPermission("craftmanager.beta_access.vanilla_anarchy")) {
-                event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "§aVanilla Anarchy: §ePro přístup na server musíš mít 20 hlasů v VotePassu!");
-            }
         }
 
         if (playerCount < totalSlots || player.hasPermission("craftmania.at")) { //Jestli momentálních hráčů je méně než slotů povolených, hráče to připojí
