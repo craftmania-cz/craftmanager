@@ -4,6 +4,8 @@ import co.aikar.commands.BaseCommand;
 import co.aikar.commands.CommandHelp;
 import co.aikar.commands.annotation.*;
 import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
+import cz.craftmania.crafteconomy.achievements.Rarity;
+import cz.craftmania.craftpack.api.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -43,26 +45,47 @@ public class CosAdmin_command extends BaseCommand {
         }
         switch (type) {
             case "ice_rose_set":
-                ItemStack ice_rose_sword = new ItemBuilder(Material.NETHERITE_SWORD).setCustomModelData(100004)
-                        .setName("§b§lIce Rose Sword").setLore("§7Zakoupil: §f" + onlinePlayer.getName(), "§7Rarita: §f⼢").build();
+                ItemStack ice_rose_sword = new ItemBuilder(Swords.ICE_ROSE_SWORD.getPureItemStack())
+                        .setName("§b§lIce Rose Sword").setLore("§7Zakoupil: §f" + onlinePlayer.getName(), "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
                 onlinePlayer.getInventory().addItem(ice_rose_sword);
-                ItemStack ice_rose_pickaxe = new ItemBuilder(Material.NETHERITE_PICKAXE).setCustomModelData(100001)
-                        .setName("§b§lIce Rose Pickaxe").setLore("§7Zakoupil: §f" + onlinePlayer.getName(), "§7Rarita: §f⼢").build();
+                ItemStack ice_rose_pickaxe = new ItemBuilder(Pickaxes.ICE_ROSE_PICKAXE.getPureItemStack())
+                        .setName("§b§lIce Rose Pickaxe").setLore("§7Zakoupil: §f" + onlinePlayer.getName(), "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
                 onlinePlayer.getInventory().addItem(ice_rose_pickaxe);
-                ItemStack ice_rose_axe = new ItemBuilder(Material.NETHERITE_AXE).setCustomModelData(100001)
-                        .setName("§b§lIce Rose Axe").setLore("§7Zakoupil: §f" + onlinePlayer.getName(), "§7Rarita: §f⼢").build();
+                ItemStack ice_rose_axe = new ItemBuilder(Axes.ICE_ROSE_AXE.getPureItemStack())
+                        .setName("§b§lIce Rose Axe").setLore("§7Zakoupil: §f" + onlinePlayer.getName(), "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
                 onlinePlayer.getInventory().addItem(ice_rose_axe);
-                ItemStack ice_rose_hoe = new ItemBuilder(Material.NETHERITE_HOE).setCustomModelData(100001)
-                        .setName("§b§lIce Rose Hoe").setLore("§7Zakoupil: §f" + onlinePlayer.getName(), "§7Rarita: §f⼢").build();
+                ItemStack ice_rose_hoe = new ItemBuilder(Hoes.ICE_ROSE_HOE.getPureItemStack())
+                        .setName("§b§lIce Rose Hoe").setLore("§7Zakoupil: §f" + onlinePlayer.getName(), "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
                 onlinePlayer.getInventory().addItem(ice_rose_hoe);
-                ItemStack ice_rose_shovel = new ItemBuilder(Material.NETHERITE_SHOVEL).setCustomModelData(100001)
-                        .setName("§b§lIce Rose Shovel").setLore("§7Zakoupil: §f" + onlinePlayer.getName(), "§7Rarita: §f⼢").build();
+                ItemStack ice_rose_shovel = new ItemBuilder(Shovels.ICE_ROSE_SHOVEL.getPureItemStack())
+                        .setName("§b§lIce Rose Shovel").setLore("§7Zakoupil: §f" + onlinePlayer.getName(), "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
                 onlinePlayer.getInventory().addItem(ice_rose_shovel);
-                ItemStack ice_rose_crown = new ItemBuilder(Material.SUGAR).setCustomModelData(100001)
-                        .setName("§b§lIce Rose Crown").setLore("§7Zakoupil: §f" + onlinePlayer.getName(), "§7Rarita: §f⼢", "§8Klikni pravým k nasazení.").build();
+                ItemStack ice_rose_crown = new ItemBuilder(Hats.ICE_ROSE_CROWN.getPureItemStack())
+                        .setName("§b§lIce Rose Crown").setLore("§7Zakoupil: §f" + onlinePlayer.getName(), "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender(), "§8Klikni pravým k nasazení.").build();
                 onlinePlayer.getInventory().addItem(ice_rose_crown);
                 sender.sendMessage("§eDal jsi hráči " + player + " Ice Rose Set!");
                 break;
+            case "pomlazka":
+                ItemStack pomlazka = new ItemBuilder(HandItems.EASTER_STICK.getPureItemStack())
+                        .setName("§9§lPomlázka").setLore("§7Rarita: §f" + TextureItems.RARITY_LIMITED.getRender()).build();
+                onlinePlayer.getInventory().addItem(pomlazka);
+                break;
+            case "suitcase":
+                ItemStack suitcase = new ItemBuilder(HandItems.KUFR.getPureItemStack())
+                        .setName("§e§lKufr").setLore("§7Item naprosto k ničemu", "§7proč ale prostě neodjet", "§7na dovolenou?!", "§7Rarita: §f" + TextureItems.RARITY_UNCOMMON.getRender()).build();
+                onlinePlayer.getInventory().addItem(suitcase);
+                break;
+            case "katana":
+                ItemStack katana = new ItemBuilder(Swords.KATANA.getPureItemStack())
+                        .setName("§e§lKatana").setLore("§7Rarita: §f" + TextureItems.RARITY_RARE.getRender()).build();
+                onlinePlayer.getInventory().addItem(katana);
+                break;
+            case "enderite-sword":
+                ItemStack enderite = new ItemBuilder(Swords.ENDERITE.getPureItemStack())
+                        .setName("§9§lEnderite").setLore("§7Rarita: §f" + TextureItems.RARITY_RARE.getRender()).build();
+                onlinePlayer.getInventory().addItem(enderite);
+                break;
+
         }
     }
 }

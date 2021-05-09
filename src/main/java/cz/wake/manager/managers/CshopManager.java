@@ -130,6 +130,9 @@ public class CshopManager {
         cosmeticsShopItems.add(new PermissionItem().setName("§9Nerdy Glasses").setLore("§7Koukáním do počítače časem ztratíš zrak...", "§7s těmito brýlemi ne!").setItemStack(Hats.NERD_GLASSES.getPureItemStack()).setPrice(400).setPermision("craftmanager.hats.nerdy_glasses"));
         cosmeticsShopItems.add(new PermissionItem().setName("§cDeer").setLore("§7Jelenovipivonelej").setItemStack(Hats.DEER.getPureItemStack()).setPrice(500).setPermision("craftmanager.hats.deer"));
         cosmeticsShopItems.add(new PermissionItem().setName("§aShrek").setLore("§7Správný vládce bažiny má svojí čepici!").setItemStack(Material.BOOK).setPrice(400).setPermision("craftmanager.hats.shrek"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§aFlowers").setLore("§7Kytičky rostou všude, i na tví hlavě?!").setItemStack(Hats.FLOWERS.getPureItemStack()).setPrice(500).setPermision("craftmanager.hats.flowers"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§eCat Ears").setLore("§7Kočička je hodná, do doby než tě poškrábe!").setItemStack(Hats.CAT_EARS.getPureItemStack()).setPrice(200).setPermision("craftmanager.hats.cat_ears"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§6Pirate Hat").setLore("§7Každý správný pirát má pásku přes oko!").setItemStack(Hats.PIRATE_HAT.getPureItemStack()).setPrice(250).setPermision("craftmanager.hats.pirate_hat"));
     }
 
 }

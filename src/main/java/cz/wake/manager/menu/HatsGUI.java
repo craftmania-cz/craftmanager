@@ -67,6 +67,33 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("§7Speciální Admin Team čepice.", "", "§aZískáno: §fČlen AT", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(), "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.at_banhammer"));
 
+        // Events
+        list.add(new CosmeticItem().setName("§6Bronze Trophy")
+                .setItemStack(Hats.BRONZE_TROPHY.getPureItemStack())
+                .setLore("§7Vítězství v Eventu je ta nejlepší věc!", "§7Umístění: §f3. místo", "", "§aZískáno: §fBuildEvent (Velikonoce 2021)", "§aRarita: §f" + TextureItems.RARITY_MYTHIC.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.bronze_trophy_be_2021"));
+
+        list.add(new CosmeticItem().setName("§eSilver Trophy")
+                .setItemStack(Hats.SILVER_TROPHY.getPureItemStack())
+                .setLore("§7Vítězství v Eventu je ta nejlepší věc!", "§7Umístění: §f2. místo", "", "§aZískáno: §fBuildEvent (Velikonoce 2021)", "§aRarita: §f" + TextureItems.RARITY_MYTHIC.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.silver_trophy_be_2021"));
+
+        list.add(new CosmeticItem().setName("§eGolden Trophy")
+                .setItemStack(Hats.GOLD_TROPHY.getPureItemStack())
+                .setLore("§7Vítězství v Eventu je ta nejlepší věc!", "§7Umístění: §f1. místo", "", "§aZískáno: §fBuildEvent (Velikonoce 2021)", "§aRarita: §f" + TextureItems.RARITY_MYTHIC.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.golden_trophy_be_2021"));
+
+        // Discord
+        list.add(new CosmeticItem().setName("§9Mega Wumpus")
+                .setItemStack(Hats.WUMPUS.getPureItemStack())
+                .setLore("§7Discord je místo, kde vládnou žabičky!", "§7Nebo i kachničky a želvičky?!",  "", "§aZískáno: §fPropojení profilu", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.wumpus"));
+
+        list.add(new CosmeticItem().setName("§aWumpus Leaf")
+                .setItemStack(Hats.WUMPUS_LEAF.getPureItemStack())
+                .setLore("§7List z Wumpuse, najdi ho a dej mu ho zpět!", "§7Víš co, radši si ho nech.",  "", "§aZískáno: §fPropojení profilu", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.wumpus_leaf"));
+
         // Coinshop Hats
         list.add(new CosmeticItem().setName("§fKoala")
                 .setItemStack(Hats.KOALA.getPureItemStack())
@@ -140,7 +167,7 @@ public class HatsGUI implements InventoryProvider {
 
         list.add(new CosmeticItem().setName("§dNaruto")
                 .setItemStack(Hats.NARUTO.getPureItemStack())
-                .setLore("§7S tímhle se ti každý vyhne na 8 bloků!", "", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(), "", "§eKlikni pro nasazení")
+                .setLore("§7S tímhle se ti každý vyhne na 8 bloků!", "", "§aZískáno: §fStore", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(), "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.naruto"));
 
         list.add(new CosmeticItem().setName("§bDiamond On Stick")
@@ -167,6 +194,21 @@ public class HatsGUI implements InventoryProvider {
                 .setItemStack(Hats.EGG_HEAD.getPureItemStack())
                 .setLore("§7Vejce na hlavu? OK! Ale bacha na kuřátka!", "", "§aZískáno: §fEvent server - Velikonoce 2021", "§aRarita: §f" + TextureItems.RARITY_LIMITED.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.egg_head"));
+
+        list.add(new CosmeticItem().setName("§aFlowers")
+                .setItemStack(Hats.FLOWERS.getPureItemStack())
+                .setLore("§7Kytičky rostou všude, i na tví hlavě?!", "", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_RARE.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.flowers"));
+
+        list.add(new CosmeticItem().setName("§eCat Ears")
+                .setItemStack(Hats.CAT_EARS.getPureItemStack())
+                .setLore("§7Kočička je hodná, do doby", "§7než tě poškrábe!", "", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_UNCOMMON.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.cat_ears"));
+
+        list.add(new CosmeticItem().setName("§6Pirate Hat")
+                .setItemStack(Hats.PIRATE_HAT.getPureItemStack())
+                .setLore("§7Každý správný pirát má pásku přes oko!", "", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_UNCOMMON.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.pirate_hat"));
 
         return list;
     }
