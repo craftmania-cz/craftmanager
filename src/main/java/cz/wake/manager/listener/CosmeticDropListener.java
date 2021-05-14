@@ -24,6 +24,11 @@ public class CosmeticDropListener implements Listener {
         final Player player = event.getPlayer();
         final ItemStack itemStack = event.getItemDrop().getItemStack();
 
+        if (event.isCancelled()) {
+            ChatInfo.DANGER.send(player, "Zde nelze vyhodit tento item, je to blokováno jiným pluginem.");
+            return;
+        }
+
         if (itemStack.getItemMeta() == null) {
             return;
         }
