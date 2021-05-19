@@ -34,12 +34,6 @@ coloredanvils: false
 # Integrace a zasílání exceptions na Sentry
 sentry-dsn: ''
 
-# Detekce prikazu psanych AT
-ats-commands:
-  enabled: true
-  ignored-commands:
-   - /msg
-
 # Nastaveni oznacovani
 mentions:
   prefix: "@"

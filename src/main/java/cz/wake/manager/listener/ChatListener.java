@@ -115,24 +115,6 @@ public class ChatListener implements Listener {
         }
     }
 
-    @EventHandler(ignoreCancelled = true)
-    public void chatEvent(final PlayerCommandPreprocessEvent e) throws IOException {
-        if (!Main.getInstance().getConfig().getBoolean("ats-commands.enabled")) {
-            return;
-        }
-        if (!Main.getInstance().at_list.contains(e.getPlayer())) {
-            return;
-        }
-        String[] split = e.getMessage().split(" ");
-        for (int length = split.length, i = 0; i < length; ++i) {
-            final String word = split[i];
-            if (Main.getInstance().getConfig().getStringList("ats-commands.ignored-commands").contains(word)) {
-                return;
-            }
-        }
-        Main.getInstance().getMySQL().atsCommandLog(e.getPlayer(), e.getMessage());
-    }
-
     private void pingPlayer(Player p, String sound) {
         if (Main.getInstance().getMySQL().getSettings(p, "mention_notify") == 1) {
             p.playSound(p.getLocation(), Sound.valueOf(sound), 0.8F, 0.8F);
