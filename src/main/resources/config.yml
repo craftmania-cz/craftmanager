@@ -25,9 +25,6 @@ reservedSlots: 5
 # Oznamovani do chatu o hlasech
 reminder: true
 
-# Hlasovani
-hlasovani: true
-
 # Barevne psani v kovadline
 coloredanvils: false
 
