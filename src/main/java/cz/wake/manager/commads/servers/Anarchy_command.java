@@ -6,30 +6,31 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandAlias("skycloud")
-@Description("Připojí tě na Skycloud")
-public class Skycloud_command extends BaseCommand {
+@CommandAlias("anarchy")
+@Description("Připojí tě na Vanilla: Anarchy")
+public class Anarchy_command extends BaseCommand {
 
     @HelpCommand
     public void helpCommand(CommandSender sender, CommandHelp help) {
-        sender.sendMessage("§e§lSkycloud commands:");
+        sender.sendMessage("§e§lVanilla: Anarchy commands:");
         help.showHelp();
     }
 
     @Default
-    public void connectToSkycloud(CommandSender Sender) {
+    public void connectToCreative(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
             try {
-                player.sendMessage("§eTeleportuji na server §fSkycloud");
-                Main.getInstance().sendToServer(player, "skycloud");
+                ChatInfo.INFO.send(player, "Teleportuji na server §fVanilla: Anarchy");
+                Main.getInstance().sendToServer(player, "anarchy");
             } catch (Exception e) {
                 e.printStackTrace();
-                player.sendMessage("§cTeleport na server §fSkyCloud §cse nezdařil!");
+                ChatInfo.DANGER.send(player, "Teleport na se nezdařil: §fVanilla: Anarchy");
                 Main.getInstance().sendSentryException(e);
             }
         }

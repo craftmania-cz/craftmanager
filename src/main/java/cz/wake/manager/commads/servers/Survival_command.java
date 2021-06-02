@@ -6,6 +6,7 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -25,11 +26,11 @@ public class Survival_command extends BaseCommand {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
             try {
-                player.sendMessage("§eTeleportuji na server §fSurvival");
+                ChatInfo.INFO.send(player, "Teleportuji na server §fSurvival");
                 Main.getInstance().sendToServer(player, "survival");
             } catch (Exception e) {
                 e.printStackTrace();
-                player.sendMessage("§cTeleport na server §fSurvival §cse nezdařil!");
+                ChatInfo.DANGER.send(player, "Teleport na se nezdařil: §fSurvival");
                 Main.getInstance().sendSentryException(e);
             }
         }

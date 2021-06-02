@@ -6,6 +6,7 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -29,11 +30,11 @@ public class Hud_Command extends BaseCommand {
             if (Main.getInstance().getMySQL().getSettings(player, "hud_bossbar") == 1) {
                 Main.getInstance().getMySQL().updateSettings(player, "hud_bossbar", 0);
                 Main.getInstance().getCompassManager().removePlayer(player);
-                player.sendMessage("§e§l[!] §eDeaktivoval jsi zobrazování polohy na vrchu obrazovky.");
+                ChatInfo.INFO.send(player, "Deaktivoval jsi zobrazování polohy na vrchu obrazovky.");
             } else {
                 Main.getInstance().getMySQL().updateSettings(player, "hud_bossbar", 1);
                 Main.getInstance().getCompassManager().addPlayer(player);
-                player.sendMessage("§a§l[!] §eAktivoval jsi si zobrazování polohy na vrchu obrazovky.");
+                ChatInfo.SUCCESS.send(player, "Aktivoval jsi si zobrazování polohy na vrchu obrazovky.");
             }
         }
     }

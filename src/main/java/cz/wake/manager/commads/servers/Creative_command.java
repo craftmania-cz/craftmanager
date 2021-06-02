@@ -6,6 +6,7 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -25,11 +26,12 @@ public class Creative_command extends BaseCommand {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
             try {
-                player.sendMessage("§e§l[*] §eTeleportuji na server §fCreative");
+                ChatInfo.INFO.send(player, "Teleportuji na server §fCreative");
                 Main.getInstance().sendToServer(player, "creative");
             } catch (Exception e) {
                 e.printStackTrace();
                 player.sendMessage("§cTeleport na server §fCreative §cse nezdařil!");
+                ChatInfo.DANGER.send(player, "Teleport se nezdařil: §fCreative");
                 Main.getInstance().sendSentryException(e);
             }
         }

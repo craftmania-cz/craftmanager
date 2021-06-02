@@ -1,6 +1,6 @@
 package cz.wake.manager.utils;
 
-import cz.craftmania.craftcore.spigot.messages.chat.ChatInfo;
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.craftmania.craftlibs.utils.TextComponentBuilder;
 import cz.craftmania.craftlibs.utils.actions.ConfirmAction;
 import org.bukkit.Sound;
@@ -14,25 +14,25 @@ import java.util.Objects;
 
 public class Repair {
 
-    public static void repair(Player p) {
-        ItemStack item = p.getInventory().getItemInMainHand();
+    public static void repair(Player player) {
+        ItemStack item = player.getInventory().getItemInMainHand();
 
         if (item.getItemMeta() == null) {
-            p.sendMessage("§c§l[!] §cTento item není poničen nebo nelze opravit.");
+            ChatInfo.DANGER.send(player, "Tento item není poničen nebo nelze opravit.");
             return;
         }
 
         if (item.getItemMeta().hasCustomModelData()) {
-            p.sendMessage("§c§l[!] §cNelze opravovat item, který má nastavený styl.");
+            ChatInfo.DANGER.send(player, "Nelze opravovat item, který má nastavený styl.");
             return;
         }
 
         if (!(item.getItemMeta() instanceof Damageable)) {
-            p.sendMessage("§c§l[!] §cNemáš v ruce item, který by šel opravit.");
+            ChatInfo.DANGER.send(player, "Nemáš v ruce item, který by šel opravit.");
             return;
         }
         if (!((Damageable) item.getItemMeta()).hasDamage()) {
-            p.sendMessage("§c§l[!] §cTento item není poničen.");
+            ChatInfo.DANGER.send(player, "Tento item není poničen.");
             return;
         }
         int enchanments = item.getEnchantments().values().stream().mapToInt(integer -> (int) Math.round(.5 * integer)).sum();
@@ -40,29 +40,29 @@ public class Repair {
         int repairCost = ((int) Math.ceil(currentDurability / 100D));
         if (currentDurability / item.getType().getMaxDurability() < 0.15D) repairCost += enchanments;
 
-        if (p.getLevel() < repairCost) {
-            ChatInfo.error(p, "Nemáš dostatek levelů (" + repairCost + "LVL).");
+        if (player.getLevel() < repairCost) {
+            ChatInfo.DANGER.send(player, "Nemáš dostatek levelů (" + repairCost + "LVL).");
             return;
         }
 
         try {
             final int finalRepairCost = repairCost;
             ConfirmAction.Action action = new ConfirmAction.Builder()
-                    .setPlayer(p)
+                    .setPlayer(player)
                     .generateIdentifier()
                     .setDelay(200L)
                     .addComponent(a -> new TextComponentBuilder("&7Oprava tohoto itemu bude stát &e" + finalRepairCost + "LVL&7.").getComponent())
                     .addComponent(a -> new TextComponentBuilder("§a[Klikni zde opravnení itemu]")
                             .setTooltip("Opravit item za " + finalRepairCost + "LVL.\nTato akce již nejde vrátit.")
                             .setPerformedCommand(a.getConfirmationCommand()).getComponent())
-                    .setRunnable(player -> {
-                        ItemStack itemStack = player.getInventory().getItem(getItemSlot(player, item));
+                    .setRunnable(player2 -> {
+                        ItemStack itemStack = player2.getInventory().getItem(getItemSlot(player2, item));
                         if (itemStack == null) {
-                            ChatInfo.error(player, "Item, který si chtěl opravit již není v tvém inventáři.");
+                            ChatInfo.DANGER.send(player2, "Item, který si chtěl opravit již není v tvém inventáři.");
                             return;
                         }
-                        if (player.getLevel() < finalRepairCost) {
-                            ChatInfo.error(player, "Nemáš dostatek levelů (" + finalRepairCost + "LVL).");
+                        if (player2.getLevel() < finalRepairCost) {
+                            ChatInfo.DANGER.send(player2, "Nemáš dostatek levelů (" + finalRepairCost + "LVL).");
                             return;
                         }
                         ItemMeta itemStackItemMeta = itemStack.getItemMeta();
@@ -70,9 +70,9 @@ public class Repair {
                         ((Damageable) itemStackItemMeta).setDamage(0);
                         itemStack.setItemMeta(itemStackItemMeta);
 
-                        player.setLevel(player.getLevel() - finalRepairCost);
-                        player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1F, 1F);
-                        ChatInfo.success(player, "Item byl opraven.");
+                        player2.setLevel(player2.getLevel() - finalRepairCost);
+                        player2.playSound(player2.getLocation(), Sound.BLOCK_ANVIL_USE, 1F, 1F);
+                        ChatInfo.SUCCESS.send(player2, "Item by kompletně opraven.");
                     })
                     .build();
             action.sendTextComponents();

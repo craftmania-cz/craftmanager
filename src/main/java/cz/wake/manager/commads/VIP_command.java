@@ -7,6 +7,7 @@ import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
 import cz.craftmania.craftcore.spigot.inventory.builder.SmartInventory;
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ServerType;
 import cz.wake.manager.utils.inventories.VIPMenu_inv;
@@ -34,10 +35,10 @@ public class VIP_command extends BaseCommand {
                     || Main.getServerType() == ServerType.VANILLA) {
                 SmartInventory.builder().size(5, 9).title("[VIP] Menu").provider(new VIPMenu_inv()).build().open(player);
             } else {
-                player.sendMessage("§c§l[!] §cNa tomto serveru nelze zobrazit VIP, jelikož zde zatím žádné není.");
+                ChatInfo.INFO.send(player, "Na tomto serveru nelze zobrazit VIP, jelikož zde zatím žádné není");
             }
         } else {
-            sender.sendMessage("§c§l[!] §cZ konzole VIP nefunguje!");
+            sender.sendMessage("Z konzole VIP nefunguje!");
         }
     }
 }

@@ -6,6 +6,7 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.utils.Repair;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -28,7 +29,7 @@ public class Repair_command extends BaseCommand {
         }
 
         if (!sender.hasPermission("craftmanager.repair")) {
-            sender.sendMessage("§c§l[!] §cNemáš dostatečné oprávnení!");
+            ChatInfo.DANGER.send((Player) sender, "Nemáš dostatečné oprávnení!");
             return;
         }
 
