@@ -242,6 +242,7 @@ public class HatsGUI implements InventoryProvider {
             items.add(ClickableItem.of(new ItemBuilder(cosmeticItem.getItemStack()).setName(cosmeticItem.getName()).setLore(cosmeticItem.getLore()).hideAllFlags().build(), item -> {
                 if (player.getInventory().getHelmet() != null) {
                     ChatInfo.DANGER.send(player, "Nelze si nasadit čepici, když máš již něco na hlavě!");
+                    player.closeInventory();
                     return;
                 }
                 ItemBuilder finalItem = new ItemBuilder(cosmeticItem.getItemStack());
