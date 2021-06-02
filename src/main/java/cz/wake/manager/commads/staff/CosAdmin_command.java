@@ -85,7 +85,11 @@ public class CosAdmin_command extends BaseCommand {
                         .setName("§9§lEnderite").setLore("§7Rarita: §f" + TextureItems.RARITY_RARE.getRender()).build();
                 onlinePlayer.getInventory().addItem(enderite);
                 break;
-
+            case "baby-yoda":
+                ItemStack baby_yoda = new ItemBuilder(HandItems.BABY_YODA.getPureItemStack())
+                        .setName("§a§lBaby Yoda").setLore("§8Malý Yoda, přímo do ruky", "§8ochraňuj ho a neztrať ho.", "§7Majitel: §f" + onlinePlayer.getName(), "§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                onlinePlayer.getInventory().addItem(baby_yoda);
+                break;
         }
     }
 }

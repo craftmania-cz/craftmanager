@@ -210,6 +210,16 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("§7Každý správný pirát má pásku přes oko!", "", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_UNCOMMON.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.pirate_hat"));
 
+        list.add(new CosmeticItem().setName("§cMandalorian")
+                .setItemStack(Hats.MANDALORIAN.getPureItemStack())
+                .setLore("§7Legendární Mandalorian", "§7nás přišel navštívit s Baby Yodou!", "", "§aZískáno: §fVotePass 2/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.mandalorian"));
+
+        list.add(new CosmeticItem().setName("§cYoda")
+                .setItemStack(Hats.YODA.getPureItemStack())
+                .setLore("§7Starý Yoda, který dohlíží", "§7na pořádek na serveru?!", "", "§aZískáno: §fVotePass 2/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.old_yoda"));
+
         return list;
     }
 
