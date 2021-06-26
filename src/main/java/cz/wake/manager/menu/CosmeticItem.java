@@ -16,6 +16,7 @@ class CosmeticItem {
     private String commandToExecute = null;
     private String requiredPermission = null;
     private DisguiseType disguiseType = null;
+    private boolean babyType = false;
 
     public CosmeticItem() {};
 
@@ -81,5 +82,14 @@ class CosmeticItem {
     public CosmeticItem setDisguiseType(DisguiseType disguiseType) {
         this.disguiseType = disguiseType;
         return this;
+    }
+
+    public CosmeticItem setBabyType() {
+        this.babyType = true;
+        return this;
+    }
+
+    public boolean isBabyType() {
+        return babyType;
     }
 }

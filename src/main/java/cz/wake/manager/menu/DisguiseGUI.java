@@ -25,36 +25,55 @@ public class DisguiseGUI implements InventoryProvider {
 
     public List<CosmeticItem> prepareList() {
         List<CosmeticItem> list = new ArrayList<>();
+
         list.add(new CosmeticItem().setName("§e§lMinecart")
                 .setItemStack(Material.MINECART)
                 .setLore("§7Kliknutím se změníš na Minecart.")
                 .setDisguiseType(DisguiseType.MINECART)
                 .setRequiredPermission("craftmanager.disguise.minecart"));
+
         list.add(new CosmeticItem().setName("§6§lBlaze")
                 .setItemStack(Material.BLAZE_POWDER)
                 .setLore("§7Kliknutím se změníš na Blaze.")
                 .setDisguiseType(DisguiseType.BLAZE)
                 .setRequiredPermission("craftmanager.disguise.blaze"));
+
         list.add(new CosmeticItem().setName("§cSkeleton")
                 .setItemStack(Material.BONE)
                 .setLore("§7Kliknutím se změníš na Skeletona.")
                 .setDisguiseType(DisguiseType.SKELETON)
                 .setRequiredPermission("craftmanager.disguise.skeleton"));
+
         list.add(new CosmeticItem().setName("§eIron Golem")
                 .setItemStack(Material.IRON_INGOT)
                 .setLore("§7Kliknutím se změníš na Iron Golema.")
                 .setDisguiseType(DisguiseType.IRON_GOLEM)
                 .setRequiredPermission("craftmanager.disguise.iron_golem"));
+
         list.add(new CosmeticItem().setName("§6Husk")
                 .setItemStack(Material.SAND)
                 .setLore("§8Kliknutím se změníš na Zombie: Husk.")
                 .setDisguiseType(DisguiseType.HUSK)
                 .setRequiredPermission("craftmanager.disguise.husk"));
+
         list.add(new CosmeticItem().setName("§9Enderman")
                 .setItemStack(Material.ENDER_PEARL)
                 .setLore("§8Kliknutím se změníš na Endermana.")
                 .setDisguiseType(DisguiseType.ENDERMAN)
                 .setRequiredPermission("craftmanager.disguise.enderman"));
+
+        list.add(new CosmeticItem().setName("§cSheep: Red")
+                .setItemStack(Material.RED_WOOL)
+                .setLore("§8Kliknutím se změníš na Sheep.")
+                .setDisguiseType(DisguiseType.SHEEP)
+                .setRequiredPermission("craftmanager.disguise.sheep.red"));
+
+        list.add(new CosmeticItem().setName("§cSheep: Red [Baby]")
+                .setItemStack(Material.RED_WOOL)
+                .setLore("§8Kliknutím se změníš na Sheep.")
+                .setDisguiseType(DisguiseType.SHEEP)
+                .setBabyType()
+                .setRequiredPermission("craftmanager.disguise.sheep.red.baby"));
 
         return list;
     }
@@ -91,7 +110,7 @@ public class DisguiseGUI implements InventoryProvider {
             }
 
             items.add(ClickableItem.of(new ItemBuilder(cosmeticItem.getItemStack()).setName("§b" + cosmeticItem.getName()).setLore(cosmeticItem.getLore()).hideAllFlags().build(), click -> {
-                MobDisguise localDisguise = new MobDisguise(cosmeticItem.getDisguiseType());
+                MobDisguise localDisguise = new MobDisguise(cosmeticItem.getDisguiseType(), cosmeticItem.isBabyType());
                 DisguiseAPI.undisguiseToAll(player);
                 FlagWatcher localLivingWatcher = localDisguise.getWatcher();
                 localLivingWatcher.setCustomName(player.getName());
