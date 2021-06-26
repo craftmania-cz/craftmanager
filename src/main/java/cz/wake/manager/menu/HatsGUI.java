@@ -220,6 +220,11 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("§7Starý Yoda, který dohlíží", "§7na pořádek na serveru?!", "", "§aZískáno: §fVotePass 2/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.old_yoda"));
 
+        list.add(new CosmeticItem().setName("§cRádiovka")
+                .setItemStack(Hats.RADIOVKA.getPureItemStack())
+                .setLore("§7Je vědecky prokázané,", "§7že vrtule na této čepici", "§7se rychle točí...", "", "§aZískáno: §fStore", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.radiovka"));
+
         return list;
     }
 
