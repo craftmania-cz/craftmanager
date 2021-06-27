@@ -13,6 +13,8 @@ import me.libraryaddict.disguise.disguisetypes.DisguiseType;
 import me.libraryaddict.disguise.disguisetypes.FlagWatcher;
 import me.libraryaddict.disguise.disguisetypes.MiscDisguise;
 import me.libraryaddict.disguise.disguisetypes.MobDisguise;
+import me.libraryaddict.disguise.disguisetypes.watchers.SheepWatcher;
+import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -66,6 +68,7 @@ public class DisguiseGUI implements InventoryProvider {
                 .setItemStack(Material.RED_WOOL)
                 .setLore("§8Kliknutím se změníš na Sheep.")
                 .setDisguiseType(DisguiseType.SHEEP)
+                .setSheepColor(DyeColor.RED)
                 .setRequiredPermission("craftmanager.disguise.sheep.red"));
 
         list.add(new CosmeticItem().setName("§cSheep: Red [Baby]")
@@ -73,6 +76,7 @@ public class DisguiseGUI implements InventoryProvider {
                 .setLore("§8Kliknutím se změníš na Sheep.")
                 .setDisguiseType(DisguiseType.SHEEP)
                 .setBabyType()
+                .setSheepColor(DyeColor.RED)
                 .setRequiredPermission("craftmanager.disguise.sheep.red.baby"));
 
         return list;
@@ -115,6 +119,10 @@ public class DisguiseGUI implements InventoryProvider {
                 FlagWatcher localLivingWatcher = localDisguise.getWatcher();
                 localLivingWatcher.setCustomName(player.getName());
                 localLivingWatcher.setCustomNameVisible(true);
+                if (cosmeticItem.getDisguiseType() == DisguiseType.SHEEP) {
+                    SheepWatcher sheepWatcher = (SheepWatcher) localLivingWatcher;
+                    sheepWatcher.setColor(cosmeticItem.getSheepColor());
+                }
                 player.getOpenInventory().close();
                 DisguiseAPI.disguiseToAll(player, localDisguise);
                 ChatInfo.INFO.send(player, "Přeměnil jsi se na: " + cosmeticItem.getName());

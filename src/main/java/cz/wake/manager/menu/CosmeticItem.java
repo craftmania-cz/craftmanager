@@ -2,6 +2,7 @@ package cz.wake.manager.menu;
 
 import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import me.libraryaddict.disguise.disguisetypes.DisguiseType;
+import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -16,7 +17,8 @@ class CosmeticItem {
     private String commandToExecute = null;
     private String requiredPermission = null;
     private DisguiseType disguiseType = null;
-    private boolean babyType = false;
+    private boolean babyType = true; // true = false WTF
+    private DyeColor sheepColor = DyeColor.WHITE;
 
     public CosmeticItem() {};
 
@@ -85,11 +87,20 @@ class CosmeticItem {
     }
 
     public CosmeticItem setBabyType() {
-        this.babyType = true;
+        this.babyType = false;
         return this;
     }
 
     public boolean isBabyType() {
         return babyType;
+    }
+
+    public CosmeticItem setSheepColor(DyeColor color) {
+        this.sheepColor = color;
+        return this;
+    }
+
+    public DyeColor getSheepColor() {
+        return sheepColor;
     }
 }
