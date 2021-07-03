@@ -27,14 +27,15 @@ public class Vote_command extends BaseCommand {
         }
     }
 
-    public static void sendVoteLink(final Player p) {
-        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
-        p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
-        p.sendMessage("");
-        p.sendMessage("§7K hlasovani klikni na tento odkaz:");
-        p.sendMessage("§c1. https://czech-craft.eu/server/craftmania/vote/?user=" + p.getName());
-        p.sendMessage("§c2. http://craftlist.org/craftmania?nickname=" + p.getName());
-        p.sendMessage("");
-        p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
+    public static void sendVoteLink(final Player player) {
+        player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
+        player.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
+        player.sendMessage("");
+        player.sendMessage("§7K hlasovani klikni na tento odkaz:");
+        player.sendMessage("§c1. https://czech-craft.eu/server/craftmania/vote/?user=" + player.getName());
+        player.sendMessage("§c2. http://craftlist.org/craftmania?nickname=" + player.getName());
+        player.sendMessage("§c3. https://minecraftservery.eu/server/453&nick=" + player.getName());
+        player.sendMessage("");
+        player.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
     }
 }
