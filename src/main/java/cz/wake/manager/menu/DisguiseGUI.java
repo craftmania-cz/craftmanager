@@ -13,6 +13,7 @@ import me.libraryaddict.disguise.disguisetypes.DisguiseType;
 import me.libraryaddict.disguise.disguisetypes.FlagWatcher;
 import me.libraryaddict.disguise.disguisetypes.MiscDisguise;
 import me.libraryaddict.disguise.disguisetypes.MobDisguise;
+import me.libraryaddict.disguise.disguisetypes.watchers.CatWatcher;
 import me.libraryaddict.disguise.disguisetypes.watchers.SheepWatcher;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
@@ -77,7 +78,28 @@ public class DisguiseGUI implements InventoryProvider {
                 .setDisguiseType(DisguiseType.SHEEP)
                 .setBabyType()
                 .setSheepColor(DyeColor.RED)
-                .setRequiredPermission("craftmanager.disguise.sheep.red.baby"));
+                .setRequiredPermission("craftmanager.disguise.sheep.red"));
+
+        list.add(new CosmeticItem().setName("§cCat: Black")
+                .setItemStack(Material.BLACK_CARPET)
+                .setLore("§8Kliknutím se změníš na Cat.")
+                .setDisguiseType(DisguiseType.CAT)
+                .setSheepColor(DyeColor.BLACK)
+                .setRequiredPermission("craftmanager.disguise.cat.black"));
+
+        list.add(new CosmeticItem().setName("§cCat: Black [Baby]")
+                .setItemStack(Material.BLACK_CARPET)
+                .setLore("§8Kliknutím se změníš na Cat.")
+                .setDisguiseType(DisguiseType.CAT)
+                .setBabyType()
+                .setSheepColor(DyeColor.BLACK)
+                .setRequiredPermission("craftmanager.disguise.cat.black"));
+
+        list.add(new CosmeticItem().setName("§dStray")
+                .setItemStack(Material.SPECTRAL_ARROW)
+                .setLore("§8Kliknutím se změníš na Straye.")
+                .setDisguiseType(DisguiseType.STRAY)
+                .setRequiredPermission("craftmanager.disguise.stray"));
 
         return list;
     }
@@ -122,6 +144,11 @@ public class DisguiseGUI implements InventoryProvider {
                 if (cosmeticItem.getDisguiseType() == DisguiseType.SHEEP) {
                     SheepWatcher sheepWatcher = (SheepWatcher) localLivingWatcher;
                     sheepWatcher.setColor(cosmeticItem.getSheepColor());
+                }
+                if (cosmeticItem.getDisguiseType() == DisguiseType.CAT) {
+                    assert localLivingWatcher instanceof CatWatcher;
+                    CatWatcher catWatcher = (CatWatcher) localLivingWatcher;
+                    catWatcher.setCollarColor(cosmeticItem.getSheepColor());
                 }
                 player.getOpenInventory().close();
                 DisguiseAPI.disguiseToAll(player, localDisguise);
