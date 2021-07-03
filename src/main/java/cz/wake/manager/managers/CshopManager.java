@@ -79,11 +79,11 @@ public class CshopManager {
             voteShopItems.add(new VoteItem().setName("4x Emerald").setPrice(7).setEconomyReward(7, RewardType.MONEY));
         }
         if (Main.getServerType() == ServerType.CREATIVE) {
-            voteShopItems.add(new VoteItem().setItemStack(Material.WOODEN_AXE).setRequiredLevel(5).setName("WorldEdit (2h)").setPrice(2).setTimed(2).setPermisions("worldedit.brush.*", "worldedit.clipboard.(copy|cut|flip|paste|rotate)", "worldedit.fill", "worldedit.wand", "worldedit.history.(redo|undo)", "worldedit.region.(center|set|walls|move|overlay)", "worldedit.selection.(pos|chunk)", "worldedit.navigation.up", "fawe.worldguard"));
+            voteShopItems.add(new VoteItem().setItemStack(Material.WOODEN_AXE).setRequiredLevel(2).setName("WorldEdit (2h)").setPrice(2).setTimed(2).setPermisions("worldedit.brush.*", "worldedit.clipboard.(copy|cut|flip|paste|rotate)", "worldedit.fill", "worldedit.wand", "worldedit.history.(redo|undo)", "worldedit.region.(center|set|walls|move|overlay)", "worldedit.selection.(pos|chunk)", "worldedit.navigation.up", "fawe.worldguard"));
         }
-        voteShopItems.add(new VoteItem().setName("30 CraftCoins").setPrice(1).setEconomyReward(30, RewardType.CRAFTCOINS));
-        voteShopItems.add(new VoteItem().setName("100 CraftCoins").setPrice(3).setEconomyReward(100, RewardType.CRAFTCOINS));
-        voteShopItems.add(new VoteItem().setName("220 CraftCoins").setPrice(6).setEconomyReward(220, RewardType.CRAFTCOINS));
+        voteShopItems.add(new VoteItem().setName("25 CraftCoins").setPrice(1).setEconomyReward(30, RewardType.CRAFTCOINS));
+        voteShopItems.add(new VoteItem().setName("110 CraftCoins").setPrice(4).setEconomyReward(100, RewardType.CRAFTCOINS));
+        voteShopItems.add(new VoteItem().setName("240 CraftCoins").setPrice(8).setEconomyReward(220, RewardType.CRAFTCOINS));
     }
 
     private void loadItemShopItems() {
@@ -133,6 +133,8 @@ public class CshopManager {
         cosmeticsShopItems.add(new PermissionItem().setName("§aFlowers").setLore("§7Kytičky rostou všude, i na tví hlavě?!").setItemStack(Hats.FLOWERS.getPureItemStack()).setPrice(500).setPermision("craftmanager.hats.flowers"));
         cosmeticsShopItems.add(new PermissionItem().setName("§eCat Ears").setLore("§7Kočička je hodná, do doby než tě poškrábe!").setItemStack(Hats.CAT_EARS.getPureItemStack()).setPrice(200).setPermision("craftmanager.hats.cat_ears"));
         cosmeticsShopItems.add(new PermissionItem().setName("§6Pirate Hat").setLore("§7Každý správný pirát má pásku přes oko!").setItemStack(Hats.PIRATE_HAT.getPureItemStack()).setPrice(250).setPermision("craftmanager.hats.pirate_hat"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§eHalo Ring").setLore("§7Jen anděl může mít tento kroužek nad hlavou!").setItemStack(Hats.HALO.getPureItemStack()).setPrice(250).setPermision("craftmanager.hats.halo_ring"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§bPenguin").setLore("§7Tučnáci jsou všude...").setItemStack(Hats.PENGUIN.getPureItemStack()).setPrice(400).setPermision("craftmanager.hats.penguin"));
     }
 
 }
