@@ -90,6 +90,16 @@ public class CosAdmin_command extends BaseCommand {
                         .setName("§a§lBaby Yoda").setLore("§8Malý Yoda, přímo do ruky", "§8ochraňuj ho a neztrať ho.", "§7Majitel: §f" + onlinePlayer.getName(), "§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
                 onlinePlayer.getInventory().addItem(baby_yoda);
                 break;
+            case "forest-sword":
+                ItemStack woodenSword = new ItemBuilder(Swords.FOREST_SWORD.getPureItemStack())
+                        .setName("§a§lForest Sword").setLore("§7Rarita: §f" + TextureItems.RARITY_EPIC.getRender()).build();
+                onlinePlayer.getInventory().addItem(woodenSword);
+                break;
+            case "forest-bow":
+                ItemStack woodenBow = new ItemBuilder(Bows.FOREST.getPureItemStack())
+                        .setName("§a§lForest Bow").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                onlinePlayer.getInventory().addItem(woodenBow);
+                break;
         }
     }
 }
