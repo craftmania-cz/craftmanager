@@ -1,6 +1,6 @@
 package cz.wake.manager.perks.particles.capes;
 
-import cz.craftmania.craftcore.spigot.utils.effects.UtilParticles;
+import cz.craftmania.craftcore.utils.effects.UtilParticles;
 import cz.wake.manager.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

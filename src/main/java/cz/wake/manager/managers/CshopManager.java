@@ -1,9 +1,6 @@
 package cz.wake.manager.managers;
 
-import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.craftmania.craftpack.api.Hats;
-import cz.craftmania.craftpack.api.Items;
-import cz.craftmania.craftpack.api.Swords;
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.PermissionItem;
 import cz.wake.manager.shop.types.RewardType;

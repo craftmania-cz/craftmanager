@@ -1,6 +1,6 @@
 package cz.wake.manager.menu;
 
-import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
+import cz.craftmania.craftcore.builders.items.ItemBuilder;
 import me.libraryaddict.disguise.disguisetypes.DisguiseType;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;

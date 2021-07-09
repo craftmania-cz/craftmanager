@@ -2,18 +2,15 @@ package cz.wake.manager.servers.skycloud;
 
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
-import cz.craftmania.craftcore.spigot.builders.villager.VillagerTradeBuilder;
+import cz.craftmania.craftcore.builders.villager.VillagerTradeBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.Log;
-import cz.craftmania.craftcore.spigot.utils.effects.ParticleEffect;
+import cz.craftmania.craftcore.utils.effects.ParticleEffect;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.inventory.*;
 import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.potion.PotionType;
 
 import java.util.*;
 

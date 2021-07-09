@@ -1,7 +1,6 @@
 package cz.wake.manager.perks.particles;
 
-import cz.craftmania.craftcore.spigot.inventory.builder.SmartInventory;
-import cz.wake.manager.Main;
+import cz.craftmania.craftcore.inventory.builder.SmartInventory;
 import cz.wake.manager.menu.CosmeticMainGUI;
 import cz.wake.manager.perks.particles.capes.ChristmasCape;
 import cz.wake.manager.perks.particles.capes.SpookyCape;

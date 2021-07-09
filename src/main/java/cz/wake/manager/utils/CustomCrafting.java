@@ -1,6 +1,6 @@
 package cz.wake.manager.utils;
 
-import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
+import cz.craftmania.craftcore.builders.items.ItemBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.servers.skycloud.CraftPotion;
 import cz.wake.manager.servers.skycloud.VillagerManager;
