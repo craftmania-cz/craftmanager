@@ -19,6 +19,7 @@ import cz.wake.manager.servers.global.LeaveDecayListener;
 import cz.wake.manager.servers.skycloud.ItemDropListener;
 import cz.wake.manager.servers.skycloud.VillagerDamageListener;
 import cz.wake.manager.servers.skycloud.VillagerManager;
+import cz.wake.manager.servers.vanilla.DragonSlayerListener;
 import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
 import cz.wake.manager.utils.configs.Config;
@@ -235,6 +236,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         if (serverType != ServerType.HARDCORE_VANILLA) {
             pm.registerEvents(new OnEXPBottleThrownListener(), this);
+        }
+
+        if (serverType == ServerType.VANILLA) {
+            pm.registerEvents(new DragonSlayerListener(), this);
         }
 
         // Skyblock PVP listener

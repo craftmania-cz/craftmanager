@@ -81,6 +81,10 @@ public class PlayerListener implements Listener {
             p.sendMessage("");
         }
 
+        if (Main.getServerType() == ServerType.VANILLA) {
+            Main.getInstance().getMySQL().registerDragonSlayer(e.getPlayer());
+        }
+
         if (Main.restartReason != null) {
             long min = Main.restartTime - System.currentTimeMillis();
             if (min > 60 * 60 * 1000) {

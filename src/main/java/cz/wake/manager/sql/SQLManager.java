@@ -495,6 +495,48 @@ public class SQLManager {
         }.runTaskAsynchronously(Main.getInstance());
     }
 
+    public final void registerDragonSlayer(final Player player) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                Connection conn = null;
+                PreparedStatement ps = null;
+                try {
+                    conn = pool.getConnection();
+                    ps = conn.prepareStatement("INSERT INTO vanilla_dragonslayer_data (nick,uuid) VALUES (?,?);");
+                    ps.setString(1, player.getName());
+                    ps.setString(2, player.getUniqueId().toString());
+                    ps.executeUpdate();
+                } catch (Exception e) {
+                    //e.printStackTrace();
+                } finally {
+                    pool.close(conn, ps, null);
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
+    public final void dragonSlayerKillData(Player player) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                Connection conn = null;
+                PreparedStatement ps = null;
+                try {
+                    conn = pool.getConnection();
+                    ps = conn.prepareStatement("UPDATE vanilla_dragonslayer_data SET dragon_kills = dragon_kills + 1, last_kill = ? WHERE uuid = ?;");
+                    ps.setLong(1, System.currentTimeMillis());
+                    ps.setString(2, player.getUniqueId().toString());
+                    ps.executeUpdate();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    pool.close(conn, ps, null);
+                }
+            }
+        }.runTaskAsynchronously(Main.getInstance());
+    }
+
 
 
 
