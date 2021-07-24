@@ -101,6 +101,18 @@ public class CustomCrafting {
         return recipe;
     }
 
+    public static Recipe getEndCrystalRecipe() {
+        ItemStack item = new ItemStack(Material.END_CRYSTAL, 1);
+        ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(Main.getInstance(), "crafting_end_crystal"), item);
+        recipe.shape("aba", "cdc", "cec");
+        recipe.setIngredient('a', Material.GLASS);
+        recipe.setIngredient('b', Material.ENDER_EYE);
+        recipe.setIngredient('c', Material.AMETHYST_SHARD);
+        recipe.setIngredient('d', Material.DIAMOND);
+        recipe.setIngredient('e', Material.BLACKSTONE);
+        return recipe;
+    }
+
     public static Recipe getInvisibleItemFrame() {
         ItemStack item = new ItemStack(Material.ITEM_FRAME);
         ItemMeta meta = item.getItemMeta();

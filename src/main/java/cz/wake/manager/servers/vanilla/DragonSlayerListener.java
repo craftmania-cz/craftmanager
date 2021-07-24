@@ -14,6 +14,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class DragonSlayerListener implements Listener {
@@ -27,14 +28,12 @@ public class DragonSlayerListener implements Listener {
 
         if (theEnd.getEnvironment() != World.Environment.THE_END) return;
 
-        event.setDroppedExp(0);
-
         theEnd.spawnParticle(Particle.FALLING_OBSIDIAN_TEAR, dragonEntity.getLocation(), 1200, 2, 1, 2, 1);
 
         Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
 
             // Expy pro všechny, co se zučastnili boje
-            this.giveExperienceAllPlayers(dragonEntity, theEnd);
+            //this.giveExperienceAllPlayers(dragonEntity, theEnd);
 
             // Spawn vejce na středu
             this.spawnDragonEgg(theEnd);
@@ -58,18 +57,26 @@ public class DragonSlayerListener implements Listener {
 
     private void giveExperienceAllPlayers(final LivingEntity dragonEntity, final World theEnd) {
         for (Player player : getPlayersInEndByRadius(theEnd, 128)) { // Radius 128 pro celý ostrov
-            player.giveExpLevels(68); // 68 levelu každý dostane
+            if (dragonEntity.getKiller().equals(player)) {
+                player.giveExpLevels(68); // 68 levelu každý dostane
+            } else {
+                int exp = randRange(10, 30);
+                player.giveExpLevels(exp);
+            }
             ChatInfo.SUCCESS.send(player, "Obdržel jsi: §f68 LVL");
         }
     }
 
     private void spawnDragonEgg(final World theEnd) {
         if (!theEnd.getEnderDragonBattle().hasBeenPreviouslyKilled()) return; // První vejce generuje sám MC
-        Location eggLocation = new Location(theEnd, 0, 65, 0);
-        eggLocation.getBlock().setType(Material.DRAGON_EGG);
-        theEnd.getPlayers().forEach((player -> {
-            ChatInfo.INFO.send(player, "Dragon Egg se objevil u hlavního portálu.");
-        }));
+        int chance = randRange(1, 100);
+        if (chance <= 5) { // 10% šance na spawn eggu
+            Location eggLocation = new Location(theEnd, 0, 65, 0);
+            eggLocation.getBlock().setType(Material.DRAGON_EGG);
+            theEnd.getPlayers().forEach((player -> {
+                ChatInfo.INFO.send(player, "Dragon Egg se objevil u hlavního portálu.");
+            }));
+        }
     }
 
     private List<Player> getPlayersInEndByRadius(final World theEnd, final int radius) {
@@ -84,5 +91,10 @@ public class DragonSlayerListener implements Listener {
             return damage.getCause().toString().replace('_', ' ');
         }
         return killer.getName();
+    }
+
+    private static int randRange(int min, int max) {
+        Random rand = new Random();
+        return rand.nextInt(max - min + 1) + min;
     }
 }
