@@ -7,7 +7,6 @@ import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.ItemFactory;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

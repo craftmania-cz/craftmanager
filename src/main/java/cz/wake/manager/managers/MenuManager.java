@@ -1,6 +1,5 @@
 package cz.wake.manager.managers;
 
-import cz.wake.manager.utils.ItemFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;

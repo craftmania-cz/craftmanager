@@ -10,7 +10,6 @@ import cz.craftmania.crafteconomy.api.CraftTokensAPI;
 import cz.craftmania.crafteconomy.api.EventPointsAPI;
 import cz.craftmania.crafteconomy.api.VoteTokensAPI;
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.ItemFactory;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

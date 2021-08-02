@@ -9,7 +9,6 @@ import cz.wake.manager.perks.particles.special.FireWalk;
 import cz.wake.manager.perks.particles.special.SantaHat;
 import cz.wake.manager.perks.particles.vip.*;
 import cz.wake.manager.perks.particles.vip.Void;
-import cz.wake.manager.utils.ItemFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
