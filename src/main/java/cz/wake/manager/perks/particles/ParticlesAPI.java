@@ -44,7 +44,8 @@ public class ParticlesAPI implements Listener {
 
         Inventory inv = Bukkit.createInventory(null, 54, "VIP Particles");
 
-        if (p.hasPermission("craftmanager.particles.hearts")) {
+        //TODO: Rewrite
+        /*if (p.hasPermission("craftmanager.particles.hearts")) {
             if (Hearts.e.containsKey(p.getName())) {
                 ItemStack i = ItemFactory.create(Material.APPLE, "§eHearts", "§7Kliknutim deaktivujes!");
                 i = ItemFactory.addGlow(i);
@@ -283,7 +284,7 @@ public class ParticlesAPI implements Listener {
         inv.setItem(49, deaktivace);
 
         ItemStack zpet = ItemFactory.create(Material.ARROW, "§cZpet do menu");
-        inv.setItem(48, zpet);
+        inv.setItem(48, zpet);*/
 
         p.openInventory(inv);
     }

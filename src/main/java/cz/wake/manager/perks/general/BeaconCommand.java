@@ -6,6 +6,7 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
+import cz.craftmania.craftcore.builders.items.ItemBuilder;
 import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ServerType;
@@ -44,14 +45,14 @@ public class BeaconCommand extends BaseCommand implements Listener {
 
                 Inventory inv = Bukkit.createInventory(null, InventoryType.DISPENSER, "Vyber si potion efekt");
 
-                inv.setItem(0, ItemFactory.create(Material.FEATHER, "§f§lSpeed"));
-                inv.setItem(1, ItemFactory.create(Material.GOLDEN_PICKAXE, "§e§lHaste"));
-                inv.setItem(2, ItemFactory.create(Material.IRON_BOOTS, "§a§lJump Boost"));
-                inv.setItem(3, ItemFactory.create(Material.BLAZE_POWDER, "§6§lFire Resistance"));
-                inv.setItem(4, ItemFactory.create(Material.ENDER_EYE, "§9§lNight Vision"));
-                inv.setItem(5, ItemFactory.create(Material.PRISMARINE_CRYSTALS, "§3§lWater Breathing"));
+                inv.setItem(0, new ItemBuilder(Material.FEATHER).setName("§f§lSpeed").build());
+                inv.setItem(1, new ItemBuilder(Material.GOLDEN_PICKAXE).setName("§e§lHaste").build());
+                inv.setItem(2, new ItemBuilder(Material.IRON_BOOTS).setName("§a§lJump Boost").build());
+                inv.setItem(3, new ItemBuilder(Material.BLAZE_POWDER).setName("§6§lFire Resistance").build());
+                inv.setItem(4, new ItemBuilder(Material.ENDER_EYE).setName("9§lNight Vision").build());
+                inv.setItem(5, new ItemBuilder(Material.PRISMARINE_CRYSTALS).setName("§3§lWater Breathing").build());
 
-                inv.setItem(7, ItemFactory.create(Material.BARRIER, "§c§lZrušit","§7Kliknutím efekt deaktivuješ"));
+                inv.setItem(7, new ItemBuilder(Material.BARRIER).setName("§c§lZrušit").setLore("§7Kliknutím efekt deaktivuješ").build());
 
                 player.openInventory(inv);
             } else {
