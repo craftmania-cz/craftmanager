@@ -255,6 +255,26 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("", "§aZískáno: §fFree odměna za připojení", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.tiger_head"));
 
+        list.add(new CosmeticItem().setName("§bFish Bowl")
+                .setItemStack(Hats.FISH_BOWL.getPureItemStack())
+                .setLore("", "§aZískáno: §fStore", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.fish_bowl"));
+
+        list.add(new CosmeticItem().setName("§9Astronaut")
+                .setItemStack(Hats.ASTRONAUT.getPureItemStack())
+                .setLore("", "§aZískáno: §fTOP platící za měsíc na Storu", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.astronaut"));
+
+        list.add(new CosmeticItem().setName("§cDevil")
+                .setItemStack(Hats.DEVIL.getPureItemStack())
+                .setLore("", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.devil"));
+
+        list.add(new CosmeticItem().setName("§eTiki")
+                .setItemStack(Hats.TIKI_MASK.getPureItemStack())
+                .setLore("", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.tiki_mask"));
+
         return list;
     }
 
