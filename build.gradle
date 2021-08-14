@@ -7,7 +7,7 @@ plugins {
 mainClassName = 'cz.wake.manager.Main'
 
 group = 'cz.wake.manager'
-version = '1.7-beta'
+version = '1.7'
 
 description = """"""
 
