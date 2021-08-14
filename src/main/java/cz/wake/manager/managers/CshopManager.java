@@ -1,9 +1,6 @@
 package cz.wake.manager.managers;
 
-import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
 import cz.craftmania.craftpack.api.Hats;
-import cz.craftmania.craftpack.api.Items;
-import cz.craftmania.craftpack.api.Swords;
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.PermissionItem;
 import cz.wake.manager.shop.types.RewardType;
@@ -73,17 +70,19 @@ public class CshopManager {
         if (Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK || Main.getServerType() == ServerType.PRISON) {
             voteShopItems.add(new VoteItem().setName("1x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(1).setCommandToExecute("crate give physical Vote 1 %player%"));
             voteShopItems.add(new VoteItem().setName("5x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(5).setCommandToExecute("crate give physical Vote 5 %player%"));
+            voteShopItems.add(new VoteItem().setName("10x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(10).setCommandToExecute("crate give physical Vote 10 %player%"));
         }
         if (Main.getServerType() == ServerType.SKYCLOUD) {
             voteShopItems.add(new VoteItem().setName("1x Emerald").setPrice(2).setEconomyReward(1, RewardType.MONEY));
             voteShopItems.add(new VoteItem().setName("4x Emerald").setPrice(7).setEconomyReward(7, RewardType.MONEY));
         }
         if (Main.getServerType() == ServerType.CREATIVE) {
-            voteShopItems.add(new VoteItem().setItemStack(Material.WOODEN_AXE).setRequiredLevel(2).setName("WorldEdit (2h)").setPrice(2).setTimed(2).setPermisions("worldedit.brush.*", "worldedit.clipboard.(copy|cut|flip|paste|rotate)", "worldedit.fill", "worldedit.wand", "worldedit.history.(redo|undo)", "worldedit.region.(center|set|walls|move|overlay)", "worldedit.selection.(pos|chunk)", "worldedit.navigation.up", "fawe.worldguard"));
+            voteShopItems.add(new VoteItem().setItemStack(Material.WOODEN_AXE).setRequiredLevel(2).setName("WorldEdit (2h)").setPrice(2).setTimed(2).setPermisions("worldedit.brush.*", "worldedit.clipboard.(copy|cut|flip|paste|rotate)", "worldedit.fill", "worldedit.wand", "worldedit.history.(redo|undo)", "worldedit.region.(center|set|walls|move|overlay)", "worldedit.selection.(pos|chunk)", "worldedit.navigation.up", "fawe.worldguard", "fawe.bypass"));
         }
-        voteShopItems.add(new VoteItem().setName("25 CraftCoins").setPrice(1).setEconomyReward(30, RewardType.CRAFTCOINS));
-        voteShopItems.add(new VoteItem().setName("110 CraftCoins").setPrice(4).setEconomyReward(100, RewardType.CRAFTCOINS));
-        voteShopItems.add(new VoteItem().setName("240 CraftCoins").setPrice(8).setEconomyReward(220, RewardType.CRAFTCOINS));
+        voteShopItems.add(new VoteItem().setName("15 CraftCoins").setPrice(1).setEconomyReward(15, RewardType.CRAFTCOINS));
+        voteShopItems.add(new VoteItem().setName("60 CraftCoins").setPrice(4).setEconomyReward(60, RewardType.CRAFTCOINS));
+        voteShopItems.add(new VoteItem().setName("120 CraftCoins").setPrice(8).setEconomyReward(120, RewardType.CRAFTCOINS));
+        voteShopItems.add(new VoteItem().setName("240 CraftCoins").setPrice(16).setEconomyReward(240, RewardType.CRAFTCOINS));
     }
 
     private void loadItemShopItems() {
@@ -106,10 +105,10 @@ public class CshopManager {
     }
 
     private void loadEventShopItems() {
-        eventShopItems.add(new VoteItem().setName("50x CraftCoins").setPrice(2).setEconomyReward(50, RewardType.CRAFTCOINS));
-        eventShopItems.add(new VoteItem().setName("120x CraftCoins").setPrice(5).setEconomyReward(120, RewardType.CRAFTCOINS));
-        eventShopItems.add(new VoteItem().setName("280x CraftCoins").setPrice(12).setEconomyReward(280, RewardType.CRAFTCOINS));
-        eventShopItems.add(new VoteItem().setName("1x CraftToken").setPrice(125).setEconomyReward(1, RewardType.CRAFTTOKEN));
+        eventShopItems.add(new VoteItem().setName("20x CraftCoins").setPrice(2).setEconomyReward(20, RewardType.CRAFTCOINS));
+        eventShopItems.add(new VoteItem().setName("50x CraftCoins").setPrice(5).setEconomyReward(50, RewardType.CRAFTCOINS));
+        eventShopItems.add(new VoteItem().setName("100x CraftCoins").setPrice(10).setEconomyReward(100, RewardType.CRAFTCOINS));
+        eventShopItems.add(new VoteItem().setName("1x CraftToken").setPrice(200).setEconomyReward(1, RewardType.CRAFTTOKEN));
         if (Main.getServerType() == ServerType.CREATIVE || Main.getServerType() == ServerType.SKYCLOUD || Main.getServerType() == ServerType.SURVIVAL || Main.getServerType() == ServerType.SKYBLOCK) {
             eventShopItems.add(new VoteItem().setName("ArmorStandEditor (2h)").setPrice(10).setCommandToExecute("lp user %player% permission settemp asedit.* true 2h %server%"));
         }

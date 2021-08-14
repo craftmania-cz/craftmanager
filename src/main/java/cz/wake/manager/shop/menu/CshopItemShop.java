@@ -1,15 +1,14 @@
 package cz.wake.manager.shop.menu;
 
-import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
-import cz.craftmania.craftcore.spigot.inventory.builder.ClickableItem;
-import cz.craftmania.craftcore.spigot.inventory.builder.SmartInventory;
-import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryContents;
-import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryProvider;
-import cz.craftmania.craftcore.spigot.inventory.builder.content.Pagination;
-import cz.craftmania.craftcore.spigot.inventory.builder.content.SlotIterator;
+import cz.craftmania.craftcore.builders.items.ItemBuilder;
+import cz.craftmania.craftcore.inventory.builder.ClickableItem;
+import cz.craftmania.craftcore.inventory.builder.SmartInventory;
+import cz.craftmania.craftcore.inventory.builder.content.InventoryContents;
+import cz.craftmania.craftcore.inventory.builder.content.InventoryProvider;
+import cz.craftmania.craftcore.inventory.builder.content.Pagination;
+import cz.craftmania.craftcore.inventory.builder.content.SlotIterator;
 import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
 import cz.craftmania.crafteconomy.api.LevelAPI;
-import cz.craftmania.crafteconomy.api.VoteTokensAPI;
 import cz.craftmania.crafteconomy.managers.BasicManager;
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.RewardType;

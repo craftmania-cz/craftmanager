@@ -1,6 +1,5 @@
 package cz.wake.manager.managers;
 
-import cz.wake.manager.utils.ItemFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -13,7 +12,8 @@ public class MenuManager {
     public static void openNavody(Player p){
         Inventory inv = Bukkit.createInventory(null, 36, "Seznam dostupnych navodu");
 
-        ItemStack pravidla = ItemFactory.create(Material.ENCHANTED_BOOK, "§e§lPravidla serveru", "§7Pravidla serveru jsou", "§7zaklad spravneho chovani!", "", "§fVhodne pro: §cVsude");
+        //TODO: Rewrite
+        /*ItemStack pravidla = ItemFactory.create(Material.ENCHANTED_BOOK, "§e§lPravidla serveru", "§7Pravidla serveru jsou", "§7zaklad spravneho chovani!", "", "§fVhodne pro: §cVsude");
         ItemStack mody = ItemFactory.create(Material.ENCHANTED_BOOK, "§e§lPovolene/zakazane mody", "§7Nevis jestli je tvuj mod", "§7povoleny nebo zakazany?", "", "§fVhodne pro: §cVsude");
 
         ItemStack residence = ItemFactory.create(Material.PAPER, "§e§lResidence", "§7Navod pro vsechny", "§7co chceji plnohodnotne", "§7ovladnout residence","","§fVhodne pro: §bSurvival");
@@ -33,7 +33,7 @@ public class MenuManager {
         inv.setItem(5, pozemky);
         inv.setItem(6, lands);
         inv.setItem(7, repl);
-        inv.setItem(31, zpet);
+        inv.setItem(31, zpet);*/
 
         p.openInventory(inv);
     }

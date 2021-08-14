@@ -1,6 +1,6 @@
 package cz.wake.manager.shop.types;
 
-import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
+import cz.craftmania.craftcore.builders.items.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 

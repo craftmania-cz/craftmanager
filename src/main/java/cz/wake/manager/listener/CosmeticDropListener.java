@@ -3,14 +3,13 @@ package cz.wake.manager.listener;
 import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.libs.org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.entity.Player;
-import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;

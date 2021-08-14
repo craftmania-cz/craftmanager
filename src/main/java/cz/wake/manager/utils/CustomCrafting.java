@@ -1,6 +1,6 @@
 package cz.wake.manager.utils;
 
-import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
+import cz.craftmania.craftcore.builders.items.ItemBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.servers.skycloud.CraftPotion;
 import cz.wake.manager.servers.skycloud.VillagerManager;
@@ -98,6 +98,18 @@ public class CustomCrafting {
         recipe.setIngredient('a', Material.GRAVEL);
         recipe.setIngredient('b', Material.DIRT);
         recipe.setIngredient('x', Material.AIR);
+        return recipe;
+    }
+
+    public static Recipe getEndCrystalRecipe() {
+        ItemStack item = new ItemStack(Material.END_CRYSTAL, 1);
+        ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(Main.getInstance(), "crafting_end_crystal"), item);
+        recipe.shape("aba", "cdc", "cec");
+        recipe.setIngredient('a', Material.GLASS);
+        recipe.setIngredient('b', Material.ENDER_EYE);
+        recipe.setIngredient('c', Material.AMETHYST_SHARD);
+        recipe.setIngredient('d', Material.DIAMOND);
+        recipe.setIngredient('e', Material.BLACKSTONE);
         return recipe;
     }
 

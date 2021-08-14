@@ -1,6 +1,6 @@
 package cz.wake.manager.perks.particles.special;
 
-import cz.craftmania.craftcore.spigot.utils.effects.UtilParticles;
+import cz.craftmania.craftcore.utils.effects.UtilParticles;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.UtilMath;
 import org.bukkit.Bukkit;

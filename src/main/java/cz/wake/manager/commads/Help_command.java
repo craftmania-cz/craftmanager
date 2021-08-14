@@ -6,8 +6,8 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
+import cz.craftmania.craftcore.builders.items.ItemBuilder;
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.ItemFactory;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -39,11 +39,12 @@ public class Help_command extends BaseCommand {
         return true;
     }
 
+    //TODO: Převést na nové inventáře
     private void openMenu(Player p) {
         if (Main.getServerType() == ServerType.SKYBLOCK) {
             Inventory inv = Bukkit.createInventory(null, 45, "Help pro Skyblock");
 
-            ItemStack is = ItemFactory.create(Material.GRASS, "§aVytvoření a nastavení ostrova",
+            ItemStack is = new ItemBuilder(Material.GRASS).setName("§aVytvoření a nastavení ostrova").setLore(
                     "§e/is §f- §7Vytvoří nový ostrov nebo teleportuje",
                     "§7na již vytvořený ostrov, nebo kde jsi přidaný.",
                     "§e/is sethome §f- §7Nastaví teleport při používání příkazu §b/is",
@@ -54,35 +55,25 @@ public class Help_command extends BaseCommand {
                     "§e/is restart §f- §7Restartuje ostrov. §c§lSMAŽE VŠE!",
                     "§e/is team leave §f- §7Opustíš ostrov... :(",
                     "§e/is border §f- §7Přepnutí barev v borderu",
-                    "§e/is setname název §fNastaví název ostrova");
+                    "§e/is setname název §fNastaví název ostrova").build();
 
-            ItemStack isTeam = ItemFactory.create(Material.MAGMA_CREAM, "§aPřidání a odebrání hráčů na ostrově",
+            ItemStack isTeam = new ItemBuilder(Material.MAGMA_CREAM).setName("§aPřidání a odebrání hráčů na ostrově").setLore(
                     "§e/is team invite §6" + p.getName() + " §f- §7Přidá hráče na tvůj ostrov",
                     "§e/is team accept §f- §7Potvrzení žádosti o přidání na ostrov od jiného hráče",
                     "§e/is team reject §f- §7Zruší žádost o přidání na jiný ostrov",
                     "§e/is ban §6" + p.getName() + " §f- §7Zabanuje hráč pro tvůj ostrov,",
                     "§7nebude se poté moct na něj jakkoliv dostat.",
-                    "§e/is team setowner §6" + p.getName() + " §f- §7Nastaví nového majitele ostrova");
+                    "§e/is team setowner §6" + p.getName() + " §f- §7Nastaví nového majitele ostrova").build();
 
-            ItemStack oIs = ItemFactory.create(Material.MELON, "§aOstatní příkazy k ostrovům",
-                    "§e/is biomes §f- §7Nastavení biomu na ostrově (dočasně off)",
-                    "§e/is settings §f §7Kompletní nastavení ostrova");
+            ItemStack oIs = new ItemBuilder(Material.MELON).setName("§aOstatní příkazy k ostrovům").setLore(
+                    "§e/is biomes §f- §7Nastavení biomu na ostrově",
+                    "§e/is settings §f §7Kompletní nastavení ostrova").build();
 
-            /*ItemStack jobs = ItemFactory.create(Material.IRON_PICKAXE, "§a§lJobs", "",
-                    "§cKazdy hrac smi mit maximalne 3 aktivni prace!",
-                    "§e/jobs §f- §7Zakladni prikaz k ziskani napovedy",
-                    "§e/jobs browse §f- §7Seznam vsech dostupnych praci",
-                    "§e/jobs join §6nazevPrace §f- §7Pripojeni do prace",
-                    "§e/jobs leave §6nazevPrace §f §7Odstoupeni z prace",
-                    "§7(neztratis uroven prace)",
-                    "§e/jobs stats §6" + p.getName() + " §f- §7Informace o hraci/sobe",
-                    "§e/jobs gtop §f- §7Zobrazi TOP hrace v Jobs na serveru");*/
-
-            ItemStack vip = ItemFactory.create(Material.EMERALD, "§aNákup VIP",
+            ItemStack vip = new ItemBuilder(Material.EMERALD).setName("§aNákup VIP").setLore(
                     "§7Pokud si chceš zakoupit VIP,", "§7tak kliknutím zde se ti zobrazí přehled",
-                    "§7všech dostupných VIP na tomto serveru.", "", "§bKlikni pro zobrazení VIP");
+                    "§7všech dostupných VIP na tomto serveru.", "", "§bKlikni pro zobrazení VIP").build();
 
-            ItemStack aukce = ItemFactory.create(Material.CAKE, "§aAukce §c§l(dočasně off)",
+            ItemStack aukce = new ItemBuilder(Material.CAKE).setName("§aAukce").setLore(
                     "§7Pomocí aukcí můžeš hráčům prodávat", "§7různé itemy nebo bloky.", "",
                     "§cVytvoření aukce:", "§7K vytvoření aukce, drž item, co chceš", "§7prodat a napiš tento příkaz:",
                     "§e/au start §61 1000 100 1d §8- §7Vytvoří aukci na 1 den",
@@ -94,9 +85,9 @@ public class Help_command extends BaseCommand {
                     "§8- §6min.nabHrace §f- §7Je minimální částka, ",
                     "§7kterou hráč může přidat do aukce",
                     "§8- §6cas §f- §7Určuje konec aukce př. 1m/1h/1d ",
-                    "§7(lze i kombinovat 1d12h)");
+                    "§7(lze i kombinovat 1d12h)").build();
 
-            ItemStack hlasovani = ItemFactory.create(Material.PAPER, "§aHlasování",
+            ItemStack hlasovani = new ItemBuilder(Material.PAPER).setName("§aHlasování").setLore(
                     "§7Hlasovat můžeš každý 1x za 2 hodiny na CzechCraftu,",
                     "§7a 1x za 24h na CraftListu.",
                     "",
@@ -112,30 +103,30 @@ public class Help_command extends BaseCommand {
                     "",
                     "§6Hlasovat lze i offline!",
                     "",
-                    "§eKliknutím zobrazíš odkazy na hlasování!");
+                    "§eKliknutím zobrazíš odkazy na hlasování!").build();
 
-            ItemStack guides = ItemFactory.create(Material.BOOK, "§aNávody",
+            ItemStack guides = new ItemBuilder(Material.BOOK).setName("§aNávody").setLore(
                     "§7Přehled všech dostupných návodů",
                     "§7na naší hlavní WIKI!",
                     "",
-                    "§eKliknutím zde zobrazíš přehled");
+                    "§eKliknutím zde zobrazíš přehled").build();
 
-            ItemStack ser = ItemFactory.create(Material.DIAMOND, "§aOstatní příkazy a teleporty po serveru",
+            ItemStack ser = new ItemBuilder(Material.DIAMOND).setName("§aOstatní příkazy a teleporty po serveru").setLore(
                     "", "§e/shop §f- §7Otevře menu s server shopem",
                     "§e/cshop §f- §7Otevře CoinShop s CM měnou",
                     "§e/cc§7, §e/ct§7, §e/vt- §7Stav CraftCoins, CraftTokens, VoteTokens",
                     "§e/trade §6" + p.getName() + " §f- §7Obchodování s hráčem",
                     "§e/fr §f- §7Friends a psaní si s kamarády přes celý server",
-                    "§e/lobby §7nebo §e/hub §f- §7Teleport na lobby");
+                    "§e/lobby §7nebo §e/hub §f- §7Teleport na lobby").build();
 
-            ItemStack conn = ItemFactory.create(Material.MAP, "§aOdkazy na naše stránky", "",
+            ItemStack conn = new ItemBuilder(Material.MAP).setName("§aOdkazy na naše stránky").setLore(
                     "§eNovinky: §7https://news.craftmania.cz/",
                     "§eFórum: §7https://craftmania.cz/",
                     "§eDiscord: §7https://discord.gg/craftmania/",
                     "§eStatus page: §7https://status.craftmania.cz/",
                     "§eStatistiky: §7https://stats.craftmania.cz/",
                     "",
-                    "§bKliknutím zde, se ti zobrazí klikací odkazy v chatu");
+                    "§bKliknutím zde, se ti zobrazí klikací odkazy v chatu").build();
 
             inv.setItem(12, is);
             inv.setItem(13, isTeam);
@@ -155,7 +146,7 @@ public class Help_command extends BaseCommand {
         if (Main.getServerType() == ServerType.CREATIVE) {
             Inventory inv = Bukkit.createInventory(null, 45, "Help pro Creative");
 
-            ItemStack poz = ItemFactory.create(Material.DIRT, "§aZákladní správa pozemku",
+            ItemStack poz = new ItemBuilder(Material.DIRT).setName("§aZákladní správa pozemku").setLore(
                     "§e/p auto §f- §7Automaticky zabere nejbližší volný pozemek",
                     "§e/p claim §f- §7Zabere pozemek na kterém stojíš (pokud není zabraný",
                     "§e/p home §f- §7Teleport na tůj 1. pozemek",
@@ -164,30 +155,30 @@ public class Help_command extends BaseCommand {
                     "§e/p clear §f- §7Vyčistí pozemek od staveb",
                     "§e/p sethome §f- §7Nastaví na polohu kde jsi /p home",
                     "",
-                    "§bKliknutím zobrazíš odkaz na celý návod na Wiki");
+                    "§bKliknutím zobrazíš odkaz na celý návod na Wiki").build();
 
-            ItemStack pozH = ItemFactory.create(Material.NETHERRACK, "§aSpráva hráčů na pozemku",
+            ItemStack pozH = new ItemBuilder(Material.NETHERRACK).setName("§aSpráva hráčů na pozemku").setLore(
                     "§e/p trust §6" + p.getName() + " §f- §7Přidá hráče na pozemek",
                     "§e/p untrust §6" + p.getName() + " §f- §7Odebere hráče z pozemku",
                     "§e/p deny §6" + p.getName() + " §f- §7Zamezí vstup hráči na pozemek",
                     "§e/p visit §6" + p.getName() + " §f- §7Teleport na cizí pozemek",
                     "§e/p setowner §6" + p.getName() + " §f- §7Nastaví nového majitele pozemku",
                     "",
-                    "§bKliknutím zobrazíš odkaz na celý návod na Wiki");
+                    "§bKliknutím zobrazíš odkaz na celý návod na Wiki").build();
 
-            ItemStack pozD = ItemFactory.create(Material.OBSIDIAN, "§aDalší příkazy na pozemky",
+            ItemStack pozD = new ItemBuilder(Material.OBSIDIAN).setName("§aDalší příkazy na pozemky").setLore(
                     "§e/p music §f- §7Zobrazí jukebox k přehrávání hudby",
                     "§e/p kick " + p.getName() + " §f- §7Vykopne hráče z pozemku",
                     "§e/p merge auto §f- §7Spojí pozemky do jednoho velkého",
                     "§cPodmínkou je mít pozemky vedle sebe!",
                     "",
-                    "§bKliknutím zobrazíš odkaz na celý návod na Wiki");
+                    "§bKliknutím zobrazíš odkaz na celý návod na Wiki").build();
 
-            ItemStack vip = ItemFactory.create(Material.EMERALD, "§aNákup VIP",
+            ItemStack vip = new ItemBuilder(Material.EMERALD).setName("§aNákup VIP").setLore(
                     "§7Pokud si chceš zakoupit VIP,", "§7tak kliknutím zde se ti zobrazí přehled",
-                    "§7všech dostupných VIP na tomto serveru.", "", "§bKlikni pro zobrazení VIP");
+                    "§7všech dostupných VIP na tomto serveru.", "", "§bKlikni pro zobrazení VIP").build();
 
-            ItemStack hlasovani = ItemFactory.create(Material.PAPER, "§aHlasování",
+            ItemStack hlasovani = new ItemBuilder(Material.PAPER).setName("§aHlasování").setLore(
                     "§7Hlasovat můžeš každý 1x za 2 hodiny na CzechCraftu,",
                     "§7a 1x za 24h na CraftListu.",
                     "",
@@ -203,32 +194,32 @@ public class Help_command extends BaseCommand {
                     "",
                     "§6Hlasovat lze i offline!",
                     "",
-                    "§eKliknutím zobrazíš odkazy na hlasování!");
+                    "§eKliknutím zobrazíš odkazy na hlasování!").build();
 
-            ItemStack ser = ItemFactory.create(Material.DIAMOND, "§aOstatní příkazy a teleporty po serveru",
+            ItemStack ser = new ItemBuilder(Material.DIAMOND).setName("§aOstatní příkazy a teleporty po serveru").setLore(
                     "§e/shop §f- §7Otevře menu s server shopem",
                     "§e/cshop §f- §7Otevře CoinShop s CM měnou",
                     "§e/cc§7, §e/ct§7, §e/vt- §7Stav CraftCoins, CraftTokens, VoteTokens",
                     "§e/trade §6" + p.getName() + " §f- §7Obchodování s hráčem",
                     "§e/fr §f- §7Friends a psaní si s kamarády přes celý server",
-                    "§e/lobby §7nebo §e/hub §f- §7Teleport na lobby");
+                    "§e/lobby §7nebo §e/hub §f- §7Teleport na lobby").build();
 
-            ItemStack conn = ItemFactory.create(Material.MAP, "§aOdkazy na naše stránky",
+            ItemStack conn = new ItemBuilder(Material.MAP).setName("§aOdkazy na naše stránky").setLore(
                     "§eNovinky: §7https://news.craftmania.cz/",
                     "§eFórum: §7https://craftmania.cz/",
                     "§eDiscord: §7https://discord.gg/craftmania/",
                     "§eStatus page: §7https://status.craftmania.cz/",
                     "§eStatistiky: §7https://stats.craftmania.cz/",
                     "",
-                    "§bKliknutím zde, se ti zobrazí klikací odkazy v chatu");
+                    "§bKliknutím zde, se ti zobrazí klikací odkazy v chatu").build();
 
-            ItemStack guides = ItemFactory.create(Material.BOOK, "§aNávody",
+            ItemStack guides = new ItemBuilder(Material.BOOK).setName("§aNávody").setLore(
                     "§7Přehled všech dostupných návodů",
                     "§7na naší hlavní WIKI!",
                     "",
-                    "§eKliknutím zde zobrazíš přehled");
+                    "§eKliknutím zde zobrazíš přehled").build();
 
-            ItemStack levels = ItemFactory.create(Material.NETHER_STAR, "§aAchievements & Rewards",
+            ItemStack levels = new ItemBuilder(Material.NETHER_STAR).setName("§aAchievements & Rewards").setLore(
                     "§7Chceš dosáhnout novýc cílů a mít tak vyšší level?",
                     "§7Server level ti totiž odemyká mnoho bonusových",
                     "§7práv a možností, co dělat na serveru.",
@@ -237,7 +228,7 @@ public class Help_command extends BaseCommand {
                     "§e/level survival §f- §7Zobrazení levelu pro Survival",
                     "§e/rewards §f- §7Zobrazení odměn za levely",
                     "",
-                    "§eKliknutím zobrazíš rewards odměny");
+                    "§eKliknutím zobrazíš rewards odměny").build();
 
             inv.setItem(12, poz);
             inv.setItem(13, pozH);
@@ -256,7 +247,7 @@ public class Help_command extends BaseCommand {
         if (Main.getServerType() == ServerType.SURVIVAL) {
             Inventory inv = Bukkit.createInventory(null, 45, "Help pro Survival");
 
-            ItemStack res = ItemFactory.create(Material.WOODEN_HOE, "§aVytvoření a první kroky s Residencí", "",
+            ItemStack res = new ItemBuilder(Material.WOODEN_HOE).setName("§aVytvoření a první kroky s Residencí").setLore(
                     "§7K vytvoření residence budeš potřebovat",
                     "§7dřevěnou motyku, najdeš ji v kitu §b/kit starter",
                     "§7Jako další krok označ motykou dva body - pravým/levým tlačítkem.",
@@ -265,9 +256,9 @@ public class Help_command extends BaseCommand {
                     "",
                     "§e/res create nazevResidence §f- §fVytvoření residence",
                     "",
-                    "§bKliknutím zobrazíš odkaz na celý návod na Wiki");
+                    "§bKliknutím zobrazíš odkaz na celý návod na Wiki").build();
 
-            ItemStack resV = ItemFactory.create(Material.IRON_HOE, "§aVlajky a nastavení v Residenci", "",
+            ItemStack resV = new ItemBuilder(Material.IRON_HOE).setName("§aVlajky a nastavení v Residenci").setLore(
                     "§cZákladní příkaz:",
                     "§e/res set §6nazevResidence nazevVlajky hodnota",
                     "",
@@ -285,9 +276,9 @@ public class Help_command extends BaseCommand {
                     "§8- §f/res set mojeres build false",
                     "§8- §f/res set mojeres monters true",
                     "",
-                    "§bKliknutím zobrazíš odkaz na celý návod na Wiki");
+                    "§bKliknutím zobrazíš odkaz na celý návod na Wiki").build();
 
-            ItemStack resF = ItemFactory.create(Material.DIAMOND_HOE, "§aPřidání kamarádů a další příkazy", "",
+            ItemStack resF = new ItemBuilder(Material.DIAMOND_HOE).setName("§aPřidání kamarádů a další příkazy").setLore(
                     "§e/res padd §6" + p.getName() + " §f- §7Přidání hráče do residence",
                     "§e/res pdel §6" + p.getName() + " §f- §7Odebrání z residence",
                     "§e/res list §f- §7Seznam všech tvých residencí",
@@ -295,13 +286,13 @@ public class Help_command extends BaseCommand {
                     "§e/res tp §6nazev §f- §7Teleport na residenci",
                     "§e/res tpset §f- §7Nastavení teleportu",
                     "§e/res give §6název nick §f- §7Přepíšeš residenci vybranému hráči", "",
-                    "§bKliknutím zobrazíš odkaz na celý návod na Wiki");
+                    "§bKliknutím zobrazíš odkaz na celý návod na Wiki").build();
 
-            ItemStack vip = ItemFactory.create(Material.EMERALD, "§aNákup VIP",
+            ItemStack vip = new ItemBuilder(Material.EMERALD).setName("§aNákup VIP").setLore(
                     "§7Pokud si chceš zakoupit VIP,", "§7tak kliknutím zde se ti zobrazí přehled",
-                    "§7všech dostupných VIP na tomto serveru.", "", "§bKlikni pro zobrazení VIP");
+                    "§7všech dostupných VIP na tomto serveru.", "", "§bKlikni pro zobrazení VIP").build();
 
-            ItemStack aukce = ItemFactory.create(Material.CAKE, "§aAukce §c§l(dočasně off)",
+            ItemStack aukce = new ItemBuilder(Material.CAKE).setName("§aAukce §c§l(dočasně off)").setLore(
                     "§7Pomocí aukcí můžeš hráčům prodávat", "§7různé itemy nebo bloky.", "",
                     "§cVytvoření aukce:", "§7K vytvoření aukce, drž item, co chceš", "§7prodat a napiš tento příkaz:",
                     "§e/au start §61 1000 100 1d §8- §7Vytvoří aukci na 1 den",
@@ -313,9 +304,9 @@ public class Help_command extends BaseCommand {
                     "§8- §6min.nabHrace §f- §7Je minimální částka, ",
                     "§7kterou hráč může přidat do aukce",
                     "§8- §6cas §f- §7Určuje konec aukce př. 1m/1h/1d ",
-                    "§7(lze i kombinovat 1d12h)");
+                    "§7(lze i kombinovat 1d12h)").build();
 
-            ItemStack levels = ItemFactory.create(Material.NETHER_STAR, "§aAchievements & Rewards",
+            ItemStack levels = new ItemBuilder(Material.NETHER_STAR).setName("§aAchievements & Rewards").setLore(
                     "§7Chceš dosáhnout novýc cílů a mít tak vyšší level?",
                     "§7Server level ti totiž odemyká mnoho bonusových",
                     "§7práv a možností, co dělat na serveru.",
@@ -324,9 +315,9 @@ public class Help_command extends BaseCommand {
                     "§e/level survival §f- §7Zobrazení levelu pro Survival",
                     "§e/rewards §f- §7Zobrazení odměn za levely",
                     "",
-                    "§eKliknutím zobrazíš rewards odměny");
+                    "§eKliknutím zobrazíš rewards odměny").build();
 
-            ItemStack hlasovani = ItemFactory.create(Material.PAPER, "§aHlasování",
+            ItemStack hlasovani = new ItemBuilder(Material.PAPER).setName("§aHlasování").setLore(
                     "§7Hlasovat můžeš každý 1x za 2 hodiny na CzechCraftu,",
                     "§7a 1x za 24h na CraftListu.",
                     "",
@@ -342,30 +333,30 @@ public class Help_command extends BaseCommand {
                     "",
                     "§6Hlasovat lze i offline!",
                     "",
-                    "§eKliknutím zobrazíš odkazy na hlasování!");
+                    "§eKliknutím zobrazíš odkazy na hlasování!").build();
 
-            ItemStack guides = ItemFactory.create(Material.BOOK, "§aNávody",
+            ItemStack guides = new ItemBuilder(Material.BOOK).setName("§aNávody").setLore(
                     "§7Přehled všech dostupných návodů",
                     "§7na naší hlavní WIKI!",
                     "",
-                    "§eKliknutím zde zobrazíš přehled");
+                    "§eKliknutím zde zobrazíš přehled").build();
 
-            ItemStack ser = ItemFactory.create(Material.DIAMOND, "§aOstatní příkazy a teleporty po serveru",
-                    "", "§e/shop §f- §7Otevře menu s server shopem",
+            ItemStack ser = new ItemBuilder(Material.DIAMOND).setName("§aOstatní příkazy a teleporty po serveru").setLore(
+                    "§e/shop §f- §7Otevře menu s server shopem",
                     "§e/cshop §f- §7Otevře CoinShop s CM měnou",
                     "§e/cc§7, §e/ct§7, §e/vt- §7Stav CraftCoins, CraftTokens, VoteTokens",
                     "§e/trade §6" + p.getName() + " §f- §7Obchodování s hráčem",
                     "§e/fr §f- §7Friends a psaní si s kamarády přes celý server",
-                    "§e/lobby §7nebo §e/hub §f- §7Teleport na lobby");
+                    "§e/lobby §7nebo §e/hub §f- §7Teleport na lobby").build();
 
-            ItemStack conn = ItemFactory.create(Material.MAP, "§aOdkazy na naše stránky", "",
+            ItemStack conn = new ItemBuilder(Material.MAP).setName("§aOdkazy na naše stránky").setLore(
                     "§eNovinky: §7https://news.craftmania.cz/",
                     "§eFórum: §7https://craftmania.cz/",
                     "§eDiscord: §7https://discord.gg/craftmania/",
                     "§eStatus page: §7https://status.craftmania.cz/",
                     "§eStatistiky: §7https://stats.craftmania.cz/",
                     "",
-                    "§bKliknutím zde, se ti zobrazí klikací odkazy v chatu");
+                    "§bKliknutím zde, se ti zobrazí klikací odkazy v chatu").build();
 
             inv.setItem(12, res);
             inv.setItem(13, resV);

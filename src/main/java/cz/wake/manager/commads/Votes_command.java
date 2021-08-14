@@ -6,9 +6,8 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
-import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
+import cz.craftmania.craftcore.builders.items.ItemBuilder;
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.ItemFactory;
 import cz.wake.manager.utils.TimeUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -74,37 +73,27 @@ public class Votes_command extends BaseCommand implements Listener {
         List<String> votesAll = Main.getInstance().getMySQL().getTopVotersVotesAll();
 
         // Top Week Item
-        ItemStack topWeek = ItemFactory.createHead("topWeek", "eb1cc0ad-72fb-41b6-b725-5e603c002d00", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGM3Y2U2ZjdhNzk3YTcxYTkxMWRiYzhlNjI2NzAyYjk3MzViN2QzYzJlOWZjYjI2YjgyY2FjZmM2Y2UwMWYxYSJ9fX0=");
-        SkullMeta topWeekMeta = (SkullMeta) topWeek.getItemMeta();
-        topWeekMeta.setDisplayName("§e§lTOP hraci (tento tyden)");
         ArrayList<String> topLore = new ArrayList<>();
         for (int i = 0; i < namesWeek.size(); i++) {
             topLore.add("§6" + (i + 1) + ". §7" + namesWeek.get(i) + " §8(" + votesWeek.get(i) + " hlasu)");
         }
-        topWeekMeta.setLore(topLore);
-        topWeek.setItemMeta(topWeekMeta);
+        ItemStack topWeek = new ItemBuilder(Material.PAPER).setName("§e§lTOP hraci (tento tyden)").setLore(topLore).build();
 
-        ItemStack topMonth = ItemFactory.createHead("topMonth", "241ffb69-235e-4dee-b781-d7542c8f2213", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmFlN2Y3YTMwY2EyMzI0ZTMzNzk4Y2VmMWZmYTRlZTFmMGVhOWZkMzM4NWI1NGUwNWMyZmMyNzM0MzFjMTk2MiJ9fX0=");
-        SkullMeta topMonthMeta = (SkullMeta) topMonth.getItemMeta();
-        topMonthMeta.setDisplayName("§b§lTOP hraci (tento mesic)");
+
         ArrayList<String> topMonthLore = new ArrayList<>();
         for (int i = 0; i < namesMonth.size(); i++) {
             topMonthLore.add("§6" + (i + 1) + ". §7" + namesMonth.get(i) + " §8(" + votesMonth.get(i) + " hlasu)");
         }
-        topMonthMeta.setLore(topMonthLore);
-        topMonth.setItemMeta(topMonthMeta);
+        ItemStack topMonth = new ItemBuilder(Material.PAPER).setName("§b§lTOP hraci (tento mesic)").setLore(topMonthLore).build();
 
-        ItemStack topAll = ItemFactory.createHead("topMonth", "f1ea6e8a-11c5-4a5b-b087-bbe145b1c5e7", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2Q1MWM4M2NjMWViY2E1YTFiNmU2Nzk0N2UyMGI0YTJhNmM5ZWZlYTBjZjQ2OTI5NDQ4ZTBlMzc0MTZkNTgzMyJ9fX0=");
-        SkullMeta topAllMeta = (SkullMeta) topAll.getItemMeta();
-        topAllMeta.setDisplayName("§a§lTOP hraci (celkove)");
+
         ArrayList<String> topAllLore = new ArrayList<>();
         for (int i = 0; i < namesAll.size(); i++) {
             topAllLore.add("§6" + (i + 1) + ". §7" + namesAll.get(i) + " §8(" + votesAll.get(i) + " hlasu)");
         }
-        topAllMeta.setLore(topAllLore);
-        topAll.setItemMeta(topAllMeta);
+        ItemStack topAll = new ItemBuilder(Material.PAPER).setName("§a§lTOP hraci (celkove)").setLore(topAllLore).build();
 
-        ItemStack hlasy = ItemFactory.create(Material.GOLD_INGOT, "§e§lOdmeny za hlasovani",
+        ItemStack hlasy = new ItemBuilder(Material.GOLD_INGOT).setName("§e§lOdmeny za hlasovani").setLore(
                 "",
                 "§fKazdy hlas: §610 CC §f+ §aVoteToken",
                 "§f25% sance: §625 CC",
@@ -114,9 +103,9 @@ public class Votes_command extends BaseCommand implements Listener {
                 "§bKazdy mesic muzes ziskat tyto bonusy!",
                 "§f20 hlasu: §6200 CC",
                 "§f40 hlasu: §6300 CC",
-                "§f60 hlasu: §6500 CC");
+                "§f60 hlasu: §6500 CC").build();
 
-        ItemStack odmeny = ItemFactory.create(Material.DIAMOND, "§b§lOdmeny pro TOP 5 hrace",
+        ItemStack odmeny = new ItemBuilder(Material.DIAMOND).setName("§b§lOdmeny pro TOP 5 hrace").setLore(
                 "",
                 "§7Kazdy mesic odmenujeme TOP 5",
                 "§7hracu v hlasovani kupony na Store!",
@@ -127,7 +116,7 @@ public class Votes_command extends BaseCommand implements Listener {
                 "§a4. §f5e",
                 "§a5. §f5e",
                 "",
-                "§cKupony jsou zasilany do zprav na webu!");
+                "§cKupony jsou zasilany do zprav na webu!").build();
 
 
         inventory.setItem(0, filler);

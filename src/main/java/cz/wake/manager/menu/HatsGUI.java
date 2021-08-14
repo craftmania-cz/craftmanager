@@ -1,12 +1,12 @@
 package cz.wake.manager.menu;
 
-import cz.craftmania.craftcore.spigot.builders.items.ItemBuilder;
-import cz.craftmania.craftcore.spigot.inventory.builder.ClickableItem;
-import cz.craftmania.craftcore.spigot.inventory.builder.SmartInventory;
-import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryContents;
-import cz.craftmania.craftcore.spigot.inventory.builder.content.InventoryProvider;
-import cz.craftmania.craftcore.spigot.inventory.builder.content.Pagination;
-import cz.craftmania.craftcore.spigot.inventory.builder.content.SlotIterator;
+import cz.craftmania.craftcore.builders.items.ItemBuilder;
+import cz.craftmania.craftcore.inventory.builder.ClickableItem;
+import cz.craftmania.craftcore.inventory.builder.SmartInventory;
+import cz.craftmania.craftcore.inventory.builder.content.InventoryContents;
+import cz.craftmania.craftcore.inventory.builder.content.InventoryProvider;
+import cz.craftmania.craftcore.inventory.builder.content.Pagination;
+import cz.craftmania.craftcore.inventory.builder.content.SlotIterator;
 import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.craftmania.craftpack.api.Hats;
 import cz.craftmania.craftpack.api.TextureItems;
@@ -254,6 +254,26 @@ public class HatsGUI implements InventoryProvider {
                 .setItemStack(Hats.TIGER_HEAD.getPureItemStack())
                 .setLore("", "§aZískáno: §fFree odměna za připojení", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.tiger_head"));
+
+        list.add(new CosmeticItem().setName("§bFish Bowl")
+                .setItemStack(Hats.FISH_BOWL.getPureItemStack())
+                .setLore("", "§aZískáno: §fStore", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.fish_bowl"));
+
+        list.add(new CosmeticItem().setName("§9Astronaut")
+                .setItemStack(Hats.ASTRONAUT.getPureItemStack())
+                .setLore("", "§aZískáno: §fTOP platící za měsíc na Storu", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.astronaut"));
+
+        list.add(new CosmeticItem().setName("§cDevil")
+                .setItemStack(Hats.DEVIL.getPureItemStack())
+                .setLore("", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.devil"));
+
+        list.add(new CosmeticItem().setName("§eTiki")
+                .setItemStack(Hats.TIKI_MASK.getPureItemStack())
+                .setLore("", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.tiki_mask"));
 
         return list;
     }

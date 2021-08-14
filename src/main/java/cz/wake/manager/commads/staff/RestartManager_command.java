@@ -3,7 +3,7 @@ package cz.wake.manager.commads.staff;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.CommandHelp;
 import co.aikar.commands.annotation.*;
-import cz.craftmania.craftcore.spigot.messages.BossBar;
+import cz.craftmania.craftcore.messages.BossBar;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.tasks.RestartTask;
 import org.bukkit.Bukkit;
@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 @Description("Umožní restart serveru")
 public class RestartManager_command extends BaseCommand {
 
-    public static BossBar bb = new  BossBar("msg", "GREEN", "SEGMENTED_20", 1.0);
+    public static BossBar bb = new BossBar("msg", "GREEN", "SEGMENTED_20", 1.0);
     public static List<BukkitTask> runnables = new ArrayList<>();
     public static int min;
     String combinedArgs;

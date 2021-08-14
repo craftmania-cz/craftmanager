@@ -19,6 +19,7 @@ import cz.wake.manager.servers.global.LeaveDecayListener;
 import cz.wake.manager.servers.skycloud.ItemDropListener;
 import cz.wake.manager.servers.skycloud.VillagerDamageListener;
 import cz.wake.manager.servers.skycloud.VillagerManager;
+import cz.wake.manager.servers.vanilla.DragonSlayerListener;
 import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
 import cz.wake.manager.utils.configs.Config;
@@ -31,8 +32,10 @@ import cz.wake.manager.commads.VIP_command;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
@@ -40,9 +43,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 
 public class Main extends JavaPlugin implements PluginMessageListener {
 
@@ -84,12 +85,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     @Override
     public void onLoad() {
-
-    }
-
-    @Override
-    public void onEnable() {
-
         instance = this;
 
         //Config
@@ -103,6 +98,29 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // ID serveru a typ
         serverType = resolveServerType();
         Log.withPrefix("Server zaevidovany jako: " + serverType.name());
+
+        // Custom recipes
+        List<Recipe> serverRecipes = new ArrayList<>();
+        Iterator<Recipe> activeRecipes = this.getServer().recipeIterator();
+        activeRecipes.forEachRemaining((recipe -> {
+            if (recipe.getResult().getType() == Material.END_CRYSTAL) {
+                return;
+            }
+            serverRecipes.add(recipe);
+        }));
+
+        if (serverType == ServerType.VANILLA) { // Tady přidat recepty pro servery
+            serverRecipes.add(CustomCrafting.getEndCrystalRecipe());
+        }
+        serverRecipes.add(CustomCrafting.getInvisibleItemFrame());
+        serverRecipes.add(CustomCrafting.getSaddleRecipe());
+
+        this.getServer().clearRecipes();
+        serverRecipes.forEach((recipe -> this.getServer().addRecipe(recipe)));
+    }
+
+    @Override
+    public void onEnable() {
 
         // Sentry integration
         if (!(Objects.requireNonNull(getConfig().getString("sentry-dsn")).length() == 0) && Bukkit.getPluginManager().isPluginEnabled("CraftLibs")) {
@@ -156,20 +174,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
             getServer().getScheduler().runTaskTimerAsynchronously(this, new VoteReminderTask(), 100, 1200);
         }
-
-        if (serverType == ServerType.SKYCLOUD) {
-            this.getServer().getRecipesFor(new ItemStack(Material.COARSE_DIRT)).clear();
-            this.getServer().addRecipe(CustomCrafting.getSandCrafting());
-            this.getServer().addRecipe(CustomCrafting.getNetherBrickRecipe());
-            this.getServer().addRecipe(CustomCrafting.getGravelCutterRecipe());
-            this.getServer().addRecipe(CustomCrafting.getShulkerShellRecipe());
-            this.getServer().addRecipe(CustomCrafting.getDiamondRecipe());
-            this.getServer().addRecipe(CustomCrafting.getClayBlockRecipe());
-            this.getServer().addRecipe(CustomCrafting.getRedSandRecipe());
-            this.getServer().addRecipe(CustomCrafting.getSaddleRecipe());
-            this.getServer().addRecipe(CustomCrafting.getCoarseDirtRecipe());
-        }
-        this.getServer().addRecipe(CustomCrafting.getInvisibleItemFrame());
 
         // Nastaveni mention prefixu
         mentionPrefix = Main.getInstance().getConfig().getString("mentions.prefix");
@@ -235,6 +239,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         if (serverType != ServerType.HARDCORE_VANILLA) {
             pm.registerEvents(new OnEXPBottleThrownListener(), this);
+        }
+
+        if (serverType == ServerType.VANILLA) {
+            pm.registerEvents(new DragonSlayerListener(), this);
         }
 
         // Skyblock PVP listener
