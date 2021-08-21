@@ -136,7 +136,7 @@ public class VIPMenu_inv implements InventoryProvider {
         lore.add("§e*§f Survival");
         lore.add("§e*§f Skyblock");
         lore.add("§e*§f Creative");
-        lore.add("§e*§f SkyCloud");
+        lore.add("§e*§f Vanilla");
         lore.add("§e*§f Prison");
         return createHeadFromData(globeBlockData, ChatColor.AQUA + "Global VIP", lore);
     }
@@ -171,8 +171,12 @@ public class VIPMenu_inv implements InventoryProvider {
         GVIPvyhody.add("§e· §fMožnost zobrazit držený item v ruce §a:item:");
         GVIPvyhody.add("§e· §fVirtualni Beacon - s efekty §a/beacon");
         GVIPvyhody.add("§e· §fOchrana proti dropům v normálním světě. Neplatí pro PVP!");
-        GVIPvyhody.add("§e· §fPřístup k particles §a/particles");
+        GVIPvyhody.add("§e· §fPřístup k particles v §a/cosmetics");
         GVIPvyhody.add("§e· §fVirtuální Beacon §a/beacon");
+        GVIPvyhody.add("§e· §fLimit nastavení home - 2x");
+        GVIPvyhody.add("§e· §fLimit vytvoření aukcí - 7x");
+        GVIPvyhody.add("§e· §fVlastní warpy - vlastní warpy (1x)");
+        GVIPvyhody.add("§e· §fSkyblock Minioni - Limit 7x");
         switch (getCurrentServer()) {
             case "Creative": {
                 GVIPvyhody.add("§e· §fMaximální počet pozemků až 50 (normal 10)");
@@ -202,13 +206,17 @@ public class VIPMenu_inv implements InventoryProvider {
         GVIPvyhody.add("§e· §fMožnost zobrazit držený item v ruce §a:item:");
         GVIPvyhody.add("§e· §fVirtualni Beacon - s efekty §a/beacon");
         GVIPvyhody.add("§e· §fOchrana proti dropům itemů. Neplatí pro PVP!");
-        GVIPvyhody.add("§e· §fPřístup k particles §a/particles");
+        GVIPvyhody.add("§e· §fPřístup k particles v §a/cosmetics");
         GVIPvyhody.add("§e· §fVirtuální Beacon §a/beacon");
+        GVIPvyhody.add("§e· §fLimit nastavení home - 2x");
+        GVIPvyhody.add("§e· §fLimit vytvoření aukcí - 7x");
+        GVIPvyhody.add("§e· §fVlastní warpy - vlastní warpy (1x)");
+        GVIPvyhody.add("§e· §fSkyblock Minioni - Limit 7x");
         GVIPvyhody.add("");
         GVIPvyhody.add("§7Lobby extra server výhody:");
         GVIPvyhody.add("§e· §fFly libovolně na lobby");
         GVIPvyhody.add("§e· §fJoin zpráva o připojení na lobby");
-        GVIPvyhody.add("§e· §fMěsíční bonus §b2000 CraftCoins");
+        GVIPvyhody.add("§e· §fMěsíční bonus §b500 CraftCoins");
         GVIPvyhody.add("");
         GVIPvyhody.add("§7Creative extra server výhody:");
         GVIPvyhody.add("§e· §fMaximální počet pozemků (50)");
@@ -239,7 +247,10 @@ public class VIPMenu_inv implements InventoryProvider {
         DVIPvyhody.add("§e· §fNEO - Zobrazení spawnratu mobu §a/ll");
         DVIPvyhody.add("§e· §fNastavení vlastního času §a/ptime");
         DVIPvyhody.add("§e· §fInspekce zníčených bloků §a/co inspect");
-        DVIPvyhody.add("§e· §fMožnost vypnout si zobrazování veřejného chatu");
+        DVIPvyhody.add("§e· §fLimit nastavení home - 3x");
+        DVIPvyhody.add("§e· §fLimit vytvoření aukcí - 10x");
+        DVIPvyhody.add("§e· §fVlastní warpy - vlastní warpy (2x)");
+        //DVIPvyhody.add("§e· §fMožnost vypnout si zobrazování veřejného chatu");
         DVIPvyhody.add("§e· §fOchrana proti dropům expů (neplatí pro PvP)");
         switch (getCurrentServer()) {
             case "Creative": {
@@ -260,13 +271,16 @@ public class VIPMenu_inv implements InventoryProvider {
         DVIPvyhody.add("§e· §fNEO - Zobrazení spawnratu mobu §a/ll");
         DVIPvyhody.add("§e· §fNastavení vlastního času §a/ptime");
         DVIPvyhody.add("§e· §fInspekce zníčených bloků §a/co inspect");
-        DVIPvyhody.add("§e· §fMožnost vypnout si zobrazování veřejného chatu");
+        //DVIPvyhody.add("§e· §fMožnost vypnout si zobrazování veřejného chatu");
         DVIPvyhody.add("§e· §fOchrana proti dropům expů (neplatí pro PvP)");
+        DVIPvyhody.add("§e· §fLimit nastavení home - 3x");
+        DVIPvyhody.add("§e· §fLimit vytvoření aukcí - 10x");
+        DVIPvyhody.add("§e· §fVlastní warpy - vlastní warpy (2x)");
         DVIPvyhody.add("");
         DVIPvyhody.add("§7Lobby extra server výhody:");
         DVIPvyhody.add("§e· §fFly libovolně na lobby");
         DVIPvyhody.add("§e· §fJoin zpráva o připojení na lobby");
-        DVIPvyhody.add("§e· §fMěsíční bonus §b2000 CraftCoins");
+        DVIPvyhody.add("§e· §fMěsíční bonus §b1,000 CraftCoins");
         DVIPvyhody.add("");
         DVIPvyhody.add("§7Creative extra server výhody:");
         DVIPvyhody.add("§e· §fMaximalní počet pozemků (100)");
@@ -296,8 +310,9 @@ public class VIPMenu_inv implements InventoryProvider {
         EVIPvyhody.add("");
         EVIPvyhody.add("§7Oproti Diamond VIP získáš navíc:");
         EVIPvyhody.add("§e· §fGlowing Items - svitici itemy?! OK §a/gi");
-        EVIPvyhody.add("§e· §fFireworkBuilder - vytváření ohňostrojů §a/fwc");
-        EVIPvyhody.add("§e· §fVlastní warpy - vytvoř si warp pro sebe nebo server");
+        EVIPvyhody.add("§e· §fLimit nastavení home - 4x");
+        EVIPvyhody.add("§e· §fLimit vytvoření aukcí - 14x");
+        EVIPvyhody.add("§e· §fVlastní warpy - vlastní warpy (4x)");
         switch (getCurrentServer()) {
             case "Survival": {
                 EVIPvyhody.add("§e· §fMaximální počet residencí 6 (normal 3)");
@@ -321,13 +336,14 @@ public class VIPMenu_inv implements InventoryProvider {
         EVIPvyhody.add("");
         EVIPvyhody.add("§7Oproti Diamond VIP získáš navíc:");
         EVIPvyhody.add("§e· §fGlowing Items - svitici itemy?! OK §a/gi");
-        EVIPvyhody.add("§e· §fFireworkBuilder - vytváření ohňostrojů §a/fwc");
-        EVIPvyhody.add("§e· §fVlastní warpy - vytvoř si warp pro sebe nebo server");
+        EVIPvyhody.add("§e· §fLimit nastavení home - 4x");
+        EVIPvyhody.add("§e· §fLimit vytvoření aukcí - 14x");
+        EVIPvyhody.add("§e· §fVlastní warpy - vlastní warpy (4x)");
         EVIPvyhody.add("");
         EVIPvyhody.add("§7Lobby extra server výhody:");
         EVIPvyhody.add("§e· §fFly libovolně na lobby");
         EVIPvyhody.add("§e· §fJoin zpáva o připojení na lobby");
-        EVIPvyhody.add("§e· §fMěsíční bonus §b3000 CraftCoins");
+        EVIPvyhody.add("§e· §fMěsíční bonus §b1,500 CraftCoins");
         EVIPvyhody.add("");
         EVIPvyhody.add("§7Creative extra server výhody:");
         EVIPvyhody.add("§e· §fMaximální počet pozemků (150)");
@@ -362,6 +378,10 @@ public class VIPMenu_inv implements InventoryProvider {
         OVIPvyhody.add("");
         OVIPvyhody.add("§7Oproti Emerald VIP získáš navíc:");
         OVIPvyhody.add("§e· §fArtMap - kreslení na mapu §a/artmap");
+        OVIPvyhody.add("§e· §fLimit nastavení home - 5x");
+        OVIPvyhody.add("§e· §fLimit vytvoření aukcí - 20x");
+        OVIPvyhody.add("§e· §fVlastní warpy - vlastní warpy (6x)");
+        OVIPvyhody.add("§e· §fSkyblock Minioni - Limit 15x");
         switch (getCurrentServer()) {
             case "Survival": {
                 OVIPvyhody.add("§e· §fMaximální počet residencí 8 (normal 3)");
@@ -385,11 +405,15 @@ public class VIPMenu_inv implements InventoryProvider {
         OVIPvyhody.add("");
         OVIPvyhody.add("§7Oproti Emerald VIP získáš navíc:");
         OVIPvyhody.add("§e· §fArtMap - kreslení na mapu §a/artmap");
+        OVIPvyhody.add("§e· §fLimit nastavení home - 5x");
+        OVIPvyhody.add("§e· §fLimit vytvoření aukcí - 20x");
+        OVIPvyhody.add("§e· §fVlastní warpy - vlastní warpy (6x)");
+        OVIPvyhody.add("§e· §fSkyblock Minioni - Limit 15x");
         OVIPvyhody.add("");
         OVIPvyhody.add("§7Lobby extra server výhody:");
         OVIPvyhody.add("§e· §fFly libovolně na lobby");
         OVIPvyhody.add("§e· §fJoin zpráva po připojení na lobby");
-        OVIPvyhody.add("§e· §fMěsíční bonus §b4000 CraftCoins");
+        OVIPvyhody.add("§e· §fMěsíční bonus §b2,000 CraftCoins");
         OVIPvyhody.add("");
         OVIPvyhody.add("§7Creative extra server výhody:");
         OVIPvyhody.add("§e· §fMaximální počet pozemků (200)");
