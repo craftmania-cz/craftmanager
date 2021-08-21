@@ -109,7 +109,7 @@ public class CustomCrafting {
         recipe.setIngredient('b', Material.ENDER_EYE);
         recipe.setIngredient('c', Material.AMETHYST_SHARD);
         recipe.setIngredient('d', Material.DIAMOND);
-        recipe.setIngredient('e', Material.BLACKSTONE);
+        recipe.setIngredient('e', Material.CRYING_OBSIDIAN);
         return recipe;
     }
 
