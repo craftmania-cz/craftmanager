@@ -1,8 +1,8 @@
 package cz.wake.manager.servers.skycloud;
 
-import com.cryptomorin.xseries.XEnchantment;
 import cz.craftmania.craftcore.builders.items.ItemBuilder;
 import cz.craftmania.craftcore.builders.villager.VillagerTradeBuilder;
+import cz.craftmania.craftcore.xseries.XEnchantment;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
