@@ -82,7 +82,6 @@ dependencies {
     compileOnly name: 'spigot-1.17.1'
 
     compileOnly group: 'me.clip', name: 'placeholderapi', version: '2.10.4'
-    compileOnly group: 'net.minecord', name: 'xoreboardutil', version: '1.14.4'
     compileOnly group: 'me.libraryaddict.disguise', name: 'libsdisguise', version: '10.0.5'
     compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.5.0"
     compileOnly group: "com.github.MilkBowl", name: "VaultAPI", version: "1.7"

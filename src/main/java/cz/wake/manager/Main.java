@@ -25,16 +25,13 @@ import cz.wake.manager.utils.*;
 import cz.wake.manager.utils.configs.Config;
 import cz.wake.manager.utils.configs.ConfigAPI;
 import cz.wake.manager.utils.scoreboard.ScoreboardManager;
-import cz.wake.manager.utils.scoreboard.ScoreboardProvider;
 import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.*;
 import cz.wake.manager.commads.VIP_command;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -64,7 +61,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     // Managers
     private CshopManager cshopManager;
     private static ScoreboardManager scoreboardManager = null;
-    private static ScoreboardProvider scoreboardProvider = null;
     private CompassManager compassManager = null;
 
     // Plugin dependencies
@@ -190,12 +186,11 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Načtení ScoreboardManageru
         if (getConfigAPI().getConfig("scoreboardConfig").getBoolean("scoreboard.enabled")) {
-            Log.withPrefix("Aktivace Scoreboard!");
+            Log.withPrefix("Aktivace Scoreboardu!");
             scoreboardManager = new ScoreboardManager();
-            scoreboardProvider = new ScoreboardProvider();
             Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, () -> getScoreboardManager().update(), 0L, getConfigAPI().getConfig("scoreboardConfig").getLong("scoreboard.refreshTime"));
         } else {
-            Log.withPrefix("Scoreboard je deaktivovaná...");
+            Log.withPrefix("Scoreboard je deaktivovaný.");
         }
 
         if (serverType == ServerType.ANARCHY) {
@@ -424,10 +419,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public ScoreboardManager getScoreboardManager() {
         return scoreboardManager;
-    }
-
-    public ScoreboardProvider getScoreboardProvider() {
-        return scoreboardProvider;
     }
 
     public static boolean isPremiumVanishEnabled() {

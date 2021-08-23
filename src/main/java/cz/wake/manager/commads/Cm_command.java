@@ -29,7 +29,6 @@ public class Cm_command extends BaseCommand {
     public void reload(CommandSender sender) {
         if (sender.hasPermission("craftmanager.reload")) {
             Main.getInstance().reloadConfig();
-            Main.getInstance().getScoreboardProvider().updateCache();
             Main.getInstance().getScoreboardManager().update();
             sender.sendMessage("§e§l[*] §eConfig a scoreboard uspesne reloadnut.");
         } else {

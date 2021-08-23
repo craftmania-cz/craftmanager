@@ -1,58 +1,55 @@
 package cz.wake.manager.utils.scoreboard;
 
+import cz.craftmania.craftcore.fastboard.FastBoard;
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.Log;
-import net.minecord.xoreboardutil.bukkit.PrivateSidebar;
-import net.minecord.xoreboardutil.bukkit.XoreBoard;
-import net.minecord.xoreboardutil.bukkit.XoreBoardUtil;
-import org.bukkit.Bukkit;
+import cz.wake.manager.utils.configs.Config;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ScoreboardManager {
-    private XoreBoard xoreBoard;
+
+    private final Map<UUID, FastBoard> boards = new HashMap<>();
+    private String boardName = "[DFEAULT]";
+    private List<String> boardLines = new ArrayList<>();
 
     public ScoreboardManager() {
-        this.xoreBoard = XoreBoardUtil.getNextXoreBoard();
-        Log.withPrefix("ScoreboardManager loaded!");
-    }
-
-    public void setupPlayer(Player player) {
-        try {
-            this.xoreBoard.addPlayer(player);
-
-            PrivateSidebar sidebar = xoreBoard.getPrivateSidebar(player);
-            sidebar.setDisplayName(Main.getInstance().getScoreboardProvider().getCachedBoardName());
-
-            sidebar.rewriteLines(getLines(player));
-
-            sidebar.showSidebar();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-            Main.getInstance().sendSentryException(exception);
+        Config configLines = Main.getInstance().getConfigAPI().getConfig("scoreboardConfig");
+        if (configLines != null) {
+            boardName = configLines.getString("scoreboard.name");
+            boardLines = configLines.getStringList("scoreboard.lines");
         }
     }
 
-    public void worldChange(Player player) {
-        xoreBoard.getPrivateSidebar(player).showSidebar();
+    public void setupPlayer(final Player player) {
+        try {
+            FastBoard board = new FastBoard(player);
+            board.updateTitle(this.boardName);
+            board.updateLines(this.boardLines);
+            boards.put(player.getUniqueId(), board);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     public void removePlayer(Player player) {
-        this.xoreBoard.removePlayer(player);
-    }
-
-    private HashMap<String, Integer> getLines(Player player) {
-        return Main.getInstance().getScoreboardProvider().getCachedLines(player);
+        FastBoard board = this.boards.remove(player.getUniqueId());
+        if (board != null) {
+            board.delete();
+        }
     }
 
     public void update() {
         try {
-            Bukkit.getOnlinePlayers().forEach(player -> this.xoreBoard.getPrivateSidebar(player).rewriteLines(getLines(player)));
+            for (FastBoard board : this.boards.values()) {
+                List<String> lines = this.boardLines;
+                List<String> finalLines = lines.stream().map((line) -> PlaceholderAPI.setPlaceholders(board.getPlayer(), line)).collect(Collectors.toList());
+                board.updateLines(finalLines);
+            }
         } catch (Exception exception) {
             exception.printStackTrace();
-            Main.getInstance().sendSentryException(exception);
         }
     }
 }

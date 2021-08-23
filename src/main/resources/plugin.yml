@@ -1,7 +1,11 @@
 name: CraftManager
 main: cz.wake.manager.Main
 authors: [MrWakeCZ,lilmayu]
-depend: [CraftCore,CraftEconomy]
+api-version: "1.16"
+version: "1.7"
+depend:
+  - CraftCore
+  - CraftEconomy
 softdepend:
   - HolographicDisplays
   - PlaceholderAPI
@@ -9,8 +13,6 @@ softdepend:
   - XoreboardUtil
   - CraftPack
   - LibsDisguises
-api-version: "1.16"
-version: "1.7"
 
 permissions:
     craftmanager.*:
