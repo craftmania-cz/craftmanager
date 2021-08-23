@@ -36,7 +36,7 @@ repositories {
     mavenCentral()
     maven { url "https://packages.craftmania.cz/repository/craftmania/" }
     maven { url "https://packages.craftmania.cz/repository/third-party/" }
-    maven { url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" }
+    maven { url "https://papermc.io/repo/repository/maven-public/" }
     maven { url "https://repo.maven.apache.org/maven2" }
     maven { url "https://repo.codemc.org/repository/maven-public/" } // HolographicDisplays
     maven { url "https://jitpack.io" }
@@ -62,7 +62,7 @@ repositories {
 dependencies {
 
     // Spigot
-    compileOnly ('org.spigotmc:spigot-api:1.17-R0.1-SNAPSHOT')
+    compileOnly ('io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT')
 
     // Extra excludes
     compileOnly ("com.github.MyzelYam:SuperVanish:6.2.0") {
