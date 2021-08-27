@@ -162,7 +162,6 @@ public class VIPMenu_inv implements InventoryProvider {
         GVIPvyhody.add("§e· §fGlowing postavy §a/glow");
         GVIPvyhody.add("§e· §fZískání vlastní hlavy §a/skull");
         GVIPvyhody.add("§e· §fNasazení bloku na hlavu §a/hat");
-        GVIPvyhody.add("§e· §fEmotes §a/emote");
         GVIPvyhody.add("§e· §fBarevné psaní do chatu, kovadliny a cedulky");
         GVIPvyhody.add("§e· §fNastavení barvy psaní §a/chatcolor");
         GVIPvyhody.add("§e· §fArmorStandEditor - úprava armorstandů");
@@ -197,7 +196,6 @@ public class VIPMenu_inv implements InventoryProvider {
         GVIPvyhody.add("§e· §fGlowing postavy §a/glow");
         GVIPvyhody.add("§e· §fZískání vlastní hlavy §a/skull");
         GVIPvyhody.add("§e· §fNasazení bloku na hlavu §a/hat");
-        GVIPvyhody.add("§e· §fEmotes §a/emote");
         GVIPvyhody.add("§e· §fBarevné psaní do chatu, kovadliny a cedulky");
         GVIPvyhody.add("§e· §fNastavení barvy psaní §a/chatcolor");
         GVIPvyhody.add("§e· §fArmorStandEditor - úprava armorstandů");
