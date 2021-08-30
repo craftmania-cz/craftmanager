@@ -71,6 +71,8 @@ public class CshopManager {
             voteShopItems.add(new VoteItem().setName("1x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(1).setCommandToExecute("crate give physical Vote 1 %player%"));
             voteShopItems.add(new VoteItem().setName("5x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(5).setCommandToExecute("crate give physical Vote 5 %player%"));
             voteShopItems.add(new VoteItem().setName("10x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(10).setCommandToExecute("crate give physical Vote 10 %player%"));
+            voteShopItems.add(new VoteItem().setName("32x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(32).setCommandToExecute("crate give physical Vote 32 %player%"));
+            voteShopItems.add(new VoteItem().setName("64x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(64).setCommandToExecute("crate give physical Vote 64 %player%"));
         }
         if (Main.getInstance().getServerType() == ServerType.SKYCLOUD) {
             voteShopItems.add(new VoteItem().setName("1x Emerald").setPrice(2).setEconomyReward(1, RewardType.MONEY));
