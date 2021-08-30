@@ -67,7 +67,7 @@ public class PlayerListener implements Listener {
             }
         }
 
-        if (Main.getServerType() == ServerType.ANARCHY) {
+        if (Main.getInstance().getServerType() == ServerType.ANARCHY) {
             if (Main.getInstance().getMySQL().getSettings(e.getPlayer(), "hud_bossbar") == 1) {
                 assert Main.getInstance().getCompassManager() != null;
                 Main.getInstance().getCompassManager().addPlayer(e.getPlayer());
@@ -81,7 +81,7 @@ public class PlayerListener implements Listener {
             p.sendMessage("");
         }
 
-        if (Main.getServerType() == ServerType.VANILLA) {
+        if (Main.getInstance().getServerType() == ServerType.VANILLA) {
             Main.getInstance().getMySQL().registerDragonSlayer(e.getPlayer());
         }
 
@@ -140,7 +140,7 @@ public class PlayerListener implements Listener {
                 Main.getInstance().getScoreboardManager().removePlayer(p);
             }
 
-            if (Main.getServerType() == ServerType.ANARCHY) {
+            if (Main.getInstance().getServerType() == ServerType.ANARCHY) {
                 assert Main.getInstance().getCompassManager() != null;
                 Main.getInstance().getCompassManager().removePlayer(e.getPlayer());
             }
@@ -206,7 +206,7 @@ public class PlayerListener implements Listener {
         Player p = e.getPlayer();
 
         // Pouze Creative
-        if (Main.getServerType() != ServerType.CREATIVE) {
+        if (Main.getInstance().getServerType() != ServerType.CREATIVE) {
             return;
         }
 

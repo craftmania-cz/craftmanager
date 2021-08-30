@@ -28,11 +28,11 @@ public class VIP_command extends BaseCommand {
     public void openMenu(CommandSender sender) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            if (Main.getServerType() == ServerType.SURVIVAL
-                    || Main.getServerType() == ServerType.SKYBLOCK
-                    || Main.getServerType() == ServerType.CREATIVE
-                    || Main.getServerType() == ServerType.PRISON
-                    || Main.getServerType() == ServerType.VANILLA) {
+            if (Main.getInstance().getServerType() == ServerType.SURVIVAL
+                    || Main.getInstance().getServerType() == ServerType.SKYBLOCK
+                    || Main.getInstance().getServerType() == ServerType.CREATIVE
+                    || Main.getInstance().getServerType() == ServerType.PRISON
+                    || Main.getInstance().getServerType() == ServerType.VANILLA) {
                 SmartInventory.builder().size(5, 9).title("[VIP] Menu").provider(new VIPMenu_inv()).build().open(player);
             } else {
                 ChatInfo.INFO.send(player, "Na tomto serveru nelze zobrazit VIP, jelikož zde zatím žádné není");

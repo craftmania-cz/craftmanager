@@ -1,6 +1,7 @@
 package cz.wake.manager;
 
 import co.aikar.commands.PaperCommandManager;
+import cz.craftmania.crafteconomy.objects.LevelType;
 import cz.craftmania.craftlibs.sentry.CraftSentry;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.servers.*;
@@ -74,7 +75,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private static Main instance;
 
     // Servery type
-    private static ServerType serverType = ServerType.UNKNOWN;
+    private ServerType serverType = ServerType.UNKNOWN;
+    private LevelType levelType = null;
 
     // Sentry
     private CraftSentry sentry = null;
@@ -181,6 +183,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false));
 
         // Načtení Cshopu
+        levelType = resolveLevelType();
         this.cshopManager = new CshopManager(this);
         this.cshopManager.loadCshop();
 
@@ -383,8 +386,12 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         return getConfig().getBoolean("d_msgs.enabled");
     }
 
-    public static ServerType getServerType() {
-        return serverType;
+    public ServerType getServerType() {
+        return this.serverType;
+    }
+
+    public LevelType getLevelType() {
+        return this.levelType;
     }
 
     private ServerType resolveServerType() {
@@ -411,6 +418,23 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         } else {
             return ServerType.UNKNOWN;
         }
+    }
+
+    @Nullable
+    private LevelType resolveLevelType() {
+        String type = getInstance().getConfig().getString("server");
+        if (type == null) {
+            return null;
+        }
+        return switch (type) {
+            case "survival" -> LevelType.SURVIVAL_LEVEL;
+            case "skyblock" -> LevelType.SKYBLOCK_LEVEL;
+            case "creative" -> LevelType.CREATIVE_LEVEL;
+            case "vanilla" -> LevelType.VANILLA_LEVEL;
+            case "anarchy" -> LevelType.ANARCHY_LEVEL;
+            case "prison" -> LevelType.PRISON_LEVEL;
+            default -> null;
+        };
     }
 
     public CshopManager getCshopManager() {

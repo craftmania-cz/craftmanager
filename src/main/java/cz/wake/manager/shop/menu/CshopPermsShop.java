@@ -20,10 +20,10 @@ import java.util.ArrayList;
 
 public class CshopPermsShop implements InventoryProvider {
 
-    private final ServerType serverType;
+    private final LevelType levelType;
 
-    public CshopPermsShop(ServerType serverType) {
-        this.serverType = serverType;
+    public CshopPermsShop(LevelType levelType) {
+        this.levelType = levelType;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class CshopPermsShop implements InventoryProvider {
             final ArrayList<String> lore = new ArrayList<>();
             lore.addAll(permissionItem.getLore());
 
-            if (!(LevelAPI.getLevel(player, LevelType.SURVIVAL_LEVEL) >= permissionItem.getRequiredLevel())) { // Nemá dostatečný lvl
+            if (!(LevelAPI.getLevel(player, this.levelType) >= permissionItem.getRequiredLevel())) { // Nemá dostatečný lvl
                 items.add(ClickableItem.empty(new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
                         .setName("§c" + permissionItem.getName()).setLore("§7Nemáš požadovaný lvl: " + permissionItem.getRequiredLevel()).build()));
                 return;
@@ -57,7 +57,7 @@ public class CshopPermsShop implements InventoryProvider {
                         click -> {
                             CraftCoinsAPI.takeCoins(player, permissionItem.getPrice());
                             player.sendMessage("§aZakoupil jsi si " + permissionItem.getName() + "!");
-                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set " + permissionItem.getPermision() + " " + Main.getServerType().name.toLowerCase());
+                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set " + permissionItem.getPermision() + " " + Main.getInstance().getServerType().name.toLowerCase());
                             player.closeInventory();
                         }));
                 return;
@@ -70,7 +70,7 @@ public class CshopPermsShop implements InventoryProvider {
         ClickableItem[] c = new ClickableItem[items.size()];
         c = items.toArray(c);
         pagination.setItems(c);
-        pagination.setItemsPerPage(14);
+        pagination.setItemsPerPage(18);
 
         if (items.size() > 0 && !pagination.isLast()) {
             contents.set(5, 7, ClickableItem.of(new ItemBuilder(Material.PAPER).setName("§f§lDalší stránka").build(), e -> {
@@ -84,10 +84,10 @@ public class CshopPermsShop implements InventoryProvider {
         }
 
         contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.ARROW).setName("§aZpět do menu").build(), e -> {
-            SmartInventory.builder().size(6, 9).title("[" + Main.getServerType().getFormatedname() + "] Coinshop").provider(new CshopMainMenu()).build().open(player);
+            SmartInventory.builder().size(6, 9).title("[" + Main.getInstance().getServerType().getFormatedname() + "] Coinshop").provider(new CshopMainMenu()).build().open(player);
         }));
 
-        SlotIterator slotIterator = contents.newIterator("cshop-perms", SlotIterator.Type.HORIZONTAL, 2, 1);
+        SlotIterator slotIterator = contents.newIterator("cshop-perms", SlotIterator.Type.HORIZONTAL, 1, 0);
         slotIterator = slotIterator.allowOverride(false);
         pagination.addToIterator(slotIterator);
 

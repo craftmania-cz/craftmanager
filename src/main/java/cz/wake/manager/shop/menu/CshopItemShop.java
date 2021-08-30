@@ -9,10 +9,8 @@ import cz.craftmania.craftcore.inventory.builder.content.Pagination;
 import cz.craftmania.craftcore.inventory.builder.content.SlotIterator;
 import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
 import cz.craftmania.crafteconomy.api.LevelAPI;
-import cz.craftmania.crafteconomy.managers.BasicManager;
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.RewardType;
-import cz.wake.manager.utils.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -20,13 +18,6 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 
 public class CshopItemShop implements InventoryProvider {
-
-    private final ServerType serverType;
-    private BasicManager basicManager = new BasicManager();
-
-    public CshopItemShop(ServerType serverType) {
-        this.serverType = serverType;
-    }
 
     @Override
     public void init(Player player, InventoryContents contents) {
@@ -39,7 +30,7 @@ public class CshopItemShop implements InventoryProvider {
 
         Main.getInstance().getCshopManager().getItemsShopItems().forEach(voteItem -> {
 
-            if (!(LevelAPI.getLevel(player, basicManager.getLevelByServer()) >= voteItem.getRequiredLevel())) { // Nemá dostatečný lvl
+            if (!(LevelAPI.getLevel(player, Main.getInstance().getLevelType()) >= voteItem.getRequiredLevel())) { // Nemá dostatečný lvl
                 items.add(ClickableItem.empty(new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
                         .setName("§c" + voteItem.getName()).setLore("§7Nemáš požadovaný lvl: " + voteItem.getRequiredLevel()).build()));
                 return;
@@ -79,7 +70,7 @@ public class CshopItemShop implements InventoryProvider {
         }
 
         contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.ARROW).setName("§aZpět do menu").build(), e -> {
-            SmartInventory.builder().size(6, 9).title("[" + Main.getServerType().getFormatedname() + "] Coinshop").provider(new CshopMainMenu()).build().open(player);
+            SmartInventory.builder().size(6, 9).title("[" + Main.getInstance().getServerType().getFormatedname() + "] Coinshop").provider(new CshopMainMenu()).build().open(player);
         }));
 
         SlotIterator slotIterator = contents.newIterator("cshop-items", SlotIterator.Type.HORIZONTAL, 1, 0);

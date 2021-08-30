@@ -602,7 +602,7 @@ public class VIPMenu_inv implements InventoryProvider {
         contents.fillRow(contents.inventory().getRows()-1, ClickableItem.empty(itemMaterial));
     }
     private String getCurrentServer() {
-        ServerType currentServer = Main.getServerType();
+        ServerType currentServer = Main.getInstance().getServerType();
         if (currentServer == ServerType.CREATIVE)
             server = "Creative";
         else if (currentServer == ServerType.SURVIVAL)

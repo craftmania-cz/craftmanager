@@ -29,7 +29,7 @@ public class Blocks_command extends BaseCommand {
     public boolean recraftItems(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if (Main.getServerType() == ServerType.ANARCHY) {
+            if (Main.getInstance().getServerType() == ServerType.ANARCHY) {
                 player.sendMessage("§c§l[!] §cNa tomto serveru tato vyhoda neplati!");
             }
             if (player.hasPermission("craftmanager.vip.blocks")) {

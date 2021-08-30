@@ -30,7 +30,7 @@ public class Help_command extends BaseCommand {
     public boolean openHelpMenu(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if (Main.getServerType() == ServerType.PRISON) {
+            if (Main.getInstance().getServerType() == ServerType.PRISON) {
                 player.performCommand("tutorial");
             } else {
                 openMenu(player);
@@ -41,7 +41,7 @@ public class Help_command extends BaseCommand {
 
     //TODO: Převést na nové inventáře
     private void openMenu(Player p) {
-        if (Main.getServerType() == ServerType.SKYBLOCK) {
+        if (Main.getInstance().getServerType() == ServerType.SKYBLOCK) {
             Inventory inv = Bukkit.createInventory(null, 45, "Help pro Skyblock");
 
             ItemStack is = new ItemBuilder(Material.GRASS).setName("§aVytvoření a nastavení ostrova").setLore(
@@ -143,7 +143,7 @@ public class Help_command extends BaseCommand {
 
             p.openInventory(inv);
         }
-        if (Main.getServerType() == ServerType.CREATIVE) {
+        if (Main.getInstance().getServerType() == ServerType.CREATIVE) {
             Inventory inv = Bukkit.createInventory(null, 45, "Help pro Creative");
 
             ItemStack poz = new ItemBuilder(Material.DIRT).setName("§aZákladní správa pozemku").setLore(
@@ -244,7 +244,7 @@ public class Help_command extends BaseCommand {
 
             p.openInventory(inv);
         }
-        if (Main.getServerType() == ServerType.SURVIVAL) {
+        if (Main.getInstance().getServerType() == ServerType.SURVIVAL) {
             Inventory inv = Bukkit.createInventory(null, 45, "Help pro Survival");
 
             ItemStack res = new ItemBuilder(Material.WOODEN_HOE).setName("§aVytvoření a první kroky s Residencí").setLore(

@@ -34,7 +34,7 @@ public class CshopMainMenu implements InventoryProvider {
 
         ItemStack prava = new ItemBuilder(Material.BOOK).setName("§6Práva (za CraftCoiny)").setLore("§7Nakup si další práva", "§7a získej tak dostatečnou", "§7výhodu oproti ostatním", "§7hráčům na serveru.", "", "§eKlikni pro zobrazení").build();
         contents.set(2, 3, ClickableItem.of(prava, item -> {
-            SmartInventory.builder().size(6, 9).title("Práva za CraftCoiny").provider(new CshopPermsShop(Main.getServerType())).build().open(player);
+            SmartInventory.builder().size(6, 9).title("Práva za CraftCoiny").provider(new CshopPermsShop(Main.getInstance().getLevelType())).build().open(player);
         }));
 
         ItemStack voteShop = new ItemBuilder(Material.APPLE).setName("§aOdměny (za VoteTokeny)").setLore("§7Vyber si odměnu", "§7za hlasování podle sebe!", "", "§eKliknutím zobrazíš").build();
@@ -44,7 +44,7 @@ public class CshopMainMenu implements InventoryProvider {
 
         ItemStack itemShop = new ItemBuilder(Material.FEATHER).setName("§6Itemy (za CraftCoiny)").setLore("§7Kup si zajímavé itemy", "§7a získej tak menší bonusy", "§7k hraní na serveru.", "", "§eKlikni pro zobrazení").build();
         contents.set(2, 7, ClickableItem.of(itemShop, item -> {
-            SmartInventory.builder().size(6, 9).title("Itemy za CraftCoiny").provider(new CshopItemShop(Main.getServerType())).build().open(player);
+            SmartInventory.builder().size(6, 9).title("Itemy za CraftCoiny").provider(new CshopItemShop()).build().open(player);
         }));
 
         ItemStack eventShop = new ItemBuilder(Material.NAUTILUS_SHELL).setName("§dEvent Shop (za Event Points)").setLore("§7Hraješ na našem Event Serveru?", "§7Tak přímo pro tebe zde máme", "§7tento shop, s odměnami", "§7které se ti budou líbit!", "", "§eKlikni pro zobrazení").build();

@@ -48,7 +48,7 @@ public class CshopEventShop implements InventoryProvider {
                 items.add(ClickableItem.of(new ItemBuilder(voteItem.getItemStack()).setName("§a" + voteItem.getName()).setLore("§7Cena: §f" + voteItem.getPrice() + " EP").hideAllFlags().build(), click -> {
                     EventPointsAPI.takeEventPoints(player, voteItem.getPrice());
                     player.sendMessage("§aZakoupi jsi si " + voteItem.getName());
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), voteItem.getCommandToExecute().replace("%player%", player.getName()).replace("%server%", Main.getServerType().name().toLowerCase()));
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), voteItem.getCommandToExecute().replace("%player%", player.getName()).replace("%server%", Main.getInstance().getServerType().name().toLowerCase()));
                     player.closeInventory();
                 }));
                 return;
@@ -86,7 +86,7 @@ public class CshopEventShop implements InventoryProvider {
         ClickableItem[] c = new ClickableItem[items.size()];
         c = items.toArray(c);
         pagination.setItems(c);
-        pagination.setItemsPerPage(14);
+        pagination.setItemsPerPage(18);
 
         if (items.size() > 0 && !pagination.isLast()) {
             contents.set(5, 7, ClickableItem.of(new ItemBuilder(Material.PAPER).setName("§f§lDalší stránka").build(), e -> {
@@ -100,10 +100,10 @@ public class CshopEventShop implements InventoryProvider {
         }
 
         contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.ARROW).setName("§aZpět do menu").build(), e -> {
-            SmartInventory.builder().size(6, 9).title("[" + Main.getServerType().getFormatedname() + "] Coinshop").provider(new CshopMainMenu()).build().open(player);
+            SmartInventory.builder().size(6, 9).title("[" + Main.getInstance().getServerType().getFormatedname() + "] Coinshop").provider(new CshopMainMenu()).build().open(player);
         }));
 
-        SlotIterator slotIterator = contents.newIterator("cshop-voteshop", SlotIterator.Type.HORIZONTAL, 2, 1);
+        SlotIterator slotIterator = contents.newIterator("cshop-eventshop", SlotIterator.Type.HORIZONTAL, 1, 0);
         slotIterator = slotIterator.allowOverride(false);
         pagination.addToIterator(slotIterator);
     }

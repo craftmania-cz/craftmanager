@@ -69,7 +69,7 @@ public class CshopCosmeticShop implements InventoryProvider {
         }
 
         contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.ARROW).setName("§aZpět do menu").build(), e -> {
-            SmartInventory.builder().size(6, 9).title("[" + Main.getServerType().getFormatedname() + "] Coinshop").provider(new CshopMainMenu()).build().open(player);
+            SmartInventory.builder().size(6, 9).title("[" + Main.getInstance().getServerType().getFormatedname() + "] Coinshop").provider(new CshopMainMenu()).build().open(player);
         }));
 
         SlotIterator slotIterator = contents.newIterator("cshop-cosmetics", SlotIterator.Type.HORIZONTAL, 1, 0);

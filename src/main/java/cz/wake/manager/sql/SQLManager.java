@@ -298,21 +298,21 @@ public class SQLManager {
 
     private String getServerName() {
         String name = "";
-        if (Main.getServerType() == ServerType.SURVIVAL) {
+        if (Main.getInstance().getServerType() == ServerType.SURVIVAL) {
             name = "surv";
-        } else if (Main.getServerType() == ServerType.SKYBLOCK) {
+        } else if (Main.getInstance().getServerType() == ServerType.SKYBLOCK) {
             name = "sky";
-        } else if (Main.getServerType() == ServerType.CREATIVE) {
+        } else if (Main.getInstance().getServerType() == ServerType.CREATIVE) {
             name = "crea";
-        } else if (Main.getServerType() == ServerType.PRISON) {
+        } else if (Main.getInstance().getServerType() == ServerType.PRISON) {
             name = "prison";
-        } else if (Main.getServerType() == ServerType.VANILLA) {
+        } else if (Main.getInstance().getServerType() == ServerType.VANILLA) {
             name = "vanilla";
-        } else if (Main.getServerType() == ServerType.SKYCLOUD) {
+        } else if (Main.getInstance().getServerType() == ServerType.SKYCLOUD) {
             name = "skycloud";
-        } else if (Main.getServerType() == ServerType.ANARCHY) {
+        } else if (Main.getInstance().getServerType() == ServerType.ANARCHY) {
             name = "anarchy";
-        } else if (Main.getServerType() == ServerType.HARDCORE_VANILLA) {
+        } else if (Main.getInstance().getServerType() == ServerType.HARDCORE_VANILLA) {
             name = "hardcore_vanilla";
         }
         return name;
@@ -328,7 +328,7 @@ public class SQLManager {
                     conn = pool.getConnection();
                     ps = conn.prepareStatement("INSERT INTO at_commands (nick,server,command,time) VALUES (?,?,?,?);");
                     ps.setString(1, p.getName());
-                    ps.setString(2, Main.getServerType().name().toLowerCase());
+                    ps.setString(2, Main.getInstance().getServerType().name().toLowerCase());
                     ps.setString(3, command);
                     ps.setLong(4, System.currentTimeMillis());
                     ps.executeUpdate();

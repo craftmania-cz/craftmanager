@@ -88,7 +88,7 @@ public class CshopVoteShop implements InventoryProvider {
                 items.add(ClickableItem.of(new ItemBuilder(voteItem.getItemStack()).setName("§b" + voteItem.getName()).setLore("§7Cena: §f" + voteItem.getPrice() + " VT").hideAllFlags().build(), click -> {
                     VoteTokensAPI.takeVoteTokens(player, voteItem.getPrice());
                     voteItem.getPermisions().forEach((permission) -> {
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission settemp " + permission + " true " + voteItem.getTimed() + "h " + Main.getServerType().name.toLowerCase());
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission settemp " + permission + " true " + voteItem.getTimed() + "h " + Main.getInstance().getServerType().name.toLowerCase());
                     });
                     player.sendMessage("§aZakoupi jsi si §f" + voteItem.getName());
                     player.closeInventory();
@@ -101,7 +101,7 @@ public class CshopVoteShop implements InventoryProvider {
         ClickableItem[] c = new ClickableItem[items.size()];
         c = items.toArray(c);
         pagination.setItems(c);
-        pagination.setItemsPerPage(14);
+        pagination.setItemsPerPage(18);
 
         if (items.size() > 0 && !pagination.isLast()) {
             contents.set(5, 7, ClickableItem.of(new ItemBuilder(Material.PAPER).setName("§f§lDalší stránka").build(), e -> {
@@ -115,10 +115,10 @@ public class CshopVoteShop implements InventoryProvider {
         }
 
         contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.ARROW).setName("§aZpět do menu").build(), e -> {
-            SmartInventory.builder().size(6, 9).title("[" + Main.getServerType().getFormatedname() + "] Coinshop").provider(new CshopMainMenu()).build().open(player);
+            SmartInventory.builder().size(6, 9).title("[" + Main.getInstance().getServerType().getFormatedname() + "] Coinshop").provider(new CshopMainMenu()).build().open(player);
         }));
 
-        SlotIterator slotIterator = contents.newIterator("cshop-voteshop", SlotIterator.Type.HORIZONTAL, 2, 1);
+        SlotIterator slotIterator = contents.newIterator("cshop-voteshop", SlotIterator.Type.HORIZONTAL, 1, 0);
         slotIterator = slotIterator.allowOverride(false);
         pagination.addToIterator(slotIterator);
 

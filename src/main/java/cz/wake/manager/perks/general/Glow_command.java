@@ -26,7 +26,7 @@ public class Glow_command extends BaseCommand {
     public void changeGlowEffect(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if (Main.getServerType() == ServerType.ANARCHY) {
+            if (Main.getInstance().getServerType() == ServerType.ANARCHY) {
                 ChatInfo.DANGER.send(player, "Na tomto serveru tato výhoda neplatí!");
                 return;
             }

@@ -38,7 +38,7 @@ public class BeaconCommand extends BaseCommand implements Listener {
             Player player = (Player) Sender;
             if (player.hasPermission("craftmanager.vip.beacon")) {
 
-                if (Main.getServerType() == ServerType.VANILLA || Main.getServerType() == ServerType.ANARCHY) {
+                if (Main.getInstance().getServerType() == ServerType.VANILLA || Main.getInstance().getServerType() == ServerType.ANARCHY) {
                     ChatInfo.DANGER.send(player, "Na tomto serveru tato výhoda neplatí.");
                     return;
                 }

@@ -33,7 +33,7 @@ public class SkullCommand extends BaseCommand {
     public void giveSkull(CommandSender sender) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            if (Main.getServerType() == ServerType.HARDCORE_VANILLA) {
+            if (Main.getInstance().getServerType() == ServerType.HARDCORE_VANILLA) {
                 ChatInfo.DANGER.send(player, "Na tomto serveru tato výhoda neplatí!");
                 return;
             }

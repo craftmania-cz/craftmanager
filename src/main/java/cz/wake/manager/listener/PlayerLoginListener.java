@@ -17,7 +17,7 @@ public class PlayerLoginListener implements Listener {
         int reservedSlots = Main.getInstance().getConfig().getInt("reservedSlots");
         int playerCount = Bukkit.getOnlinePlayers().size();
 
-        if (Main.getServerType() == ServerType.ANARCHY) {
+        if (Main.getInstance().getServerType() == ServerType.ANARCHY) {
             if (player.hasPermission("craftmania.at")) {
                 return;
             }
