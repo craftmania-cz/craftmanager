@@ -109,6 +109,8 @@ public class CshopManager {
         eventShopItems.add(new VoteItem().setName("50x CraftCoins").setPrice(5).setEconomyReward(50, RewardType.CRAFTCOINS));
         eventShopItems.add(new VoteItem().setName("100x CraftCoins").setPrice(10).setEconomyReward(100, RewardType.CRAFTCOINS));
         eventShopItems.add(new VoteItem().setName("1x CraftToken").setPrice(200).setEconomyReward(1, RewardType.CRAFTTOKEN));
+        eventShopItems.add(new VoteItem().setName("§bČepice: §fCandy").setPrice(50).setCommandToExecute("lp user %player% permission set craftmanager.hats.candy_hat"));
+        eventShopItems.add(new VoteItem().setName("§bČepice: §fTiki Mask").setPrice(50).setCommandToExecute("lp user %player% permission set craftmanager.hats.candy_hat"));
         if (Main.getInstance().getServerType() == ServerType.CREATIVE || Main.getInstance().getServerType() == ServerType.SKYCLOUD || Main.getInstance().getServerType() == ServerType.SURVIVAL || Main.getInstance().getServerType() == ServerType.SKYBLOCK) {
             eventShopItems.add(new VoteItem().setName("ArmorStandEditor (2h)").setPrice(10).setCommandToExecute("lp user %player% permission settemp asedit.* true 2h %server%"));
         }
