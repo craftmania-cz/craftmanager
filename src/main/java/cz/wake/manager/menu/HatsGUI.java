@@ -275,6 +275,11 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(), "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.tiki_mask"));
 
+        list.add(new CosmeticItem().setName("§cDarth Vader")
+                .setItemStack(Hats.DARTH_VADER.getPureItemStack())
+                .setLore("", "§aZískáno: §fVotePass 4/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.darth_vader"));
+
         return list;
     }
 

@@ -19,6 +19,7 @@ class CosmeticItem {
     private DisguiseType disguiseType = null;
     private boolean babyType = true; // true = false WTF
     private DyeColor sheepColor = DyeColor.WHITE;
+    private boolean isPowered = false;
 
     public CosmeticItem() {};
 
@@ -102,5 +103,14 @@ class CosmeticItem {
 
     public DyeColor getSheepColor() {
         return sheepColor;
+    }
+
+    public boolean isPowered() {
+        return isPowered;
+    }
+
+    public CosmeticItem setPowered(boolean powered) {
+        isPowered = powered;
+        return this;
     }
 }

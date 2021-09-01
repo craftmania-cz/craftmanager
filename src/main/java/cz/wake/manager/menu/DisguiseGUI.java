@@ -14,6 +14,7 @@ import me.libraryaddict.disguise.disguisetypes.FlagWatcher;
 import me.libraryaddict.disguise.disguisetypes.MiscDisguise;
 import me.libraryaddict.disguise.disguisetypes.MobDisguise;
 import me.libraryaddict.disguise.disguisetypes.watchers.CatWatcher;
+import me.libraryaddict.disguise.disguisetypes.watchers.CreeperWatcher;
 import me.libraryaddict.disguise.disguisetypes.watchers.SheepWatcher;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
@@ -101,6 +102,19 @@ public class DisguiseGUI implements InventoryProvider {
                 .setDisguiseType(DisguiseType.STRAY)
                 .setRequiredPermission("craftmanager.disguise.stray"));
 
+        list.add(new CosmeticItem().setName("§aCreeper")
+                .setItemStack(Material.CREEPER_HEAD)
+                .setLore("§8Kliknutím se změníš na Creepera.")
+                .setDisguiseType(DisguiseType.CREEPER)
+                .setRequiredPermission("craftmanager.disguise.creeper"));
+
+        list.add(new CosmeticItem().setName("§aCreeper [Powered]")
+                .setItemStack(Material.CREEPER_HEAD)
+                .setLore("§8Kliknutím se změníš na Creepera.")
+                .setDisguiseType(DisguiseType.CREEPER)
+                .setPowered(true)
+                .setRequiredPermission("craftmanager.disguise.creeper.powered"));
+
         return list;
     }
 
@@ -149,6 +163,10 @@ public class DisguiseGUI implements InventoryProvider {
                     assert localLivingWatcher instanceof CatWatcher;
                     CatWatcher catWatcher = (CatWatcher) localLivingWatcher;
                     catWatcher.setCollarColor(cosmeticItem.getSheepColor());
+                }
+                if (cosmeticItem.getDisguiseType() == DisguiseType.CREEPER) {
+                    CreeperWatcher creeperWatcher = (CreeperWatcher) localLivingWatcher;
+                    creeperWatcher.setPowered(cosmeticItem.isPowered());
                 }
                 player.getOpenInventory().close();
                 DisguiseAPI.disguiseToAll(player, localDisguise);

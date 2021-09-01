@@ -115,6 +115,12 @@ public class CosAdmin_command extends BaseCommand {
                 this.givePlayerItemOrDrop(onlinePlayer, woodenBow);
                 sender.sendMessage("§eDal jsi hráči " + player + " Forest Bow!");
                 break;
+            case "lightsaber-red":
+                ItemStack lightSaberRed = new ItemBuilder(Swords.LIGHTSABER_RED.getPureItemStack())
+                        .setName("§e§lRed Lighsaber").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, lightSaberRed);
+                sender.sendMessage("§eDal jsi hráči " + player + " Red Lightsaber!");
+                break;
         }
     }
 
