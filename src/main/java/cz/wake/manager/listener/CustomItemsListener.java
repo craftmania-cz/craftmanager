@@ -1,5 +1,6 @@
 package cz.wake.manager.listener;
 
+import cz.craftmania.craftlibs.utils.ChatInfo;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,6 +10,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Iterator;
@@ -63,5 +65,20 @@ public class CustomItemsListener implements Listener {
     public void onDeath(final PlayerDeathEvent event) {
         List<ItemStack> list = event.getDrops();
         list.removeIf(item -> item.getItemMeta().hasCustomModelData() && item.getType() == Material.PAPER);
+    }
+
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onCosmeticApplyOnEntity(final PlayerInteractEntityEvent event) {
+        ItemStack itemStack = event.getPlayer().getItemInHand();
+        if (itemStack.getItemMeta() == null) {
+            return;
+        }
+        if (isItemCosmetic(itemStack)) {
+            event.setCancelled(true);
+        }
+    }
+
+    private boolean isItemCosmetic(ItemStack itemStack) {
+        return itemStack.getItemMeta().hasCustomModelData() && itemStack.getType() == Material.LIME_DYE;
     }
 }
