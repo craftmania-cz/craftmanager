@@ -9,15 +9,13 @@ import cz.craftmania.craftcore.inventory.builder.content.Pagination;
 import cz.craftmania.craftcore.inventory.builder.content.SlotIterator;
 import cz.craftmania.craftlibs.utils.ChatInfo;
 import me.libraryaddict.disguise.DisguiseAPI;
-import me.libraryaddict.disguise.disguisetypes.DisguiseType;
-import me.libraryaddict.disguise.disguisetypes.FlagWatcher;
-import me.libraryaddict.disguise.disguisetypes.MiscDisguise;
-import me.libraryaddict.disguise.disguisetypes.MobDisguise;
+import me.libraryaddict.disguise.disguisetypes.*;
 import me.libraryaddict.disguise.disguisetypes.watchers.CatWatcher;
 import me.libraryaddict.disguise.disguisetypes.watchers.CreeperWatcher;
 import me.libraryaddict.disguise.disguisetypes.watchers.SheepWatcher;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
+import org.bukkit.entity.Cat;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -85,7 +83,7 @@ public class DisguiseGUI implements InventoryProvider {
                 .setItemStack(Material.BLACK_CARPET)
                 .setLore("§8Kliknutím se změníš na Cat.")
                 .setDisguiseType(DisguiseType.CAT)
-                .setSheepColor(DyeColor.BLACK)
+                .setCatType(Cat.Type.BLACK)
                 .setRequiredPermission("craftmanager.disguise.cat.black"));
 
         list.add(new CosmeticItem().setName("§cCat: Black [Baby]")
@@ -93,7 +91,7 @@ public class DisguiseGUI implements InventoryProvider {
                 .setLore("§8Kliknutím se změníš na Cat.")
                 .setDisguiseType(DisguiseType.CAT)
                 .setBabyType()
-                .setSheepColor(DyeColor.BLACK)
+                .setCatType(Cat.Type.BLACK)
                 .setRequiredPermission("craftmanager.disguise.cat.black"));
 
         list.add(new CosmeticItem().setName("§dStray")
@@ -162,7 +160,7 @@ public class DisguiseGUI implements InventoryProvider {
                 if (cosmeticItem.getDisguiseType() == DisguiseType.CAT) {
                     assert localLivingWatcher instanceof CatWatcher;
                     CatWatcher catWatcher = (CatWatcher) localLivingWatcher;
-                    catWatcher.setCollarColor(cosmeticItem.getSheepColor());
+                    catWatcher.setType(cosmeticItem.getCatType());
                 }
                 if (cosmeticItem.getDisguiseType() == DisguiseType.CREEPER) {
                     CreeperWatcher creeperWatcher = (CreeperWatcher) localLivingWatcher;

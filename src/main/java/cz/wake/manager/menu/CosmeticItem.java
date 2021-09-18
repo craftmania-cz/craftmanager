@@ -4,6 +4,7 @@ import cz.craftmania.craftcore.builders.items.ItemBuilder;
 import me.libraryaddict.disguise.disguisetypes.DisguiseType;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
+import org.bukkit.entity.Cat;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ class CosmeticItem {
     private DisguiseType disguiseType = null;
     private boolean babyType = true; // true = false WTF
     private DyeColor sheepColor = DyeColor.WHITE;
+    private Cat.Type catType = Cat.Type.BLACK;
     private boolean isPowered = false;
 
     public CosmeticItem() {};
@@ -103,6 +105,15 @@ class CosmeticItem {
 
     public DyeColor getSheepColor() {
         return sheepColor;
+    }
+
+    public CosmeticItem setCatType(Cat.Type type) {
+        this.catType = type;
+        return this;
+    }
+
+    public Cat.Type getCatType() {
+        return catType;
     }
 
     public boolean isPowered() {
