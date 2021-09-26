@@ -34,10 +34,9 @@ clean { delete "./build" }
 repositories {
     flatDir { dirs 'lib' }
     mavenCentral()
-    maven { url "https://packages.craftmania.cz/repository/craftmania/" }
-    maven { url "https://packages.craftmania.cz/repository/third-party/" }
     maven { url "https://papermc.io/repo/repository/maven-public/" }
     maven { url "https://repo.maven.apache.org/maven2" }
+    maven { url "https://repo.md-5.net/content/groups/public/" }
     maven { url "https://repo.codemc.org/repository/maven-public/" } // HolographicDisplays
     maven { url "https://jitpack.io" }
     maven { url 'https://repo.extendedclip.com/content/repositories/placeholderapi/' }
@@ -81,8 +80,8 @@ dependencies {
     compileOnly group: 'cz.craftmania.craftlibs', name:'craftlibs', version: '1.1.8'
     compileOnly name: 'spigot-1.17.1'
 
+    compileOnly group: 'LibsDisguises', name: 'LibsDisguises', version: '10.0.26'
     compileOnly group: 'me.clip', name: 'placeholderapi', version: '2.10.4'
-    compileOnly group: 'me.libraryaddict.disguise', name: 'libsdisguise', version: '10.0.5'
     compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.5.0"
     compileOnly group: "com.github.MilkBowl", name: "VaultAPI", version: "1.7"
     compileOnly group: 'com.gmail.filoghost.holographicdisplays', name: 'holographicdisplays-api', version: '2.3.3-SNAPSHOT'
