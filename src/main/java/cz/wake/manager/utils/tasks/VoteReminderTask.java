@@ -16,6 +16,8 @@ import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
+import static cz.wake.manager.utils.Request.readJsonFromUrl;
+
 public class VoteReminderTask implements Runnable {
 
     public static HashMap<Player, Long> cooldown = new HashMap<>();
@@ -50,19 +52,6 @@ public class VoteReminderTask implements Runnable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-    public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
-        URLConnection urlConnection = new URL(url).openConnection();
-        urlConnection.addRequestProperty("User-Agent", "Mozilla/5.0");
-        InputStream is = urlConnection.getInputStream();
-        try {
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-            String jsonText = IOUtils.toString(rd);
-            return new JSONObject(jsonText);
-        } finally {
-            is.close();
         }
     }
 }

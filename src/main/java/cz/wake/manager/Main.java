@@ -25,6 +25,7 @@ import cz.wake.manager.sql.SQLManager;
 import cz.wake.manager.utils.*;
 import cz.wake.manager.utils.configs.Config;
 import cz.wake.manager.utils.configs.ConfigAPI;
+import cz.wake.manager.utils.configs.CrazyCratesConfig;
 import cz.wake.manager.utils.scoreboard.ScoreboardManager;
 import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.*;
@@ -41,6 +42,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.util.*;
 
 public class Main extends JavaPlugin implements PluginMessageListener {
@@ -115,6 +117,14 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         this.getServer().clearRecipes();
         serverRecipes.forEach((recipe -> this.getServer().addRecipe(recipe)));
+
+        // Generování head configu pouze pokud head config existuje
+        if (new File(Main.getInstance().getServer().getWorldContainer().getAbsolutePath() + "/plugins/CrazyCrates/Crates/head.yml").exists()) {
+            Log.normalMessage("CrazyCrates head config existuje. Obnovuji jeho obsah podle aktuálního AT.");
+            CrazyCratesConfig.generateHeadCrate();
+        } else {
+            Log.normalMessage("CrazyCrates head config neexistuje.");
+        }
     }
 
     @Override
