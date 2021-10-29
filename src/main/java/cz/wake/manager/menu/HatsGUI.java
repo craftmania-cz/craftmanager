@@ -280,6 +280,31 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("", "§aZískáno: §fVotePass 4/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.darth_vader"));
 
+        list.add(new CosmeticItem().setName("§cImpostor")
+                .setItemStack(Hats.IMPOSTOR.getPureItemStack())
+                .setLore("", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_RARE.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.impostor"));
+
+        list.add(new CosmeticItem().setName("§eWitch Hat")
+                .setItemStack(Hats.WITCH.getPureItemStack())
+                .setLore("", "§aZískáno: §fHalloween Minihra", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.witch_hat"));
+
+        list.add(new CosmeticItem().setName("§eShark")
+                .setItemStack(Hats.SHARK.getPureItemStack())
+                .setLore("", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.shark_hat"));
+
+        list.add(new CosmeticItem().setName("§cReaper Hoodie")
+                .setItemStack(Hats.REAPER_HOODIE.getPureItemStack())
+                .setLore("", "§aZískáno: §fHalloween Minihra", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.reaper_hoodie"));
+
+        list.add(new CosmeticItem().setName("§6Pumpkin King")
+                .setItemStack(Hats.PUMPKIN_KING.getPureItemStack())
+                .setLore("", "§aZískáno: §fPřipojení na Halloween 2021", "§aRarita: §f" + TextureItems.RARITY_RARE.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.pumpkin_king"));
+
         return list;
     }
 

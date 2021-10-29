@@ -46,81 +46,81 @@ public class CosAdmin_command extends BaseCommand {
             loreNick = onlinePlayer.getName();
         }
         switch (type) {
-            case "ice_rose_set":
+            case "ice_rose_set" -> {
                 ItemStack ice_rose_sword = new ItemBuilder(Swords.ICE_ROSE_SWORD.getPureItemStack())
                         .setName("§b§lIce Rose Sword").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, ice_rose_sword);
-
                 ItemStack ice_rose_pickaxe = new ItemBuilder(Pickaxes.ICE_ROSE_PICKAXE.getPureItemStack())
                         .setName("§b§lIce Rose Pickaxe").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, ice_rose_pickaxe);
-
                 ItemStack ice_rose_axe = new ItemBuilder(Axes.ICE_ROSE_AXE.getPureItemStack())
                         .setName("§b§lIce Rose Axe").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, ice_rose_axe);
-
                 ItemStack ice_rose_hoe = new ItemBuilder(Hoes.ICE_ROSE_HOE.getPureItemStack())
                         .setName("§b§lIce Rose Hoe").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, ice_rose_hoe);
-
                 ItemStack ice_rose_shovel = new ItemBuilder(Shovels.ICE_ROSE_SHOVEL.getPureItemStack())
                         .setName("§b§lIce Rose Shovel").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, ice_rose_shovel);
-
                 ItemStack ice_rose_crown = new ItemBuilder(Hats.ICE_ROSE_CROWN.getPureItemStack())
                         .setName("§b§lIce Rose Crown").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender(), "§8Klikni pravým k nasazení.").build();
                 this.givePlayerItemOrDrop(onlinePlayer, ice_rose_crown);
-
                 sender.sendMessage("§eDal jsi hráči " + player + " Ice Rose Set!");
-                break;
-            case "pomlazka":
+            }
+            case "pomlazka" -> {
                 ItemStack pomlazka = new ItemBuilder(HandItems.EASTER_STICK.getPureItemStack())
                         .setName("§9§lPomlázka").setLore("§7Rarita: §f" + TextureItems.RARITY_LIMITED.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, pomlazka);
                 sender.sendMessage("§eDal jsi hráči " + player + " Pomlázku!");
-                break;
-            case "suitcase":
+            }
+            case "suitcase" -> {
                 ItemStack suitcase = new ItemBuilder(HandItems.KUFR.getPureItemStack())
                         .setName("§e§lKufr").setLore("§7Item naprosto k ničemu", "§7proč ale prostě neodjet", "§7na dovolenou?!", "§7Rarita: §f" + TextureItems.RARITY_UNCOMMON.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, suitcase);
                 sender.sendMessage("§eDal jsi hráči " + player + " Suitcase!");
-                break;
-            case "katana":
+            }
+            case "katana" -> {
                 ItemStack katana = new ItemBuilder(Swords.KATANA.getPureItemStack())
                         .setName("§e§lKatana").setLore("§7Rarita: §f" + TextureItems.RARITY_RARE.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, katana);
                 sender.sendMessage("§eDal jsi hráči " + player + " Katana!");
-                break;
-            case "enderite-sword":
+            }
+            case "enderite-sword" -> {
                 ItemStack enderite = new ItemBuilder(Swords.ENDERITE.getPureItemStack())
                         .setName("§9§lEnderite").setLore("§7Rarita: §f" + TextureItems.RARITY_RARE.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, enderite);
                 sender.sendMessage("§eDal jsi hráči " + player + " Enderite Sword!");
-                break;
-            case "baby-yoda":
+            }
+            case "baby-yoda" -> {
                 ItemStack baby_yoda = new ItemBuilder(HandItems.BABY_YODA.getPureItemStack())
                         .setName("§a§lBaby Yoda").setLore("§8Malý Yoda, přímo do ruky", "§8ochraňuj ho a neztrať ho.", "§7Majitel: §f" + onlinePlayer.getName(), "§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, baby_yoda);
                 sender.sendMessage("§eDal jsi hráči " + player + " Baby Yoda!");
-                break;
-            case "forest-sword":
+            }
+            case "forest-sword" -> {
                 ItemStack woodenSword = new ItemBuilder(Swords.FOREST_SWORD.getPureItemStack())
                         .setName("§a§lForest Sword").setLore("§7Rarita: §f" + TextureItems.RARITY_EPIC.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, woodenSword);
                 sender.sendMessage("§eDal jsi hráči " + player + " Forest Sword!");
-                break;
-            case "forest-bow":
+            }
+            case "forest-bow" -> {
                 ItemStack woodenBow = new ItemBuilder(Bows.FOREST.getPureItemStack())
                         .setName("§a§lForest Bow").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, woodenBow);
                 sender.sendMessage("§eDal jsi hráči " + player + " Forest Bow!");
-                break;
-            case "lightsaber-red":
+            }
+            case "lightsaber-red" -> {
                 ItemStack lightSaberRed = new ItemBuilder(Swords.LIGHTSABER_RED.getPureItemStack())
                         .setName("§e§lRed Lighsaber").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, lightSaberRed);
                 sender.sendMessage("§eDal jsi hráči " + player + " Red Lightsaber!");
-                break;
+            }
+            case "scythe" -> {
+                ItemStack scythe = new ItemBuilder(Swords.SCYTHE.getPureItemStack())
+                        .setName("§c§lScythe").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, scythe);
+                sender.sendMessage("§eDal jsi hráči " + player + " Scythe!");
+            }
         }
     }
 
