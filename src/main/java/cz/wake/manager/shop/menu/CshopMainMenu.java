@@ -56,6 +56,11 @@ public class CshopMainMenu implements InventoryProvider {
         contents.set(3, 6, ClickableItem.of(cosmeticShop, item -> {
             SmartInventory.builder().size(6, 9).title("Nákup Cosmetics").provider(new CshopCosmeticShop()).build().open(player);
         }));
+
+        ItemStack seasonShop = new ItemBuilder(Material.JACK_O_LANTERN).setName("§6Sezóní shop (SeasonPoints)").setLore("§7Nákup sezóních itemů, cosmetics", "§7a bonusů na servery.", "", "§eKlikni pro zobrazení").build();
+        contents.set(3, 4, ClickableItem.of(seasonShop, item -> {
+            SmartInventory.builder().size(6, 9).title("Sezóní shop").provider(new CshopSeasonShop()).build().open(player);
+        }));
     }
 
     @Override

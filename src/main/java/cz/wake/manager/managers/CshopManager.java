@@ -1,6 +1,7 @@
 package cz.wake.manager.managers;
 
 import cz.craftmania.craftpack.api.Hats;
+import cz.craftmania.craftpack.api.Swords;
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.PermissionItem;
 import cz.wake.manager.shop.types.RewardType;
@@ -17,6 +18,7 @@ public class CshopManager {
     private static List<VoteItem> voteShopItems = new ArrayList<>();
     private static List<VoteItem> itemsShopItems = new ArrayList<>(); // Nice jméno
     private static List<VoteItem> eventShopItems = new ArrayList<>();
+    private static List<VoteItem> seasonShopItems = new ArrayList<>();
     private static List<PermissionItem> cosmeticsShopItems = new ArrayList<>();
 
     private Main plugin;
@@ -34,6 +36,7 @@ public class CshopManager {
         loadItemShopItems();
         loadEventShopItems();
         loadCosmeticShopItems();
+        loadSeasonShopItems();
     }
 
     public List<PermissionItem> getPermsShopItems() {
@@ -53,6 +56,10 @@ public class CshopManager {
     }
 
     public List<PermissionItem> getCosmeticsShopItems() { return cosmeticsShopItems; }
+
+    public List<VoteItem> getSeasonShopItems() {
+        return seasonShopItems;
+    }
 
     private void loadPermsShopItems() {
         if (Main.getInstance().getServerType() == ServerType.SURVIVAL) {
@@ -138,6 +145,18 @@ public class CshopManager {
         cosmeticsShopItems.add(new PermissionItem().setName("§6Pirate Hat").setLore("§7Každý správný pirát má pásku přes oko!").setItemStack(Hats.PIRATE_HAT.getPureItemStack()).setPrice(250).setPermision("craftmanager.hats.pirate_hat"));
         cosmeticsShopItems.add(new PermissionItem().setName("§eHalo Ring").setLore("§7Jen anděl může mít tento kroužek nad hlavou!").setItemStack(Hats.HALO.getPureItemStack()).setPrice(250).setPermision("craftmanager.hats.halo_ring"));
         cosmeticsShopItems.add(new PermissionItem().setName("§bPenguin").setLore("§7Tučnáci jsou všude...").setItemStack(Hats.PENGUIN.getPureItemStack()).setPrice(400).setPermision("craftmanager.hats.penguin"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§cImpostor").setLore("§7Někdo tu je sus a Lilmayu to není?!").setItemStack(Hats.IMPOSTOR.getPureItemStack()).setPrice(300).setPermision("craftmanager.hats.impostor"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§bShark").setLore("§7Zakousl se ti žralok do hlavy..").setItemStack(Hats.SHARK.getPureItemStack()).setPrice(500).setPermision("craftmanager.hats.shark_hat"));
+    }
+
+    private void loadSeasonShopItems() {
+        seasonShopItems.add(new VoteItem().setName("§dWitch Hat").setPrice(70).setItemStack(Hats.WITCH.getPureItemStack()).setCommandToExecute("lp user %player% permission set craftmanager.hats.witch_hat"));
+        seasonShopItems.add(new VoteItem().setName("§cReaper Hoodie").setPrice(150).setItemStack(Hats.REAPER_HOODIE.getPureItemStack()).setCommandToExecute("lp user %player% permission set craftmanager.hats.reaper_hoodie"));
+        seasonShopItems.add(new VoteItem().setName("§cScythe").setPrice(50).setItemStack(Swords.SCYTHE.getPureItemStack()).setCommandToExecute("cosadmin %player% scythe %player%"));
+        seasonShopItems.add(new VoteItem().setName("§bMorph: Zombie").setPrice(25).setItemStack(Material.ZOMBIE_HEAD).setCommandToExecute("lp user %player% permission set craftmanager.disguise.zombie"));
+        seasonShopItems.add(new VoteItem().setName("§bMorph: Zombie Horse").setPrice(35).setItemStack(Material.ZOMBIE_HEAD).setCommandToExecute("lp user %player% permission set craftmanager.disguise.zombie_horse"));
+        seasonShopItems.add(new VoteItem().setName("§bMorph: Zombie Villager").setPrice(50).setItemStack(Material.ZOMBIE_HEAD).setCommandToExecute("lp user %player% permission set craftmanager.disguise.zombie_villager"));
+        seasonShopItems.add(new VoteItem().setName("§e50 CraftCoins").setPrice(15).setItemStack(Material.GOLD_INGOT).setEconomyReward(50, RewardType.CRAFTCOINS));
     }
 
 }

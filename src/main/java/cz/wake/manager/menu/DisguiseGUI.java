@@ -113,6 +113,24 @@ public class DisguiseGUI implements InventoryProvider {
                 .setPowered(true)
                 .setRequiredPermission("craftmanager.disguise.creeper.powered"));
 
+        list.add(new CosmeticItem().setName("§aZombie")
+                .setItemStack(Material.ZOMBIE_HEAD)
+                .setLore("§8Kliknutím se změníš na Zombie.")
+                .setDisguiseType(DisguiseType.ZOMBIE)
+                .setRequiredPermission("craftmanager.disguise.zombie"));
+
+        list.add(new CosmeticItem().setName("§aZombie Horse")
+                .setItemStack(Material.ZOMBIE_HEAD)
+                .setLore("§8Kliknutím se změníš na Zombie Horse.")
+                .setDisguiseType(DisguiseType.ZOMBIE_HORSE)
+                .setRequiredPermission("craftmanager.disguise.zombie_horse"));
+
+        list.add(new CosmeticItem().setName("§aZombie Villager")
+                .setItemStack(Material.ZOMBIE_HEAD)
+                .setLore("§8Kliknutím se změníš na Zombie Villager.")
+                .setDisguiseType(DisguiseType.ZOMBIE_VILLAGER)
+                .setRequiredPermission("craftmanager.disguise.zombie_villager"));
+
         return list;
     }
 
