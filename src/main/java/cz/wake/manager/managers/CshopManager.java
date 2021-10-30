@@ -150,13 +150,13 @@ public class CshopManager {
     }
 
     private void loadSeasonShopItems() {
-        seasonShopItems.add(new VoteItem().setName("§dWitch Hat").setPrice(70).setItemStack(Hats.WITCH.getPureItemStack()).setCommandToExecute("lp user %player% permission set craftmanager.hats.witch_hat"));
+        seasonShopItems.add(new VoteItem().setName("§dWitch Hat").setPrice(50).setItemStack(Hats.WITCH.getPureItemStack()).setCommandToExecute("lp user %player% permission set craftmanager.hats.witch_hat"));
         seasonShopItems.add(new VoteItem().setName("§cReaper Hoodie").setPrice(150).setItemStack(Hats.REAPER_HOODIE.getPureItemStack()).setCommandToExecute("lp user %player% permission set craftmanager.hats.reaper_hoodie"));
-        seasonShopItems.add(new VoteItem().setName("§cScythe").setPrice(50).setItemStack(Swords.SCYTHE.getPureItemStack()).setCommandToExecute("cosadmin %player% scythe %player%"));
+        seasonShopItems.add(new VoteItem().setName("§cScythe").setPrice(100).setItemStack(Swords.SCYTHE.getPureItemStack()).setCommandToExecute("cosadmin %player% scythe %player%"));
         seasonShopItems.add(new VoteItem().setName("§bMorph: Zombie").setPrice(25).setItemStack(Material.ZOMBIE_HEAD).setCommandToExecute("lp user %player% permission set craftmanager.disguise.zombie"));
-        seasonShopItems.add(new VoteItem().setName("§bMorph: Zombie Horse").setPrice(35).setItemStack(Material.ZOMBIE_HEAD).setCommandToExecute("lp user %player% permission set craftmanager.disguise.zombie_horse"));
+        seasonShopItems.add(new VoteItem().setName("§bMorph: Zombie Horse").setPrice(50).setItemStack(Material.ZOMBIE_HEAD).setCommandToExecute("lp user %player% permission set craftmanager.disguise.zombie_horse"));
         seasonShopItems.add(new VoteItem().setName("§bMorph: Zombie Villager").setPrice(50).setItemStack(Material.ZOMBIE_HEAD).setCommandToExecute("lp user %player% permission set craftmanager.disguise.zombie_villager"));
-        seasonShopItems.add(new VoteItem().setName("§e50 CraftCoins").setPrice(15).setItemStack(Material.GOLD_INGOT).setEconomyReward(50, RewardType.CRAFTCOINS));
+        seasonShopItems.add(new VoteItem().setName("§e50 CraftCoins").setPrice(25).setItemStack(Material.GOLD_INGOT).setEconomyReward(50, RewardType.CRAFTCOINS));
     }
 
 }
