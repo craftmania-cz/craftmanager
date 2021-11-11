@@ -121,6 +121,18 @@ public class CosAdmin_command extends BaseCommand {
                 this.givePlayerItemOrDrop(onlinePlayer, scythe);
                 sender.sendMessage("§eDal jsi hráči " + player + " Scythe!");
             }
+            case "swords-scorpion" -> {
+                ItemStack scorpion = new ItemBuilder(Swords.SCORPION.getPureItemStack())
+                        .setName("§e§lScorpion Sword").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, scorpion);
+                sender.sendMessage("§eDal jsi hráči " + player + " Scorpion Sword!");
+            }
+            case "mecha-fist" -> {
+                ItemStack mecha_fist = new ItemBuilder(HandItems.MECHA_FIST.getPureItemStack())
+                        .setName("§c§lMecha-Fist").setLore("§7Rarita: §f" + TextureItems.RARITY_EPIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, mecha_fist);
+                sender.sendMessage("§eDal jsi hráči " + player + " Mecha-Fist!");
+            }
         }
     }
 

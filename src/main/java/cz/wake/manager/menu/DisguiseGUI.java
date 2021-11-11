@@ -131,6 +131,18 @@ public class DisguiseGUI implements InventoryProvider {
                 .setDisguiseType(DisguiseType.ZOMBIE_VILLAGER)
                 .setRequiredPermission("craftmanager.disguise.zombie_villager"));
 
+        list.add(new CosmeticItem().setName("§eGuardian")
+                .setItemStack(Material.PRISMARINE_CRYSTALS)
+                .setLore("§8Kliknutím se změníš na Guardiana.")
+                .setDisguiseType(DisguiseType.GUARDIAN)
+                .setRequiredPermission("craftmanager.disguise.guardian.normal"));
+
+        list.add(new CosmeticItem().setName("§eGuardian [Elder]")
+                .setItemStack(Material.PRISMARINE_CRYSTALS)
+                .setLore("§8Kliknutím se změníš na Guardiana.")
+                .setDisguiseType(DisguiseType.ELDER_GUARDIAN)
+                .setRequiredPermission("craftmanager.disguise.guardian.elder"));
+
         return list;
     }
 

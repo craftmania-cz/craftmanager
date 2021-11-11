@@ -302,8 +302,13 @@ public class HatsGUI implements InventoryProvider {
 
         list.add(new CosmeticItem().setName("§6Pumpkin King")
                 .setItemStack(Hats.PUMPKIN_KING.getPureItemStack())
-                .setLore("", "§aZískáno: §fPřipojení na Halloween 2021", "§aRarita: §f" + TextureItems.RARITY_RARE.getRender(), "", "§eKlikni pro nasazení")
+                .setLore("", "§aZískáno: §fTOP 10 v Halloween 2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(), "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.pumpkin_king"));
+
+        list.add(new CosmeticItem().setName("§9Tetris Hat")
+                .setItemStack(Hats.TETRIS.getPureItemStack())
+                .setLore("", "§aZískáno: §fVotePass 5/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.tetris_hat"));
 
         return list;
     }
