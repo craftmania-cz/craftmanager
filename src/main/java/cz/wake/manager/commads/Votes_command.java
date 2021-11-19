@@ -116,7 +116,7 @@ public class Votes_command extends BaseCommand implements Listener {
                 "§a4. §f5e",
                 "§a5. §f5e",
                 "",
-                "§cKupony jsou zasilany do zprav na webu!").build();
+                "§cKupony jsou zasilany do zprav na Discord!").build();
 
 
         inventory.setItem(0, filler);
@@ -153,7 +153,7 @@ public class Votes_command extends BaseCommand implements Listener {
         if (time + 7200000 < System.currentTimeMillis()) {
             return "§aNyni";
         } else {
-            long calculateMeWaka = (7200000 + 900000) - (System.currentTimeMillis() - time);
+            long calculateMeWaka = 7200000 - (System.currentTimeMillis() - time);
             return "§c" + TimeUtils.formatTime("%hh %mm", calculateMeWaka/1000/60, false);
         }
     }
