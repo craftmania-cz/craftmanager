@@ -180,8 +180,18 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_RARE.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.shrek"));
 
-        list.add(new CosmeticItem().setName("§9Nerdy Glasses")
-                .setItemStack(Hats.NERD_GLASSES.getPureItemStack())
+        list.add(new CosmeticItem().setName("§9Nerdy Glasses 1")
+                .setItemStack(Hats.NERD_GLASSES_1.getPureItemStack())
+                .setLore("", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_COMMON.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.nerdy_glasses"));
+
+        list.add(new CosmeticItem().setName("§9Nerdy Glasses 2")
+                .setItemStack(Hats.NERD_GLASSES_2.getPureItemStack())
+                .setLore("", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_COMMON.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.nerdy_glasses"));
+
+        list.add(new CosmeticItem().setName("§9Nerdy Glasses 3")
+                .setItemStack(Hats.NERD_GLASSES_3.getPureItemStack())
                 .setLore("", "§aZískáno: §f/cshop", "§aRarita: §f" + TextureItems.RARITY_COMMON.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.nerdy_glasses"));
 
@@ -309,6 +319,46 @@ public class HatsGUI implements InventoryProvider {
                 .setItemStack(Hats.TETRIS.getPureItemStack())
                 .setLore("", "§aZískáno: §fVotePass 5/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.tetris_hat"));
+
+        list.add(new CosmeticItem().setName("§6Frontman Mask")
+                .setItemStack(Hats.FRONTMAN_MASK.getPureItemStack())
+                .setLore("", "§aZískáno: §fVánoční kalendář 2021", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.frontman_mask"));
+
+        list.add(new CosmeticItem().setName("§cSanta Hat")
+                .setItemStack(Hats.SANTA_HAT.getPureItemStack())
+                .setLore("", "§aZískáno: §fVánoční kalendář 2021", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.santa_hat"));
+
+        list.add(new CosmeticItem().setName("§cDear Hat")
+                .setItemStack(Hats.SANTA_HAT.getPureItemStack())
+                .setLore("", "§aZískáno: §fVánoční kalendář 2021", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.dear_hat"));
+
+        list.add(new CosmeticItem().setName("§cSnowman Hat")
+                .setItemStack(Hats.SANTA_HAT.getPureItemStack())
+                .setLore("", "§aZískáno: §fVánoční kalendář 2021", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.snowman_hat"));
+
+        list.add(new CosmeticItem().setName("§cSilvester Glasses 1")
+                .setItemStack(Hats.SILVESTER_GLASSES_1.getPureItemStack())
+                .setLore("", "§aZískáno: §fVánoční kalendář 2021", "§aRarita: §f" + TextureItems.RARITY_UNCOMMON.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.silvester_glasses_2021"));
+
+        list.add(new CosmeticItem().setName("§cSilvester Glasses 2")
+                .setItemStack(Hats.SILVESTER_GLASSES_2.getPureItemStack())
+                .setLore("", "§aZískáno: §fVánoční kalendář 2021", "§aRarita: §f" + TextureItems.RARITY_UNCOMMON.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.silvester_glasses_2021"));
+
+        list.add(new CosmeticItem().setName("§cSilvester Glasses 3")
+                .setItemStack(Hats.SILVESTER_GLASSES_3.getPureItemStack())
+                .setLore("", "§aZískáno: §fVánoční kalendář 2021", "§aRarita: §f" + TextureItems.RARITY_UNCOMMON.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.silvester_glasses_2021"));
+
+        list.add(new CosmeticItem().setName("§cSilvester Party Hat 2021")
+                .setItemStack(Hats.PARTY_HAT.getPureItemStack())
+                .setLore("", "§aZískáno: §fVánoční kalendář 2021", "§aRarita: §f" + TextureItems.RARITY_RARE.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.silvester_party_hat_2021"));
 
         return list;
     }

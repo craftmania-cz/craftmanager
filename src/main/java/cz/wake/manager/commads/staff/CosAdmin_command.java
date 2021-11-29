@@ -133,6 +133,28 @@ public class CosAdmin_command extends BaseCommand {
                 this.givePlayerItemOrDrop(onlinePlayer, mecha_fist);
                 sender.sendMessage("§eDal jsi hráči " + player + " Mecha-Fist!");
             }
+            case "ginger-pickaxe" -> {
+                ItemStack gingerPickaxe = new ItemBuilder(Pickaxes.GINGER_PICKAXE.getPureItemStack())
+                        .setName("§6§lGinger Pickaxe").setLore("§7Rarita: §f" + TextureItems.RARITY_EPIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, gingerPickaxe);
+                sender.sendMessage("§eDal jsi hráči " + player + " Ginger-Pickaxe!");
+            }
+            case "frost-set" -> {
+                ItemStack frostSword = new ItemBuilder(Swords.FROST_SWORD.getPureItemStack())
+                        .setName("§b§lFrost Sword").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, frostSword);
+                sender.sendMessage("§eDal jsi hráči " + player + " Frost Sword");
+                ItemStack frostBow = new ItemBuilder(Bows.FROST.getPureItemStack())
+                        .setName("§b§lFrost Bow").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, frostBow);
+                sender.sendMessage("§eDal jsi hráči " + player + " Frost Bow");
+            }
+            case "baseball-bat" -> {
+                ItemStack baseballBat = new ItemBuilder(HandItems.BASEBALL_BAT.getPureItemStack())
+                        .setName("§e§lBaseball Bat").setLore("§7Rarita: §f" + TextureItems.RARITY_UNCOMMON.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, baseballBat);
+                sender.sendMessage("§eDal jsi hráči " + player + " Baseball Bat");
+            }
         }
     }
 
