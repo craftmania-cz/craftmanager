@@ -119,7 +119,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         serverRecipes.forEach((recipe -> this.getServer().addRecipe(recipe)));
 
         // Generování head configu pouze pokud head config existuje
-        if (new File(Main.getInstance().getServer().getWorldContainer().getAbsolutePath() + "/plugins/CrazyCrates/Crates/head.yml").exists()) {
+        if (new File(Main.getInstance().getServer().getWorldContainer().getAbsolutePath() + "/plugins/CrazyCrates/Crates/Head.yml").exists()) {
             Log.normalMessage("CrazyCrates head config existuje. Obnovuji jeho obsah podle aktuálního AT.");
             CrazyCratesConfig.generateHeadCrate();
         } else {
