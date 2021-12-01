@@ -18,6 +18,8 @@ public class VoteItem {
     private String commandToExecute = null;
     private int economyValue = 0; // CraftCoins, CraftTokens co hráč obdrží
     private int requiredLevel = 1;
+    private boolean hideWhenBuy = false;
+    private String hideWhenBuyPermission = "";
     private int timed = 0;
 
     public VoteItem() {
@@ -119,5 +121,19 @@ public class VoteItem {
     public VoteItem setRequiredLevel(int requiredLevel) {
         this.requiredLevel = requiredLevel;
         return this;
+    }
+
+    public VoteItem setHideWhenBuy(String hideWhenBuyPermission) {
+        this.hideWhenBuyPermission = hideWhenBuyPermission;
+        this.hideWhenBuy = true;
+        return this;
+    }
+
+    public boolean getHideWhenBuy() {
+        return this.hideWhenBuy;
+    }
+
+    public String getHideWhenBuyPermission() {
+        return hideWhenBuyPermission;
     }
 }

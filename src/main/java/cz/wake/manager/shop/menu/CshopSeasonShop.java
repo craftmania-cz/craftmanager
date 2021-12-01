@@ -31,6 +31,12 @@ public class CshopSeasonShop implements InventoryProvider {
 
         Main.getInstance().getCshopManager().getSeasonShopItems().forEach(voteItem -> {
 
+            if (player.hasPermission(voteItem.getHideWhenBuyPermission()) && voteItem.getHideWhenBuy()) {
+                items.add(ClickableItem.empty(new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
+                        .setName("§c" + voteItem.getName()).setLore("§7Tento item jsi již zakoupil.").build()));
+                return;
+            }
+
             if (!(SeasonPointsAPI.getSeasonPoints(player) >= voteItem.getPrice())) { // Kontrola zda má dostatek EP
                 items.add(ClickableItem.empty(new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
                         .setName("§c" + voteItem.getName()).setLore("§7Nemáš dostatek SeasonPoints: §f" + voteItem.getPrice() + " SP").build()));

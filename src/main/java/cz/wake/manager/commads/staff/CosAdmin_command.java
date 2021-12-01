@@ -139,11 +139,13 @@ public class CosAdmin_command extends BaseCommand {
                 this.givePlayerItemOrDrop(onlinePlayer, gingerPickaxe);
                 sender.sendMessage("§eDal jsi hráči " + player + " Ginger-Pickaxe!");
             }
-            case "frost-set" -> {
+            case "frost-sword" -> {
                 ItemStack frostSword = new ItemBuilder(Swords.FROST_SWORD.getPureItemStack())
                         .setName("§b§lFrost Sword").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, frostSword);
                 sender.sendMessage("§eDal jsi hráči " + player + " Frost Sword");
+            }
+            case "frost-bow" -> {
                 ItemStack frostBow = new ItemBuilder(Bows.FROST.getPureItemStack())
                         .setName("§b§lFrost Bow").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, frostBow);

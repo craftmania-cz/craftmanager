@@ -143,6 +143,30 @@ public class DisguiseGUI implements InventoryProvider {
                 .setDisguiseType(DisguiseType.ELDER_GUARDIAN)
                 .setRequiredPermission("craftmanager.disguise.guardian.elder"));
 
+        list.add(new CosmeticItem().setName("§bSnowman")
+                .setItemStack(Material.SNOW_BLOCK)
+                .setLore("§8Kliknutím se změníš na Sněhuláka.")
+                .setDisguiseType(DisguiseType.SNOWMAN)
+                .setRequiredPermission("craftmanager.disguise.snowman"));
+
+        list.add(new CosmeticItem().setName("§6Chicken")
+                .setItemStack(Material.EGG)
+                .setLore("§8Kliknutím se změníš na Chicken.")
+                .setDisguiseType(DisguiseType.CHICKEN)
+                .setRequiredPermission("craftmanager.disguise.chicken"));
+
+        list.add(new CosmeticItem().setName("§cStrider")
+                .setItemStack(Material.STRING)
+                .setLore("§8Kliknutím se změníš na Strider.")
+                .setDisguiseType(DisguiseType.STRIDER)
+                .setRequiredPermission("craftmanager.disguise.strider"));
+
+        list.add(new CosmeticItem().setName("§cFox")
+                .setItemStack(Material.COOKED_CHICKEN)
+                .setLore("§8Kliknutím se změníš na Fox.")
+                .setDisguiseType(DisguiseType.CHICKEN)
+                .setRequiredPermission("craftmanager.disguise.fox"));
+
         return list;
     }
 

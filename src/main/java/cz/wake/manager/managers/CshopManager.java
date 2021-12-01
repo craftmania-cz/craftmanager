@@ -1,7 +1,6 @@
 package cz.wake.manager.managers;
 
-import cz.craftmania.craftpack.api.Hats;
-import cz.craftmania.craftpack.api.Swords;
+import cz.craftmania.craftpack.api.*;
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.PermissionItem;
 import cz.wake.manager.shop.types.RewardType;
@@ -150,13 +149,18 @@ public class CshopManager {
     }
 
     private void loadSeasonShopItems() {
-        seasonShopItems.add(new VoteItem().setName("§dWitch Hat").setPrice(50).setItemStack(Hats.WITCH.getPureItemStack()).setCommandToExecute("lp user %player% permission set craftmanager.hats.witch_hat"));
-        seasonShopItems.add(new VoteItem().setName("§cReaper Hoodie").setPrice(150).setItemStack(Hats.REAPER_HOODIE.getPureItemStack()).setCommandToExecute("lp user %player% permission set craftmanager.hats.reaper_hoodie"));
-        seasonShopItems.add(new VoteItem().setName("§cScythe").setPrice(100).setItemStack(Swords.SCYTHE.getPureItemStack()).setCommandToExecute("cosadmin %player% scythe %player%"));
-        seasonShopItems.add(new VoteItem().setName("§bMorph: Zombie").setPrice(25).setItemStack(Material.ZOMBIE_HEAD).setCommandToExecute("lp user %player% permission set craftmanager.disguise.zombie"));
-        seasonShopItems.add(new VoteItem().setName("§bMorph: Zombie Horse").setPrice(50).setItemStack(Material.ZOMBIE_HEAD).setCommandToExecute("lp user %player% permission set craftmanager.disguise.zombie_horse"));
-        seasonShopItems.add(new VoteItem().setName("§bMorph: Zombie Villager").setPrice(50).setItemStack(Material.ZOMBIE_HEAD).setCommandToExecute("lp user %player% permission set craftmanager.disguise.zombie_villager"));
-        seasonShopItems.add(new VoteItem().setName("§e50 CraftCoins").setPrice(25).setItemStack(Material.GOLD_INGOT).setEconomyReward(50, RewardType.CRAFTCOINS));
+        if (System.currentTimeMillis() >= 1638486000000L) {
+            seasonShopItems.add(new VoteItem().setName("§c§lBaseball Bat").setHideWhenBuy("craftmanager.cshop.baseball_bat").setPrice(1).setItemStack(HandItems.BASEBALL_BAT.getPureItemStack()).setCommandToExecute("cosadmin %player% baseball-bat %player%"));
+        }
+        if (System.currentTimeMillis() >= 1639609200000L) {
+            seasonShopItems.add(new VoteItem().setName("§6§lGinger Pickaxe").setHideWhenBuy("craftmanager.cshop.ginger_pickaxe").setPrice(1).setItemStack(Pickaxes.GINGER_PICKAXE.getPureItemStack()).setCommandToExecute("cosadmin %player% ginger-pickaxe %player%"));
+        }
+        if (System.currentTimeMillis() >= 1640300400000L) {
+            seasonShopItems.add(new VoteItem().setName("§b§lFrost Bow").setHideWhenBuy("craftmanager.cshop.frost_bow").setPrice(1).setItemStack(Bows.FROST.getPureItemStack()).setCommandToExecute("cosadmin %player% frost-bow %player%"));
+        }
+        if (System.currentTimeMillis() >= 1640473200000L) {
+            seasonShopItems.add(new VoteItem().setName("§b§lFrost Sword").setHideWhenBuy("craftmanager.cshop.frost_sword").setPrice(1).setItemStack(Swords.FROST_SWORD.getPureItemStack()).setCommandToExecute("cosadmin %player% frost-sword %player%"));
+        }
     }
 
 }
