@@ -331,12 +331,12 @@ public class HatsGUI implements InventoryProvider {
                 .setRequiredPermission("craftmanager.hats.santa_hat"));
 
         list.add(new CosmeticItem().setName("§cDear Hat")
-                .setItemStack(Hats.SANTA_HAT.getPureItemStack())
+                .setItemStack(Hats.DEAR_HAT.getPureItemStack())
                 .setLore("", "§aZískáno: §fVánoční kalendář 2021", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.dear_hat"));
 
         list.add(new CosmeticItem().setName("§cSnowman Hat")
-                .setItemStack(Hats.SANTA_HAT.getPureItemStack())
+                .setItemStack(Hats.SNOWMAN_HAT.getPureItemStack())
                 .setLore("", "§aZískáno: §fVánoční kalendář 2021", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.snowman_hat"));
 
