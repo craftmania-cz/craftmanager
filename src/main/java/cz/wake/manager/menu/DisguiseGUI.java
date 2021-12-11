@@ -164,8 +164,26 @@ public class DisguiseGUI implements InventoryProvider {
         list.add(new CosmeticItem().setName("§cFox")
                 .setItemStack(Material.COOKED_CHICKEN)
                 .setLore("§8Kliknutím se změníš na Fox.")
-                .setDisguiseType(DisguiseType.CHICKEN)
+                .setDisguiseType(DisguiseType.FOX)
                 .setRequiredPermission("craftmanager.disguise.fox"));
+
+        list.add(new CosmeticItem().setName("§eCow")
+                .setItemStack(Material.BEEF)
+                .setLore("§8Kliknutím se změníš na Cow.")
+                .setDisguiseType(DisguiseType.COW)
+                .setRequiredPermission("craftmanager.disguise.cow"));
+
+        list.add(new CosmeticItem().setName("§eGoat")
+                .setItemStack(Material.HORN_CORAL)
+                .setLore("§8Kliknutím se změníš na Goat.")
+                .setDisguiseType(DisguiseType.GOAT)
+                .setRequiredPermission("craftmanager.disguise.goat"));
+
+        list.add(new CosmeticItem().setName("§cMagma Slime")
+                .setItemStack(Material.LAVA_BUCKET)
+                .setLore("§8Kliknutím se změníš na Magma Slime.")
+                .setDisguiseType(DisguiseType.MAGMA_CUBE)
+                .setRequiredPermission("craftmanager.disguise.magma_slime"));
 
         return list;
     }
@@ -230,7 +248,7 @@ public class DisguiseGUI implements InventoryProvider {
         ClickableItem[] c = new ClickableItem[items.size()];
         c = items.toArray(c);
         pagination.setItems(c);
-        pagination.setItemsPerPage(18);
+        pagination.setItemsPerPage(36);
 
         if (items.size() > 0 && !pagination.isLast()) {
             contents.set(5, 7, ClickableItem.of(new ItemBuilder(Material.PAPER).setName("§f§lDalší stránka").build(), e -> {
