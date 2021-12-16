@@ -48,6 +48,9 @@ public class CshopSeasonShop implements InventoryProvider {
                     SeasonPointsAPI.takeSeasonPoints(player, voteItem.getPrice());
                     player.sendMessage("§aZakoupi jsi si " + voteItem.getName());
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), voteItem.getCommandToExecute().replace("%player%", player.getName()).replace("%server%", Main.getInstance().getServerType().name().toLowerCase()));
+                    if (voteItem.getHideWhenBuy()) {
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " set permission " + voteItem.getHideWhenBuyPermission());
+                    }
                     player.closeInventory();
                 }));
                 return;
