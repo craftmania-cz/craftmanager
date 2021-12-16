@@ -127,7 +127,7 @@ public class CshopManager {
     private void loadCosmeticShopItems() {
         cosmeticsShopItems.add(new PermissionItem().setName("§fKoala").setLore("§7Čepice koaly pro kamaráda pandy!").setItemStack(Hats.KOALA.getPureItemStack()).setPrice(400).setPermision("craftmanager.hats.koala"));
         cosmeticsShopItems.add(new PermissionItem().setName("§fPanda").setLore("§7Čepice pandy pro kamaráda koaly!").setItemStack(Hats.PANDA.getPureItemStack()).setPrice(400).setPermision("craftmanager.hats.panda"));
-        cosmeticsShopItems.add(new PermissionItem().setName("§dKlaun").setLore("§7Chceš vypadat jako klaun? Nebo už jsi?!").setItemStack(Hats.CLOWN.getPureItemStack()).setPrice(750).setPermision("craftmanager.hats.clown"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§dKlaun").setLore("§7Chceš vypadat jako klaun? Nebo už jsi?!").setItemStack(Hats.CLOWN.getPureItemStack()).setPrice(800).setPermision("craftmanager.hats.clown"));
         cosmeticsShopItems.add(new PermissionItem().setName("§fUnicorn").setLore("§7Čepice se kterou si nasadíš na hlavu roh.").setItemStack(Hats.UNICORN.getPureItemStack()).setPrice(150).setPermision("craftmanager.hats.unicorn"));
         cosmeticsShopItems.add(new PermissionItem().setName("§bBeer Hat").setLore("§7S touto čepicí už nikdy nebudeš mít žízeň.").setItemStack(Hats.BEER_HAT.getPureItemStack()).setPrice(400).setPermision("craftmanager.hats.beer_hat"));
         cosmeticsShopItems.add(new PermissionItem().setName("§6Trex").setLore("§7Velká tlama, velký zuby a všichni utekli!").setItemStack(Hats.TREX.getPureItemStack()).setPrice(1000).setPermision("craftmanager.hats.trex"));
@@ -145,7 +145,7 @@ public class CshopManager {
         cosmeticsShopItems.add(new PermissionItem().setName("§eHalo Ring").setLore("§7Jen anděl může mít tento kroužek nad hlavou!").setItemStack(Hats.HALO.getPureItemStack()).setPrice(250).setPermision("craftmanager.hats.halo_ring"));
         cosmeticsShopItems.add(new PermissionItem().setName("§bPenguin").setLore("§7Tučnáci jsou všude...").setItemStack(Hats.PENGUIN.getPureItemStack()).setPrice(400).setPermision("craftmanager.hats.penguin"));
         cosmeticsShopItems.add(new PermissionItem().setName("§cImpostor").setLore("§7Někdo tu je sus a Lilmayu to není?!").setItemStack(Hats.IMPOSTOR.getPureItemStack()).setPrice(300).setPermision("craftmanager.hats.impostor"));
-        cosmeticsShopItems.add(new PermissionItem().setName("§bShark").setLore("§7Zakousl se ti žralok do hlavy..").setItemStack(Hats.SHARK.getPureItemStack()).setPrice(500).setPermision("craftmanager.hats.shark_hat"));
+        cosmeticsShopItems.add(new PermissionItem().setName("§bShark").setLore("§7Zakousl se ti žralok do hlavy..").setItemStack(Hats.SHARK.getPureItemStack()).setPrice(700).setPermision("craftmanager.hats.shark_hat"));
     }
 
     private void loadSeasonShopItems() {
