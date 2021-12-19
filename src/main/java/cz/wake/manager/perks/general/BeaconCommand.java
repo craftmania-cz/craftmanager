@@ -49,7 +49,7 @@ public class BeaconCommand extends BaseCommand implements Listener {
                 inv.setItem(1, new ItemBuilder(Material.GOLDEN_PICKAXE).setName("§e§lHaste").build());
                 inv.setItem(2, new ItemBuilder(Material.IRON_BOOTS).setName("§a§lJump Boost").build());
                 inv.setItem(3, new ItemBuilder(Material.BLAZE_POWDER).setName("§6§lFire Resistance").build());
-                inv.setItem(4, new ItemBuilder(Material.ENDER_EYE).setName("9§lNight Vision").build());
+                inv.setItem(4, new ItemBuilder(Material.ENDER_EYE).setName("§9§lNight Vision").build());
                 inv.setItem(5, new ItemBuilder(Material.PRISMARINE_CRYSTALS).setName("§3§lWater Breathing").build());
 
                 inv.setItem(7, new ItemBuilder(Material.BARRIER).setName("§c§lZrušit").setLore("§7Kliknutím efekt deaktivuješ").build());
