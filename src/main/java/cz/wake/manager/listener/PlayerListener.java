@@ -16,6 +16,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.concurrent.TimeUnit;
 
@@ -67,6 +68,22 @@ public class PlayerListener implements Listener {
             }
         }
 
+        // JoinAnnounce
+
+        if (Main.getInstance().JoinAnnounceEnabled) {
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    p.sendMessage("§7§m---------§7[§b§l Oznámení §7]§m---------\n");
+                    p.sendMessage("§f");
+                    p.sendMessage("§b" + Main.getInstance().JoinAnnounceMessage);
+                    p.sendMessage("§f");
+                }
+            }.runTaskLaterAsynchronously(Main.getInstance(), 20L);
+        }
+
+
+        // Anarchy
         if (Main.getInstance().getServerType() == ServerType.ANARCHY) {
             if (Main.getInstance().getMySQL().getSettings(e.getPlayer(), "hud_bossbar") == 1) {
                 assert Main.getInstance().getCompassManager() != null;
