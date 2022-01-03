@@ -420,6 +420,10 @@ public class HatsGUI implements InventoryProvider {
                 ChatInfo.DANGER.send(player, "Sundat si lze čepice pouze z Cosmetic menu.");
                 return;
             }
+            if (player.getInventory().getHelmet() != null && player.getInventory().getHelmet().getType() == Material.SUGAR) {
+                ChatInfo.DANGER.send(player, "Máš nasazenou premium čepici, nelze ji odebrat.");
+                return;
+            }
             player.getInventory().setHelmet(null);
             player.getOpenInventory().close();
             ChatInfo.INFO.send(player, "Sundal jsi si čepici z hlavy.");
