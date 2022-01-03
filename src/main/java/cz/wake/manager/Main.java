@@ -38,6 +38,7 @@ import org.bukkit.inventory.Recipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.ByteArrayOutputStream;
@@ -60,6 +61,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private boolean testing = false;
     private static String mentionPrefix;
     private ConfigAPI configAPI;
+    public String JoinAnnounceMessage = "";
+    public boolean JoinAnnounceEnabled = false;
 
     // Managers
     private CshopManager cshopManager;
@@ -210,6 +213,15 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             this.compassManager = new CompassManager();
             getServer().getScheduler().runTaskTimerAsynchronously(this, new CompassTask(), 20, 20);
         }
+
+        // Načítání JoinAnnounceru
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                loadJoinAnnouncer();
+            }
+        }.runTaskTimer(this, 0L,  20 * 60 * 10); // 10 minut
+
     }
 
     public void onDisable() {
@@ -445,6 +457,11 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             case "prison" -> LevelType.PRISON_LEVEL;
             default -> null;
         };
+    }
+
+    private void loadJoinAnnouncer() {
+        JoinAnnounceMessage = getMySQL().getJoinAnnouceMessage();
+        JoinAnnounceEnabled = getMySQL().isJoinAnnounceEnabled();
     }
 
     public CshopManager getCshopManager() {

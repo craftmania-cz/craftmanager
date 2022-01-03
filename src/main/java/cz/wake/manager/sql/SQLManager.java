@@ -537,6 +537,46 @@ public class SQLManager {
         }.runTaskAsynchronously(Main.getInstance());
     }
 
+    public final String getJoinAnnouceMessage() {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String server = getServerName();
+        try {
+            conn = pool.getConnection();
+            ps = conn.prepareStatement("SELECT message FROM join_announce WHERE server = ?;");
+            ps.setString(1, server);
+            ps.executeQuery();
+            if (ps.getResultSet().next()) {
+                return ps.getResultSet().getString(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            pool.close(conn, ps, null);
+        }
+        return "";
+    }
+
+    public final boolean isJoinAnnounceEnabled() {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String server = getServerName();
+        try {
+            conn = pool.getConnection();
+            ps = conn.prepareStatement("SELECT enabled FROM join_announce WHERE server = ?;");
+            ps.setString(1, server);
+            ps.executeQuery();
+            if (ps.getResultSet().next()) {
+                return ps.getResultSet().getInt("enabled") == 1;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            pool.close(conn, ps, null);
+        }
+        return false;
+    }
+
 
 
 
