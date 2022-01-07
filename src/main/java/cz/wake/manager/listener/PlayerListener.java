@@ -69,19 +69,12 @@ public class PlayerListener implements Listener {
         }
 
         // JoinAnnounce
-
-        if (Main.getInstance().JoinAnnounceEnabled) {
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    p.sendMessage("§7§m---------§7[§b§l Oznámení §7]§m---------\n");
-                    p.sendMessage("§f");
-                    p.sendMessage("§b" + Main.getInstance().JoinAnnounceMessage);
-                    p.sendMessage("§f");
-                }
-            }.runTaskLaterAsynchronously(Main.getInstance(), 20L);
+        if (Main.getInstance().isJoinAnnounceEnabled()) {
+            p.sendMessage("§7§m---------§7[§b§l Upozornění §7]§m---------\n");
+            p.sendMessage("§f");
+            p.sendMessage("§f" + Main.getInstance().getJoinAnnounceMessage());
+            p.sendMessage("§f");
         }
-
 
         // Anarchy
         if (Main.getInstance().getServerType() == ServerType.ANARCHY) {

@@ -61,8 +61,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private boolean testing = false;
     private static String mentionPrefix;
     private ConfigAPI configAPI;
-    public String JoinAnnounceMessage = "";
-    public boolean JoinAnnounceEnabled = false;
+    private String joinAnnounceMessage = "";
+    private boolean joinAnnounceEnabled = false;
 
     // Managers
     private CshopManager cshopManager;
@@ -214,13 +214,11 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new CompassTask(), 20, 20);
         }
 
-        // Načítání JoinAnnounceru
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                loadJoinAnnouncer();
-            }
-        }.runTaskTimer(this, 0L,  20 * 60 * 10); // 10 minut
+        // JoinAnnouncer
+        if (getConfig().getBoolean("join-announcer.enabled", false)) {
+            Log.withPrefix("Scoreboard je aktivovaný.");
+            getServer().getScheduler().runTaskTimerAsynchronously(this, new JoinAnnouncerTask(), 20, 20 * 60 * 10); // 10 minut
+        }
 
     }
 
@@ -459,9 +457,11 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         };
     }
 
-    private void loadJoinAnnouncer() {
-        JoinAnnounceMessage = getMySQL().getJoinAnnouceMessage();
-        JoinAnnounceEnabled = getMySQL().isJoinAnnounceEnabled();
+    public void loadJoinAnnouncer() {
+        joinAnnounceEnabled = getMySQL().isJoinAnnounceEnabled();
+        if (joinAnnounceEnabled) {
+            joinAnnounceMessage = getMySQL().getJoinAnnouceMessage();
+        }
     }
 
     public CshopManager getCshopManager() {
@@ -498,5 +498,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     @Nullable
     public CompassManager getCompassManager() {
         return compassManager;
+    }
+
+    public String getJoinAnnounceMessage() {
+        return joinAnnounceMessage;
+    }
+
+    public boolean isJoinAnnounceEnabled() {
+        return joinAnnounceEnabled;
     }
 }

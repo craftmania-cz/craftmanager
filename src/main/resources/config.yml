@@ -43,3 +43,6 @@ protect-drop-cosmetic:
  - NETHERITE_PICKAXE
  - NETHERITE_HOE
  - SUGAR
+
+join-announcer:
+  enabled: false
