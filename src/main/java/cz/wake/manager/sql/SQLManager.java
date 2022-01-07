@@ -253,7 +253,7 @@ public class SQLManager {
 
     public final void updateAtPlayerTime(Player p) {
         String server = getServerName();
-        Log.normalMessage(ChatColor.RED + "[ATS] " + ChatColor.WHITE + "Update ATS pro: " + p.getName() + ", server: " + server); ;
+        //Log.debug(ChatColor.RED + "[ATS] " + ChatColor.WHITE + "Update ATS pro: " + p.getName() + ", server: " + server); ;
         new BukkitRunnable() {
             @Override
             public void run() {
