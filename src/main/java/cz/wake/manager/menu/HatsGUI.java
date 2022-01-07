@@ -385,6 +385,11 @@ public class HatsGUI implements InventoryProvider {
                     player.closeInventory();
                     return;
                 }
+                if (player.getInventory().getHelmet() != null && player.getInventory().getHelmet().getType() == Material.SUGAR) {
+                    ChatInfo.DANGER.send(player, "Máš nasazenou premium čepici, nelze ji odebrat.");
+                    player.closeInventory();
+                    return;
+                }
                 ItemBuilder finalItem = new ItemBuilder(cosmeticItem.getItemStack());
                 finalItem.hideAllFlags();
                 finalItem.setLore("§7Nasazeno: §f" + player.getName());
