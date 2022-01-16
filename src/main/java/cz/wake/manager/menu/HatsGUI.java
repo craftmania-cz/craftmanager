@@ -83,6 +83,22 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("§7Vítězství v Eventu je ta nejlepší věc!", "§7Umístění: §f1. místo", "", "§aZískáno: §fBuildEvent (Velikonoce 2021)", "§aRarita: §f" + TextureItems.RARITY_MYTHIC.getRender(), "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.golden_trophy_be_2021"));
 
+        // Build Event 2021 - vánoce
+        list.add(new CosmeticItem().setName("§6Bronze Trophy")
+                .setItemStack(Hats.BRONZE_TROPHY.getPureItemStack())
+                .setLore("§7Vítězství v Eventu je ta nejlepší věc!", "§7Umístění: §f3. místo", "", "§aZískáno: §fBuildEvent (Vánoce 2021)", "§aRarita: §f" + TextureItems.RARITY_MYTHIC.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.bronze_trophy_be_2021_vanoce"));
+
+        list.add(new CosmeticItem().setName("§eSilver Trophy")
+                .setItemStack(Hats.SILVER_TROPHY.getPureItemStack())
+                .setLore("§7Vítězství v Eventu je ta nejlepší věc!", "§7Umístění: §f2. místo", "", "§aZískáno: §fBuildEvent (Vánoce 2021)", "§aRarita: §f" + TextureItems.RARITY_MYTHIC.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.silver_trophy_be_2021_vanoce"));
+
+        list.add(new CosmeticItem().setName("§eGolden Trophy")
+                .setItemStack(Hats.GOLD_TROPHY.getPureItemStack())
+                .setLore("§7Vítězství v Eventu je ta nejlepší věc!", "§7Umístění: §f1. místo", "", "§aZískáno: §fBuildEvent (Vánoce 2021)", "§aRarita: §f" + TextureItems.RARITY_MYTHIC.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.golden_trophy_be_2021_vanoce"));
+
         // Discord
         list.add(new CosmeticItem().setName("§9Mega Wumpus")
                 .setItemStack(Hats.WUMPUS.getPureItemStack())
