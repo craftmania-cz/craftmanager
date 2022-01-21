@@ -185,6 +185,12 @@ public class DisguiseGUI implements InventoryProvider {
                 .setDisguiseType(DisguiseType.MAGMA_CUBE)
                 .setRequiredPermission("craftmanager.disguise.magma_slime"));
 
+        list.add(new CosmeticItem().setName("§e§lMinecart [Chest]")
+                .setItemStack(Material.CHEST_MINECART)
+                .setLore("§7Kliknutím se změníš na Minecart s truhlou.")
+                .setDisguiseType(DisguiseType.MINECART_CHEST)
+                .setRequiredPermission("craftmanager.disguise.minecart_chest"));
+
         return list;
     }
 

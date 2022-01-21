@@ -376,6 +376,11 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("", "§aZískáno: §fVánoční kalendář 2021", "§aRarita: §f" + TextureItems.RARITY_RARE.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.silvester_party_hat_2021"));
 
+        list.add(new CosmeticItem().setName("§aHulk Hat")
+                .setItemStack(Hats.HULK.getPureItemStack())
+                .setLore("", "§aZískáno: §fVotePass 6/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.hulk"));
+
         return list;
     }
 
