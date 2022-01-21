@@ -67,6 +67,24 @@ public class CosAdmin_command extends BaseCommand {
                 this.givePlayerItemOrDrop(onlinePlayer, ice_rose_crown);
                 sender.sendMessage("§eDal jsi hráči " + player + " Ice Rose Set!");
             }
+            case "plant-set" -> {
+                ItemStack plant_set_sword = new ItemBuilder(Swords.PLANT_SET_SWORD.getPureItemStack())
+                        .setName("§a§lPlant Set Sword").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, plant_set_sword);
+                ItemStack plant_set_pickaxe = new ItemBuilder(Pickaxes.PLANT_SET_PICKAXE.getPureItemStack())
+                        .setName("§a§lPlant Set Pickaxe").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, plant_set_pickaxe);
+                ItemStack plant_set_axe = new ItemBuilder(Axes.PLANT_SET.getPureItemStack())
+                        .setName("§a§lPlant Set Axe").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, plant_set_axe);
+                ItemStack plant_set_hoe = new ItemBuilder(Hoes.PLANT_SET_HOE.getPureItemStack())
+                        .setName("§a§lPlant Set Hoe").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, plant_set_hoe);
+                ItemStack plant_set_shovel = new ItemBuilder(Shovels.PLANT_SET_SHOVEL.getPureItemStack())
+                        .setName("§a§lPlant Set Shovel").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, plant_set_shovel);
+                sender.sendMessage("§eDal jsi hráči " + player + " Plant Set!");
+            }
             case "pomlazka" -> {
                 ItemStack pomlazka = new ItemBuilder(HandItems.EASTER_STICK.getPureItemStack())
                         .setName("§9§lPomlázka").setLore("§7Rarita: §f" + TextureItems.RARITY_LIMITED.getRender()).build();
@@ -156,6 +174,12 @@ public class CosAdmin_command extends BaseCommand {
                         .setName("§e§lBaseball Bat").setLore("§7Rarita: §f" + TextureItems.RARITY_UNCOMMON.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, baseballBat);
                 sender.sendMessage("§eDal jsi hráči " + player + " Baseball Bat");
+            }
+            case "mecha-sword" -> {
+                ItemStack mecha_fist = new ItemBuilder(Swords.MECHA_SWORD.getPureItemStack())
+                        .setName("§c§lMecha-Sword").setLore("§7Rarita: §f" + TextureItems.RARITY_EPIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, mecha_fist);
+                sender.sendMessage("§eDal jsi hráči " + player + " Mecha-Sword!");
             }
         }
     }
