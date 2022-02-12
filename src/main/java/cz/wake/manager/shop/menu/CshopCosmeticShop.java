@@ -7,7 +7,7 @@ import cz.craftmania.craftcore.inventory.builder.content.InventoryContents;
 import cz.craftmania.craftcore.inventory.builder.content.InventoryProvider;
 import cz.craftmania.craftcore.inventory.builder.content.Pagination;
 import cz.craftmania.craftcore.inventory.builder.content.SlotIterator;
-import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
+import cz.craftmania.crafteconomy.api.EconomyAPI;
 import cz.wake.manager.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -36,11 +36,11 @@ public class CshopCosmeticShop implements InventoryProvider {
                 return;
             }
 
-            if (CraftCoinsAPI.getCoins(player) >= cosmeticItem.getPrice()) {
+            if (EconomyAPI.CRAFT_COINS.get(player) >= cosmeticItem.getPrice()) {
                 items.add(ClickableItem.of(new ItemBuilder(cosmeticItem.getItemStack()).hideAllFlags()
                                 .setName("§b" + cosmeticItem.getName()).setLore("§7Cena: §f" + cosmeticItem.getPrice() + " CC", "", "§eKliknutím zakoupíš!").build(),
                         click -> {
-                            CraftCoinsAPI.takeCoins(player, cosmeticItem.getPrice());
+                            EconomyAPI.CRAFT_COINS.take(player, cosmeticItem.getPrice());
                             player.sendMessage("§a§l[*] §aZakoupil jsi si " + cosmeticItem.getName() + "! §eNyní jej najdeš v /cosmetics");
                             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set " + cosmeticItem.getPermision());
                             player.closeInventory();

@@ -7,9 +7,8 @@ import cz.craftmania.craftcore.inventory.builder.content.InventoryContents;
 import cz.craftmania.craftcore.inventory.builder.content.InventoryProvider;
 import cz.craftmania.craftcore.inventory.builder.content.Pagination;
 import cz.craftmania.craftcore.inventory.builder.content.SlotIterator;
-import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
+import cz.craftmania.crafteconomy.api.EconomyAPI;
 import cz.craftmania.crafteconomy.api.LevelAPI;
-import cz.craftmania.crafteconomy.api.VoteTokensAPI;
 import cz.craftmania.crafteconomy.managers.BasicManager;
 import cz.craftmania.crafteconomy.utils.VaultUtils;
 import cz.wake.manager.Main;
@@ -49,7 +48,7 @@ public class CshopVoteShop implements InventoryProvider {
                 return;
             }
 
-            if (!(VoteTokensAPI.getVoteTokens(player) >= voteItem.getPrice())) { // Kontrola zda má dostatek VT
+            if (!(EconomyAPI.VOTE_TOKENS.get(player) >= voteItem.getPrice())) { // Kontrola zda má dostatek VT
                 items.add(ClickableItem.empty(new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
                         .setName("§c" + voteItem.getName()).setLore("§7Nemáš dostatek VoteTokenů: §f" + voteItem.getPrice() + " VT").build()));
                 return;
@@ -57,7 +56,7 @@ public class CshopVoteShop implements InventoryProvider {
 
             if (voteItem.getRewardType() == RewardType.COMMAND) {
                 items.add(ClickableItem.of(new ItemBuilder(voteItem.getItemStack()).setName("§a" + voteItem.getName()).setLore("§7Cena: §f" + voteItem.getPrice() + " VT").hideAllFlags().build(), click -> {
-                    VoteTokensAPI.takeVoteTokens(player, voteItem.getPrice());
+                    EconomyAPI.VOTE_TOKENS.take(player, voteItem.getPrice());
                     player.sendMessage("§aZakoupi jsi si " + voteItem.getName());
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), voteItem.getCommandToExecute().replace("%player%", player.getName()));
                     player.closeInventory();
@@ -67,8 +66,8 @@ public class CshopVoteShop implements InventoryProvider {
 
             if (voteItem.getRewardType() == RewardType.CRAFTCOINS) {
                 items.add(ClickableItem.of(new ItemBuilder(Material.GOLD_INGOT).setName("§e" + voteItem.getName()).setLore("§7Cena: §f" + voteItem.getPrice() + " VT").hideAllFlags().build(), click -> {
-                    VoteTokensAPI.takeVoteTokens(player, voteItem.getPrice());
-                    CraftCoinsAPI.giveCoins(player, voteItem.getEconomyReward());
+                    EconomyAPI.VOTE_TOKENS.take(player, voteItem.getPrice());
+                    EconomyAPI.CRAFT_COINS.give(player, voteItem.getEconomyReward());
                     player.closeInventory();
                 }));
                 return;
@@ -76,7 +75,7 @@ public class CshopVoteShop implements InventoryProvider {
 
             if (voteItem.getRewardType() == RewardType.MONEY) {
                 items.add(ClickableItem.of(new ItemBuilder(Material.PAPER).setName("§b" + voteItem.getName()).setLore("§7Cena: §f" + voteItem.getPrice() + " VT").hideAllFlags().build(), click -> {
-                    VoteTokensAPI.takeVoteTokens(player, voteItem.getPrice());
+                    EconomyAPI.VOTE_TOKENS.take(player, voteItem.getPrice());
                     VaultUtils vault = new VaultUtils();
                     vault.depositPlayer(player, voteItem.getEconomyReward());
                     player.closeInventory();
@@ -86,7 +85,7 @@ public class CshopVoteShop implements InventoryProvider {
 
             if (voteItem.getRewardType() == RewardType.PERMISSION) {
                 items.add(ClickableItem.of(new ItemBuilder(voteItem.getItemStack()).setName("§b" + voteItem.getName()).setLore("§7Cena: §f" + voteItem.getPrice() + " VT").hideAllFlags().build(), click -> {
-                    VoteTokensAPI.takeVoteTokens(player, voteItem.getPrice());
+                    EconomyAPI.VOTE_TOKENS.take(player, voteItem.getPrice());
                     voteItem.getPermisions().forEach((permission) -> {
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission settemp " + permission + " true " + voteItem.getTimed() + "h " + Main.getInstance().getServerType().name.toLowerCase());
                     });

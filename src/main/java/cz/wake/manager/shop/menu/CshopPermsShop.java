@@ -7,11 +7,10 @@ import cz.craftmania.craftcore.inventory.builder.content.InventoryContents;
 import cz.craftmania.craftcore.inventory.builder.content.InventoryProvider;
 import cz.craftmania.craftcore.inventory.builder.content.Pagination;
 import cz.craftmania.craftcore.inventory.builder.content.SlotIterator;
-import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
+import cz.craftmania.crafteconomy.api.EconomyAPI;
 import cz.craftmania.crafteconomy.api.LevelAPI;
 import cz.craftmania.crafteconomy.objects.LevelType;
 import cz.wake.manager.Main;
-import cz.wake.manager.utils.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -51,16 +50,15 @@ public class CshopPermsShop implements InventoryProvider {
                 return;
             }
 
-            if (CraftCoinsAPI.getCoins(player) >= permissionItem.getPrice()) {
+            if (EconomyAPI.CRAFT_COINS.get(player) >= permissionItem.getPrice()) {
                 items.add(ClickableItem.of(new ItemBuilder(permissionItem.getItemStack()).hideAllFlags()
                     .setName("§b" + permissionItem.getName()).setLore("§7Cena: §f" + permissionItem.getPrice() + " CC", "", "§eKliknutím zakoupíš!").build(),
                         click -> {
-                            CraftCoinsAPI.takeCoins(player, permissionItem.getPrice());
+                            EconomyAPI.CRAFT_COINS.take(player, permissionItem.getPrice());
                             player.sendMessage("§aZakoupil jsi si " + permissionItem.getName() + "!");
                             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set " + permissionItem.getPermision() + " " + Main.getInstance().getServerType().name.toLowerCase());
                             player.closeInventory();
                         }));
-                return;
             } else {
                 items.add(ClickableItem.empty(new ItemBuilder(permissionItem.getItemStack())
                         .setName("§c" + permissionItem.getName()).hideAllFlags().setLore("§7Cena: §f" + permissionItem.getPrice() + " CC", "", "§8Nemáš dostatek CraftCoins").build()));

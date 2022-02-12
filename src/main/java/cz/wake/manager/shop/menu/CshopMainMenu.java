@@ -5,10 +5,7 @@ import cz.craftmania.craftcore.inventory.builder.ClickableItem;
 import cz.craftmania.craftcore.inventory.builder.SmartInventory;
 import cz.craftmania.craftcore.inventory.builder.content.InventoryContents;
 import cz.craftmania.craftcore.inventory.builder.content.InventoryProvider;
-import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
-import cz.craftmania.crafteconomy.api.CraftTokensAPI;
-import cz.craftmania.crafteconomy.api.EventPointsAPI;
-import cz.craftmania.crafteconomy.api.VoteTokensAPI;
+import cz.craftmania.crafteconomy.api.EconomyAPI;
 import cz.wake.manager.Main;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -24,7 +21,7 @@ public class CshopMainMenu implements InventoryProvider {
 
         ItemStack playerHead = new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§bTvůj profil")
-                .setLore("§7CraftCoins: §f" + CraftCoinsAPI.getCoins(player) + " CC", "§7CraftTokens: §f" + CraftTokensAPI.getTokens(player) + " CT", "§7VoteTokens: §f" + VoteTokensAPI.getVoteTokens(player) + " VT", "§7EventPoints: §f" + EventPointsAPI.getEventPoints(player), "§7Karma: §f0").setSkullOwner(player.getName()).build();
+                .setLore("§7CraftCoins: §f" + EconomyAPI.CRAFT_COINS.get(player) + " CC", "§7CraftTokens: §f" + EconomyAPI.CRAFT_TOKENS.get(player) + " CT", "§7VoteTokens: §f" + EconomyAPI.VOTE_TOKENS.get(player) + " VT", "§7EventPoints: §f" + EconomyAPI.EVENT_POINTS.get(player), "§7Karma: §f" + EconomyAPI.KARMA_POINTS.get(player)).setSkullOwner(player.getName()).build();
         contents.set(0, 1, ClickableItem.of(playerHead, item -> {}));
 
         ItemStack tags = new ItemBuilder(Material.NAME_TAG).setName("§bTags (za CraftCoiny)").setLore("§7Zakup si tag před nick", "§7nebo si vytvoř vlastní!", "", "§eKlikni pro otevření menu").build();

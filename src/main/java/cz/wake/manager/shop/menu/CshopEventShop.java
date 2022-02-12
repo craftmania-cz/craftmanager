@@ -7,9 +7,7 @@ import cz.craftmania.craftcore.inventory.builder.content.InventoryContents;
 import cz.craftmania.craftcore.inventory.builder.content.InventoryProvider;
 import cz.craftmania.craftcore.inventory.builder.content.Pagination;
 import cz.craftmania.craftcore.inventory.builder.content.SlotIterator;
-import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
-import cz.craftmania.crafteconomy.api.CraftTokensAPI;
-import cz.craftmania.crafteconomy.api.EventPointsAPI;
+import cz.craftmania.crafteconomy.api.EconomyAPI;
 import cz.craftmania.crafteconomy.utils.VaultUtils;
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.RewardType;
@@ -38,7 +36,7 @@ public class CshopEventShop implements InventoryProvider {
                 }
             }*/
 
-            if (!(EventPointsAPI.getEventPoints(player) >= voteItem.getPrice())) { // Kontrola zda má dostatek EP
+            if (!(EconomyAPI.EVENT_POINTS.get(player) >= voteItem.getPrice())) { // Kontrola zda má dostatek EP
                 items.add(ClickableItem.empty(new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
                         .setName("§c" + voteItem.getName()).setLore("§7Nemáš dostatek EventPoints: §f" + voteItem.getPrice() + " EP").build()));
                 return;
@@ -46,7 +44,7 @@ public class CshopEventShop implements InventoryProvider {
 
             if (voteItem.getRewardType() == RewardType.COMMAND) {
                 items.add(ClickableItem.of(new ItemBuilder(voteItem.getItemStack()).setName("§a" + voteItem.getName()).setLore("§7Cena: §f" + voteItem.getPrice() + " EP").hideAllFlags().build(), click -> {
-                    EventPointsAPI.takeEventPoints(player, voteItem.getPrice());
+                    EconomyAPI.EVENT_POINTS.take(player, voteItem.getPrice());
                     player.sendMessage("§aZakoupi jsi si " + voteItem.getName());
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), voteItem.getCommandToExecute().replace("%player%", player.getName()).replace("%server%", Main.getInstance().getServerType().name().toLowerCase()));
                     player.closeInventory();
@@ -56,8 +54,8 @@ public class CshopEventShop implements InventoryProvider {
 
             if (voteItem.getRewardType() == RewardType.CRAFTCOINS) {
                 items.add(ClickableItem.of(new ItemBuilder(Material.GOLD_INGOT).setName("§e" + voteItem.getName()).setLore("§7Cena: §f" + voteItem.getPrice() + " EP").hideAllFlags().build(), click -> {
-                    EventPointsAPI.takeEventPoints(player, voteItem.getPrice());
-                    CraftCoinsAPI.giveCoins(player, voteItem.getEconomyReward());
+                    EconomyAPI.EVENT_POINTS.take(player, voteItem.getPrice());
+                    EconomyAPI.CRAFT_COINS.give(player, voteItem.getEconomyReward());
                     player.closeInventory();
                 }));
                 return;
@@ -65,8 +63,8 @@ public class CshopEventShop implements InventoryProvider {
 
             if (voteItem.getRewardType() == RewardType.CRAFTTOKEN) {
                 items.add(ClickableItem.of(new ItemBuilder(Material.IRON_INGOT).setName("§e" + voteItem.getName()).setLore("§7Cena: §f" + voteItem.getPrice() + " EP").hideAllFlags().build(), click -> {
-                    EventPointsAPI.takeEventPoints(player, voteItem.getPrice());
-                    CraftTokensAPI.giveTokens(player, voteItem.getEconomyReward());
+                    EconomyAPI.EVENT_POINTS.take(player, voteItem.getPrice());
+                    EconomyAPI.CRAFT_TOKENS.give(player, voteItem.getEconomyReward());
                     player.closeInventory();
                 }));
                 return;
@@ -74,12 +72,11 @@ public class CshopEventShop implements InventoryProvider {
 
             if (voteItem.getRewardType() == RewardType.MONEY) {
                 items.add(ClickableItem.of(new ItemBuilder(Material.PAPER).setName("§b" + voteItem.getName()).setLore("§7Cena: §f" + voteItem.getPrice() + " EP").hideAllFlags().build(), click -> {
-                    EventPointsAPI.takeEventPoints(player, voteItem.getPrice());
+                    EconomyAPI.EVENT_POINTS.take(player, voteItem.getPrice());
                     VaultUtils vault = new VaultUtils();
                     vault.depositPlayer(player, voteItem.getEconomyReward());
                     player.closeInventory();
                 }));
-                return;
             }
         });
 

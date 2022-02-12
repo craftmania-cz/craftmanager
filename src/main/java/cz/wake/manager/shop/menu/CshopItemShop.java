@@ -7,7 +7,7 @@ import cz.craftmania.craftcore.inventory.builder.content.InventoryContents;
 import cz.craftmania.craftcore.inventory.builder.content.InventoryProvider;
 import cz.craftmania.craftcore.inventory.builder.content.Pagination;
 import cz.craftmania.craftcore.inventory.builder.content.SlotIterator;
-import cz.craftmania.crafteconomy.api.CraftCoinsAPI;
+import cz.craftmania.crafteconomy.api.EconomyAPI;
 import cz.craftmania.crafteconomy.api.LevelAPI;
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.RewardType;
@@ -36,7 +36,7 @@ public class CshopItemShop implements InventoryProvider {
                 return;
             }
 
-            if (!(CraftCoinsAPI.getCoins(player) >= voteItem.getPrice())) { // Kontrola zda má dostatek VT
+            if (!(EconomyAPI.CRAFT_COINS.get(player) >= voteItem.getPrice())) { // Kontrola zda má dostatek VT
                 items.add(ClickableItem.empty(new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
                         .setName("§c" + voteItem.getName()).setLore("§7Nemáš dostatek CraftCoins: §f" + voteItem.getPrice() + " CT").build()));
                 return;
@@ -44,7 +44,7 @@ public class CshopItemShop implements InventoryProvider {
 
             if (voteItem.getRewardType() == RewardType.COMMAND) {
                 items.add(ClickableItem.of(new ItemBuilder(voteItem.getItemStack()).setName("§a" + voteItem.getName()).setLore("§7Cena: §f" + voteItem.getPrice() + " CC").hideAllFlags().build(), click -> {
-                    CraftCoinsAPI.takeCoins(player, voteItem.getPrice());
+                    EconomyAPI.CRAFT_COINS.take(player, voteItem.getPrice());
                     player.sendMessage("§aZakoupi jsi si " + voteItem.getName());
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), voteItem.getCommandToExecute().replace("%player%", player.getName()));
                     player.closeInventory();
