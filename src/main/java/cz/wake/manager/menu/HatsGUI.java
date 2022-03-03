@@ -381,6 +381,33 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("", "§aZískáno: §fVotePass 6/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.hulk"));
 
+        list.add(new CosmeticItem().setName("§eToilet")
+                .setItemStack(Hats.TOILET.getPureItemStack())
+                .setLore("", "§aZískáno: §fStore", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.toilet_store"));
+
+        list.add(new CosmeticItem().setName("§eTrex")
+                .setItemStack(Hats.TREX.getPureItemStack())
+                .setLore("", "§aZískáno: §fStore", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.trex_store"));
+
+        list.add(new CosmeticItem().setName("§eDemogorgon")
+                .setItemStack(Hats.DEMOGORGON.getPureItemStack())
+                .setLore("", "§aZískáno: §fStore", "§aRarita: §f" + TextureItems.RARITY_MYTHIC.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.demogorgon_store"));
+
+        list.add(new CosmeticItem().setName("§eWizard")
+                .setItemStack(Hats.WIZARD.getPureItemStack())
+                .setLore("", "§aZískáno: §fStore", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.wizard_store"));
+
+        list.add(new CosmeticItem().setName("§eLion")
+                .setItemStack(Hats.LION.getPureItemStack())
+                .setLore("", "§aZískáno: §fStore", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.lion_store"));
+
+
+
         return list;
     }
 
