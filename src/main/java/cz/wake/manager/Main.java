@@ -13,9 +13,12 @@ import cz.wake.manager.listener.*;
 import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
 import cz.wake.manager.managers.CompassManager;
 import cz.wake.manager.managers.CshopManager;
+import cz.wake.manager.objects.pvp.PvPArena;
+import cz.wake.manager.objects.pvp.PvPSpawnLocation;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.general.*;
 import cz.wake.manager.perks.particles.ParticlesAPI;
+import cz.wake.manager.managers.PvPManager;
 import cz.wake.manager.servers.global.LeaveDecayListener;
 import cz.wake.manager.servers.skycloud.ItemDropListener;
 import cz.wake.manager.servers.skycloud.VillagerDamageListener;
@@ -30,21 +33,23 @@ import cz.wake.manager.utils.scoreboard.ScoreboardManager;
 import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.*;
 import cz.wake.manager.commads.VIP_command;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.Material;
+import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main extends JavaPlugin implements PluginMessageListener {
 
@@ -68,6 +73,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private CshopManager cshopManager;
     private static ScoreboardManager scoreboardManager = null;
     private CompassManager compassManager = null;
+    private @Getter PvPManager pvpManager = null;
 
     // Plugin dependencies
     private static boolean isPremiumVanishEnabled = false;
@@ -93,10 +99,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         //Config
         getConfig().options().copyDefaults(true);
         saveDefaultConfig();
-
-        // Nacteni config souboru
-        configAPI = new ConfigAPI(this);
-        loadConfiguration();
 
         // ID serveru a typ
         serverType = resolveServerType();
@@ -132,6 +134,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     @Override
     public void onEnable() {
+        // Nacteni config souboru
+        configAPI = new ConfigAPI(this);
+        loadConfiguration();
 
         // Sentry integration
         if (!(Objects.requireNonNull(getConfig().getString("sentry-dsn")).length() == 0) && Bukkit.getPluginManager().isPluginEnabled("CraftLibs")) {
@@ -220,6 +225,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new JoinAnnouncerTask(), 20, 20 * 60 * 10); // 10 minut
         }
 
+        loadPvpArena();
     }
 
     public void onDisable() {
@@ -283,6 +289,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         if (isPremiumVanishEnabled) {
             pm.registerEvents(new PlayerVanishListener(), this);
         }
+
+        if (PvPManager.isEnabled()) {
+            pm.registerEvents(new PvPListener(), this);
+        }
     }
 
     private void loadCommands() {
@@ -323,6 +333,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new Prison_command());
         manager.registerCommand(new Vanilla_command());
         manager.registerCommand(new Anarchy_command());
+
+        if (PvPManager.isEnabled()) {
+            manager.getCommandCompletions().registerCompletion("pvp_arena_ids", c -> pvpManager.getPvpArenas().stream().map(PvPArena::getId).collect(Collectors.toList()));
+
+            manager.registerCommand(new PvP_command());
+            manager.registerCommand(new PvPAdmin_command());
+        }
     }
 
     public ConfigAPI getConfigAPI() {
@@ -337,6 +354,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     }
 
     private void loadConfiguration() {
+        ConfigurationSerialization.registerClass(PvPArena.class, "PvPArena");
+        ConfigurationSerialization.registerClass(PvPSpawnLocation.class, "PvPSpawnLocation");
+
         Config deathMessagesFile = new Config(this.configAPI, "deathMessages");
         configAPI.registerConfig(deathMessagesFile);
 
@@ -345,6 +365,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         Config scoreboardFile = new Config(this.configAPI, "scoreboardConfig");
         configAPI.registerConfig(scoreboardFile);
+
+        Config pvpFile = new Config(this.configAPI, "pvp");
+        configAPI.registerConfig(pvpFile);
     }
 
     public Config getDeathMessFile() {
@@ -506,5 +529,17 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public boolean isJoinAnnounceEnabled() {
         return joinAnnounceEnabled;
+    }
+
+    private void loadPvpArena() {
+        if (!PvPManager.isEnabled()) {
+            Log.withPrefix("PVP-Arena není povolena, nebude načtena.");
+            return;
+        }
+
+        Log.withPrefix("Načítám PVP-Arenu...");
+
+        pvpManager = new PvPManager();
+        pvpManager.load();
     }
 }

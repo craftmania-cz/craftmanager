@@ -4,6 +4,7 @@ authors: [MrWakeCZ,lilmayu]
 api-version: "1.16"
 version: "1.7"
 depend:
+  - Multiverse-Core
   - CraftCore
   - CraftEconomy
 softdepend:
