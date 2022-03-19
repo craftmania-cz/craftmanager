@@ -3,7 +3,6 @@ package cz.wake.manager.listener;
 import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.libs.org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,10 +12,11 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class CosmeticDropListener implements Listener {
 
-    private HashMap<Player, Pair<ItemStack, Long>> dropRequests = new HashMap<>();
+    private HashMap<Player, Map.Entry<ItemStack, Long>> dropRequests = new HashMap<>();
 
     @EventHandler
     public void onCosmeticDrop(final PlayerDropItemEvent event) {
@@ -40,7 +40,7 @@ public class CosmeticDropListener implements Listener {
             if (!dropRequests.containsKey(player) || dropRequests.get(player).getValue() < System.currentTimeMillis()) {
                 event.setCancelled(true);
                 ChatInfo.INFO.send(player, "Pokud chceš vyhodit item na zem, stiskni znova Q!");
-                dropRequests.put(player, Pair.of(itemStack, System.currentTimeMillis() + 5000)); // 5 seconds
+                dropRequests.put(player, Map.entry(itemStack, System.currentTimeMillis() + 5000)); // 5 seconds
             } else {
                 event.setCancelled(false);
                 ChatInfo.DANGER.send(player, "Vyhodil jsi chráněný item na zem!");
