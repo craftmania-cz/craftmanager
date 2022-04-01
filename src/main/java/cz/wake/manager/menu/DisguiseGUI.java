@@ -191,6 +191,27 @@ public class DisguiseGUI implements InventoryProvider {
                 .setDisguiseType(DisguiseType.MINECART_CHEST)
                 .setRequiredPermission("craftmanager.disguise.minecart_chest"));
 
+        list.add(new CosmeticItem().setName("§cSheep: Yellow")
+                .setItemStack(Material.YELLOW_WOOL)
+                .setLore("§8Kliknutím se změníš na Sheep.")
+                .setDisguiseType(DisguiseType.SHEEP)
+                .setSheepColor(DyeColor.YELLOW)
+                .setRequiredPermission("craftmanager.disguise.sheep.yellow"));
+
+        list.add(new CosmeticItem().setName("§cSheep: Red [Baby]")
+                .setItemStack(Material.YELLOW_WOOL)
+                .setLore("§8Kliknutím se změníš na Sheep.")
+                .setDisguiseType(DisguiseType.SHEEP)
+                .setBabyType()
+                .setSheepColor(DyeColor.YELLOW)
+                .setRequiredPermission("craftmanager.disguise.sheep.yellow"));
+
+        list.add(new CosmeticItem().setName("§bDrowned")
+                .setItemStack(Material.ZOMBIE_HEAD)
+                .setLore("§8Kliknutím se změníš na Strider.")
+                .setDisguiseType(DisguiseType.DROWNED)
+                .setRequiredPermission("craftmanager.disguise.drowned"));
+
         return list;
     }
 

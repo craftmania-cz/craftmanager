@@ -181,6 +181,30 @@ public class CosAdmin_command extends BaseCommand {
                 this.givePlayerItemOrDrop(onlinePlayer, mecha_fist);
                 sender.sendMessage("§eDal jsi hráči " + player + " Mecha-Sword!");
             }
+            case "banana-pickaxe" -> {
+                ItemStack banana_pickaxe = new ItemBuilder(Pickaxes.BANANA_PICKAXE.getPureItemStack())
+                        .setName("§e§lBanana Pickaxe").setLore("§7Rarita: §f" + TextureItems.RARITY_EPIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, banana_pickaxe);
+                sender.sendMessage("§eDal jsi hráči " + player + " Banana Pickaxe!");
+            }
+            case "banana-sword" -> {
+                ItemStack banana_sword = new ItemBuilder(Swords.BANANA_SWORD.getPureItemStack())
+                        .setName("§e§lBanana Sword").setLore("§7Rarita: §f" + TextureItems.RARITY_EPIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, banana_sword);
+                sender.sendMessage("§eDal jsi hráči " + player + " Banana Sword!");
+            }
+            case "banana-scythe" -> {
+                ItemStack banana_scythe = new ItemBuilder(Swords.BANANA_SCYTHE.getPureItemStack())
+                        .setName("§e§lBanana Scythe").setLore("§7Rarita: §f" + TextureItems.RARITY_EPIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, banana_scythe);
+                sender.sendMessage("§eDal jsi hráči " + player + " Banana Scythe!");
+            }
+            case "monkey-tail" -> {
+                ItemStack monkey_tail = new ItemBuilder(HandItems.MONKEY_TAIL.getPureItemStack())
+                        .setName("§b§lMonkey Tail").setLore("§7Rarita: §f" + TextureItems.RARITY_COMMON.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, monkey_tail);
+                sender.sendMessage("§eDal jsi hráči " + player + " Monkey Tail!");
+            }
         }
     }
 

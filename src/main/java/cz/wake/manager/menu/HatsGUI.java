@@ -173,7 +173,7 @@ public class HatsGUI implements InventoryProvider {
 
         list.add(new CosmeticItem().setName("§6Legendary Lion")
                 .setItemStack(Hats.LION.getPureItemStack())
-                .setLore("", "§aZískáno: §fVotePass 1/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
+                .setLore("", "§aZískáno: §fVotePass 1", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.lion"));
 
         list.add(new CosmeticItem().setName("§aCowBoy")
@@ -238,12 +238,12 @@ public class HatsGUI implements InventoryProvider {
 
         list.add(new CosmeticItem().setName("§cMandalorian")
                 .setItemStack(Hats.MANDALORIAN.getPureItemStack())
-                .setLore("", "§aZískáno: §fVotePass 2/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
+                .setLore("", "§aZískáno: §fVotePass 2", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.mandalorian"));
 
         list.add(new CosmeticItem().setName("§cYoda")
                 .setItemStack(Hats.YODA.getPureItemStack())
-                .setLore("", "§aZískáno: §fVotePass 2/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
+                .setLore("", "§aZískáno: §fVotePass 2", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.old_yoda"));
 
         list.add(new CosmeticItem().setName("§cRádiovka")
@@ -273,7 +273,7 @@ public class HatsGUI implements InventoryProvider {
 
         list.add(new CosmeticItem().setName("§eIron Man")
                 .setItemStack(Hats.IRON_MAN.getPureItemStack())
-                .setLore("", "§aZískáno: §fVotePass 3/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
+                .setLore("", "§aZískáno: §fVotePass 3", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.iron_man"));
 
         list.add(new CosmeticItem().setName("§eTiger Head")
@@ -303,7 +303,7 @@ public class HatsGUI implements InventoryProvider {
 
         list.add(new CosmeticItem().setName("§cDarth Vader")
                 .setItemStack(Hats.DARTH_VADER.getPureItemStack())
-                .setLore("", "§aZískáno: §fVotePass 4/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
+                .setLore("", "§aZískáno: §fVotePass 4", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.darth_vader"));
 
         list.add(new CosmeticItem().setName("§cImpostor")
@@ -333,7 +333,7 @@ public class HatsGUI implements InventoryProvider {
 
         list.add(new CosmeticItem().setName("§9Tetris Hat")
                 .setItemStack(Hats.TETRIS.getPureItemStack())
-                .setLore("", "§aZískáno: §fVotePass 5/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
+                .setLore("", "§aZískáno: §fVotePass 5", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.tetris_hat"));
 
         list.add(new CosmeticItem().setName("§6Frontman Mask")
@@ -378,7 +378,7 @@ public class HatsGUI implements InventoryProvider {
 
         list.add(new CosmeticItem().setName("§aHulk Hat")
                 .setItemStack(Hats.HULK.getPureItemStack())
-                .setLore("", "§aZískáno: §fVotePass 6/2021", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
+                .setLore("", "§aZískáno: §fVotePass 6", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.hulk"));
 
         list.add(new CosmeticItem().setName("§eToilet")
@@ -406,7 +406,20 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("", "§aZískáno: §fStore", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(),  "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.lion_store"));
 
+        list.add(new CosmeticItem().setName("§bNarwhal Horn")
+                .setItemStack(Hats.NARWHAL_HORN.getPureItemStack())
+                .setLore("", "§aZískáno: §fVotePass 7", "§aRarita: §f" + TextureItems.RARITY_RARE.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.narwhal_horn"));
 
+        list.add(new CosmeticItem().setName("§ePineapple Helmet")
+                .setItemStack(Hats.PINEAPPLE_HELMET.getPureItemStack())
+                .setLore("", "§aZískáno: §fVotePass 7", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(),  "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.pineapple_helmet"));
+
+        list.add(new CosmeticItem().setName("§9Astronaut")
+                .setItemStack(Hats.ASTRONAUT.getPureItemStack())
+                .setLore("", "§aZískáno: §fVotePass [500 hlasů]", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.astronaut_votepass"));
 
         return list;
     }
