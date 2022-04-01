@@ -74,18 +74,18 @@ public class CshopManager {
 
     private void loadVoteShopItems() {
         if (Main.getInstance().getServerType() == ServerType.SURVIVAL || Main.getInstance().getServerType() == ServerType.SKYBLOCK || Main.getInstance().getServerType() == ServerType.PRISON) {
-            voteShopItems.add(new VoteItem().setName("1x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(1).setCommandToExecute("crate give physical Vote 1 %player%"));
-            voteShopItems.add(new VoteItem().setName("5x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(5).setCommandToExecute("crate give physical Vote 5 %player%"));
-            voteShopItems.add(new VoteItem().setName("10x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(10).setCommandToExecute("crate give physical Vote 10 %player%"));
-            voteShopItems.add(new VoteItem().setName("32x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(32).setCommandToExecute("crate give physical Vote 32 %player%"));
-            voteShopItems.add(new VoteItem().setName("64x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(64).setCommandToExecute("crate give physical Vote 64 %player%"));
+            voteShopItems.add(new VoteItem().setName("1x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(2).setCommandToExecute("crate give physical Vote 1 %player%"));
+            voteShopItems.add(new VoteItem().setName("5x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(10).setCommandToExecute("crate give physical Vote 5 %player%"));
+            voteShopItems.add(new VoteItem().setName("10x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(20).setCommandToExecute("crate give physical Vote 10 %player%"));
+            voteShopItems.add(new VoteItem().setName("32x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(64).setCommandToExecute("crate give physical Vote 32 %player%"));
+            voteShopItems.add(new VoteItem().setName("64x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(128).setCommandToExecute("crate give physical Vote 64 %player%"));
         }
         if (Main.getInstance().getServerType() == ServerType.SKYCLOUD) {
             voteShopItems.add(new VoteItem().setName("1x Emerald").setPrice(2).setEconomyReward(1, RewardType.MONEY));
             voteShopItems.add(new VoteItem().setName("4x Emerald").setPrice(7).setEconomyReward(7, RewardType.MONEY));
         }
         if (Main.getInstance().getServerType() == ServerType.CREATIVE) {
-            voteShopItems.add(new VoteItem().setItemStack(Material.WOODEN_AXE).setRequiredLevel(2).setName("WorldEdit (2h)").setPrice(2).setTimed(2).setPermisions("worldedit.brush.*", "worldedit.clipboard.(copy|cut|flip|paste|rotate)", "worldedit.fill", "worldedit.wand", "worldedit.history.(redo|undo)", "worldedit.region.(center|set|walls|move|overlay)", "worldedit.selection.(pos|chunk)", "worldedit.navigation.up", "fawe.worldguard"));
+            voteShopItems.add(new VoteItem().setItemStack(Material.WOODEN_AXE).setRequiredLevel(3).setName("WorldEdit (2h)").setPrice(2).setTimed(2).setPermisions("worldedit.brush.*", "worldedit.clipboard.(copy|cut|flip|paste|rotate)", "worldedit.fill", "worldedit.wand", "worldedit.history.(redo|undo)", "worldedit.region.(center|set|walls|move|overlay)", "worldedit.selection.(pos|chunk)", "worldedit.navigation.up", "fawe.worldguard"));
         }
         voteShopItems.add(new VoteItem().setName("15 CraftCoins").setPrice(1).setEconomyReward(15, RewardType.CRAFTCOINS));
         voteShopItems.add(new VoteItem().setName("60 CraftCoins").setPrice(4).setEconomyReward(60, RewardType.CRAFTCOINS));
@@ -149,7 +149,7 @@ public class CshopManager {
     }
 
     private void loadSeasonShopItems() {
-        if (System.currentTimeMillis() >= 1638486000000L) {
+        /*if (System.currentTimeMillis() >= 1638486000000L) {
             seasonShopItems.add(new VoteItem().setName("§c§lBaseball Bat").setHideWhenBuy("craftmanager.cshop.baseball_bat").setPrice(1).setItemStack(HandItems.BASEBALL_BAT.getPureItemStack()).setCommandToExecute("cosadmin %player% baseball-bat %player%"));
         }
         if (System.currentTimeMillis() >= 1639609200000L) {
@@ -160,7 +160,7 @@ public class CshopManager {
         }
         if (System.currentTimeMillis() >= 1640473200000L) {
             seasonShopItems.add(new VoteItem().setName("§b§lFrost Sword").setHideWhenBuy("craftmanager.cshop.frost_sword").setPrice(1).setItemStack(Swords.FROST_SWORD.getPureItemStack()).setCommandToExecute("cosadmin %player% frost-sword %player%"));
-        }
+        }*/
     }
 
 }
