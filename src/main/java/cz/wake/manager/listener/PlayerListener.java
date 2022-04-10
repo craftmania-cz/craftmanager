@@ -7,6 +7,7 @@ import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.GameMode;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -16,7 +17,6 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.concurrent.TimeUnit;
 
@@ -270,6 +270,18 @@ public class PlayerListener implements Listener {
                     }
                 }
             }
+        }
+    }
+
+    /*
+     * Blokace prutování hráčů.
+     */
+    @EventHandler(priority = EventPriority.HIGHEST)
+    private void onPlayerFishPlayer(PlayerFishEvent e){
+        if(e.getState() != PlayerFishEvent.State.CAUGHT_ENTITY) return;
+        final boolean isPlayer = e.getCaught() instanceof HumanEntity;
+        if (isPlayer) {
+            e.setCancelled(true);
         }
     }
 
