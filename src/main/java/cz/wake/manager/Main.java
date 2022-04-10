@@ -447,8 +447,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             return null;
         }
         return switch (type) {
-            case "survival" -> LevelType.SURVIVAL_LEVEL;
-            case "skyblock" -> LevelType.SKYBLOCK_LEVEL;
+            case "survival" -> LevelType.SURVIVAL_117_LEVEL;
+            case "skyblock" -> LevelType.SKYBLOCK_117_LEVEL;
+            case "survival_118" -> LevelType.SURVIVAL_118_LEVEL;
+            case "skyblock_118" -> LevelType.SKYBLOCK_118_LEVEL;
             case "creative" -> LevelType.CREATIVE_LEVEL;
             case "vanilla" -> LevelType.VANILLA_LEVEL;
             case "anarchy" -> LevelType.ANARCHY_LEVEL;
