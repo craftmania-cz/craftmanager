@@ -7,6 +7,7 @@ import cz.craftmania.craftcore.builders.items.ItemBuilder;
 import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.craftmania.craftpack.api.*;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -84,6 +85,62 @@ public class CosAdmin_command extends BaseCommand {
                         .setName("§a§lPlant Set Shovel").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
                 this.givePlayerItemOrDrop(onlinePlayer, plant_set_shovel);
                 sender.sendMessage("§eDal jsi hráči " + player + " Plant Set!");
+            }
+            case "ignite-set" -> {
+                ItemStack ignite_set_sword = new ItemBuilder(Material.NETHERITE_SWORD).setCustomModelData(100100)
+                        .setName("§c§lIgnite Set Sword").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, ignite_set_sword);
+                ItemStack ignite_set_pickaxe = new ItemBuilder(Material.NETHERITE_PICKAXE).setCustomModelData(100100)
+                        .setName("§c§lIgnite Set Pickaxe").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, ignite_set_pickaxe);
+                ItemStack ignite_set_axe = new ItemBuilder(Material.NETHERITE_AXE).setCustomModelData(100100)
+                        .setName("§c§lIgnite Set Axe").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, ignite_set_axe);
+                ItemStack ignite_set_shovel = new ItemBuilder(Material.NETHERITE_SHOVEL).setCustomModelData(100100)
+                        .setName("§c§lIgnite Set Shovel").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, ignite_set_shovel);
+                ItemStack ignite_set_hoe = new ItemBuilder(Material.NETHERITE_HOE).setCustomModelData(100100)
+                        .setName("§c§lIgnite Set Hoe").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, ignite_set_hoe);
+                ItemStack ignite_crown = new ItemBuilder(Material.SUGAR).setCustomModelData(100003)
+                        .setName("§c§lIgnite Crown").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_MYTHIC.getRender(), "§8Klikni pravým k nasazení.").build();
+                this.givePlayerItemOrDrop(onlinePlayer, ignite_crown);
+                sender.sendMessage("§eDal jsi hráči " + player + " Ignite Set!");
+            }
+            case "clown-set" -> { //TODO: CraftCosmetics
+                ItemStack clown_set_sword = new ItemBuilder(Material.NETHERITE_SWORD).setCustomModelData(100150)
+                        .setName("§d§lClown Sword").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, clown_set_sword);
+                ItemStack clown_set_pickaxe = new ItemBuilder(Material.NETHERITE_PICKAXE).setCustomModelData(100150)
+                        .setName("§d§lClown Pickaxe").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, clown_set_pickaxe);
+                ItemStack clown_set_axe = new ItemBuilder(Material.NETHERITE_AXE).setCustomModelData(100150)
+                        .setName("§d§lClown Axe").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, clown_set_axe);
+                ItemStack clown_set_hoe = new ItemBuilder(Material.NETHERITE_HOE).setCustomModelData(100150)
+                        .setName("§d§lClown Hoe").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, clown_set_hoe);
+                ItemStack clown_set_shovel = new ItemBuilder(Material.NETHERITE_SHOVEL).setCustomModelData(100150)
+                        .setName("§d§lClown Shovel").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, clown_set_shovel);
+                ItemStack clown_set_bow = new ItemBuilder(Material.BOW).setCustomModelData(100150)
+                        .setName("§d§lClown Bow").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, clown_set_bow);
+                ItemStack clown_set_hat = new ItemBuilder(Material.SUGAR).setCustomModelData(100002)
+                        .setName("§d§lClown Hat").setLore("§7Zakoupil: §f" + loreNick, "§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, clown_set_hat);
+
+                String helmetNBTCommand = "give " + onlinePlayer.getName() + " leather_helmet{AttributeModifiers:[{Amount:3.0d,AttributeName:\"minecraft:generic.armor\",Name:\"itemsadder\",Operation:0,Slot:\"head\",UUID:[I;-640943352,475025341,-1612702938,-1029972928]},{Amount:3.0d,AttributeName:\"minecraft:generic.armor_toughness\",Name:\"itemsadder\",Operation:0,Slot:\"head\",UUID:[I;-1500238679,1679903797,-1761362150,534057705]}],CustomModelData:100150,Damage:0,HideFlags:64,display:{Name:'[{\"text\":\"Clown Helmet\",\"italic\":false,\"bold\":true,\"color\":\"light_purple\"}]',Lore:['[{\"text\":\"Zakoupil:\",\"italic\":false,\"color\":\"gray\"},{\"text\":\" \",\"color\":\"dark_purple\"},{\"text\":\"" + loreNick + "\",\"color\":\"white\"}]'],color:14024705},itemsadder:{custom_durability:592,fake_durability:55.0d,id:\"clown_helmet\",max_custom_durability:592,namespace:\"craftmania\"}} 1";
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), helmetNBTCommand);
+
+                String chestplateNBTCommand = "give " + onlinePlayer.getName() + " leather_chestplate{AttributeModifiers:[{Amount:8.0d,AttributeName:\"minecraft:generic.armor\",Name:\"itemsadder\",Operation:0,Slot:\"chest\",UUID:[I;-1505723297,1286358069,-2075431994,1677546357]},{Amount:3.0d,AttributeName:\"minecraft:generic.armor_toughness\",Name:\"itemsadder\",Operation:0,Slot:\"chest\",UUID:[I;-177746632,-1097449221,-2076924959,-1423219744]}],CustomModelData:100150,Damage:0,HideFlags:64,display:{Name:'[{\"text\":\"Clown Chestplate\",\"italic\":false,\"bold\":true,\"color\":\"light_purple\"}]',Lore:['[{\"text\":\"Zakoupil:\",\"italic\":false,\"color\":\"gray\"},{\"text\":\" \",\"color\":\"dark_purple\"},{\"text\":\"" + loreNick + "\",\"color\":\"white\"}]'],color:14024705},itemsadder:{custom_durability:592,fake_durability:80.0d,id:\"clown_chestplate\",max_custom_durability:592,namespace:\"craftmania\"}} 1";
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), chestplateNBTCommand);
+
+                String leggingsNBTCommand = "give " + onlinePlayer.getName() + " leather_leggings{AttributeModifiers:[{Amount:6.0d,AttributeName:\"minecraft:generic.armor\",Name:\"itemsadder\",Operation:0,Slot:\"legs\",UUID:[I;1415761501,445729875,-1119614081,-1995242445]},{Amount:3.0d,AttributeName:\"minecraft:generic.armor_toughness\",Name:\"itemsadder\",Operation:0,Slot:\"legs\",UUID:[I;-1937686728,14370072,-1750558610,-931238791]}],CustomModelData:100150,Damage:0,HideFlags:64,display:{Name:'[{\"text\":\"Clown Leggings\",\"italic\":false,\"bold\":true,\"color\":\"light_purple\"}]',Lore:['[{\"text\":\"Zakoupil:\",\"italic\":false,\"color\":\"gray\"},{\"text\":\" \",\"color\":\"dark_purple\"},{\"text\":\"" + loreNick + "\",\"color\":\"white\"}]'],color:14024705},itemsadder:{custom_durability:592,fake_durability:75.0d,id:\"clown_leggins\",max_custom_durability:592,namespace:\"craftmania\"}} 1";
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), leggingsNBTCommand);
+
+                String bootsNBTCommand = "give " + onlinePlayer.getName() + " leather_boots{AttributeModifiers:[{Amount:3.0d,AttributeName:\"minecraft:generic.armor\",Name:\"itemsadder\",Operation:0,Slot:\"feet\",UUID:[I;1633978470,467225177,-1598479421,1944354831]},{Amount:3.0d,AttributeName:\"minecraft:generic.armor_toughness\",Name:\"itemsadder\",Operation:0,Slot:\"feet\",UUID:[I;1787998139,1232881052,-1800790762,-1285596720]}],CustomModelData:100150,Damage:0,HideFlags:64,display:{Name:'[{\"text\":\"Clown Boots\",\"italic\":false,\"bold\":true,\"color\":\"light_purple\"}]',Lore:['[{\"text\":\"Zakoupil:\",\"italic\":false,\"color\":\"gray\"},{\"text\":\" \",\"color\":\"dark_purple\"},{\"text\":\"" + loreNick + "\",\"color\":\"white\"}]'],color:14024705},itemsadder:{custom_durability:592,fake_durability:65.0d,id:\"clown_boots\",max_custom_durability:592,namespace:\"craftmania\"}} 1";
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), bootsNBTCommand);
             }
             case "pomlazka" -> {
                 ItemStack pomlazka = new ItemBuilder(HandItems.EASTER_STICK.getPureItemStack())
