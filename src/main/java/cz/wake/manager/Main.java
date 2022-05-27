@@ -309,7 +309,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new RestartManager_command()); //TODO: Nenačítat, pokud nebude CraftCore na serveru?
         manager.registerCommand(new Discord_command());
         manager.registerCommand(new Wiki_command());
-        manager.registerCommand(new Cosmetics_command());
+        //manager.registerCommand(new Cosmetics_command());
         manager.registerCommand(new CosAdmin_command());
 
         if (serverType != ServerType.HARDCORE_VANILLA) {
