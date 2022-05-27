@@ -283,6 +283,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         if (isPremiumVanishEnabled) {
             pm.registerEvents(new PlayerVanishListener(), this);
         }
+
+        if (serverType == ServerType.SURVIVAL) {
+            pm.registerEvents(new WardrobeRegionListener(), this);
+        }
     }
 
     private void loadCommands() {
