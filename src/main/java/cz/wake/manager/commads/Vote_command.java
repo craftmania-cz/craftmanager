@@ -32,9 +32,10 @@ public class Vote_command extends BaseCommand {
         player.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
         player.sendMessage("");
         player.sendMessage("§7K hlasovani klikni na tento odkaz:");
-        player.sendMessage("§c1. https://www.minecraft-list.cz/server/craftmania/vote?name=" + player.getName());
-        player.sendMessage("§c2. http://craftlist.org/craftmania?nickname=" + player.getName());
-        player.sendMessage("§c3. https://minecraftservery.eu/server/453/vote/" + player.getName());
+        player.sendMessage("§c1. https://czech-craft.eu/server/craftmania/vote/?user=" + player.getName());
+        player.sendMessage("§c2. https://www.minecraft-list.cz/server/craftmania/vote?name=" + player.getName());
+        player.sendMessage("§c3. http://craftlist.org/craftmania?nickname=" + player.getName());
+        player.sendMessage("§c4. https://minecraftservery.eu/server/453/vote/" + player.getName());
         player.sendMessage("");
         player.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
     }

@@ -262,6 +262,18 @@ public class CosAdmin_command extends BaseCommand {
                 this.givePlayerItemOrDrop(onlinePlayer, monkey_tail);
                 sender.sendMessage("§eDal jsi hráči " + player + " Monkey Tail!");
             }
+            case "crab-pickaxe" -> {
+                ItemStack craftPickaxe = new ItemBuilder(Pickaxes.CRAB_PICKAXE.getPureItemStack())
+                        .setName("§c§lCrab Pickaxe").setLore("§7Rarita: §f" + TextureItems.RARITY_EPIC.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, craftPickaxe);
+                sender.sendMessage("§eDal jsi hráči " + player + " Crab Pickaxe!");
+            }
+            case "atlantis-staff" -> {
+                ItemStack atlantisStaff = new ItemBuilder(HandItems.ATLANTIS_STAFF.getPureItemStack())
+                        .setName("§e§lAtlantis Staff").setLore("§7Rarita: §f" + TextureItems.RARITY_RARE.getRender()).build();
+                this.givePlayerItemOrDrop(onlinePlayer, atlantisStaff);
+                sender.sendMessage("§eDal jsi hráči " + player + " Atlantis Staff!");
+            }
         }
     }
 

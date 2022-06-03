@@ -421,6 +421,18 @@ public class HatsGUI implements InventoryProvider {
                 .setLore("", "§aZískáno: §fVotePass [500 hlasů]", "§aRarita: §f" + TextureItems.RARITY_LEGENDARY.getRender(), "", "§eKlikni pro nasazení")
                 .setRequiredPermission("craftmanager.hats.astronaut_votepass"));
 
+        list.add(new CosmeticItem().setName("§eAngler Fish")
+                .setItemStack(Hats.ANGLER_FISH.getPureItemStack())
+                .setLore("", "§aZískáno: §fVotePass 8", "§aRarita: §f" + TextureItems.RARITY_RARE.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.angler_fish"));
+
+        list.add(new CosmeticItem().setName("§eScuba Goggles")
+                .setItemStack(Hats.SCUBA_GOGGLES.getPureItemStack())
+                .setLore("", "§aZískáno: §fVotePass 8", "§aRarita: §f" + TextureItems.RARITY_EPIC.getRender(), "", "§eKlikni pro nasazení")
+                .setRequiredPermission("craftmanager.hats.scuba_goggles"));
+
+
+
         return list;
     }
 
