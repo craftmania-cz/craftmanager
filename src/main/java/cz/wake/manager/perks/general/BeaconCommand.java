@@ -70,15 +70,15 @@ public class BeaconCommand extends BaseCommand implements Listener {
                 ChatInfo.SUCCESS.send(player, "Aktivoval jsi permanentní §bSpeed!");
             }
             if(e.getSlot() == 1){
-                activateEffect(player, PotionEffectType.FAST_DIGGING, 2);
+                activateEffect(player, PotionEffectType.FAST_DIGGING, 0);
                 ChatInfo.SUCCESS.send(player, "Aktivoval jsi permanentní §bHaste!");
             }
             if(e.getSlot() == 2){
-                activateEffect(player, PotionEffectType.JUMP, 3);
+                activateEffect(player, PotionEffectType.JUMP, 1);
                 ChatInfo.SUCCESS.send(player, "Aktivoval jsi permanentní §bJump Boost!");
             }
             if(e.getSlot() == 3){
-                activateEffect(player, PotionEffectType.FIRE_RESISTANCE, 3);
+                activateEffect(player, PotionEffectType.FIRE_RESISTANCE, 1);
                 ChatInfo.SUCCESS.send(player, "Aktivoval jsi permanentní §bFire Resistance!");
             }
             if(e.getSlot() == 4){
@@ -86,7 +86,7 @@ public class BeaconCommand extends BaseCommand implements Listener {
                 ChatInfo.SUCCESS.send(player, "Aktivoval jsi permanentní §bNight Vision!");
             }
             if(e.getSlot() == 5){
-                activateEffect(player, PotionEffectType.WATER_BREATHING, 3);
+                activateEffect(player, PotionEffectType.WATER_BREATHING, 1);
                 ChatInfo.SUCCESS.send(player, "Aktivoval jsi permanentní §bWater Breathing!");
             }
             if(e.getSlot() == 7){
@@ -99,7 +99,7 @@ public class BeaconCommand extends BaseCommand implements Listener {
 
     private void activateEffect(Player p, PotionEffectType effect, int amlifier){
         p.getActivePotionEffects().stream().map(PotionEffect::getType).forEach(p::removePotionEffect);
-        p.addPotionEffect(new PotionEffect(effect, 12000000, amlifier));
+        p.addPotionEffect(new PotionEffect(effect, 12000000, amlifier, true, false));
         p.closeInventory();
     }
 }
