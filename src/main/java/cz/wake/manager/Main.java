@@ -200,6 +200,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         this.cshopManager = new CshopManager(this);
         this.cshopManager.loadCshop();
 
+        // HUD compass
+        this.compassManager = new CompassManager();
+        getServer().getScheduler().runTaskTimerAsynchronously(this, new CompassTask(), 20, 20);
+
         // Načtení ScoreboardManageru
         if (getConfigAPI().getConfig("scoreboardConfig").getBoolean("scoreboard.enabled")) {
             Log.withPrefix("Aktivace Scoreboardu!");
@@ -207,11 +211,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, () -> getScoreboardManager().update(), 0L, getConfigAPI().getConfig("scoreboardConfig").getLong("scoreboard.refreshTime"));
         } else {
             Log.withPrefix("Scoreboard je deaktivovaný.");
-        }
-
-        if (serverType == ServerType.ANARCHY) {
-            this.compassManager = new CompassManager();
-            getServer().getScheduler().runTaskTimerAsynchronously(this, new CompassTask(), 20, 20);
         }
 
         // JoinAnnouncer
@@ -252,8 +251,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new InvisibleItemFrameListener(), this);
 
         // Cosmetic items
-        pm.registerEvents(new CustomItemsListener(), this);
-        pm.registerEvents(new CosmeticDropListener(), this);
+        //pm.registerEvents(new CustomItemsListener(), this);
+        //pm.registerEvents(new CosmeticDropListener(), this);
 
         if (serverType != ServerType.HARDCORE_VANILLA) {
             pm.registerEvents(new OnEXPBottleThrownListener(), this);
@@ -285,7 +284,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         if (serverType == ServerType.SURVIVAL) {
-            pm.registerEvents(new WardrobeRegionListener(), this);
+            //pm.registerEvents(new WardrobeRegionListener(), this);
         }
     }
 
@@ -309,15 +308,12 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new RestartManager_command()); //TODO: Nenačítat, pokud nebude CraftCore na serveru?
         manager.registerCommand(new Discord_command());
         manager.registerCommand(new Wiki_command());
-        manager.registerCommand(new Cosmetics_command());
+        //manager.registerCommand(new Cosmetics_command());
         manager.registerCommand(new CosAdmin_command());
+        manager.registerCommand(new Hud_Command());
 
         if (serverType != ServerType.HARDCORE_VANILLA) {
             manager.registerCommand(new GetXP_command());
-        }
-
-        if (serverType == ServerType.ANARCHY) {
-            manager.registerCommand(new Hud_Command());
         }
 
         //Servers

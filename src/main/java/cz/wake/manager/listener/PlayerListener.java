@@ -76,19 +76,10 @@ public class PlayerListener implements Listener {
             p.sendMessage("§f");
         }
 
-        // Anarchy
-        if (Main.getInstance().getServerType() == ServerType.ANARCHY) {
-            if (Main.getInstance().getMySQL().getSettings(e.getPlayer(), "hud_bossbar") == 1) {
-                assert Main.getInstance().getCompassManager() != null;
-                Main.getInstance().getCompassManager().addPlayer(e.getPlayer());
-            }
-
-            p.sendMessage("");
-            p.sendMessage("§c§lVanilla: Anarchy");
-            p.sendMessage("§7Na tomto serveru není žádná ochrana regionů.");
-            p.sendMessage("§7Kdokoliv na tebe může udělat tpa-kill, jakkoliv tě zabít.");
-            p.sendMessage("§7Používání cheatů, xraye atd. je stále zakázáno.");
-            p.sendMessage("");
+        // HUD Compass
+        if (Main.getInstance().getMySQL().getSettings(e.getPlayer(), "hud_bossbar") == 1) {
+            assert Main.getInstance().getCompassManager() != null;
+            Main.getInstance().getCompassManager().addPlayer(e.getPlayer());
         }
 
         if (Main.getInstance().getServerType() == ServerType.VANILLA) {
