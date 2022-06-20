@@ -3,7 +3,6 @@ package cz.wake.manager.listener;
 import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import cz.wake.manager.commads.staff.RestartManager_command;
-import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.GameMode;
 import org.bukkit.entity.EntityType;
@@ -21,8 +20,6 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.concurrent.TimeUnit;
 
 public class PlayerListener implements Listener {
-
-    private ParticlesAPI partAPI = new ParticlesAPI();
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onJoin(final PlayerJoinEvent e) {
@@ -113,12 +110,6 @@ public class PlayerListener implements Listener {
         e.setQuitMessage(null);
 
         try {
-            if (Main.getInstance().isVisibleForPlayer(p)) {
-                partAPI.deactivateParticles(p);
-                partAPI.deaktivateCapes(p);
-                Main.getInstance().removePlayer(p);
-            }
-
             //AT
             if (Main.getInstance().at_list.contains(p)) {
                 Main.getInstance().at_list.remove(p);
@@ -156,12 +147,6 @@ public class PlayerListener implements Listener {
         final Player p = e.getPlayer();
 
         try {
-            if (Main.getInstance().isVisibleForPlayer(p)) {
-                partAPI.deactivateParticles(p);
-                partAPI.deaktivateCapes(p);
-                Main.getInstance().removePlayer(p);
-            }
-
             //AT
             if (Main.getInstance().at_list.contains(p)) {
                 Main.getInstance().at_list.remove(p);

@@ -15,7 +15,6 @@ import cz.wake.manager.managers.CompassManager;
 import cz.wake.manager.managers.CshopManager;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
 import cz.wake.manager.perks.general.*;
-import cz.wake.manager.perks.particles.ParticlesAPI;
 import cz.wake.manager.servers.global.LeaveDecayListener;
 import cz.wake.manager.servers.skycloud.ItemDropListener;
 import cz.wake.manager.servers.skycloud.VillagerDamageListener;
@@ -38,7 +37,6 @@ import org.bukkit.inventory.Recipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.ByteArrayOutputStream;
@@ -52,7 +50,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     public ArrayList<Player> at_list = new ArrayList<>();
     public HashMap<Player, Integer> at_afk = new HashMap<>();
     public ArrayList<Player> death_messages = new ArrayList<>();
-    private ParticlesAPI particlesAPI = new ParticlesAPI();
     public static Long restartTime = null;
     public static String restartReason = null;
     private static ByteArrayOutputStream b = new ByteArrayOutputStream();
@@ -240,7 +237,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private void loadListeners() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new InventoryListener(), this);
-        pm.registerEvents(new ParticlesAPI(), this);
         pm.registerEvents(new PlayerListener(), this);
         pm.registerEvents(new ChatListener(), this);
         pm.registerEvents(new DeathListener(), this); //TODO: Zkontrolovat damage, pry se pkazdy posle zprava
