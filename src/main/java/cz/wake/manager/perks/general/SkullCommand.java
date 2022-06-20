@@ -20,9 +20,6 @@ import java.util.HashMap;
 @Description("Dá ti tvojí hlavu")
 public class SkullCommand extends BaseCommand {
 
-    private HashMap<Player, Double> _time = new HashMap<>();
-    private HashMap<Player, BukkitRunnable> _cdRunnable = new HashMap<>();
-
     @HelpCommand
     public void helpCommand(CommandSender sender, CommandHelp help) {
         sender.sendMessage("§e§lSkull commands:");
@@ -31,28 +28,10 @@ public class SkullCommand extends BaseCommand {
 
     @Default
     public void giveSkull(CommandSender sender) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            if (Main.getInstance().getServerType() == ServerType.HARDCORE_VANILLA) {
-                ChatInfo.DANGER.send(player, "Na tomto serveru tato výhoda neplatí!");
-                return;
-            }
+        if (sender instanceof Player player) {
             if (player.hasPermission("craftmanager.vip.skull")) {
-                if (!this._time.containsKey(player)) {
-                    this._time.put(player, 600D + 0.1D);
+                if (!player.hasPermission("craftmanager.cooldown.skull-command")) {
                     giveHead(player);
-                    this._cdRunnable.put(player, new BukkitRunnable() {
-                        @Override
-                        public void run() {
-                            _time.put(player, (_time.get(player)) - 0.1D);
-                            if ((_time.get(player)) < 0.01D) {
-                                _time.remove(player);
-                                _cdRunnable.remove(player);
-                                cancel();
-                            }
-                        }
-                    });
-                    (this._cdRunnable.get(player)).runTaskTimer(Main.getInstance(), 2L, 2L);
                 } else {
                     ChatInfo.INFO.send(player, "Tento příkaz lze použít pouze 1x za 10 minut.");
                 }
@@ -63,6 +42,7 @@ public class SkullCommand extends BaseCommand {
     private void giveHead(Player p) {
         try {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "give %creator% minecraft:player_head{\"SkullOwner\":\"%creator%\"}".replaceAll("%creator%", p.getName()));
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user %creator% permission settemp craftmanager.cooldown.skull-command true 10m".replaceAll("%creator%", p.getName()));
         } catch (Exception e) {
             ChatInfo.DANGER.send(p, "Chyba v API Mojangu! Zkus to znova zachvilku! :)");
         }
