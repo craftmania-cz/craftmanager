@@ -247,6 +247,17 @@ public class DisguiseGUI implements InventoryProvider {
             }
 
             items.add(ClickableItem.of(new ItemBuilder(cosmeticItem.getItemStack()).setName("§b" + cosmeticItem.getName()).setLore(cosmeticItem.getLore()).hideAllFlags().build(), click -> {
+                if (cosmeticItem.getDisguiseType() == DisguiseType.MINECART_CHEST) {
+                    MiscDisguise miscDisguise = new MiscDisguise(cosmeticItem.getDisguiseType());
+                    DisguiseAPI.undisguiseToAll(player);
+                    FlagWatcher localLivingWatcher = miscDisguise.getWatcher();
+                    localLivingWatcher.setCustomName(player.getName());
+                    localLivingWatcher.setCustomNameVisible(true);
+                    player.getOpenInventory().close();
+                    DisguiseAPI.disguiseToAll(player, miscDisguise);
+                    ChatInfo.INFO.send(player, "Přeměnil jsi se na: " + cosmeticItem.getName());
+                    return;
+                }
                 MobDisguise localDisguise = new MobDisguise(cosmeticItem.getDisguiseType(), cosmeticItem.isBabyType());
                 DisguiseAPI.undisguiseToAll(player);
                 FlagWatcher localLivingWatcher = localDisguise.getWatcher();
