@@ -16,6 +16,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class HatsGUI implements InventoryProvider {
 
     public List<CosmeticItem> prepareList() {
@@ -488,10 +489,6 @@ public class HatsGUI implements InventoryProvider {
                 contents.inventory().open(player, pagination.previous().getPage());
             }));
         }
-
-        contents.set(5, 1,ClickableItem.of(new ItemBuilder(Material.SPECTRAL_ARROW).setName("§eZpět do menu").hideAllFlags().build(), item -> {
-            SmartInventory.builder().size(6, 9).title("Cosmetics Menu").provider(new CosmeticMainGUI()).build().open(player);
-        }));
 
         contents.set(5, 4, ClickableItem.of(new ItemBuilder(Material.BARRIER).setName("§cDeaktivovat").build(), e -> {
             if (player.getInventory().getHelmet() != null && !player.getInventory().getHelmet().getItemMeta().hasCustomModelData()) {

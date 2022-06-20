@@ -1,79 +1,18 @@
 package cz.wake.manager.listener;
 
-import cz.wake.manager.Main;
 import cz.wake.manager.managers.MenuManager;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.inventory.Inventory;
 
 public class InventoryListener implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent e) {
         final Player p = (Player) e.getWhoClicked();
-        if (e.getView().getTitle().equals("Menu")) {
-            e.setCancelled(true);
-            if (e.getCurrentItem() == null) {
-                return;
-            }
-            if (e.getCurrentItem().getType() == Material.AIR) {
-                return;
-            }
-            if (e.getSlot() == 30) {
-                Main.getInstance().getParticlesAPI().openParticlesMenu(p);
-            }
-            if (e.getSlot() == 32) {
-                MenuManager.openNavody(p);
-            }
-            if (e.getSlot() == 21) {
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
-                p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
-                p.sendMessage("");
-                p.sendMessage("§7K hlasovani klikni na tento odkaz:");
-                p.sendMessage("§chttps://craftmania.cz/hlasovani/");
-                p.sendMessage("");
-                p.sendMessage("§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
-                p.closeInventory();
-            }
-            if (e.getSlot() == 24) {
-                p.performCommand("vip");
-            }
-        }
-        if (e.getView().getTitle().equals("Seznam dostupnych navodu")) {
-            e.setCancelled(true);
-            if(e.getSlot() == 0){
-                MenuManager.prepareNavodLink(p, "Pravidla", "https://wiki.craftmania.cz/pravidla-serveru/");
-            }
-            if (e.getSlot() == 1){
-                MenuManager.prepareNavodLink(p, "Povolene/zakazane mody", "https://wiki.craftmania.cz/povolene-a-zakazane-mody/");
-            }
-            if(e.getSlot() == 2){
-                MenuManager.prepareNavodLink(p, "Residence", "https://wiki.craftmania.cz/residence/");
-            }
-            if(e.getSlot() == 3){
-                MenuManager.prepareNavodLink(p, "Jobs", "https://wiki.craftmania.cz/jobs/");
-            }
-            if(e.getSlot() == 4){
-                MenuManager.prepareNavodLink(p, "ChestShop", "https://wiki.craftmania.cz/chestshop/");
-            }
-            if(e.getSlot() == 5){
-                MenuManager.prepareNavodLink(p ,"Pozemky", "https://wiki.craftmania.cz/pozemky/");
-            }
-            if(e.getSlot() == 6) {
-                MenuManager.prepareNavodLink(p ,"Lands", "https://wiki.craftmania.cz/lands/");
-            }
-            if(e.getSlot() == 7){
-                MenuManager.prepareNavodLink(p, "Replacementy", "https://wiki.craftmania.cz/replacementy/");
-            }
-
-        }
         if (e.getView().getTitle().equals("Help pro Survival")) {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) {

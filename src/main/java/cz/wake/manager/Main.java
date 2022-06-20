@@ -304,21 +304,20 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new RestartManager_command()); //TODO: Nenačítat, pokud nebude CraftCore na serveru?
         manager.registerCommand(new Discord_command());
         manager.registerCommand(new Wiki_command());
-        //manager.registerCommand(new Cosmetics_command());
         manager.registerCommand(new CosAdmin_command());
         manager.registerCommand(new Hud_Command());
+        manager.registerCommand(new MorphCommand());
+        manager.registerCommand(new GetXP_command());
 
-        if (serverType != ServerType.HARDCORE_VANILLA) {
-            manager.registerCommand(new GetXP_command());
+        if (serverType == ServerType.SURVIVAL) {
+            manager.registerCommand(new RechargeCommand());
         }
 
         //Servers
         manager.registerCommand(new Survival_command());
         manager.registerCommand(new Skyblock_command());
         manager.registerCommand(new Creative_command());
-        manager.registerCommand(new Prison_command());
         manager.registerCommand(new Vanilla_command());
-        manager.registerCommand(new Anarchy_command());
     }
 
     public ConfigAPI getConfigAPI() {
@@ -365,10 +364,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public void removePlayer(Player p) {
         players.remove(p);
-    }
-
-    public ParticlesAPI getParticlesAPI() {
-        return particlesAPI;
     }
 
     public SQLManager getMySQL() {
