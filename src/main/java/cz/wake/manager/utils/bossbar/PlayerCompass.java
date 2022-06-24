@@ -13,7 +13,7 @@ public class PlayerCompass {
     private BossBar bossBar;
 
     public PlayerCompass() {
-        this.bossBar = Bukkit.createBossBar("Výpočet polohy...", BarColor.PURPLE, BarStyle.SOLID, BarFlag.PLAY_BOSS_MUSIC);
+        this.bossBar = Bukkit.createBossBar("Výpočet polohy...", BarColor.YELLOW, BarStyle.SOLID, BarFlag.PLAY_BOSS_MUSIC);
         this.bossBar.removeFlag(BarFlag.PLAY_BOSS_MUSIC);
         this.bossBar.setProgress(1.0);
     }
