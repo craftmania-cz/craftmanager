@@ -170,15 +170,13 @@ public class VIPMenu_inv implements InventoryProvider {
         GVIPvyhody.add("§e· §fMožnost zobrazit držený item v ruce §a:item:");
         GVIPvyhody.add("§e· §fVirtualni Beacon - s efekty §a/beacon");
         GVIPvyhody.add("§e· §fOchrana proti dropům v normálním světě. Neplatí pro PVP!");
-        GVIPvyhody.add("§e· §fPřístup k particles v §a/cosmetics");
-        GVIPvyhody.add("§e· §fVirtuální Beacon §a/beacon");
+        GVIPvyhody.add("§e· §fVIP Cape v §a/cosmetics");
         GVIPvyhody.add("§e· §fLimit nastavení home - 2x");
-        GVIPvyhody.add("§e· §fLimit vytvoření aukcí - 7x");
         GVIPvyhody.add("§e· §fVlastní warpy - vlastní warpy (1x)");
         GVIPvyhody.add("§e· §fSkyblock Minioni - Limit 7x");
         switch (getCurrentServer()) {
             case "Creative": {
-                GVIPvyhody.add("§e· §fMaximální počet pozemků až 50 (normal 10)");
+                GVIPvyhody.add("§e· §fMaximální počet pozemků až 150 (normal 50)");
                 break;
             }
         }
@@ -204,8 +202,7 @@ public class VIPMenu_inv implements InventoryProvider {
         GVIPvyhody.add("§e· §fMožnost zobrazit držený item v ruce §a:item:");
         GVIPvyhody.add("§e· §fVirtualni Beacon - s efekty §a/beacon");
         GVIPvyhody.add("§e· §fOchrana proti dropům itemů. Neplatí pro PVP!");
-        GVIPvyhody.add("§e· §fPřístup k particles v §a/cosmetics");
-        GVIPvyhody.add("§e· §fVirtuální Beacon §a/beacon");
+        GVIPvyhody.add("§e· §fVIP Cape v §a/cosmetics");
         GVIPvyhody.add("§e· §fLimit nastavení home - 2x");
         GVIPvyhody.add("§e· §fLimit vytvoření aukcí - 7x");
         GVIPvyhody.add("§e· §fVlastní warpy - vlastní warpy (1x)");
@@ -217,7 +214,7 @@ public class VIPMenu_inv implements InventoryProvider {
         GVIPvyhody.add("§e· §fMěsíční bonus §b500 CraftCoins");
         GVIPvyhody.add("");
         GVIPvyhody.add("§7Creative extra server výhody:");
-        GVIPvyhody.add("§e· §fMaximální počet pozemků (50)");
+        GVIPvyhody.add("§e· §fMaximální počet pozemků (150)");
         return GVIPvyhody;
     }
     List <String> getGVIPnakupServerList() {
@@ -242,7 +239,6 @@ public class VIPMenu_inv implements InventoryProvider {
         DVIPvyhody.add("§e· §6Všechny výhody z Golden " + getCurrentServer() + " VIP");
         DVIPvyhody.add("");
         DVIPvyhody.add("§7Oproti Golden VIP získáš navíc:");
-        DVIPvyhody.add("§e· §fNEO - Zobrazení spawnratu mobu §a/ll");
         DVIPvyhody.add("§e· §fNastavení vlastního času §a/ptime");
         DVIPvyhody.add("§e· §fInspekce zníčených bloků §a/co inspect");
         DVIPvyhody.add("§e· §fLimit nastavení home - 3x");
@@ -252,7 +248,7 @@ public class VIPMenu_inv implements InventoryProvider {
         DVIPvyhody.add("§e· §fOchrana proti dropům expů (neplatí pro PvP)");
         switch (getCurrentServer()) {
             case "Creative": {
-                DVIPvyhody.add("§e· §fMaximální počet pozemků až 100 (normal 10)");
+                DVIPvyhody.add("§e· §fMaximální počet pozemků až 200 (normal 50)");
                 break;
             }
         }
@@ -266,7 +262,6 @@ public class VIPMenu_inv implements InventoryProvider {
         DVIPvyhody.add("§e· §6Všechny výhody z Golden Global VIP");
         DVIPvyhody.add("");
         DVIPvyhody.add("§7Oproti Golden VIP získáš navíc:");
-        DVIPvyhody.add("§e· §fNEO - Zobrazení spawnratu mobu §a/ll");
         DVIPvyhody.add("§e· §fNastavení vlastního času §a/ptime");
         DVIPvyhody.add("§e· §fInspekce zníčených bloků §a/co inspect");
         //DVIPvyhody.add("§e· §fMožnost vypnout si zobrazování veřejného chatu");
@@ -281,7 +276,7 @@ public class VIPMenu_inv implements InventoryProvider {
         DVIPvyhody.add("§e· §fMěsíční bonus §b1,000 CraftCoins");
         DVIPvyhody.add("");
         DVIPvyhody.add("§7Creative extra server výhody:");
-        DVIPvyhody.add("§e· §fMaximalní počet pozemků (100)");
+        DVIPvyhody.add("§e· §fMaximalní počet pozemků (200)");
         return DVIPvyhody;
     }
     List <String> getDVIPnakupServerList() {
@@ -294,8 +289,8 @@ public class VIPMenu_inv implements InventoryProvider {
     }
     List <String> getDVIPnakupGlobalList() {
         List <String> GVIPnakup = new ArrayList<>();
-        GVIPnakup.add(ChatColor.GRAY + "CZ: " + ChatColor.WHITE + "180kč");
-        GVIPnakup.add(ChatColor.GRAY + "SK: " + ChatColor.WHITE + "7€");
+        GVIPnakup.add(ChatColor.GRAY + "CZ: " + ChatColor.WHITE + "150kč");
+        GVIPnakup.add(ChatColor.GRAY + "SK: " + ChatColor.WHITE + "6€");
         GVIPnakup.add("");
         GVIPnakup.add(ChatColor.YELLOW + "Klikni pro odkaz do Storu");
         return GVIPnakup;
@@ -317,7 +312,6 @@ public class VIPMenu_inv implements InventoryProvider {
                 break;
             }
             case "Creative": {
-                EVIPvyhody.add("§e· §fMaximální počet pozemků (150)");
                 EVIPvyhody.add("§e· §fPristup k WorldEditu");
                 break;
             }
@@ -344,7 +338,6 @@ public class VIPMenu_inv implements InventoryProvider {
         EVIPvyhody.add("§e· §fMěsíční bonus §b1,500 CraftCoins");
         EVIPvyhody.add("");
         EVIPvyhody.add("§7Creative extra server výhody:");
-        EVIPvyhody.add("§e· §fMaximální počet pozemků (150)");
         EVIPvyhody.add("§e· §fPřístup k WorldEditu");
         EVIPvyhody.add("");
         EVIPvyhody.add("§7Survival extra výhody:");
@@ -361,8 +354,8 @@ public class VIPMenu_inv implements InventoryProvider {
     }
     List <String> getEVIPnakupGlobalList() {
         List <String> EVIPnakup = new ArrayList<>();
-        EVIPnakup.add(ChatColor.GRAY + "CZ: " + ChatColor.WHITE + "390kč");
-        EVIPnakup.add(ChatColor.GRAY + "SK: " + ChatColor.WHITE + "15€");
+        EVIPnakup.add(ChatColor.GRAY + "CZ: " + ChatColor.WHITE + "300kč");
+        EVIPnakup.add(ChatColor.GRAY + "SK: " + ChatColor.WHITE + "12€");
         EVIPnakup.add("");
         EVIPnakup.add(ChatColor.YELLOW + "Klikni pro odkaz do Storu");
         return EVIPnakup;
@@ -380,13 +373,14 @@ public class VIPMenu_inv implements InventoryProvider {
         OVIPvyhody.add("§e· §fLimit vytvoření aukcí - 20x");
         OVIPvyhody.add("§e· §fVlastní warpy - vlastní warpy (6x)");
         OVIPvyhody.add("§e· §fSkyblock Minioni - Limit 15x");
+        OVIPvyhody.add("§e· §fSdílení inventáře pomocí §a:inv:§f, endertruhly §a:ender:");
         switch (getCurrentServer()) {
             case "Survival": {
                 OVIPvyhody.add("§e· §fMaximální počet residencí 8 (normal 3)");
                 break;
             }
             case "Creative": {
-                OVIPvyhody.add("§e· §fMaximální počet pozemků (200)");
+                OVIPvyhody.add("§e· §fMaximální počet pozemků (300)");
                 break;
             }
         }
@@ -407,6 +401,7 @@ public class VIPMenu_inv implements InventoryProvider {
         OVIPvyhody.add("§e· §fLimit vytvoření aukcí - 20x");
         OVIPvyhody.add("§e· §fVlastní warpy - vlastní warpy (6x)");
         OVIPvyhody.add("§e· §fSkyblock Minioni - Limit 15x");
+        OVIPvyhody.add("§e· §fSdílení inventáře pomocí §a:inv:§f, endertruhly §a:ender:");
         OVIPvyhody.add("");
         OVIPvyhody.add("§7Lobby extra server výhody:");
         OVIPvyhody.add("§e· §fFly libovolně na lobby");
@@ -414,7 +409,7 @@ public class VIPMenu_inv implements InventoryProvider {
         OVIPvyhody.add("§e· §fMěsíční bonus §b2,000 CraftCoins");
         OVIPvyhody.add("");
         OVIPvyhody.add("§7Creative extra server výhody:");
-        OVIPvyhody.add("§e· §fMaximální počet pozemků (200)");
+        OVIPvyhody.add("§e· §fMaximální počet pozemků (300)");
         OVIPvyhody.add("");
         OVIPvyhody.add("§7Survival extra výhody:");
         OVIPvyhody.add("§e· §fMaximální počet residencí 8 (normal 3)");
@@ -422,15 +417,15 @@ public class VIPMenu_inv implements InventoryProvider {
     }
     List <String> getOVIPnakupServerList() {
         List <String> OVIPnakup = new ArrayList<>();
-        OVIPnakup.add(ChatColor.GRAY + "CZ: " + ChatColor.WHITE + "390kč");
-        OVIPnakup.add(ChatColor.GRAY + "SK: " + ChatColor.WHITE + "15€");
+        OVIPnakup.add(ChatColor.GRAY + "CZ: " + ChatColor.WHITE + "400kč");
+        OVIPnakup.add(ChatColor.GRAY + "SK: " + ChatColor.WHITE + "16€");
         OVIPnakup.add("");
         OVIPnakup.add(ChatColor.YELLOW + "Klikni pro odkaz do Storu");
         return OVIPnakup;
     }
     List <String> getOVIPnakupGlobalList() {
         List <String> OVIPnakup = new ArrayList<>();
-        OVIPnakup.add(ChatColor.GRAY + "CZ: " + ChatColor.WHITE + "1040kč");
+        OVIPnakup.add(ChatColor.GRAY + "CZ: " + ChatColor.WHITE + "1000kč");
         OVIPnakup.add(ChatColor.GRAY + "SK: " + ChatColor.WHITE + "40€");
         OVIPnakup.add("");
         OVIPnakup.add(ChatColor.YELLOW + "Klikni pro odkaz do Storu");
