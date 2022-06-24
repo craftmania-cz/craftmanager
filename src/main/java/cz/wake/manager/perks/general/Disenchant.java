@@ -52,7 +52,7 @@ public class Disenchant extends BaseCommand {
                 }
                 short durability = itemInHand.getDurability();
                 if ((!itemInHand.getEnchantments().isEmpty()) && (itemInHand.getType() != Material.BOOK)
-                        && (itemInHand.getType() != Material.TRIPWIRE_HOOK)) {
+                        && (itemInHand.getType() != Material.TRIPWIRE_HOOK) && (itemInHand.getType() != Material.KNOWLEDGE_BOOK)) {
 
                     Map<Enchantment, Integer> enchantments = itemInHand.getEnchantments();
                     HashMap<String, Integer> customEnchants = new HashMap<>(); // Only fix
