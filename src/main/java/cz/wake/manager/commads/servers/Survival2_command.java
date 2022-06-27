@@ -11,9 +11,9 @@ import cz.wake.manager.Main;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandAlias("survival")
+@CommandAlias("survival2")
 @Description("Připojí tě na Survival")
-public class Survival_command extends BaseCommand {
+public class Survival2_command extends BaseCommand {
 
     @HelpCommand
     public void helpCommand(CommandSender sender, CommandHelp help) {
@@ -26,11 +26,11 @@ public class Survival_command extends BaseCommand {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
             try {
-                ChatInfo.INFO.send(player, "Teleportuji na server §fSurvival [1.18]");
-                Main.getInstance().sendToServer(player, "survival");
+                ChatInfo.INFO.send(player, "Teleportuji na server §fSurvival [1.17]");
+                Main.getInstance().sendToServer(player, "survival2");
             } catch (Exception e) {
                 e.printStackTrace();
-                ChatInfo.DANGER.send(player, "Teleport na se nezdařil: §fSurvival [1.18]");
+                ChatInfo.DANGER.send(player, "Teleport na se nezdařil: §fSurvival [1.17]");
                 Main.getInstance().sendSentryException(e);
             }
         }
