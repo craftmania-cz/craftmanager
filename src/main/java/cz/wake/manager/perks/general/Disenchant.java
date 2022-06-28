@@ -10,8 +10,6 @@ import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -21,6 +19,7 @@ import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @CommandAlias("disenchant")
 @Description("Získání zpět enchantů na nástroji")
@@ -34,8 +33,7 @@ public class Disenchant extends BaseCommand {
 
     @Default
     public void disenchant(CommandSender Sender) {
-        if (Sender instanceof Player) {
-            Player player = (Player) Sender;
+        if (Sender instanceof Player player) {
             if (player.hasPermission("craftmanager.vip.disenchant")) {
                 if (Main.getInstance().getServerType() == ServerType.ANARCHY) {
                     ChatInfo.DANGER.send(player, "Na tomto serveru tato výhoda neplatí.");
@@ -58,8 +56,11 @@ public class Disenchant extends BaseCommand {
                     HashMap<String, Integer> customEnchants = new HashMap<>(); // Only fix
 
                     // Kalkulace ceny
-                    int finalPriceLvls = 0;
-                    finalPriceLvls += enchantments.values().size() * 5;
+                    AtomicInteger finalPriceLvls = new AtomicInteger();
+                    finalPriceLvls.addAndGet(enchantments.values().size() * 5);
+                    enchantments.forEach((enchantment, integer) -> {
+                        if (integer > 1) finalPriceLvls.addAndGet(integer);
+                    });
 
                     // Kontrola Glowing items
                     if (itemInHand.getEnchantments().containsKey(Enchantment.DURABILITY)) {
@@ -69,11 +70,11 @@ public class Disenchant extends BaseCommand {
                         }
                     }
 
-                    if (player.getLevel() > finalPriceLvls) {
+                    if (player.getLevel() > finalPriceLvls.get()) {
                         ItemStack withoutEnchant = new ItemStack(player.getItemInHand().getType(), 1);
                         player.getInventory().removeItem(itemInHand);
 
-                        player.setLevel(player.getLevel() - finalPriceLvls);
+                        player.setLevel(player.getLevel() - finalPriceLvls.get());
                         for (Map.Entry<Enchantment, Integer> entry : enchantments.entrySet()) {
                             ItemStack enchantBook = new ItemStack(Material.ENCHANTED_BOOK, 1);
                             Enchantment enchant = entry.getKey();
