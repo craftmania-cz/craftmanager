@@ -16,7 +16,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-@CommandAlias("help|pomoc")
+@CommandAlias("help|pomoc|tutorial")
 @Description("Otevře ti menu s pomocí")
 public class Help_command extends BaseCommand {
 
@@ -30,7 +30,8 @@ public class Help_command extends BaseCommand {
     public boolean openHelpMenu(CommandSender Sender) {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
-            if (Main.getInstance().getServerType() == ServerType.PRISON) {
+            if (Main.getInstance().getServerType() == ServerType.PRISON
+                    || Main.getInstance().getServerType() == ServerType.SURVIVAL) {
                 player.performCommand("tutorial");
             } else {
                 openMenu(player);
