@@ -31,9 +31,7 @@ import cz.wake.manager.utils.tasks.*;
 import cz.wake.manager.commads.VIP_command;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Recipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
@@ -220,7 +218,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new InventoryListener(), this);
         pm.registerEvents(new PlayerListener(), this);
         pm.registerEvents(new ChatListener(), this);
-        pm.registerEvents(new DeathListener(), this); //TODO: Zkontrolovat damage, pry se pkazdy posle zprava
         pm.registerEvents(new BeaconCommand(), this);
         pm.registerEvents(new Votes_command(), this);
         pm.registerEvents(new PlayerCommandSendListener(this), this);
