@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class CosmeticDropListener implements Listener {
 
-    private HashMap<Player, Map.Entry<ItemStack, Long>> dropRequests = new HashMap<>();
+    private final HashMap<Player, Map.Entry<ItemStack, Long>> dropRequests = new HashMap<>();
 
     @EventHandler
     public void onCosmeticDrop(final PlayerDropItemEvent event) {
@@ -79,11 +79,11 @@ public class CosmeticDropListener implements Listener {
                 }
 
                 if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()) {
-                    if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().getCustomModelData() == 100001) {
-                        player.getInventory().setHelmet(itemStack);
-                        ChatInfo.SUCCESS.send(player, "Nasadil jsi si na hlavu: §f" + itemStack.getItemMeta().getDisplayName());
-                        player.getInventory().setItemInHand(null);
-                    }
+                    player.getInventory().setHelmet(itemStack);
+                    ChatInfo.SUCCESS.send(player, "Nasadil jsi si na hlavu: §f" + itemStack.getItemMeta().getDisplayName());
+                    player.getInventory().setItemInHand(null);
+                } else {
+                    ChatInfo.DANGER.send(player, "Nejedná se o cosmetic item, nelze jej takto nasadit.");
                 }
             }
         }
