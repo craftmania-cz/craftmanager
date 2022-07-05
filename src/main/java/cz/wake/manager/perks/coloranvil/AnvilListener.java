@@ -30,7 +30,7 @@ public class AnvilListener implements Listener {
 
             // Blokace prejmenovani spawneru + crates
             if (event.getCurrentItem().getType() == Material.SPAWNER || event.getCursor().getType() == Material.SPAWNER
-                    || event.getCurrentItem().getType() == Material.CHEST || event.getCursor().getType() == Material.CHEST) {
+                    || event.getCurrentItem().getType() == Material.CHEST || event.getCursor().getType() == Material.TRIPWIRE_HOOK) {
                 event.setCancelled(true);
             }
 
