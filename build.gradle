@@ -1,18 +1,18 @@
 plugins {
     id 'java'
     id 'application'
-    id 'com.github.johnrengelman.shadow' version '7.0.0'
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
 }
 
 mainClassName = 'cz.wake.manager.Main'
 
 group = 'cz.wake.manager'
-version = '1.7'
+version = '1.8'
 
 description = """"""
 
-sourceCompatibility = 16
-targetCompatibility = 16
+sourceCompatibility = 17
+targetCompatibility = 17
 
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
@@ -59,7 +59,7 @@ repositories {
 dependencies {
 
     // Spigot
-    compileOnly ('io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT')
+    compileOnly ('io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT')
 
     // Extra excludes
     compileOnly ("com.github.MyzelYam:SuperVanish:6.2.0") {
@@ -76,7 +76,7 @@ dependencies {
     compileOnly group: 'cz.craftmania.craftcore', name: 'craftcore', version: '2.6.2.1'
     compileOnly group: 'cz.craftmania.crafteconomy', name:'crafteconomy', version: '2.1.0'
     compileOnly group: 'cz.craftmania.craftlibs', name:'craftlibs', version: '1.1.12'
-    compileOnly name: 'spigot-1.17.1'
+    //compileOnly name: 'spigot-1.17.1'
 
     compileOnly group: 'LibsDisguises', name: 'LibsDisguises', version: '10.0.26'
     compileOnly group: 'me.clip', name: 'placeholderapi', version: '2.10.4'
