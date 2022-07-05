@@ -5,10 +5,8 @@ import cz.wake.manager.utils.Log;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
@@ -108,7 +106,7 @@ public class VillagerDamageListener implements Listener {
             }
             ItemStack item = merchantInventory.getSelectedRecipe().getResult();
             int price = generatePrice(merchantInventory.getSelectedRecipe());
-            Log.withPrefix("Hrac " + player.getName() + " si koupil: " + item.getType().name() + " (" + item.getAmount() + "x)");
+            Log.info("Hrac " + player.getName() + " si koupil: " + item.getType().name() + " (" + item.getAmount() + "x)");
             Main.getInstance().getMySQL().sendMarketLog(player, item.getType().name(), item.getAmount(), price, System.currentTimeMillis());
         }
     }

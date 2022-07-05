@@ -47,7 +47,7 @@ public class RestartTask implements Runnable {
             try {
               Main.getInstance().sendToServer(p, "lobby");
             } catch (ChannelNotRegisteredException e) {
-              Log.normalMessage("Nepodarilo se poslat hrace " + p.getName() + " na Lobby server.");
+              Log.info("Nepodarilo se poslat hrace " + p.getName() + " na Lobby server.");
             }
           }
           Bukkit.shutdown();

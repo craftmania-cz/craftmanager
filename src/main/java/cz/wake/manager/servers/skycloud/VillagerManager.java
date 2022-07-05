@@ -102,7 +102,7 @@ public class VillagerManager {
         List<Entity> endChunk = Arrays.asList(endVillagerLocation.getChunk().getEntities());
         endChunk.forEach(Entity::remove);
 
-        Log.withPrefix("Market - nacten a vsechny Villageri zabiti");
+        Log.info("Market - nacten a vsechny Villageri zabiti");
     }
 
     public static void respawnVillagers() {
@@ -163,7 +163,7 @@ public class VillagerManager {
         int miliSecondsSpawn = (spawnTime / 20) * 1000;
         int miliSecondsDespawn = (despawnTime / 20) * 1000;
 
-        Log.withPrefix("Rare Villager se spawne v: " + new Date(System.currentTimeMillis() + miliSecondsSpawn).toString());
+        Log.info("Rare Villager se spawne v: " + new Date(System.currentTimeMillis() + miliSecondsSpawn).toString());
 
         // Priprava hologramu
         if (appendHologram) {
@@ -197,7 +197,7 @@ public class VillagerManager {
             villagerList.add(villager);
 
             broadcast("§e§l[*] §9§lRare Villager §ese právě spawnul! Nakupuj dokud je čas!");
-            Log.withPrefix("Rare Villager se despawne v: " + new Date(System.currentTimeMillis() + miliSecondsDespawn).toString());
+            Log.info("Rare Villager se despawne v: " + new Date(System.currentTimeMillis() + miliSecondsDespawn).toString());
 
             ParticleEffect.FIREWORKS_SPARK.display(3f, 3f, 3f, 0.1f, 50, rareVillagerLocation, Main.getInstance().getPlayers());
 
@@ -344,7 +344,7 @@ public class VillagerManager {
             seaMerchant.setTrades(merchant);
             player.openMerchant(merchant, true);
         } else {
-            Log.withPrefix(player.getName() + " se snazi otevrit shop, ktery neexistuje!");
+            Log.info(player.getName() + " se snazi otevrit shop, ktery neexistuje!");
         }
     }
 

@@ -47,8 +47,8 @@ public class Config {
         configFile = new File(savePath, name + ".yml");
         if (override && configFile.exists()) {
             if (!configFile.delete()) {
-                Log.withPrefix("Error while trying to override Config!");
-                Log.withPrefix("File: " + configFile.getPath());
+                Log.info("Error while trying to override Config!");
+                Log.info("File: " + configFile.getPath());
             }
         }
         if (!configFile.exists()) {
@@ -57,8 +57,8 @@ public class Config {
                 configFile.getParentFile().mkdirs();
                 configFile.createNewFile();
             } catch (IOException e) {
-                Log.withPrefix("Error creating file: " + configFile.getPath());
-                Log.withPrefix("     cause: " + e.getMessage());
+                Log.info("Error creating file: " + configFile.getPath());
+                Log.info("     cause: " + e.getMessage());
             }
         }
         config = YamlConfiguration.loadConfiguration(configFile);

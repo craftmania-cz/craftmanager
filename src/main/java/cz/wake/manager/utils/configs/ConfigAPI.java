@@ -57,7 +57,7 @@ public class ConfigAPI {
 
     public void registerConfig(Config config) {
         configs.put(config.getName(), config);
-        Log.withPrefix("Config " + config.getName() + ".yml uspesne zaregistrovan!");
+        Log.info("Config " + config.getName() + ".yml uspesne zaregistrovan!");
     }
 
     public Config getConfig(String name) {

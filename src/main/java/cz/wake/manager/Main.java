@@ -97,7 +97,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // ID serveru a typ
         serverType = resolveServerType();
-        Log.withPrefix("Server zaevidovany jako: " + serverType.name());
+        Log.info("Server zaevidovany jako: " + serverType.name());
 
         // Custom recipes
         List<Recipe> serverRecipes = new ArrayList<>();
@@ -120,10 +120,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Generování head configu pouze pokud head config existuje
         if (new File(Main.getInstance().getServer().getWorldContainer().getAbsolutePath() + "/plugins/CrazyCrates/crates/Head.yml").exists()) {
-            Log.withPrefix("CrazyCrates head config existuje. Obnovuji jeho obsah podle aktuálního AT.");
+            Log.info("CrazyCrates head config existuje. Obnovuji jeho obsah podle aktuálního AT.");
             CrazyCratesConfig.generateHeadCrate();
         } else {
-            Log.withPrefix("CrazyCrates head config neexistuje.");
+            Log.info("CrazyCrates head config neexistuje.");
         }
     }
 
@@ -133,10 +133,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Sentry integration
         if (!(Objects.requireNonNull(getConfig().getString("sentry-dsn")).length() == 0) && Bukkit.getPluginManager().isPluginEnabled("CraftLibs")) {
             String dsn = getConfig().getString("sentry-dsn");
-            Log.normalMessage("Sentry integration je aktivní: §7" + dsn);
+            Log.info("Sentry integration je aktivní: §7" + dsn);
             sentry = new CraftSentry(dsn);
         } else {
-            Log.normalMessage("Sentry integration neni aktivovana!");
+            Log.info("Sentry integration neni aktivovana!");
         }
 
         // Premium Vanish
@@ -172,13 +172,13 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Update ID stats task (1 min)
         if (!testing) {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateServerTask(), 200, 1200);
-            Log.withPrefix("Aktivace update serveru kazdych 60 vterin.");
+            Log.info("Aktivace update serveru kazdych 60 vterin.");
 
             getServer().getScheduler().runTaskTimerAsynchronously(this, new ATCheckerTask(), 200, 1200);
-            Log.withPrefix("Aktivace AT-Stalkeru");
+            Log.info("Aktivace AT-Stalkeru");
 
             getServer().getScheduler().runTaskTimer(this, new ATAfkTask(), 200, 1200);
-            Log.withPrefix("Aktivace AT-Afk checkeru");
+            Log.info("Aktivace AT-Afk checkeru");
 
             getServer().getScheduler().runTaskTimerAsynchronously(this, new VoteReminderTask(), 100, 1200);
         }
@@ -188,7 +188,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         if (mentionPrefix == null) {
             mentionPrefix = "@";
         }
-        Log.withPrefix("Mention prefix nastaven na: " + mentionPrefix);
+        Log.info("Mention prefix nastaven na: " + mentionPrefix);
 
         Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false));
 
@@ -203,16 +203,16 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Načtení ScoreboardManageru
         if (getConfigAPI().getConfig("scoreboardConfig").getBoolean("scoreboard.enabled")) {
-            Log.withPrefix("Aktivace Scoreboardu!");
+            Log.info("Aktivace Scoreboardu!");
             scoreboardManager = new ScoreboardManager();
             Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, () -> getScoreboardManager().update(), 0L, getConfigAPI().getConfig("scoreboardConfig").getLong("scoreboard.refreshTime"));
         } else {
-            Log.withPrefix("Scoreboard je deaktivovaný.");
+            Log.info("Scoreboard je deaktivovaný.");
         }
 
         // JoinAnnouncer
         if (getConfig().getBoolean("join-announcer.enabled", false)) {
-            Log.withPrefix("Scoreboard je aktivovaný.");
+            Log.info("Scoreboard je aktivovaný.");
             getServer().getScheduler().runTaskTimerAsynchronously(this, new JoinAnnouncerTask(), 20, 20 * 60 * 10); // 10 minut
         }
 
@@ -266,7 +266,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         // Colored Anvils (VIP vyhoda)
         if (getConfig().getBoolean("coloredanvils")) {
             pm.registerEvents(new AnvilListener(), this);
-            Log.withPrefix("Aktivace barevneho psani v kovadline.");
+            Log.info("Aktivace barevneho psani v kovadline.");
         }
 
         if (serverType == ServerType.SKYCLOUD) {
@@ -483,7 +483,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
      */
     public void sendSentryException(Exception exception) {
         if (sentry == null) {
-            Log.normalMessage("Sentry neni aktivovany, error nebude zaslan!");
+            Log.error("Sentry neni aktivovany, error nebude zaslan!");
             return;
         }
         sentry.sendException(exception);

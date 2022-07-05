@@ -7,7 +7,7 @@ public class JoinAnnouncerTask implements Runnable {
 
     @Override
     public void run() {
-        Log.withPrefix("Synchronizace join-announcer zpráv.");
+        Log.info("Synchronizace join-announcer zpráv.");
         Main.getInstance().loadJoinAnnouncer();
     }
 }
