@@ -99,25 +99,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         serverType = resolveServerType();
         Log.info("Server zaevidovany jako: " + serverType.name());
 
-        // Custom recipes
-        List<Recipe> serverRecipes = new ArrayList<>();
-        Iterator<Recipe> activeRecipes = this.getServer().recipeIterator();
-        activeRecipes.forEachRemaining((recipe -> {
-            if (recipe.getResult().getType() == Material.END_CRYSTAL) {
-                return;
-            }
-            serverRecipes.add(recipe);
-        }));
-
-        if (serverType == ServerType.VANILLA) { // Tady přidat recepty pro servery
-            serverRecipes.add(CustomCrafting.getEndCrystalRecipe());
-        }
-        serverRecipes.add(CustomCrafting.getInvisibleItemFrame());
-        serverRecipes.add(CustomCrafting.getSaddleRecipe());
-
-        this.getServer().clearRecipes();
-        serverRecipes.forEach((recipe -> this.getServer().addRecipe(recipe)));
-
         // Generování head configu pouze pokud head config existuje
         if (new File(Main.getInstance().getServer().getWorldContainer().getAbsolutePath() + "/plugins/CrazyCrates/crates/Head.yml").exists()) {
             Log.info("CrazyCrates head config existuje. Obnovuji jeho obsah podle aktuálního AT.");
