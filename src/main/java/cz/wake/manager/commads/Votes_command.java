@@ -110,11 +110,11 @@ public class Votes_command extends BaseCommand implements Listener {
                 "§7Kazdy mesic odmenujeme TOP 5",
                 "§7hracu v hlasovani kupony na Store!",
                 "",
-                "§e1. §f15e",
-                "§72. §f10e",
-                "§63. §f7e",
-                "§a4. §f5e",
-                "§a5. §f5e",
+                "§e1. §f250kč / 10 euro",
+                "§72. §f180kč / 7 euro",
+                "§63. §f120kč / 5 euro",
+                "§a4. §f120kč / 5 euro",
+                "§a5. §f50kč / 2 euro",
                 "",
                 "§cKupony jsou zasilany do zprav na Discord!").build();
 
