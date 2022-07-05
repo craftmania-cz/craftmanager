@@ -12,6 +12,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -39,17 +40,19 @@ public class SQLManager {
         List<String> names = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT nick FROM player_profile ORDER BY month_votes DESC LIMIT 10;");
             ps.executeQuery();
-            while (ps.getResultSet().next()) {
-                names.add(ps.getResultSet().getString(1));
+            rs = ps.getResultSet();
+            while (rs.next()) {
+                names.add(rs.getString(1));
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
         return names;
     }
@@ -58,17 +61,19 @@ public class SQLManager {
         List<String> names = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT month_votes FROM player_profile ORDER BY month_votes DESC LIMIT 10;");
             ps.executeQuery();
-            while (ps.getResultSet().next()) {
-                names.add(ps.getResultSet().getString(1));
+            rs = ps.getResultSet();
+            while (rs.next()) {
+                names.add(rs.getString(1));
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
         return names;
     }
@@ -77,17 +82,19 @@ public class SQLManager {
         List<String> names = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT nick FROM player_profile ORDER BY week_votes DESC LIMIT 10;");
             ps.executeQuery();
-            while (ps.getResultSet().next()) {
-                names.add(ps.getResultSet().getString(1));
+            rs = ps.getResultSet();
+            while (rs.next()) {
+                names.add(rs.getString(1));
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
         return names;
     }
@@ -96,17 +103,19 @@ public class SQLManager {
         List<String> names = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT week_votes FROM player_profile ORDER BY week_votes DESC LIMIT 10;");
             ps.executeQuery();
-            while (ps.getResultSet().next()) {
-                names.add(ps.getResultSet().getString(1));
+            rs = ps.getResultSet();
+            while (rs.next()) {
+                names.add(rs.getString(1));
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
         return names;
     }
@@ -115,17 +124,19 @@ public class SQLManager {
         List<String> names = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT nick FROM player_profile ORDER BY total_votes DESC LIMIT 10;");
             ps.executeQuery();
-            while (ps.getResultSet().next()) {
-                names.add(ps.getResultSet().getString(1));
+            rs = ps.getResultSet();
+            while (rs.next()) {
+                names.add(rs.getString(1));
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
         return names;
     }
@@ -134,17 +145,19 @@ public class SQLManager {
         List<String> names = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT total_votes FROM player_profile ORDER BY total_votes DESC LIMIT 10;");
             ps.executeQuery();
-            while (ps.getResultSet().next()) {
-                names.add(ps.getResultSet().getString(1));
+            rs = ps.getResultSet();
+            while (rs.next()) {
+                names.add(rs.getString(1));
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
         return names;
     }
@@ -153,18 +166,20 @@ public class SQLManager {
     public final long getLastVote(final Player p) {
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT last_vote FROM player_profile WHERE uuid = ?;");
             ps.setString(1, p.getUniqueId().toString());
             ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getLong("last_vote");
+            rs = ps.getResultSet();
+            if (rs.next()) {
+                return rs.getLong("last_vote");
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
         return 0L;
     }
@@ -172,18 +187,20 @@ public class SQLManager {
     public final int getAtPlayedTime(Player p, String table) {
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT " + table + " FROM at_table WHERE nick = ?;");
             ps.setString(1, p.getName());
             ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getInt(table);
+            rs = ps.getResultSet();
+            if (rs.next()) {
+                return rs.getInt(table);
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
         return 0;
     }
@@ -191,17 +208,19 @@ public class SQLManager {
     public final boolean isAT(Player p) {
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT * FROM at_table WHERE nick = ?;");
             ps.setString(1, p.getName());
             ps.executeQuery();
-            return ps.getResultSet().next();
+            rs = ps.getResultSet();
+            return rs.next();
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
     }
 
@@ -344,17 +363,19 @@ public class SQLManager {
     public final int getSettings(final Player p, final String settings) {
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT " + settings + " FROM player_settings WHERE nick = '" + p.getName() + "'");
             ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getInt(settings);
+            rs = ps.getResultSet();
+            if (rs.next()) {
+                return rs.getInt(settings);
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
         return 0;
     }
@@ -362,17 +383,19 @@ public class SQLManager {
     public final String getSettingsString(final Player p, final String settings) {
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT " + settings + " FROM player_settings WHERE nick = '" + p.getName() + "'");
             ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getString(settings);
+            rs = ps.getResultSet();
+            if (rs.next()) {
+                return rs.getString(settings);
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
         return "";
     }
@@ -420,17 +443,19 @@ public class SQLManager {
     public final String getPlayerProfileDataString(Player p, String data) {
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT " + data + " FROM player_profile WHERE uuid = '" + p.getUniqueId().toString() + "'");
             ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getString(data);
+            rs = ps.getResultSet();
+            if (rs.next()) {
+                return rs.getString(data);
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
         return "";
     }
@@ -438,17 +463,19 @@ public class SQLManager {
     public final Long getPlayerProfileDataLong(Player p, String data) {
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT " + data + " FROM player_profile WHERE uuid = '" + p.getUniqueId().toString() + "'");
             ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getLong(data);
+            rs = ps.getResultSet();
+            if (rs.next()) {
+                return rs.getLong(data);
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
         return (long) 0;
     }
@@ -456,17 +483,19 @@ public class SQLManager {
     public final int getPlayerProfileDataInt(Player p, String data) {
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT " + data + " FROM player_profile WHERE uuid = '" + p.getUniqueId().toString() + "'");
             ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getInt(data);
+            rs = ps.getResultSet();
+            if (rs.next()) {
+                return rs.getInt(data);
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
         return 0;
     }
@@ -540,19 +569,21 @@ public class SQLManager {
     public final String getJoinAnnouceMessage() {
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         String server = getServerName();
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT message FROM join_announce WHERE server = ?;");
             ps.setString(1, server);
             ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getString(1);
+            rs = ps.getResultSet();
+            if (rs.next()) {
+                return rs.getString(1);
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
         return "";
     }
@@ -560,19 +591,21 @@ public class SQLManager {
     public final boolean isJoinAnnounceEnabled() {
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         String server = getServerName();
         try {
             conn = pool.getConnection();
             ps = conn.prepareStatement("SELECT enabled FROM join_announce WHERE server = ?;");
             ps.setString(1, server);
             ps.executeQuery();
-            if (ps.getResultSet().next()) {
-                return ps.getResultSet().getInt("enabled") == 1;
+            rs = ps.getResultSet();
+            if (rs.next()) {
+                return rs.getInt("enabled") == 1;
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            pool.close(conn, ps, null);
+            pool.close(conn, ps, rs);
         }
         return false;
     }
