@@ -28,7 +28,7 @@ public class CrazyCratesConfig {
             Log.error("CM API vrátilo status code " + ATSData.get("status").getAsInt() + " config headcreatky nebude obnoven.");
             return;
         }
-        File headConfigFile = new File(Main.getInstance().getServer().getWorldContainer().getAbsolutePath() + "/plugins/CrazyCrates/Crates/Head.yml");
+        File headConfigFile = new File(Main.getInstance().getServer().getWorldContainer().getAbsolutePath() + "/plugins/CrazyCrates/crates/Head.yml");
         if (!headConfigFile.exists()) {
             try {
                 headConfigFile.createNewFile();
