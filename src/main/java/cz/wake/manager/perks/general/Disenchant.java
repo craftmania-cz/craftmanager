@@ -44,10 +44,6 @@ public class Disenchant extends BaseCommand {
                     ChatInfo.DANGER.send(player, "Tento item není poničen nebo provést disenchant.");
                     return;
                 }
-                if (itemInHand.getItemMeta().hasCustomModelData()) {
-                    ChatInfo.DANGER.send(player, "Nelze disenchantovat item, který má nastavený styl.");
-                    return;
-                }
                 short durability = itemInHand.getDurability();
                 if ((!itemInHand.getEnchantments().isEmpty()) && (itemInHand.getType() != Material.BOOK)
                         && (itemInHand.getType() != Material.TRIPWIRE_HOOK) && (itemInHand.getType() != Material.KNOWLEDGE_BOOK)) {
