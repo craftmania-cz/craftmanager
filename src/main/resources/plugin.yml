@@ -12,6 +12,8 @@ softdepend:
   - PlaceholderAPI
   - ProtocolLibs
   - LibsDisguises
+  - WorldEdit
+  - WorldGuard
 libraries:
   - "org.jetbrains.kotlin:kotlin-stdlib:1.6.20"
 
