@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'com.github.johnrengelman.shadow' version '7.1.0'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.20'
 }
 
 mainClassName = 'cz.wake.manager.Main'
@@ -90,4 +91,15 @@ dependencies {
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '2.7.4'
     implementation group: 'org.json', name: 'json', version: '20190722'
     implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "17"
+    }
 }
