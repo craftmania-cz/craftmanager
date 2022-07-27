@@ -3,6 +3,7 @@ package cz.wake.manager.utils;
 import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.craftmania.craftlibs.utils.TextComponentBuilder;
 import cz.craftmania.craftlibs.utils.actions.ConfirmAction;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -38,7 +39,7 @@ public class Repair {
         int enchanments = item.getEnchantments().values().stream().mapToInt(integer -> (int) Math.round(.5 * integer)).sum();
         double currentDurability = ((Damageable) item.getItemMeta()).getDamage();
         int repairCost = ((int) Math.ceil(currentDurability / 100D));
-        if (currentDurability / item.getType().getMaxDurability() < 0.15D) repairCost += enchanments;
+        repairCost += enchanments;
 
         if (player.getLevel() < repairCost) {
             ChatInfo.DANGER.send(player, "Nemáš dostatek levelů (" + repairCost + "LVL).");
@@ -51,10 +52,12 @@ public class Repair {
                     .setPlayer(player)
                     .generateIdentifier()
                     .setDelay(200L)
+                    .addComponent(a -> new TextComponentBuilder("").getComponent())
                     .addComponent(a -> new TextComponentBuilder("&7Oprava tohoto itemu bude stát &e" + finalRepairCost + "LVL&7.").getComponent())
                     .addComponent(a -> new TextComponentBuilder("§a[Klikni zde opravnení itemu]")
-                            .setTooltip("Opravit item za " + finalRepairCost + "LVL.\nTato akce již nejde vrátit.")
+                            .setTooltip("§7Opravit item za §e" + finalRepairCost + "LVL.\n§cTato akce již nejde vrátit.")
                             .setPerformedCommand(a.getConfirmationCommand()).getComponent())
+                    .addComponent(a -> new TextComponentBuilder("").getComponent())
                     .setRunnable(player2 -> {
                         ItemStack itemStack = player2.getInventory().getItem(getItemSlot(player2, item));
                         if (itemStack == null) {
