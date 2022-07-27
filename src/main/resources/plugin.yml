@@ -12,6 +12,8 @@ softdepend:
   - PlaceholderAPI
   - ProtocolLibs
   - LibsDisguises
+libraries:
+  - "org.jetbrains.kotlin:kotlin-stdlib:1.6.20"
 
 permissions:
     craftmanager.*:
