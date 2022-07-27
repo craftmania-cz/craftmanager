@@ -6,12 +6,11 @@ version: "1.8"
 depend:
   - CraftCore
   - CraftEconomy
+  - CraftPack
 softdepend:
   - HolographicDisplays
   - PlaceholderAPI
   - ProtocolLibs
-  - XoreboardUtil
-  - CraftPack
   - LibsDisguises
 
 permissions:
