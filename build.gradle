@@ -43,6 +43,7 @@ repositories {
     maven { url "https://repo.aikar.co/content/groups/aikar/" }
     maven { url "https://repo.dmulloy2.net/nexus/repository/public/" }
     maven { url "https://repo.md-5.net/content/groups/public/" }
+    maven { url "https://maven.enginehub.org/repo/" }
     maven {
         url "https://gitlab.com/api/v4/groups/craftmania/-/packages/maven"
         name "GitLab"
@@ -73,16 +74,17 @@ dependencies {
 
     // CraftMania
     compileOnly group: 'cz.craftmania.craftpack', name: 'craftpack', version: '1.4.9'
-    compileOnly group: 'cz.craftmania.craftcore', name: 'craftcore', version: '2.6.2.1'
+    compileOnly group: 'cz.craftmania.craftcore', name: 'craftcore', version: '2.9'
     compileOnly group: 'cz.craftmania.crafteconomy', name:'crafteconomy', version: '2.1.0'
     compileOnly group: 'cz.craftmania.craftlibs', name:'craftlibs', version: '1.1.12'
-    //compileOnly name: 'spigot-1.17.1'
 
     compileOnly group: 'LibsDisguises', name: 'LibsDisguises', version: '10.0.26'
     compileOnly group: 'me.clip', name: 'placeholderapi', version: '2.10.4'
     compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.5.0"
     compileOnly group: "com.github.MilkBowl", name: "VaultAPI", version: "1.7"
     compileOnly group: 'com.gmail.filoghost.holographicdisplays', name: 'holographicdisplays-api', version: '2.3.3-SNAPSHOT'
+    compileOnly group: 'com.sk89q.worldguard', name: 'worldguard-bukkit', version: '7.0.7'
+    compileOnly group: 'com.github.FrancoBM12', name: 'API-MagicCosmetics', version: '1.9.3'
 
     // Compiled
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '2.7.4'

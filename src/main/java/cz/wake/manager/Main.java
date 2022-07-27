@@ -259,6 +259,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         if (serverType == ServerType.SURVIVAL) {
             //pm.registerEvents(new WardrobeRegionListener(), this);
+            pm.registerEvents(new RegionListener(), this);
         }
     }
 
