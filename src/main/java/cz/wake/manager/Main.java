@@ -150,9 +150,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         // Update ID stats task (1 min)
         if (!testing) {
-            getServer().getScheduler().runTaskTimerAsynchronously(this, new UpdateServerTask(), 200, 1200);
-            Log.info("Aktivace update serveru kazdych 60 vterin.");
-
             getServer().getScheduler().runTaskTimerAsynchronously(this, new ATCheckerTask(), 200, 1200);
             Log.info("Aktivace AT-Stalkeru");
 

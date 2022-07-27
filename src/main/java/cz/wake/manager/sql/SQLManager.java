@@ -224,31 +224,6 @@ public class SQLManager {
         }
     }
 
-    public final void updateServerTask() {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                Connection conn = null;
-                PreparedStatement ps = null;
-                try {
-                    conn = pool.getConnection();
-                    ps = conn.prepareStatement("INSERT INTO stav_survival_server (nazev, pocet_hracu, pocet_slotu, verze, pocet_pluginu) VALUES (?,?,?,?,?) ON DUPLICATE KEY UPDATE pocet_hracu = ?;");
-                    ps.setString(1, Main.getInstance().getConfig().getString("server")); // Kvůli 1.13+
-                    ps.setInt(2, Bukkit.getOnlinePlayers().size());
-                    ps.setInt(3, Bukkit.getMaxPlayers());
-                    ps.setString(4, Bukkit.getVersion());
-                    ps.setInt(5, Bukkit.getPluginManager().getPlugins().length);
-                    ps.setInt(6, Bukkit.getOnlinePlayers().size());
-                    ps.executeUpdate();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    pool.close(conn, ps, null);
-                }
-            }
-        }.runTaskAsynchronously(Main.getInstance());
-    }
-
     public final void updateAtLastActive(Player p, long time) {
         String server = getServerName();
         new BukkitRunnable() {
