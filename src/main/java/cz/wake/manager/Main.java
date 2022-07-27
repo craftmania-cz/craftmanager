@@ -9,6 +9,7 @@ import cz.wake.manager.commads.staff.CosAdmin_command;
 import cz.wake.manager.commads.staff.RawBroadcast;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.commads.staff.ServerSlots_command;
+import cz.wake.manager.commands.RechargeCommand;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
 import cz.wake.manager.managers.CompassManager;
