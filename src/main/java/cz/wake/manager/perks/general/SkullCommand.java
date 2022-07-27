@@ -47,14 +47,4 @@ public class SkullCommand extends BaseCommand {
             ChatInfo.DANGER.send(p, "Chyba v API Mojangu! Zkus to znova zachvilku! :)");
         }
     }
-
-    //TODO: Pridat do CraftCore
-    public static String addUUIDDashes(String idNoDashes) {
-        StringBuffer idBuff = new StringBuffer(idNoDashes);
-        idBuff.insert(20, '-');
-        idBuff.insert(16, '-');
-        idBuff.insert(12, '-');
-        idBuff.insert(8, '-');
-        return idBuff.toString();
-    }
 }

@@ -42,7 +42,7 @@ public class GlowItemCommand extends BaseCommand {
                 ChatInfo.DANGER.send(player, "Musíš držet item, na který chceš dat glowing efekt.");
                 return;
             }
-            //Přidat blacklist všech itemů, na které jde dávat ve Vanilla MC enchanty. Viz: https://youtrack.waked.cz/issue/CMD-845
+            //TODO: Přidat blacklist všech itemů, na které jde dávat ve Vanilla MC enchanty. Viz: https://youtrack.waked.cz/issue/CMD-845
             if (item.isSimilar(new ItemStack(Material.GOLDEN_APPLE, 1, (short) 1))) {
                 ChatInfo.DANGER.send(player, "Na tento item nelze použít příkaz /gi");
                 return;

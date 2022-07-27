@@ -161,7 +161,7 @@ public class CshopManager {
         if (System.currentTimeMillis() >= 1640473200000L) {
             seasonShopItems.add(new VoteItem().setName("§b§lFrost Sword").setHideWhenBuy("craftmanager.cshop.frost_sword").setPrice(1).setItemStack(Swords.FROST_SWORD.getPureItemStack()).setCommandToExecute("cosadmin %player% frost-sword %player%"));
         }*/
-        seasonShopItems.add(new VoteItem().setName("§d§lClown Set").setPrice(1).setItemStack(Material.NETHERITE_SWORD).setCommandToExecute("cosadmin %player% clown-set %player%"));
+        //seasonShopItems.add(new VoteItem().setName("§d§lClown Set").setPrice(1).setItemStack(Material.NETHERITE_SWORD).setCommandToExecute("cosadmin %player% clown-set %player%"));
     }
 
 }

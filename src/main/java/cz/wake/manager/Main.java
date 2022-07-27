@@ -267,11 +267,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new Help_command());
         manager.registerCommand(new Disenchant()); //TODO: Deep test needed
         manager.registerCommand(new Vote_command());
-        manager.registerCommand(new Navody_command());
         manager.registerCommand(new BeaconCommand());
         manager.registerCommand(new Cm_command());
         manager.registerCommand(new GlowItemCommand());
-        manager.registerCommand(new Blocks_command());
         manager.registerCommand(new Repair_command());
         manager.registerCommand(new Votes_command());
         manager.registerCommand(new VIP_command()); //FIXME: /vip občas nejde, /vipmenu vždy jde...

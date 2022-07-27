@@ -1,6 +1,5 @@
 package cz.wake.manager.listener;
 
-import cz.wake.manager.managers.MenuManager;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -34,9 +33,6 @@ public class InventoryListener implements Listener {
             if (e.getSlot() == 22) {
                 p.performCommand("rewards");
             }
-            if(e.getSlot() == 23){
-                MenuManager.openNavody(p);
-            }
             if (e.getSlot() == 24) {
                 p.performCommand("vote");
                 p.closeInventory();
@@ -65,9 +61,6 @@ public class InventoryListener implements Listener {
             }
             if (e.getCurrentItem().getType() == Material.AIR) {
                 return;
-            }
-            if(e.getSlot() == 30){
-                MenuManager.openNavody(p);
             }
             if ((e.getSlot() == 12) || (e.getSlot() == 13) || (e.getSlot() == 14)) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
@@ -114,9 +107,6 @@ public class InventoryListener implements Listener {
             }
             if (e.getSlot() == 32) {
                 p.performCommand("vip");
-            }
-            if(e.getSlot() == 23){
-                MenuManager.openNavody(p);
             }
             if (e.getSlot() == 24) {
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);

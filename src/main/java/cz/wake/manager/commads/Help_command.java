@@ -40,7 +40,7 @@ public class Help_command extends BaseCommand {
         return true;
     }
 
-    //TODO: Převést na nové inventáře
+    @Deprecated(since = "1.8", forRemoval = true)
     private void openMenu(Player p) {
         if (Main.getInstance().getServerType() == ServerType.SKYBLOCK) {
             Inventory inv = Bukkit.createInventory(null, 45, "Help pro Skyblock");
@@ -242,135 +242,6 @@ public class Help_command extends BaseCommand {
             inv.setItem(30, guides);
             inv.setItem(31, conn);
             inv.setItem(32, levels);
-
-            p.openInventory(inv);
-        }
-        if (Main.getInstance().getServerType() == ServerType.SURVIVAL) {
-            Inventory inv = Bukkit.createInventory(null, 45, "Help pro Survival");
-
-            ItemStack res = new ItemBuilder(Material.WOODEN_HOE).setName("§aVytvoření a první kroky s Residencí").setLore(
-                    "§7K vytvoření residence budeš potřebovat",
-                    "§7dřevěnou motyku, najdeš ji v kitu §b/kit starter",
-                    "§7Jako další krok označ motykou dva body - pravým/levým tlačítkem.",
-                    "§7Poté napiš §e/res select vert §f- §7Vybereš výšku Y od 0 do 256",
-                    "§7Dále použij příkaz §e/res create nazevResidence",
-                    "",
-                    "§e/res create nazevResidence §f- §fVytvoření residence",
-                    "",
-                    "§bKliknutím zobrazíš odkaz na celý návod na Wiki").build();
-
-            ItemStack resV = new ItemBuilder(Material.IRON_HOE).setName("§aVlajky a nastavení v Residenci").setLore(
-                    "§cZákladní příkaz:",
-                    "§e/res set §6nazevResidence nazevVlajky hodnota",
-                    "",
-                    "§cNejpoužívanější vlajky:",
-                    "§emove §f- §7Pohyb v residenci",
-                    "§ebuild §f- §7Stavění v residenci",
-                    "§epvp §f- §7PVP v residenci",
-                    "§euse §f- §7Používání tlačítek, páček atd.",
-                    "§emonsters §f- §7Spawn monster",
-                    "§eanimals §f- §7Spawn zvířat",
-                    "§eignite §f- §7Používání zapalovače",
-                    "§efirespread §f- §7Hoření a rozšiřování ohně",
-                    "",
-                    "§cPříklady:",
-                    "§8- §f/res set mojeres build false",
-                    "§8- §f/res set mojeres monters true",
-                    "",
-                    "§bKliknutím zobrazíš odkaz na celý návod na Wiki").build();
-
-            ItemStack resF = new ItemBuilder(Material.DIAMOND_HOE).setName("§aPřidání kamarádů a další příkazy").setLore(
-                    "§e/res padd §6" + p.getName() + " §f- §7Přidání hráče do residence",
-                    "§e/res pdel §6" + p.getName() + " §f- §7Odebrání z residence",
-                    "§e/res list §f- §7Seznam všech tvých residencí",
-                    "§e/res limits §f- §7Zobrazí limity pro zabrání území",
-                    "§e/res tp §6nazev §f- §7Teleport na residenci",
-                    "§e/res tpset §f- §7Nastavení teleportu",
-                    "§e/res give §6název nick §f- §7Přepíšeš residenci vybranému hráči", "",
-                    "§bKliknutím zobrazíš odkaz na celý návod na Wiki").build();
-
-            ItemStack vip = new ItemBuilder(Material.EMERALD).setName("§aNákup VIP").setLore(
-                    "§7Pokud si chceš zakoupit VIP,", "§7tak kliknutím zde se ti zobrazí přehled",
-                    "§7všech dostupných VIP na tomto serveru.", "", "§bKlikni pro zobrazení VIP").build();
-
-            ItemStack aukce = new ItemBuilder(Material.CAKE).setName("§aAukce §c§l(dočasně off)").setLore(
-                    "§7Pomocí aukcí můžeš hráčům prodávat", "§7různé itemy nebo bloky.", "",
-                    "§cVytvoření aukce:", "§7K vytvoření aukce, drž item, co chceš", "§7prodat a napiš tento příkaz:",
-                    "§e/au start §61 1000 100 1d §8- §7Vytvoří aukci na 1 den",
-                    "",
-                    "§cPopis příkazu:", "§e/au start [pocetItemu] [zaklCena] [min.nabHrace] [cas]",
-                    "§8- §6pocetItemu §f- §7Je počet prodávaných itemu",
-                    "§7nebo bloku př. 1/2/64",
-                    "§8- §6zaklCena §f- §7Je cena, se kterou aukce začíná",
-                    "§8- §6min.nabHrace §f- §7Je minimální částka, ",
-                    "§7kterou hráč může přidat do aukce",
-                    "§8- §6cas §f- §7Určuje konec aukce př. 1m/1h/1d ",
-                    "§7(lze i kombinovat 1d12h)").build();
-
-            ItemStack levels = new ItemBuilder(Material.NETHER_STAR).setName("§aAchievements & Rewards").setLore(
-                    "§7Chceš dosáhnout novýc cílů a mít tak vyšší level?",
-                    "§7Server level ti totiž odemyká mnoho bonusových",
-                    "§7práv a možností, co dělat na serveru.",
-                    "",
-                    "§e/level §f- §7Zobrazení globální levelu (součet všech)",
-                    "§e/level survival §f- §7Zobrazení levelu pro Survival",
-                    "§e/rewards §f- §7Zobrazení odměn za levely",
-                    "",
-                    "§eKliknutím zobrazíš rewards odměny").build();
-
-            ItemStack hlasovani = new ItemBuilder(Material.PAPER).setName("§aHlasování").setLore(
-                    "§7Hlasovat můžeš každý 1x za 2 hodiny na CzechCraftu,",
-                    "§7a 1x za 24h na CraftListu.",
-                    "",
-                    "§fKaždý hlas: §610 CC §f+ §aVoteToken",
-                    "§f25% šance: §625 CC",
-                    "§f5% šance: §650 CC",
-                    "§f1% šance: §6100 CC",
-                    "",
-                    "§bKaždý měsíc můžeš získat tyto bonusy:",
-                    "§f20 hlasů: §6200 CC",
-                    "§f40 hlasů: §6300 CC",
-                    "§f60 hlasů: §6500 CC",
-                    "",
-                    "§6Hlasovat lze i offline!",
-                    "",
-                    "§eKliknutím zobrazíš odkazy na hlasování!").build();
-
-            ItemStack guides = new ItemBuilder(Material.BOOK).setName("§aNávody").setLore(
-                    "§7Přehled všech dostupných návodů",
-                    "§7na naší hlavní WIKI!",
-                    "",
-                    "§eKliknutím zde zobrazíš přehled").build();
-
-            ItemStack ser = new ItemBuilder(Material.DIAMOND).setName("§aOstatní příkazy a teleporty po serveru").setLore(
-                    "§e/shop §f- §7Otevře menu s server shopem",
-                    "§e/cshop §f- §7Otevře CoinShop s CM měnou",
-                    "§e/cc§7, §e/ct§7, §e/vt- §7Stav CraftCoins, CraftTokens, VoteTokens",
-                    "§e/trade §6" + p.getName() + " §f- §7Obchodování s hráčem",
-                    "§e/fr §f- §7Friends a psaní si s kamarády přes celý server",
-                    "§e/lobby §7nebo §e/hub §f- §7Teleport na lobby").build();
-
-            ItemStack conn = new ItemBuilder(Material.MAP).setName("§aOdkazy na naše stránky").setLore(
-                    "§eNovinky: §7https://news.craftmania.cz/",
-                    "§eFórum: §7https://craftmania.cz/",
-                    "§eDiscord: §7https://discord.gg/craftmania/",
-                    "§eStatus page: §7https://status.craftmania.cz/",
-                    "§eStatistiky: §7https://stats.craftmania.cz/",
-                    "",
-                    "§bKliknutím zde, se ti zobrazí klikací odkazy v chatu").build();
-
-            inv.setItem(12, res);
-            inv.setItem(13, resV);
-            inv.setItem(14, resF);
-
-            inv.setItem(20, vip);
-            inv.setItem(21, aukce);
-            inv.setItem(22, levels);
-            inv.setItem(23, guides);
-            inv.setItem(24, hlasovani);
-
-            inv.setItem(30, ser);
-            inv.setItem(32, conn);
 
             p.openInventory(inv);
         }
