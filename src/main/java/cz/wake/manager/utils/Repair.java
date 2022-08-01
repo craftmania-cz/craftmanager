@@ -64,7 +64,7 @@ public class Repair {
                             ChatInfo.DANGER.send(player2, "Item, který si chtěl opravit již není v tvém inventáři.");
                             return;
                         }
-                        if (player2.getLevel() < finalRepairCost) {
+                        if (player2.getLevel() <= finalRepairCost) {
                             ChatInfo.DANGER.send(player2, "Nemáš dostatek levelů (" + finalRepairCost + "LVL).");
                             return;
                         }
