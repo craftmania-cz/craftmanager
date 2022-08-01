@@ -6,8 +6,10 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.HelpCommand;
+import cz.craftmania.craftcore.builders.items.ItemBuilder;
 import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
+import cz.wake.manager.utils.InventoryUtils;
 import cz.wake.manager.utils.ServerType;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -24,6 +26,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 @CommandAlias("disenchant")
 @Description("Získání zpět enchantů na nástroji")
 public class Disenchant extends BaseCommand {
+
+    private InventoryUtils inventoryUtils = new InventoryUtils();
 
     @HelpCommand
     public void helpCommand(CommandSender sender, CommandHelp help) {
@@ -49,7 +53,6 @@ public class Disenchant extends BaseCommand {
                         && (itemInHand.getType() != Material.TRIPWIRE_HOOK) && (itemInHand.getType() != Material.KNOWLEDGE_BOOK)) {
 
                     Map<Enchantment, Integer> enchantments = itemInHand.getEnchantments();
-                    HashMap<String, Integer> customEnchants = new HashMap<>(); // Only fix
 
                     // Kalkulace ceny
                     AtomicInteger finalPriceLvls = new AtomicInteger();
@@ -66,16 +69,17 @@ public class Disenchant extends BaseCommand {
                         }
                     }
 
-                    if (player.getLevel() > finalPriceLvls.get()) {
-                        ItemStack withoutEnchant = new ItemStack(player.getItemInHand().getType(), 1);
-                        player.getInventory().removeItem(itemInHand);
+                    if (player.getLevel() >= finalPriceLvls.get()) {
+                        ItemStack withoutEnchant = new ItemStack(itemInHand);
+                        withoutEnchant.getEnchantments().forEach((enchant, level) -> withoutEnchant.removeEnchantment(enchant));
+                        player.getInventory().removeItem(player.getInventory().getItemInMainHand());
 
                         player.setLevel(player.getLevel() - finalPriceLvls.get());
                         for (Map.Entry<Enchantment, Integer> entry : enchantments.entrySet()) {
                             ItemStack enchantBook = new ItemStack(Material.ENCHANTED_BOOK, 1);
                             Enchantment enchant = entry.getKey();
                             int level = (entry.getValue());
-                            player.getInventory().addItem(addBookEnchantment(enchantBook, enchant, level));
+                            inventoryUtils.givePlayerItemOrDrop(player, addBookEnchantment(enchantBook, enchant, level));
                         }
 
                         player.sendMessage("§e\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac");
@@ -85,7 +89,7 @@ public class Disenchant extends BaseCommand {
                         player.sendMessage("");
                         player.sendMessage("§e\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac");
                         withoutEnchant.setDurability(durability);
-                        player.getInventory().addItem(withoutEnchant);
+                        inventoryUtils.givePlayerItemOrDrop(player, withoutEnchant);
                     } else {
                         ChatInfo.INFO.send(player, "Musíš mít minimálně " + finalPriceLvls + " levelů na disenchant totoho itemu!");
                     }
