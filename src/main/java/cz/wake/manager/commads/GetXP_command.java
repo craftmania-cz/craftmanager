@@ -5,6 +5,7 @@ import co.aikar.commands.annotation.*;
 import cz.craftmania.crafteconomy.utils.Logger;
 import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.craftmania.craftlibs.utils.ExperienceUtil;
+import cz.wake.manager.utils.InventoryUtils;
 import cz.wake.manager.utils.experience.EXPBottlesUtil;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -12,6 +13,8 @@ import org.bukkit.entity.Player;
 @CommandAlias("getxp|getexp|xpbottle|getlvl|getlevel|exp")
 @Description("Umožní ti ukládat si XP do EXP bottlů")
 public class GetXP_command extends BaseCommand {
+
+    private final InventoryUtils inventoryUtils = new InventoryUtils();
 
     @Default
     public void showPlayersEXP(CommandSender sender) {
@@ -25,17 +28,16 @@ public class GetXP_command extends BaseCommand {
     @Default
     @Syntax("[exp]")
     public void getPlayersEXP(CommandSender sender, long exp) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             Logger.danger("Tento příkaz může použít jen hráč.");
             return;
         }
-        Player player = (Player) sender;
 
-        if (exp == 0) {
+        if (exp <= 0) {
             ChatInfo.DANGER.send(player, "Číslo musí být větší než 0!");
             return;
         }
-        if (ExperienceUtil.getExp(player) < exp) {
+        if (ExperienceUtil.getExp(player) <= exp) {
             ChatInfo.DANGER.send(player,"Máš nedostatek EXP!");
             return;
         }
@@ -46,18 +48,17 @@ public class GetXP_command extends BaseCommand {
     @Subcommand("level|lvl")
     @Syntax("level|lvl [exp]")
     public void getPlayersEXPByLevel(CommandSender sender, int level) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             Logger.danger("Tento příkaz může použít jen hráč.");
             return;
         }
-        Player player = (Player) sender;
         long exp = ExperienceUtil.getExpFromLevel(level);
 
-        if (exp == 0) {
+        if (exp <= 0) {
             ChatInfo.DANGER.send(player, "Číslo musí být větší než 0!");
             return;
         }
-        if (ExperienceUtil.getExp(player) < exp) {
+        if (ExperienceUtil.getExp(player) <= exp) {
             ChatInfo.DANGER.send(player, "Máš nedostatek levelů!");
             return;
         }
@@ -67,14 +68,12 @@ public class GetXP_command extends BaseCommand {
 
     @Subcommand("max")
     public void getPlayersEXPMax(CommandSender sender) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             Logger.danger("Tento příkaz může použít jen hráč.");
             return;
         }
 
-        Player player = (Player) sender;
-
-        if (ExperienceUtil.getExp(player) == 0) {
+        if (ExperienceUtil.getExp(player) <= 0) {
             ChatInfo.DANGER.send(player, "Musíš mít více jak 1LVL!");
             return;
         }
@@ -87,21 +86,20 @@ public class GetXP_command extends BaseCommand {
 
     @Subcommand("help")
     public void getHelp(CommandSender sender) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             Logger.danger("Tento příkaz může použít jen hráč.");
             return;
         }
-        Player player = (Player) sender;
         ChatInfo.INFO.send(player, "§6Pro vytvoření EXP Bottle použij §e/exp [EXP]§6 a nebo §e/exp lvl [LEVEL]§6.");
     }
 
     // Utils
     public boolean giveEXPBottleToPlayer(Player player, long exp) {
-        if (player.getInventory().firstEmpty() == -1) {
+        if (inventoryUtils.hasFullInventory(player)) {
             ChatInfo.DANGER.send(player, "Máš plný inventář!");
             return false;
         }
-        player.getInventory().addItem(EXPBottlesUtil.makeCustomExpBottle(exp));
+        inventoryUtils.givePlayerItemOrDrop(player, EXPBottlesUtil.makeCustomExpBottle(exp));
         ChatInfo.INFO.send(player, "Vytvořil jsi EXP Bottle s §f" + exp + "EXP");
         return true;
     }
