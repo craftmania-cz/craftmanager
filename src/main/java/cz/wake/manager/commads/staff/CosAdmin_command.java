@@ -277,6 +277,12 @@ public class CosAdmin_command extends BaseCommand {
                 inventoryUtils.givePlayerItemOrDrop(onlinePlayer, atlantisStaff);
                 sender.sendMessage("§eDal jsi hráči " + player + " Atlantis Staff!");
             }
+            case "boxing_glove" -> {
+                ItemStack atlantisStaff = new ItemBuilder(Material.STICK).setCustomModelData(100007)
+                        .setName("§c§lBoxovací rukavice").setLore("§7Rarita: §f" + TextureItems.RARITY_EPIC.getRender()).build();
+                inventoryUtils.givePlayerItemOrDrop(onlinePlayer, atlantisStaff);
+                sender.sendMessage("§eDal jsi hráči " + player + " Boxovací rukavice!");
+            }
         }
     }
 }
