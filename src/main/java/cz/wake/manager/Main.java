@@ -9,6 +9,7 @@ import cz.wake.manager.commads.staff.CosAdmin_command;
 import cz.wake.manager.commads.staff.RawBroadcast;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.commads.staff.ServerSlots_command;
+import cz.wake.manager.commands.BeaconCommand;
 import cz.wake.manager.commands.RechargeCommand;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
@@ -216,7 +217,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new InventoryListener(), this);
         pm.registerEvents(new PlayerListener(), this);
         pm.registerEvents(new ChatListener(), this);
-        pm.registerEvents(new BeaconCommand(), this);
         pm.registerEvents(new Votes_command(), this);
         pm.registerEvents(new PlayerCommandSendListener(this), this);
         pm.registerEvents(new PlayerLoginListener(), this);
