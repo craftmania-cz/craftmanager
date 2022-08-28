@@ -49,8 +49,12 @@ public class Disenchant extends BaseCommand {
                     return;
                 }
                 short durability = itemInHand.getDurability();
-                if ((!itemInHand.getEnchantments().isEmpty()) && (itemInHand.getType() != Material.BOOK)
-                        && (itemInHand.getType() != Material.TRIPWIRE_HOOK) && (itemInHand.getType() != Material.KNOWLEDGE_BOOK)) {
+                if ((!itemInHand.getEnchantments().isEmpty())
+                        && (itemInHand.getType() != Material.BOOK)
+                        && (itemInHand.getType() != Material.TRIPWIRE_HOOK)
+                        && (itemInHand.getType() != Material.KNOWLEDGE_BOOK)
+                        && (itemInHand.getType() != Material.ENCHANTED_BOOK) // Kvůli 1.18 Custom Enchantům
+                ) {
 
                     Map<Enchantment, Integer> enchantments = itemInHand.getEnchantments();
 
