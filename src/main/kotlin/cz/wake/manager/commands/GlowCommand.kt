@@ -11,6 +11,7 @@ import cz.wake.manager.Main
 import cz.wake.manager.utils.ServerType
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
+import org.bukkit.potion.PotionEffectType
 
 @CommandAlias("glow")
 @Description("Umožní ti vypnutí/zapnutí efektu glow")
@@ -35,6 +36,9 @@ class GlowCommand : BaseCommand() {
                     ChatInfo.SUCCESS.send(sender, "Aktivoval jsi efekt §5Glowing!")
                 } else {
                     sender.isGlowing = false
+                    if (sender.hasPotionEffect(PotionEffectType.INVISIBILITY)) {
+                        sender.removePotionEffect(PotionEffectType.INVISIBILITY)
+                    }
                     ChatInfo.SUCCESS.send(sender, "Deaktivoval jsi efekt §5Glowing!")
                 }
             } else {

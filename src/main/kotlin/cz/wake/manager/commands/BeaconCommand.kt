@@ -24,7 +24,8 @@ class BeaconCommand : BaseCommand() {
     @Default
     fun openMenu(sender: CommandSender) {
         if (sender is Player) {
-            SmartInventory.builder().provider(BeaconGUI()).title("Vyber si potion efekt").size(2, 9).build().open(sender) //TODO: Předělat na RP menu
+            SmartInventory.builder().provider(BeaconGUI()).title(":offset_-18::beacon_menu:")
+                .size(3, 9).build().open(sender)
         }
     }
 
