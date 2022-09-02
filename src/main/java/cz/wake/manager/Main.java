@@ -9,6 +9,8 @@ import cz.wake.manager.commads.staff.CosAdmin_command;
 import cz.wake.manager.commads.staff.RawBroadcast;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.commads.staff.ServerSlots_command;
+import cz.wake.manager.commands.DisenchantCommand;
+import cz.wake.manager.commands.GlowCommand;
 import cz.wake.manager.commands.RechargeCommand;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
@@ -264,9 +266,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private void loadCommands() {
         manager.registerCommand(new SkullCommand());
         manager.registerCommand(new Coinshop_command());
-        manager.registerCommand(new Glow_command());
+        manager.registerCommand(new GlowCommand());
         manager.registerCommand(new Help_command());
-        manager.registerCommand(new Disenchant()); //TODO: Deep test needed
+        manager.registerCommand(new DisenchantCommand());
         manager.registerCommand(new Vote_command());
         manager.registerCommand(new BeaconCommand());
         manager.registerCommand(new Cm_command());
