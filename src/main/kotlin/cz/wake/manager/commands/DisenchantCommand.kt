@@ -54,7 +54,7 @@ class DisenchantCommand : BaseCommand() {
                     // Kalkulace ceny
                     val finalPriceLvls = AtomicInteger()
                     finalPriceLvls.addAndGet(enchantments.values.size * 5)
-                    enchantments.forEach { (enchantment: Enchantment, integer: Int) ->
+                    enchantments.forEach { (_: Enchantment, integer: Int) ->
                         if (integer > 1) finalPriceLvls.addAndGet(integer)
                     }
 
@@ -67,10 +67,8 @@ class DisenchantCommand : BaseCommand() {
                     }
                     if (player.level >= finalPriceLvls.get()) {
                         val withoutEnchant = ItemStack(itemInHand)
-                        withoutEnchant.enchantments.forEach { (enchant: Enchantment?, level: Int?) ->
-                            withoutEnchant.removeEnchantment(
-                                enchant!!
-                            )
+                        withoutEnchant.enchantments.forEach { (enchant: Enchantment, _: Int) ->
+                            withoutEnchant.removeEnchantment(enchant)
                         }
                         player.inventory.removeItem(player.inventory.itemInMainHand)
                         player.level = player.level - finalPriceLvls.get()
@@ -90,7 +88,9 @@ class DisenchantCommand : BaseCommand() {
                         player.sendMessage("§e\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac")
 
                         withoutEnchant.setDurability(durability)
-                        inventoryUtils.givePlayerItemOrDrop(player, withoutEnchant)
+                        if (withoutEnchant.type != Material.ENCHANTED_BOOK) {
+                            inventoryUtils.givePlayerItemOrDrop(player, withoutEnchant)
+                        }
                     } else {
                         ChatInfo.INFO.send(player, "Musíš mít minimálně $finalPriceLvls levelů na disenchant totoho itemu!")
                     }
