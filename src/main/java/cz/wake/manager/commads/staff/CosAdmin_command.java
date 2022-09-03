@@ -303,6 +303,12 @@ public class CosAdmin_command extends BaseCommand {
                 inventoryUtils.givePlayerItemOrDrop(onlinePlayer, atlantisStaff);
                 sender.sendMessage("§eDal jsi hráči " + player + " Boxovací rukavice!");
             }
+            case "skyward_sword" -> {
+                ItemStack skywardSword = new ItemBuilder(Swords.SKYWARD.getPureItemStack())
+                        .setName("§b§lSkyward Sword").setLore("§7Rarita: §f" + TextureItems.RARITY_EPIC.getRender()).build();
+                inventoryUtils.givePlayerItemOrDrop(onlinePlayer, skywardSword);
+                sender.sendMessage("§eDal jsi hráči " + player + " Skyward Sword");
+            }
         }
     }
 }
