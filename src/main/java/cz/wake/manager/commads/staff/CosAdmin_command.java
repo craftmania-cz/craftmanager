@@ -145,6 +145,26 @@ public class CosAdmin_command extends BaseCommand {
                 String bootsNBTCommand = "give " + onlinePlayer.getName() + " leather_boots{AttributeModifiers:[{Amount:3.0d,AttributeName:\"minecraft:generic.armor\",Name:\"itemsadder\",Operation:0,Slot:\"feet\",UUID:[I;1633978470,467225177,-1598479421,1944354831]},{Amount:3.0d,AttributeName:\"minecraft:generic.armor_toughness\",Name:\"itemsadder\",Operation:0,Slot:\"feet\",UUID:[I;1787998139,1232881052,-1800790762,-1285596720]}],CustomModelData:100150,Damage:0,HideFlags:64,display:{Name:'[{\"text\":\"Clown Boots\",\"italic\":false,\"bold\":true,\"color\":\"light_purple\"}]',Lore:['[{\"text\":\"Zakoupil:\",\"italic\":false,\"color\":\"gray\"},{\"text\":\" \",\"color\":\"dark_purple\"},{\"text\":\"" + loreNick + "\",\"color\":\"white\"}]'],color:14024705},itemsadder:{custom_durability:592,fake_durability:65.0d,id:\"clown_boots\",max_custom_durability:592,namespace:\"craftmania\"}} 1";
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), bootsNBTCommand);
             }
+            case "kac-set" -> {
+                ItemStack kac_set_sword = new ItemBuilder(Material.NETHERITE_SWORD).setCustomModelData(100200)
+                        .setName("§e§lKac Sword").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                inventoryUtils.givePlayerItemOrDrop(onlinePlayer, kac_set_sword);
+                ItemStack kac_set_pickaxe = new ItemBuilder(Material.NETHERITE_PICKAXE).setCustomModelData(100200)
+                        .setName("§e§lKac Pickaxe").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                inventoryUtils.givePlayerItemOrDrop(onlinePlayer, kac_set_pickaxe);
+                ItemStack kac_set_shovel = new ItemBuilder(Material.NETHERITE_SHOVEL).setCustomModelData(100200)
+                        .setName("§e§lKac Shovel").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                inventoryUtils.givePlayerItemOrDrop(onlinePlayer, kac_set_shovel);
+                ItemStack kac_set_axe = new ItemBuilder(Material.NETHERITE_AXE).setCustomModelData(100200)
+                        .setName("§e§lKac Axe").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                inventoryUtils.givePlayerItemOrDrop(onlinePlayer, kac_set_axe);
+                ItemStack kac_set_hoe = new ItemBuilder(Material.NETHERITE_HOE).setCustomModelData(100200)
+                        .setName("§e§lKac Hoe").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                inventoryUtils.givePlayerItemOrDrop(onlinePlayer, kac_set_hoe);
+                ItemStack hand_duck = new ItemBuilder(Material.STICK).setCustomModelData(100006)
+                        .setName("§e§lKachnicka").setLore("§7Rarita: §f" + TextureItems.RARITY_LEGENDARY.getRender()).build();
+                inventoryUtils.givePlayerItemOrDrop(onlinePlayer, hand_duck);
+            }
             case "pomlazka" -> {
                 ItemStack pomlazka = new ItemBuilder(HandItems.EASTER_STICK.getPureItemStack())
                         .setName("§9§lPomlázka").setLore("§7Rarita: §f" + TextureItems.RARITY_LIMITED.getRender()).build();
