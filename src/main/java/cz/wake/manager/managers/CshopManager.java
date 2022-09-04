@@ -114,15 +114,15 @@ public class CshopManager {
         eventShopItems.add(new VoteItem().setName("50x CraftCoins").setPrice(5).setEconomyReward(50, RewardType.CRAFTCOINS));
         eventShopItems.add(new VoteItem().setName("100x CraftCoins").setPrice(10).setEconomyReward(100, RewardType.CRAFTCOINS));
         eventShopItems.add(new VoteItem().setName("1x CraftToken").setPrice(200).setEconomyReward(1, RewardType.CRAFTTOKEN));
-        eventShopItems.add(new VoteItem().setName("§bCosmetics: §fCandy").setPrice(50).setHideWhenBuy("lp user %player% permission set craftmanager.hats.candy_hat"));
-        eventShopItems.add(new VoteItem().setName("§bCosmetics: §fTiki Mask").setPrice(50).setHideWhenBuy("lp user %player% permission set craftmanager.hats.tiki_mask"));
+        eventShopItems.add(new VoteItem().setName("§bCosmetics: §fCandy").setPrice(50).setCommandToExecute("lp user %player% permission set craftmanager.hats.candy_hat"));
+        eventShopItems.add(new VoteItem().setName("§bCosmetics: §fTiki Mask").setPrice(50).setCommandToExecute("lp user %player% permission set craftmanager.hats.tiki_mask"));
         if (Main.getInstance().getServerType() == ServerType.CREATIVE || Main.getInstance().getServerType() == ServerType.SKYCLOUD || Main.getInstance().getServerType() == ServerType.SURVIVAL || Main.getInstance().getServerType() == ServerType.SKYBLOCK) {
             eventShopItems.add(new VoteItem().setName("ArmorStandEditor (2h)").setPrice(10).setCommandToExecute("lp user %player% permission settemp asedit.* true 2h %server%"));
         }
-        eventShopItems.add(new VoteItem().setName("Cosmetics: Drak Balloon").setPrice(30).setHideWhenBuy("craftmanager.balloons.kite"));
-        eventShopItems.add(new VoteItem().setName("Cosmetics: Crystal Wings").setPrice(50).setHideWhenBuy("craftmanager.backpack.wings_crystal"));
-        eventShopItems.add(new VoteItem().setName("Cosmetics: Crystal Dream Wings").setPrice(60).setHideWhenBuy("craftmanager.backpack.wings_crystal_dream"));
-        eventShopItems.add(new VoteItem().setName("Cosmetics: Roses Old Wings").setPrice(50).setHideWhenBuy("craftmanager.backpack.wings_roses_old"));
+        eventShopItems.add(new VoteItem().setName("Cosmetics: Drak Balloon").setPrice(30).setCommandToExecute("lp user %player% permission set craftmanager.balloons.kite"));
+        eventShopItems.add(new VoteItem().setName("Cosmetics: Crystal Wings").setPrice(50).setCommandToExecute("lp user %player% permission set craftmanager.backpack.wings_crystal"));
+        eventShopItems.add(new VoteItem().setName("Cosmetics: Crystal Dream Wings").setPrice(60).setCommandToExecute("lp user %player% permission set craftmanager.backpack.wings_crystal_dream"));
+        eventShopItems.add(new VoteItem().setName("Cosmetics: Roses Old Wings").setPrice(50).setCommandToExecute("lp user %player% permission set craftmanager.backpack.wings_roses_old"));
     }
 
     private void loadCosmeticShopItems() {
