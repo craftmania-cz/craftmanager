@@ -257,7 +257,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             pm.registerEvents(new PlayerVanishListener(), this);
         }
 
-        if (serverType == ServerType.SURVIVAL) {
+        if (serverType == ServerType.SURVIVAL || serverType == ServerType.SKYBLOCK) {
             //pm.registerEvents(new WardrobeRegionListener(), this);
             pm.registerEvents(new RegionListener(), this);
         }

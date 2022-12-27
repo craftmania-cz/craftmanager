@@ -26,11 +26,11 @@ public class Survival_command extends BaseCommand {
         if (Sender instanceof Player) {
             Player player = (Player) Sender;
             try {
-                ChatInfo.INFO.send(player, "Teleportuji na server §fSurvival [1.18]");
+                ChatInfo.INFO.send(player, "Teleportuji na server §fSurvival [1.19]");
                 Main.getInstance().sendToServer(player, "survival");
             } catch (Exception e) {
                 e.printStackTrace();
-                ChatInfo.DANGER.send(player, "Teleport na se nezdařil: §fSurvival [1.18]");
+                ChatInfo.DANGER.send(player, "Teleport na se nezdařil: §fSurvival [1.19]");
                 Main.getInstance().sendSentryException(e);
             }
         }
