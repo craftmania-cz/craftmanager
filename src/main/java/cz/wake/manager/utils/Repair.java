@@ -4,6 +4,7 @@ import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.craftmania.craftlibs.utils.TextComponentBuilder;
 import cz.craftmania.craftlibs.utils.actions.ConfirmAction;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -11,9 +12,17 @@ import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Repair {
+
+    private static Material[] allowedMaterialList = {
+            Material.IRON_AXE, Material.IRON_PICKAXE, Material.IRON_SHOVEL, Material.IRON_HOE, Material.IRON_SWORD, Material.IRON_HELMET, Material.IRON_CHESTPLATE, Material.IRON_LEGGINGS, Material.IRON_BOOTS,
+            Material.GOLDEN_AXE, Material.GOLDEN_PICKAXE, Material.GOLDEN_SHOVEL, Material.GOLDEN_HOE, Material.GOLDEN_SWORD, Material.GOLDEN_HELMET, Material.GOLDEN_CHESTPLATE, Material.GOLDEN_LEGGINGS, Material.GOLDEN_BOOTS,
+            Material.DIAMOND_AXE, Material.DIAMOND_PICKAXE, Material.DIAMOND_SHOVEL, Material.DIAMOND_HOE, Material.DIAMOND_SWORD, Material.DIAMOND_HELMET, Material.DIAMOND_CHESTPLATE, Material.DIAMOND_LEGGINGS, Material.DIAMOND_BOOTS,
+            Material.NETHERITE_AXE, Material.NETHERITE_PICKAXE, Material.NETHERITE_SHOVEL, Material.NETHERITE_HOE, Material.NETHERITE_SWORD, Material.NETHERITE_HELMET, Material.NETHERITE_CHESTPLATE, Material.NETHERITE_LEGGINGS, Material.NETHERITE_BOOTS
+    };
 
     public static void repair(Player player) {
         ItemStack item = player.getInventory().getItemInMainHand();
@@ -24,8 +33,10 @@ public class Repair {
         }
 
         if (item.getItemMeta().hasCustomModelData()) {
-            ChatInfo.DANGER.send(player, "Nelze opravovat item, který má nastavený styl.");
-            return;
+            if (Arrays.stream(allowedMaterialList).noneMatch((material -> material == item.getType()))) {
+                ChatInfo.DANGER.send(player, "Tento nástroj s stylem není podporovaný na opravu.");
+                return;
+            }
         }
 
         if (!(item.getItemMeta() instanceof Damageable)) {
