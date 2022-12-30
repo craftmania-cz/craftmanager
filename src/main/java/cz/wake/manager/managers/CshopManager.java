@@ -68,7 +68,13 @@ public class CshopManager {
     }
 
     private void loadVoteShopItems() {
-        if (Main.getInstance().getServerType() == ServerType.SURVIVAL || Main.getInstance().getServerType() == ServerType.SKYBLOCK || Main.getInstance().getServerType() == ServerType.PRISON) {
+        if (Main.getInstance().getServerType() == ServerType.SKYBLOCK) { // Od Skyblocku 1.19 již neexistuje Vote Crate
+            voteShopItems.add(new VoteItem().setName("1x BasicCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(3).setCommandToExecute("crate give physical Basic 1 %player%"));
+            voteShopItems.add(new VoteItem().setName("5x BasicCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(15).setCommandToExecute("crate give physical Basic 5 %player%"));
+            voteShopItems.add(new VoteItem().setName("10x BasicCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(30).setCommandToExecute("crate give physical Basic 10 %player%"));
+            voteShopItems.add(new VoteItem().setName("32x BasicCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(96).setCommandToExecute("crate give physical Basic 32 %player%"));
+            voteShopItems.add(new VoteItem().setName("64x BasicCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(192).setCommandToExecute("crate give physical Basic 64 %player%"));
+        } else if (Main.getInstance().getServerType() == ServerType.SURVIVAL || Main.getInstance().getServerType() == ServerType.PRISON) {
             voteShopItems.add(new VoteItem().setName("1x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(2).setCommandToExecute("crate give physical Vote 1 %player%"));
             voteShopItems.add(new VoteItem().setName("5x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(10).setCommandToExecute("crate give physical Vote 5 %player%"));
             voteShopItems.add(new VoteItem().setName("10x VoteCrate Key").setItemStack(Material.TRIPWIRE_HOOK).setPrice(20).setCommandToExecute("crate give physical Vote 10 %player%"));
@@ -92,21 +98,6 @@ public class CshopManager {
 
     private void loadItemShopItems() {
         itemsShopItems.add(new VoteItem().setName("Vlastní hlava").setItemStack(Material.PLAYER_HEAD).setPrice(750).setCommandToExecute("give %player% minecraft:player_head{\"SkullOwner\":\"%player%\"}"));
-        if (Main.getInstance().getServerType() == ServerType.SKYBLOCK) {
-            itemsShopItems.add(new VoteItem().setName("Minion: Sheeps").setRequiredLevel(3).setItemStack(Material.WHITE_WOOL).setPrice(1500).setCommandToExecute("msetup give minion sheep %player% 1"));
-            itemsShopItems.add(new VoteItem().setName("Minion: Nether Wart").setRequiredLevel(5).setItemStack(Material.NETHER_WART).setPrice(3000).setCommandToExecute("msetup give minion netherwart %player% 1"));
-            itemsShopItems.add(new VoteItem().setName("Minion: Dark Oak").setRequiredLevel(2).setItemStack(Material.DARK_OAK_LOG).setPrice(800).setCommandToExecute("msetup give minion darkoak %player% 1"));
-            itemsShopItems.add(new VoteItem().setName("Minion: Carrot Farmer").setRequiredLevel(5).setItemStack(Material.CARROT).setPrice(1000).setCommandToExecute("msetup give minion carrot %player% 1"));
-            itemsShopItems.add(new VoteItem().setName("Minion: Wheat Farmer").setRequiredLevel(5).setItemStack(Material.WHEAT).setPrice(1000).setCommandToExecute("msetup give minion wheat %player% 1"));
-            itemsShopItems.add(new VoteItem().setName("Minion: Fisherman").setRequiredLevel(2).setItemStack(Material.FISHING_ROD).setPrice(500).setCommandToExecute("msetup give minion fisher %player% 1"));
-            itemsShopItems.add(new VoteItem().setName("Minion: Cactus").setRequiredLevel(5).setItemStack(Material.CACTUS).setPrice(1500).setCommandToExecute("msetup give minion cactus %player% 1"));
-            itemsShopItems.add(new VoteItem().setName("Minion: Birch").setRequiredLevel(2).setItemStack(Material.BIRCH_LOG).setPrice(800).setCommandToExecute("msetup give minion birch %player% 1"));
-            itemsShopItems.add(new VoteItem().setName("Minion: Chicken").setRequiredLevel(2).setItemStack(Material.COOKED_CHICKEN).setPrice(1000).setCommandToExecute("msetup give minion chicken %player% 1"));
-            itemsShopItems.add(new VoteItem().setName("Minion: Pig").setRequiredLevel(2).setItemStack(Material.PORKCHOP).setPrice(1000).setCommandToExecute("msetup give minion pig %player% 1"));
-            itemsShopItems.add(new VoteItem().setName("Minion: Coal").setRequiredLevel(10).setItemStack(Material.COAL_ORE).setPrice(3500).setCommandToExecute("msetup give minion coal %player% 1"));
-            itemsShopItems.add(new VoteItem().setName("Minion: Collector").setLore("§7Speciální Minion, co sbírá", "§7itemy v okolí do truhly").setRequiredLevel(15).setItemStack(Material.HOPPER).setPrice(5000).setCommandToExecute("msetup give minion collector %player% 1"));
-            //TODO: Lapis
-        }
     }
 
     private void loadEventShopItems() {
