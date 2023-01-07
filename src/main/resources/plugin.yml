@@ -15,7 +15,7 @@ softdepend:
   - WorldEdit
   - WorldGuard
 libraries:
-  - "org.jetbrains.kotlin:kotlin-stdlib:1.6.20"
+  - "org.jetbrains.kotlin:kotlin-stdlib:1.7.10"
 
 permissions:
     craftmanager.*:

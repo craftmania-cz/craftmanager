@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'com.github.johnrengelman.shadow' version '7.1.0'
-    id 'org.jetbrains.kotlin.jvm' version '1.6.20'
+    id 'org.jetbrains.kotlin.jvm' version '1.7.10'
 }
 
 mainClassName = 'cz.wake.manager.Main'
@@ -87,7 +87,7 @@ dependencies {
     compileOnly group: 'com.sk89q.worldguard', name: 'worldguard-bukkit', version: '7.0.7'
     compileOnly group: 'com.github.FrancoBM12', name: 'API-MagicCosmetics', version: '1.9.8'
 
-    compileOnly group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.6.20' // Nepotřebujeme kotlin v jaru
+    compileOnly group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.7.10' // Nepotřebujeme kotlin v jaru
 
     // Compiled
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '2.7.4'
