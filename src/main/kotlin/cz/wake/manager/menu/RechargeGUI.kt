@@ -23,8 +23,8 @@ class RechargeGUI : InventoryProvider {
     override fun init(player: Player, content: InventoryContents) {
 
         // Money
-        val money200 = ItemBuilder(Material.FEATHER).setName(ServerColors.ROLE_DIAMOND.get().toString() + "Obnovit: +1000")
-                .setLore("§eCena: §6$§f200", "", ServerColors.DARK_GRAY.get().toString() + "Kliknutím si dobiješ fly")
+        val money200 = ItemBuilder(Material.FEATHER).setName(ServerColors.ROLE_DIAMOND.chatColor.toString() + "Obnovit: +1000")
+                .setLore("§eCena: §6$§f200", "", ServerColors.DARK_GRAY.chatColor.toString() + "Kliknutím si dobiješ fly")
                 .build()
         content[1, 2] = ClickableItem.of(money200, Consumer {
             if (vaultUtils.getBalance(player) < 200) {
@@ -38,8 +38,8 @@ class RechargeGUI : InventoryProvider {
             vaultUtils.withdrawPlayer(player, 200.0)
             openRechargerGui(player)
         })
-        val money500 = ItemBuilder(Material.FEATHER).setName(ServerColors.ROLE_DIAMOND.get().toString() + "Obnovit: +2500")
-                .setLore("§eCena: §6$§f500", "", ServerColors.DARK_GRAY.get().toString() + "Kliknutím si dobiješ fly")
+        val money500 = ItemBuilder(Material.FEATHER).setName(ServerColors.ROLE_DIAMOND.chatColor.toString() + "Obnovit: +2500")
+                .setLore("§eCena: §6$§f500", "", ServerColors.DARK_GRAY.chatColor.toString() + "Kliknutím si dobiješ fly")
                 .build()
         content[2, 2] = ClickableItem.of(money500, Consumer {
             if (vaultUtils.getBalance(player) < 500) {
@@ -50,8 +50,8 @@ class RechargeGUI : InventoryProvider {
             vaultUtils.withdrawPlayer(player, 500.0)
             openRechargerGui(player)
         })
-        val money1000 = ItemBuilder(Material.FEATHER).setName(ServerColors.ROLE_DIAMOND.get().toString() + "Obnovit: +5300")
-                .setLore("§eCena: §6$§f1,000", "", ServerColors.DARK_GRAY.get().toString() + "Kliknutím si dobiješ fly")
+        val money1000 = ItemBuilder(Material.FEATHER).setName(ServerColors.ROLE_DIAMOND.chatColor.toString() + "Obnovit: +5300")
+                .setLore("§eCena: §6$§f1,000", "", ServerColors.DARK_GRAY.chatColor.toString() + "Kliknutím si dobiješ fly")
                 .build()
         content[3, 2] = ClickableItem.of(money1000, Consumer { inventoryClickEvent: InventoryClickEvent? ->
             if (vaultUtils.getBalance(player) < 1000) {
@@ -67,8 +67,8 @@ class RechargeGUI : InventoryProvider {
         })
 
         // Event Points
-        val eventPoints1 = ItemBuilder(Material.GOLD_NUGGET).setName(ServerColors.SERVER_SKYBLOCK.get().toString() + "Obnovit: +1000")
-            .setLore("§eCena: §f7 EventPoints", "", ServerColors.DARK_GRAY.get().toString() + "Kliknutím si dobiješ fly")
+        val eventPoints1 = ItemBuilder(Material.GOLD_NUGGET).setName(ServerColors.SERVER_SKYBLOCK.chatColor.toString() + "Obnovit: +1000")
+            .setLore("§eCena: §f7 EventPoints", "", ServerColors.DARK_GRAY.chatColor.toString() + "Kliknutím si dobiješ fly")
             .build()
         content[1, 4] = ClickableItem.of(eventPoints1, Consumer {
             if (EconomyAPI.EVENT_POINTS.get(player) < 7) {
@@ -82,8 +82,8 @@ class RechargeGUI : InventoryProvider {
             EconomyAPI.EVENT_POINTS.take(player, 7)
             openRechargerGui(player)
         })
-        val eventPoints2 = ItemBuilder(Material.GOLD_NUGGET).setName(ServerColors.SERVER_SKYBLOCK.get().toString() + "Obnovit: +2500")
-            .setLore("§eCena: §f16 EventPoints", "", ServerColors.DARK_GRAY.get().toString() + "Kliknutím si dobiješ fly")
+        val eventPoints2 = ItemBuilder(Material.GOLD_NUGGET).setName(ServerColors.SERVER_SKYBLOCK.chatColor.toString() + "Obnovit: +2500")
+            .setLore("§eCena: §f16 EventPoints", "", ServerColors.DARK_GRAY.chatColor.toString() + "Kliknutím si dobiješ fly")
             .build()
         content[2, 4] = ClickableItem.of(eventPoints2, Consumer {
             if (EconomyAPI.EVENT_POINTS.get(player) < 16) {
@@ -97,8 +97,8 @@ class RechargeGUI : InventoryProvider {
             EconomyAPI.EVENT_POINTS.take(player, 16)
             openRechargerGui(player)
         })
-        val eventPoints3 = ItemBuilder(Material.GOLD_NUGGET).setName(ServerColors.SERVER_SKYBLOCK.get().toString() + "Obnovit: +5300")
-            .setLore("§eCena: §f36 EventPoints", "", ServerColors.DARK_GRAY.get().toString() + "Kliknutím si dobiješ fly")
+        val eventPoints3 = ItemBuilder(Material.GOLD_NUGGET).setName(ServerColors.SERVER_SKYBLOCK.chatColor.toString() + "Obnovit: +5300")
+            .setLore("§eCena: §f36 EventPoints", "", ServerColors.DARK_GRAY.chatColor.toString() + "Kliknutím si dobiješ fly")
             .build()
         content[3, 4] = ClickableItem.of(eventPoints3, Consumer {
             if (EconomyAPI.EVENT_POINTS.get(player) < 36) {
@@ -114,8 +114,8 @@ class RechargeGUI : InventoryProvider {
         })
 
         // Quest Points
-        val questPoints1 = ItemBuilder(Material.IRON_NUGGET).setName(ServerColors.SERVER_VANILLA_ANARCHY.get().toString() + "Obnovit: +1000")
-            .setLore("§eCena: §f22 QuestPoints", "", ServerColors.DARK_GRAY.get().toString() + "Kliknutím si dobiješ fly")
+        val questPoints1 = ItemBuilder(Material.IRON_NUGGET).setName(ServerColors.SERVER_VANILLA_ANARCHY.chatColor.toString() + "Obnovit: +1000")
+            .setLore("§eCena: §f22 QuestPoints", "", ServerColors.DARK_GRAY.chatColor.toString() + "Kliknutím si dobiješ fly")
             .build()
         content[1, 6] = ClickableItem.of(questPoints1, Consumer {
             if (EconomyAPI.QUEST_POINTS.get(player) < 22) {
@@ -129,8 +129,8 @@ class RechargeGUI : InventoryProvider {
             EconomyAPI.QUEST_POINTS.take(player, 22)
             openRechargerGui(player)
         })
-        val questPoints2 = ItemBuilder(Material.IRON_NUGGET).setName(ServerColors.SERVER_VANILLA_ANARCHY.get().toString() + "Obnovit: +2500")
-            .setLore("§eCena: §f48 QuestPoints", "", ServerColors.DARK_GRAY.get().toString() + "Kliknutím si dobiješ fly")
+        val questPoints2 = ItemBuilder(Material.IRON_NUGGET).setName(ServerColors.SERVER_VANILLA_ANARCHY.chatColor.toString() + "Obnovit: +2500")
+            .setLore("§eCena: §f48 QuestPoints", "", ServerColors.DARK_GRAY.chatColor.toString() + "Kliknutím si dobiješ fly")
             .build()
         content[2, 6] = ClickableItem.of(questPoints2, Consumer {
             if (EconomyAPI.QUEST_POINTS.get(player) < 48) {
@@ -144,8 +144,8 @@ class RechargeGUI : InventoryProvider {
             EconomyAPI.QUEST_POINTS.take(player, 48)
             openRechargerGui(player)
         })
-        val questPoints3 = ItemBuilder(Material.IRON_NUGGET).setName(ServerColors.SERVER_VANILLA_ANARCHY.get().toString() + "Obnovit: +5300")
-            .setLore("§eCena: §f100 QuestPoints", "", ServerColors.DARK_GRAY.get().toString() + "Kliknutím si dobiješ fly")
+        val questPoints3 = ItemBuilder(Material.IRON_NUGGET).setName(ServerColors.SERVER_VANILLA_ANARCHY.chatColor.toString() + "Obnovit: +5300")
+            .setLore("§eCena: §f100 QuestPoints", "", ServerColors.DARK_GRAY.chatColor.toString() + "Kliknutím si dobiješ fly")
             .build()
         content[3, 6] = ClickableItem.of(questPoints3, Consumer {
             if (EconomyAPI.QUEST_POINTS.get(player) < 100) {

@@ -32,7 +32,7 @@ import cz.wake.manager.utils.configs.CrazyCratesConfig;
 import cz.wake.manager.utils.scoreboard.ScoreboardManager;
 import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.*;
-import cz.wake.manager.commads.VIP_command;
+import cz.wake.manager.commands.VIPCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.entity.Player;
@@ -271,11 +271,10 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new DisenchantCommand());
         manager.registerCommand(new Vote_command());
         manager.registerCommand(new BeaconCommand());
-        manager.registerCommand(new Cm_command());
         manager.registerCommand(new GlowItemCommand());
         manager.registerCommand(new Repair_command());
         manager.registerCommand(new Votes_command());
-        manager.registerCommand(new VIP_command()); //FIXME: /vip občas nejde, /vipmenu vždy jde...
+        manager.registerCommand(new VIPCommand()); //FIXME: /vip občas nejde, /vipmenu vždy jde...
         manager.registerCommand(new RawBroadcast());
         manager.registerCommand(new ServerSlots_command());
         manager.registerCommand(new RestartManager_command()); //TODO: Nenačítat, pokud nebude CraftCore na serveru?

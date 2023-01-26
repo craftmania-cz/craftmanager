@@ -17,6 +17,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated(forRemoval = true)
 public class VIPMenu_inv implements InventoryProvider {
 
     String server = "2beChecked";
