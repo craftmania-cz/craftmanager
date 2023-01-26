@@ -4,7 +4,6 @@ import co.aikar.commands.PaperCommandManager;
 import cz.craftmania.crafteconomy.objects.LevelType;
 import cz.craftmania.craftlibs.sentry.CraftSentry;
 import cz.wake.manager.commads.*;
-import cz.wake.manager.commads.servers.*;
 import cz.wake.manager.commads.staff.CosAdmin_command;
 import cz.wake.manager.commads.staff.RawBroadcast;
 import cz.wake.manager.commads.staff.RestartManager_command;
@@ -13,6 +12,7 @@ import cz.wake.manager.commands.DisenchantCommand;
 import cz.wake.manager.commands.GlowCommand;
 import cz.wake.manager.commands.BeaconCommand;
 import cz.wake.manager.commands.RechargeCommand;
+import cz.wake.manager.commands.servers.*;
 import cz.wake.manager.listener.*;
 import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
 import cz.wake.manager.managers.CompassManager;
@@ -291,11 +291,12 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         }
 
         //Servers
-        manager.registerCommand(new Survival_command());
-        manager.registerCommand(new Survival2_command());
-        manager.registerCommand(new Skyblock_command());
-        manager.registerCommand(new Creative_command());
-        manager.registerCommand(new Vanilla_command());
+        manager.registerCommand(new SurvivalCommand());
+        manager.registerCommand(new Survival2Command());
+        manager.registerCommand(new SkyblockCommand());
+        manager.registerCommand(new Skyblock2Command());
+        manager.registerCommand(new CreativeCommand());
+        manager.registerCommand(new VanillaCommand());
     }
 
     public ConfigAPI getConfigAPI() {
