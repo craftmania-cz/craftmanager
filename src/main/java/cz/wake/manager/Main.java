@@ -15,7 +15,7 @@ import cz.wake.manager.listener.suggestions.PlayerCommandSendListener;
 import cz.wake.manager.managers.CompassManager;
 import cz.wake.manager.managers.CshopManager;
 import cz.wake.manager.perks.coloranvil.AnvilListener;
-import cz.wake.manager.servers.global.LeaveDecayListener;
+import cz.wake.manager.listener.global.LeaveDecayListener;
 import cz.wake.manager.servers.skycloud.ItemDropListener;
 import cz.wake.manager.servers.skycloud.VillagerDamageListener;
 import cz.wake.manager.servers.skycloud.VillagerManager;
