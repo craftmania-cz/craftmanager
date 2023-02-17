@@ -1,3 +1,7 @@
+#
+# CRAFTMANAGER MAIN CONFIG
+#
+
 # Napojeni na SQL
 sql:
  hostname: host
@@ -12,20 +16,24 @@ settings:
  maximumConnections: 5
  timeout: 30000
 
-# Zda-li je server pouze na testy!
+# Test mod
+# Pokud je test mod povolený, nebudou fungovat veškeré synchronizace na serveru.
 testing: false
 
-# ID serveru pro statistiky
+# ID serveru dle kterého bude plugin fungovat
+# Povolené hodnoty: skyblock, survival, prison, creative, vanilla atd.
 server: Survival
 
-# Nastaveni slotu na danem serveru
+# Nastavení server slotů, ovšem ne vždy funguje správně.
 totalSlots: 40
 reservedSlots: 5
 
-# Barevne psani v kovadline
+# Aktivace barevního psaní v kovadlině
+# Tato funkce plně handluje i výsledky v kovadlině, může tedy rozbít i kovadlinu
+# jelikož od 1.16 to lze udělat jinak.
 coloredanvils: false
 
-# Integrace a zasílání exceptions na Sentry
+# Sentry odkaz na zasílání chyb skrz CraftLibs
 sentry-dsn: ''
 
 # Ochrana na drop kosmetických itemů
@@ -36,6 +44,3 @@ protect-drop-cosmetic:
  - NETHERITE_PICKAXE
  - NETHERITE_HOE
  - SUGAR
-
-join-announcer:
-  enabled: false

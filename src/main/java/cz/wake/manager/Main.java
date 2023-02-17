@@ -53,10 +53,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private static DataOutputStream out = new DataOutputStream(b);
     private SQLManager sql;
     private boolean testing = false;
-    private static String mentionPrefix;
     private ConfigAPI configAPI;
-    private String joinAnnounceMessage = "";
-    private boolean joinAnnounceEnabled = false;
 
     // Managers
     private CshopManager cshopManager;
@@ -177,13 +174,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         } else {
             Log.info("Scoreboard je deaktivovaný.");
         }
-
-        // JoinAnnouncer
-        if (getConfig().getBoolean("join-announcer.enabled", false)) {
-            Log.info("Scoreboard je aktivovaný.");
-            getServer().getScheduler().runTaskTimerAsynchronously(this, new JoinAnnouncerTask(), 20, 20 * 60 * 10); // 10 minut
-        }
-
     }
 
     public void onDisable() {
@@ -355,14 +345,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         sql = new SQLManager(this);
     }
 
-    public static String getMentionPrefix() {
-        return mentionPrefix;
-    }
-
-    public boolean areDeathMessagesEnabled() {
-        return getConfig().getBoolean("d_msgs.enabled");
-    }
-
     public ServerType getServerType() {
         return this.serverType;
     }
@@ -416,13 +398,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         };
     }
 
-    public void loadJoinAnnouncer() {
-        joinAnnounceEnabled = getMySQL().isJoinAnnounceEnabled();
-        if (joinAnnounceEnabled) {
-            joinAnnounceMessage = getMySQL().getJoinAnnouceMessage();
-        }
-    }
-
     public CshopManager getCshopManager() {
         return cshopManager;
     }
@@ -457,13 +432,5 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     @Nullable
     public CompassManager getCompassManager() {
         return compassManager;
-    }
-
-    public String getJoinAnnounceMessage() {
-        return joinAnnounceMessage;
-    }
-
-    public boolean isJoinAnnounceEnabled() {
-        return joinAnnounceEnabled;
     }
 }

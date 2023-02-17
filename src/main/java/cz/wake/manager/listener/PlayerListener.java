@@ -61,14 +61,6 @@ public class PlayerListener implements Listener {
             }
         }
 
-        // JoinAnnounce
-        if (Main.getInstance().isJoinAnnounceEnabled()) {
-            p.sendMessage("§7§m---------§7[§b§l Upozornění §7]§m---------\n");
-            p.sendMessage("§f");
-            p.sendMessage("§f" + Main.getInstance().getJoinAnnounceMessage());
-            p.sendMessage("§f");
-        }
-
         // HUD Compass
         if (Main.getInstance().getMySQL().getSettings(e.getPlayer(), "hud_bossbar") == 1) {
             assert Main.getInstance().getCompassManager() != null;
