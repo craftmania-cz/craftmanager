@@ -22,18 +22,11 @@ server: Survival
 totalSlots: 40
 reservedSlots: 5
 
-# Oznamovani do chatu o hlasech
-reminder: true
-
 # Barevne psani v kovadline
 coloredanvils: false
 
 # Integrace a zasílání exceptions na Sentry
 sentry-dsn: ''
-
-# Nastaveni oznacovani
-mentions:
-  prefix: "@"
 
 # Ochrana na drop kosmetických itemů
 protect-drop-cosmetic:

@@ -52,11 +52,6 @@ public class PlayerListener implements Listener {
             Main.getInstance().death_messages.add(p);
         }
 
-        //Mentions
-        if (Main.getInstance().getMySQL().getSettingsString(p, "mention_sound") == null && Main.getInstance().getMySQL().getSettingsString(p, "mention_sound").equals("")) {
-            Main.getInstance().getMySQL().updateSettings(p, "mention_sound", "ENTITY_EXPERIENCE_ORB_PICKUP");
-        }
-
         //ScoreboardManager
         if (Main.getInstance().getScoreboardManager() != null) { // Null když je vypnutý
             if (Main.getInstance().getMySQL().getSettings(p, "show_scoreboard") == 1) {

@@ -158,13 +158,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new VoteReminderTask(), 100, 1200);
         }
 
-        // Nastaveni mention prefixu
-        mentionPrefix = Main.getInstance().getConfig().getString("mentions.prefix");
-        if (mentionPrefix == null) {
-            mentionPrefix = "@";
-        }
-        Log.info("Mention prefix nastaven na: " + mentionPrefix);
-
         Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false));
 
         // Načtení Cshopu
