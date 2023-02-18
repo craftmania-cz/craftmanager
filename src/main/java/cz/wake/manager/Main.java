@@ -262,6 +262,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new Hud_Command());
         manager.registerCommand(new MorphCommand());
         manager.registerCommand(new GetXP_command());
+        manager.registerCommand(new ServerCommand(manager));
 
         if (serverType == ServerType.SURVIVAL || serverType == ServerType.SKYBLOCK) {
             manager.registerCommand(new RechargeCommand());
