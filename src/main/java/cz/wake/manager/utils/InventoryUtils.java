@@ -1,6 +1,7 @@
 package cz.wake.manager.utils;
 
 import cz.craftmania.craftlibs.utils.ChatInfo;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -22,5 +23,10 @@ public class InventoryUtils {
             player.getInventory().addItem(itemStack);
             ChatInfo.SUCCESS.send(player, "Do inventáře ti byl přidán item: " + itemStack.getItemMeta().getDisplayName());
         }
+    }
+
+    public void giveItemsAdderItem(final Player player, final String itemId, final String itemName) { //TODO: Předělat
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "iagive " + player.getName() + " " + itemId + " 1");
+        ChatInfo.SUCCESS.send(player, "Do inventáře ti byl přidán item: §f" + itemName);
     }
 }

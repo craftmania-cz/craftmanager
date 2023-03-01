@@ -5,6 +5,7 @@ import co.aikar.commands.CommandHelp;
 import co.aikar.commands.annotation.*;
 import cz.craftmania.craftcore.builders.items.ItemBuilder;
 import cz.craftmania.craftlibs.utils.ChatInfo;
+import cz.craftmania.craftlibs.utils.UtilMath;
 import cz.craftmania.craftpack.api.*;
 import cz.wake.manager.utils.InventoryUtils;
 import org.bukkit.Bukkit;
@@ -308,6 +309,21 @@ public class CosAdmin_command extends BaseCommand {
                         .setName("§b§lSkyward Sword").setLore("§7Rarita: §f" + TextureItems.RARITY_EPIC.getRender()).build();
                 inventoryUtils.givePlayerItemOrDrop(onlinePlayer, skywardSword);
                 sender.sendMessage("§eDal jsi hráči " + player + " Skyward Sword");
+            }
+            case "blossom_set" -> {
+                int randomNumber = UtilMath.random(1, 10);
+                switch (randomNumber) {
+                    case 1 -> inventoryUtils.giveItemsAdderItem(onlinePlayer, "blossom_sword", "Blossom Sword");
+                    case 2 -> inventoryUtils.giveItemsAdderItem(onlinePlayer, "blossom_pickaxe", "Blossom Pickaxe");
+                    case 3 -> inventoryUtils.giveItemsAdderItem(onlinePlayer, "blossom_shovel", "Blossom Shovel");
+                    case 4 -> inventoryUtils.giveItemsAdderItem(onlinePlayer, "blossom_axe", "Blossom Axe");
+                    case 5 -> inventoryUtils.giveItemsAdderItem(onlinePlayer, "blossom_hoe", "Blossom Hoe");
+                    case 6 -> inventoryUtils.giveItemsAdderItem(onlinePlayer, "blossom_shield", "Blossom Shield");
+                    case 7 -> inventoryUtils.giveItemsAdderItem(onlinePlayer, "blossom_fishing_rod", "Blossom Fishing Rod");
+                    case 8 -> inventoryUtils.giveItemsAdderItem(onlinePlayer, "blossom_staff", "Blossom Staff");
+                    case 9 -> inventoryUtils.giveItemsAdderItem(onlinePlayer, "blossom_bow", "Blossom Bow");
+                    case 10 -> inventoryUtils.giveItemsAdderItem(onlinePlayer, "blossom_crown", "Blossom Crown");
+                }
             }
         }
     }
