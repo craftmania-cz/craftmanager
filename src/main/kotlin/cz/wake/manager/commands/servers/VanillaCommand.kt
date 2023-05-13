@@ -25,7 +25,7 @@ class VanillaCommand : BaseCommand() {
     fun connectToVanilla(sender: CommandSender?) {
         if (sender is Player) {
             try {
-                ChatInfo.INFO.send(sender, "Teleportuji na server §fVanilla: Lands")
+                ChatInfo.INFO.send(sender, "Teleportuji tě na server §fVanilla: Lands")
                 Main.getInstance().sendToServer(sender, "vanilla")
             } catch (exception: Exception) {
                 exception.printStackTrace()

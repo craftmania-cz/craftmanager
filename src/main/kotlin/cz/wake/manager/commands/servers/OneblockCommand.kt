@@ -11,13 +11,13 @@ import cz.wake.manager.Main
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
-@CommandAlias("skyblock2")
+@CommandAlias("oneblock")
 @Description("Připojí tě na Skyblock")
-class Skyblock2Command : BaseCommand() {
+class OneblockCommand : BaseCommand() {
 
     @HelpCommand
     fun helpCommand(sender: CommandSender, help: CommandHelp) {
-        sender.sendMessage("§e§lSkyblock commands:")
+        sender.sendMessage("§e§lOneblock commands:")
         help.showHelp()
     }
 
@@ -25,11 +25,11 @@ class Skyblock2Command : BaseCommand() {
     fun connectToSkyblock(sender: CommandSender?) {
         if (sender is Player) {
             try {
-                ChatInfo.INFO.send(sender, "Teleportuji na server §fSkyblock [1.17]")
-                Main.getInstance().sendToServer(sender, "skyblock2")
+                ChatInfo.INFO.send(sender, "Teleportuji tě na server §fOneblock")
+                Main.getInstance().sendToServer(sender, "skyblock")
             } catch (e: Exception) {
                 e.printStackTrace()
-                ChatInfo.DANGER.send(sender, "Teleport na se nezdařil: §fSkyblock [1.17]")
+                ChatInfo.DANGER.send(sender, "Teleport na se nezdařil: §fOneblock")
                 Main.getInstance().sendSentryException(e)
             }
         }

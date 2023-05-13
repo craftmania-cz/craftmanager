@@ -25,11 +25,11 @@ class Survival2Command : BaseCommand() {
     fun connectToSurvival(sender: CommandSender) {
         if (sender is Player) {
             try {
-                ChatInfo.INFO.send(sender, "Teleportuji na server §fSurvival [1.17]")
+                ChatInfo.INFO.send(sender, "Teleportuji tě na server §fSurvival: Classic")
                 Main.getInstance().sendToServer(sender, "survival2")
             } catch (exception: Exception) {
                 exception.printStackTrace()
-                ChatInfo.DANGER.send(sender, "Teleport na se nezdařil: §fSurvival [1.17]")
+                ChatInfo.DANGER.send(sender, "Teleport na se nezdařil: §fSurvival: Classic")
                 Main.getInstance().sendSentryException(exception)
             }
         }

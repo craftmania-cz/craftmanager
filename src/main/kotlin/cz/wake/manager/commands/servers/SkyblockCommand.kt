@@ -25,11 +25,11 @@ class SkyblockCommand : BaseCommand() {
     fun connectToSkyblock(sender: CommandSender?) {
         if (sender is Player) {
             try {
-                ChatInfo.INFO.send(sender, "Teleportuji na server §fSkyblock [1.19]")
+                ChatInfo.INFO.send(sender, "Teleportuji tě na server §fOneblock")
                 Main.getInstance().sendToServer(sender, "skyblock")
             } catch (e: Exception) {
                 e.printStackTrace()
-                ChatInfo.DANGER.send(sender, "Teleport na se nezdařil: §fSkyblock [1.19]")
+                ChatInfo.DANGER.send(sender, "Teleport na se nezdařil: §fOneblock")
                 Main.getInstance().sendSentryException(e)
             }
         }
