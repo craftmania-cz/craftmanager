@@ -105,7 +105,8 @@ public class Votes_command extends BaseCommand implements Listener {
                 "§f40 hlasu: §6300 CC",
                 "§f60 hlasu: §6500 CC").build();
 
-        ItemStack odmeny = new ItemBuilder(Material.DIAMOND).setName("§b§lOdmeny pro TOP 5 hrace").setLore(
+        ItemStack odmeny = new ItemBuilder(Material.DIAMOND).setName("§b§lOdmeny pro TOP 5 hrace")
+                /*.setLore(
                 "",
                 "§7Kazdy mesic odmenujeme TOP 5",
                 "§7hracu v hlasovani kupony na Store!",
@@ -116,7 +117,9 @@ public class Votes_command extends BaseCommand implements Listener {
                 "§a4. §f120kč / 5 euro",
                 "§a5. §f50kč / 2 euro",
                 "",
-                "§cKupony jsou zasilany do zprav na Discord!").build();
+                "§cKupony jsou zasilany do zprav na Discord!")*/
+                .setLore("§7Vyplácení odměn bylo zrušeno kvůli nízkému počtu hráčů.")
+                .build();
 
 
         inventory.setItem(0, filler);
