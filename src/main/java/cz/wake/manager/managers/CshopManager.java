@@ -1,5 +1,6 @@
 package cz.wake.manager.managers;
 
+import cz.craftmania.crafteconomy.objects.LevelType;
 import cz.craftmania.craftpack.api.*;
 import cz.wake.manager.Main;
 import cz.wake.manager.shop.types.PermissionItem;
@@ -61,7 +62,16 @@ public class CshopManager {
     }
 
     private void loadPermsShopItems() {
-        if (Main.getInstance().getServerType() == ServerType.SURVIVAL) {
+        if (Main.getInstance().getServerType() == ServerType.SURVIVAL && Main.getInstance().getLevelType() == LevelType.SURVIVAL_117_LEVEL) {
+            permsShopItems.add(new PermissionItem().setName("Residence 200x200").setItemStack(Material.WOODEN_HOE).setPrice(1000).setPermision("residence.group.boost_200").setRequiredLevel(15));
+            permsShopItems.add(new PermissionItem().setName("Residence 300x300").setItemStack(Material.STONE_HOE).setPrice(2500).setPermision("residence.group.boost_300").setRequiredLevel(20));
+            permsShopItems.add(new PermissionItem().setName("Residence 400X400").setItemStack(Material.STONE_HOE).setPrice(5000).setPermision("residence.group.boost_400").setRequiredLevel(23));
+            permsShopItems.add(new PermissionItem().setName("Residence 500x500").setItemStack(Material.IRON_HOE).setPrice(7500).setPermision("residence.group.boost_500").setRequiredLevel(26));
+            permsShopItems.add(new PermissionItem().setName("Residence 600x600").setItemStack(Material.IRON_HOE).setPrice(12500).setPermision("residence.group.boost_600").setRequiredLevel(35));
+            permsShopItems.add(new PermissionItem().setName("Residence 750x750").setItemStack(Material.DIAMOND_HOE).setPrice(25000).setPermision("residence.group.boost_750").setRequiredLevel(40));
+            permsShopItems.add(new PermissionItem().setName("Residence 1000x1000").setItemStack(Material.DIAMOND_HOE).setPrice(25000).setPermision("residence.group.boost_1000").setRequiredLevel(50));
+        }
+        if (Main.getInstance().getServerType() == ServerType.SURVIVAL && Main.getInstance().getLevelType() == LevelType.SURVIVAL_118_LEVEL) {
             permsShopItems.add(new PermissionItem().setName("Lands: Být 10x přidán v Landu").setItemStack(Material.BEETROOT).setPrice(1500).setPermision("lands.lands.10").setRequiredLevel(10));
             permsShopItems.add(new PermissionItem().setName("Lands: Být 20x přidán v Landu").setItemStack(Material.BEETROOT).setPrice(3500).setPermision("lands.lands.20").setRequiredLevel(20));
         }
