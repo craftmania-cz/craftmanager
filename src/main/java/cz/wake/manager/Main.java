@@ -2,7 +2,6 @@ package cz.wake.manager;
 
 import co.aikar.commands.PaperCommandManager;
 import cz.craftmania.crafteconomy.objects.LevelType;
-import cz.craftmania.craftlibs.sentry.CraftSentry;
 import cz.wake.manager.commads.*;
 import cz.wake.manager.commads.staff.CosAdmin_command;
 import cz.wake.manager.commads.staff.RawBroadcast;
@@ -74,9 +73,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     private ServerType serverType = ServerType.UNKNOWN;
     private LevelType levelType = null;
 
-    // Sentry
-    private CraftSentry sentry = null;
-
     @Override
     public void onLoad() {
         instance = this;
@@ -104,15 +100,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     @Override
     public void onEnable() {
-
-        // Sentry integration
-        if (!(Objects.requireNonNull(getConfig().getString("sentry-dsn")).length() == 0) && Bukkit.getPluginManager().isPluginEnabled("CraftLibs")) {
-            String dsn = getConfig().getString("sentry-dsn");
-            Log.info("Sentry integration je aktivní: §7" + dsn);
-            sentry = new CraftSentry(dsn);
-        } else {
-            Log.info("Sentry integration neni aktivovana!");
-        }
 
         // Premium Vanish
         if (this.getServer().getPluginManager().isPluginEnabled("PremiumVanish")) {
@@ -416,17 +403,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public static boolean isLibsDisguiseEnabled() {
         return isLibsDisguiseEnabled;
-    }
-
-    /**
-     * Odesilá exception na Sentry
-     */
-    public void sendSentryException(Exception exception) {
-        if (sentry == null) {
-            Log.error("Sentry neni aktivovany, error nebude zaslan!");
-            return;
-        }
-        sentry.sendException(exception);
     }
 
     @Nullable
