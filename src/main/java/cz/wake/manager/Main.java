@@ -25,7 +25,6 @@ import cz.wake.manager.utils.configs.Config;
 import cz.wake.manager.utils.configs.ConfigAPI;
 import cz.wake.manager.utils.configs.CrazyCratesConfig;
 import cz.wake.manager.utils.scoreboard.ScoreboardManager;
-import cz.wake.manager.utils.tasks.ATAfkTask;
 import cz.wake.manager.utils.tasks.*;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
@@ -44,7 +43,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     private static ArrayList<Player> players = new ArrayList<Player>();
     public ArrayList<Player> at_list = new ArrayList<>();
-    public HashMap<Player, Integer> at_afk = new HashMap<>();
     public ArrayList<Player> death_messages = new ArrayList<>();
     public static Long restartTime = null;
     public static String restartReason = null;
@@ -136,9 +134,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             getServer().getScheduler().runTaskTimerAsynchronously(this, new ATCheckerTask(), 200, 1200);
             Log.info("Aktivace AT-Stalkeru");
 
-            getServer().getScheduler().runTaskTimer(this, new ATAfkTask(), 200, 1200);
-            Log.info("Aktivace AT-Afk checkeru");
-
             getServer().getScheduler().runTaskTimerAsynchronously(this, new VoteReminderTask(), 100, 1200);
         }
 
@@ -183,7 +178,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new InventoryListener(), this);
         pm.registerEvents(new PlayerListener(), this);
-        pm.registerEvents(new ChatListener(), this);
         pm.registerEvents(new Votes_command(), this);
         pm.registerEvents(new PlayerCommandSendListener(this), this);
         pm.registerEvents(new PlayerLoginListener(), this);

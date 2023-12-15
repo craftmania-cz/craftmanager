@@ -44,7 +44,6 @@ public class PlayerListener implements Listener {
         //AT
         if (Main.getInstance().getMySQL().isAT(p)) {
             Main.getInstance().at_list.add(p);
-            Main.getInstance().at_afk.put(p, 0);
         }
 
         //Death messages
@@ -103,10 +102,6 @@ public class PlayerListener implements Listener {
                 Main.getInstance().at_list.remove(p);
             }
 
-            if (Main.getInstance().at_afk.containsKey(p)) {
-                Main.getInstance().at_afk.remove(p);
-            }
-
             //Death messages
             if (Main.getInstance().death_messages.contains(p)) {
                 Main.getInstance().death_messages.remove(p);
@@ -137,10 +132,6 @@ public class PlayerListener implements Listener {
             //AT
             if (Main.getInstance().at_list.contains(p)) {
                 Main.getInstance().at_list.remove(p);
-            }
-
-            if (Main.getInstance().at_afk.containsKey(p)) {
-                Main.getInstance().at_afk.remove(p);
             }
 
             //Death messages
@@ -197,14 +188,6 @@ public class PlayerListener implements Listener {
         if (player.getWorld().getName().equalsIgnoreCase("spawn")) {
             if (player.getLocation().getY() <= 0) {
                 player.performCommand("spawn");
-            }
-        }
-
-        if (e.getFrom().getBlockX() != e.getTo().getBlockX() || e.getFrom().getBlockY() != e.getTo().getBlockY() || e.getFrom().getBlockZ() != e.getTo().getBlockZ()) {
-            if(Main.getInstance().at_afk.containsKey(player)) {
-                if(Main.getInstance().at_afk.get(player) != 0) {
-                    Main.getInstance().at_afk.put(player, 0);
-                }
             }
         }
     }
