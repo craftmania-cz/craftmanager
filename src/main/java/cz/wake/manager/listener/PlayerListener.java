@@ -211,32 +211,6 @@ public class PlayerListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onHit(EntityDamageByEntityEvent event) {
-        if (event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
-            Player damager = (Player) event.getDamager();
-            if (damager.hasPotionEffect(PotionEffectType.INVISIBILITY)) {
-                ChatInfo.DANGER.send(damager, "Nelze zabíjet hráče s Invisibility Potionem.");
-                event.setCancelled(true);
-            }
-        }
-    }
-
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onSplash(EntityPotionEffectEvent event) {
-        if (event.getEntity() instanceof  Player) {
-            if (event.getAction() == EntityPotionEffectEvent.Action.ADDED || event.getAction() == EntityPotionEffectEvent.Action.CHANGED) {
-                if (event.getCause() == EntityPotionEffectEvent.Cause.AREA_EFFECT_CLOUD
-                        || event.getCause() == EntityPotionEffectEvent.Cause.POTION_SPLASH
-                        || event.getCause() == EntityPotionEffectEvent.Cause.ARROW) {
-                    if (event.getModifiedType().equals(PotionEffectType.INVISIBILITY)) {
-                        event.setCancelled(true);
-                    }
-                }
-            }
-        }
-    }
-
     /*
      * Blokace prutování hráčů.
      */
