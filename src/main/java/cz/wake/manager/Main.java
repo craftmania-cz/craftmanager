@@ -260,7 +260,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new SkyblockCommand());
         manager.registerCommand(new OneblockCommand());
         manager.registerCommand(new CreativeCommand());
-        manager.registerCommand(new VanillaCommand());
     }
 
     public ConfigAPI getConfigAPI() {
