@@ -1,7 +1,7 @@
 name: CraftManager
 main: cz.wake.manager.Main
 authors: [MrWakeCZ,lilmayu]
-api-version: "1.18"
+api-version: "1.20"
 version: "1.8"
 depend:
   - CraftCore
