@@ -30,7 +30,6 @@ class SurvivalCommand : BaseCommand() {
             } catch (exception: Exception) {
                 exception.printStackTrace()
                 ChatInfo.DANGER.send(sender, "Teleport na se nezdařil: §fSurvival: Classic")
-                Main.getInstance().sendSentryException(exception)
             }
         }
     }

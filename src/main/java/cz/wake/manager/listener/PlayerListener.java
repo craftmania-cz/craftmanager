@@ -126,7 +126,6 @@ public class PlayerListener implements Listener {
             }
         } catch (Exception exception) {
             exception.printStackTrace();
-            Main.getInstance().sendSentryException(exception);
         }
     }
 
@@ -155,7 +154,6 @@ public class PlayerListener implements Listener {
             }
         } catch (Exception exception) {
             exception.printStackTrace();
-            Main.getInstance().sendSentryException(exception);
         }
     }
 

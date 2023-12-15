@@ -31,7 +31,6 @@ class CreativeCommand : BaseCommand() {
                 exception.printStackTrace()
                 sender.sendMessage("§cTeleport na server §fCreative §cse nezdařil!")
                 ChatInfo.DANGER.send(sender, "Teleport se nezdařil: §fCreative")
-                Main.getInstance().sendSentryException(exception)
             }
         }
     }
