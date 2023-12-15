@@ -52,10 +52,16 @@ class LeaveDecayListener : Listener {
                 event.block.world.dropItemNaturally(event.block.location, ItemStack(Material.MANGROVE_PROPAGULE))
             }
         }
-        if (block.type == Material.MANGROVE_PROPAGULE) { // Mangrove Propagule -> Oak 3%
+        if (block.type == Material.MANGROVE_PROPAGULE) { // Mangrove Propagule -> Cherry 3%
             val chance = UtilMath.random(1, 100)
             if (chance <= 3) {
-                event.block.world.dropItemNaturally(event.block.location, ItemStack(Material.OAK_SAPLING))
+                event.block.world.dropItemNaturally(event.block.location, ItemStack(Material.CHERRY_SAPLING))
+            }
+        }
+        if (block.type == Material.CHERRY_LEAVES) { // Cherry -> Oak 3%
+            val chance = UtilMath.random(1, 100)
+            if (chance <= 3) {
+                event.block.world.dropItemNaturally(event.block.location, ItemStack(Material.OAK_LEAVES))
             }
         }
     }
