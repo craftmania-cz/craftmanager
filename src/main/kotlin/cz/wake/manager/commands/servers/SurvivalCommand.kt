@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
 @CommandAlias("survival")
-@Description("Připojí tě na Survival")
+@Description("Připojí tě na Survival: Classic")
 class SurvivalCommand : BaseCommand() {
 
     @HelpCommand
@@ -25,11 +25,11 @@ class SurvivalCommand : BaseCommand() {
     fun connectToSurvival(sender: CommandSender) {
         if (sender is Player) {
             try {
-                ChatInfo.INFO.send(sender, "Teleportuji tě na server §fSurvival: Lite")
-                Main.getInstance().sendToServer(sender, "survival")
+                ChatInfo.INFO.send(sender, "Teleportuji tě na server §fSurvival: Classic")
+                Main.getInstance().sendToServer(sender, "survival2")
             } catch (exception: Exception) {
                 exception.printStackTrace()
-                ChatInfo.DANGER.send(sender, "Teleport na se nezdařil: §fSurvival: Lite")
+                ChatInfo.DANGER.send(sender, "Teleport na se nezdařil: §fSurvival: Classic")
                 Main.getInstance().sendSentryException(exception)
             }
         }

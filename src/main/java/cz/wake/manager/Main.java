@@ -270,7 +270,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
         //Servers
         manager.registerCommand(new SurvivalCommand());
-        manager.registerCommand(new Survival2Command());
         manager.registerCommand(new SkyblockCommand());
         manager.registerCommand(new OneblockCommand());
         manager.registerCommand(new CreativeCommand());
