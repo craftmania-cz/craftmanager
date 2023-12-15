@@ -45,15 +45,14 @@ repositories {
     maven { url "https://repo.dmulloy2.net/nexus/repository/public/" }
     maven { url "https://repo.md-5.net/content/groups/public/" }
     maven { url "https://maven.enginehub.org/repo/" }
+    maven { url "https://maven.pkg.github.com/craftmania-cz/craftcore" }
+    maven { url "https://maven.pkg.github.com/craftmania-cz/craftpack" }
+    maven { url "https://maven.pkg.github.com/craftmania-cz/craftlibs" }
     maven {
-        url "https://gitlab.com/api/v4/groups/craftmania/-/packages/maven"
-        name "GitLab"
-        credentials(HttpHeaderCredentials) {
-            name = 'Private-Token'
-            value = GITLAB_TOKEN
-        }
-        authentication {
-            header(HttpHeaderAuthentication)
+        url "https://maven.pkg.github.com/craftmania-cz/crafteconomy"
+        credentials {
+            username = GPR_USER
+            password = GPR_TOKEN
         }
     }
 }
@@ -74,10 +73,10 @@ dependencies {
     implementation 'co.aikar:acf-paper:0.5.0-SNAPSHOT'
 
     // CraftMania
+    compileOnly group: 'cz.craftmania.craftcore', name: 'craftcore', version: '2.11'
+    compileOnly group: 'cz.craftmania.craftlibs', name: 'craftlibs', version: '1.1.17'
+    compileOnly group: 'cz.craftmania.crafteconomy', name: 'crafteconomy', version: '2.1.1'
     compileOnly group: 'cz.craftmania.craftpack', name: 'craftpack', version: '1.4.9'
-    compileOnly group: 'cz.craftmania.craftcore', name: 'craftcore', version: '2.9'
-    compileOnly group: 'cz.craftmania.crafteconomy', name:'crafteconomy', version: '2.1.0'
-    compileOnly group: 'cz.craftmania.craftlibs', name:'craftlibs', version: '1.1.14'
 
     compileOnly group: 'LibsDisguises', name: 'LibsDisguises', version: '10.0.26'
     compileOnly group: 'me.clip', name: 'placeholderapi', version: '2.10.4'
@@ -91,8 +90,8 @@ dependencies {
 
     // Compiled
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '2.7.4'
-    implementation group: 'org.json', name: 'json', version: '20190722'
-    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+    implementation group: 'org.json', name: 'json', version: '20230227'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.7'
 }
 
 compileKotlin {
