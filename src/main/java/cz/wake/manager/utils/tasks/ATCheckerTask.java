@@ -9,7 +9,7 @@ public class ATCheckerTask implements Runnable {
     @Override
     public void run() {
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (Main.getInstance().at_list.contains(p) && Main.getInstance().at_afk.get(p) < 10) {
+            if (Main.getInstance().at_list.contains(p)) {
                 Main.getInstance().getMySQL().updateAtPlayerTime(p);
             }
         }
