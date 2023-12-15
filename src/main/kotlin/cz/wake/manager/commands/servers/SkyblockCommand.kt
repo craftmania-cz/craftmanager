@@ -30,7 +30,6 @@ class SkyblockCommand : BaseCommand() {
             } catch (e: Exception) {
                 e.printStackTrace()
                 ChatInfo.DANGER.send(sender, "Teleport na se nezdařil: §fOneblock")
-                Main.getInstance().sendSentryException(e)
             }
         }
     }
