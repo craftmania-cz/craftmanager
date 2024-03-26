@@ -46,11 +46,6 @@ public class PlayerListener implements Listener {
             Main.getInstance().at_list.add(p);
         }
 
-        //Death messages
-        if (Main.getInstance().getMySQL().getSettings(p, "death_messages") == 1) {
-            Main.getInstance().death_messages.add(p);
-        }
-
         //ScoreboardManager
         if (Main.getInstance().getScoreboardManager() != null) { // Null když je vypnutý
             if (Main.getInstance().getMySQL().getSettings(p, "show_scoreboard") == 1) {
@@ -102,11 +97,6 @@ public class PlayerListener implements Listener {
                 Main.getInstance().at_list.remove(p);
             }
 
-            //Death messages
-            if (Main.getInstance().death_messages.contains(p)) {
-                Main.getInstance().death_messages.remove(p);
-            }
-
             //RestartManager
             RestartManager_command.bb.removePlayer(p);
 
@@ -132,11 +122,6 @@ public class PlayerListener implements Listener {
             //AT
             if (Main.getInstance().at_list.contains(p)) {
                 Main.getInstance().at_list.remove(p);
-            }
-
-            //Death messages
-            if (Main.getInstance().death_messages.contains(p)) {
-                Main.getInstance().death_messages.remove(p);
             }
 
             //ScoreboardManager

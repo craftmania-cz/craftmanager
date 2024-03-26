@@ -43,7 +43,6 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     private static ArrayList<Player> players = new ArrayList<Player>();
     public ArrayList<Player> at_list = new ArrayList<>();
-    public ArrayList<Player> death_messages = new ArrayList<>();
     public static Long restartTime = null;
     public static String restartReason = null;
     private static ByteArrayOutputStream b = new ByteArrayOutputStream();
