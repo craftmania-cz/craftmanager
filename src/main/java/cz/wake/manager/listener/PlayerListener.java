@@ -4,6 +4,8 @@ import cz.craftmania.craftlibs.utils.ChatInfo;
 import cz.wake.manager.Main;
 import cz.wake.manager.commads.staff.RestartManager_command;
 import cz.wake.manager.utils.ServerType;
+import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.HumanEntity;
@@ -82,6 +84,23 @@ public class PlayerListener implements Listener {
                 p.sendMessage("§f");
                 p.sendMessage("§7§m-------------------------------------");
             }
+        }
+
+        if (Main.getInstance().getServerType() == ServerType.SURVIVAL
+                || Main.getInstance().getServerType() == ServerType.SKYBLOCK
+                || Main.getInstance().getServerType() == ServerType.CREATIVE
+        ) {
+            this.giveEasterCosmetics(p, "Basket Hat", "craftmanager.set.easter_2024_basket_hat", 1711321200000L); // 25.3.2024
+            this.giveEasterCosmetics(p, "Big Carrot Hat", "craftmanager.set.easter_2024_big_carrot", 1711580400000L); // 28.3.2024
+            this.giveEasterCosmetics(p, "Egg Head Blue", "craftmanager.set.easter_2024_eggs_head_blue", 1711321200000L); // 25.3.2024
+            this.giveEasterCosmetics(p, "Egg Head Green", "craftmanager.set.easter_2024_eggs_head_green", 1711321200000L); // 25.3.2024
+            this.giveEasterCosmetics(p, "Egg Head Purple", "craftmanager.set.easter_2024_eggs_head_purple", 1711321200000L); // 25.3.2024
+            this.giveEasterCosmetics(p, "Hungry Rabbit", "craftmanager.set.easter_2024_hungry_rabbit", 1711407600000L); // 26.3.2024
+            this.giveEasterCosmetics(p, "Rabbit Ears", "craftmanager.set.easter_2024_rabbit_ear", 1711407600000L); // 26.3.2024
+            this.giveEasterCosmetics(p, "Rabbit Hearth", "craftmanager.set.easter_2024_rabbit_ear_heart", 1711494000000L); // 27.3.2024
+            this.giveEasterCosmetics(p, "Smart Rabbit", "craftmanager.set.easter_2024_smart_rabbit", 1711666800000L); // 29.3.2024
+            this.giveEasterCosmetics(p, "Spring Hat", "craftmanager.set.easter_2024_spring_hat", 1711753200000L); // 30.3.2024
+            this.giveEasterCosmetics(p, "Stock Rabbit", "craftmanager.set.easter_2024_stock_rabbit", 1711839600000L); // 31.3.2024
         }
     }
 
@@ -192,6 +211,13 @@ public class PlayerListener implements Listener {
     @EventHandler
     private void onPlayerDeath(PlayerDeathEvent event) {
         event.setDeathMessage(null);
+    }
+
+    private void giveEasterCosmetics(Player player, String name, String permission, Long date) {
+        if (System.currentTimeMillis() >= date && !player.hasPermission(permission)) {
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set " + permission + " true");
+            ChatInfo.SERVER.send(player, "Byla ti aktivována Velikonoční čepice: §e" + name);
+        }
     }
 
 }

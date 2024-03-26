@@ -88,6 +88,9 @@ dependencies {
 
     compileOnly group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.7.10' // Nepotřebujeme kotlin v jaru
 
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.32'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.32'
+
     // Compiled
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '2.7.4'
     implementation group: 'org.json', name: 'json', version: '20230227'
