@@ -23,8 +23,9 @@ shadowJar {
     archiveClassifier.set(null)
     archiveVersion.set(this.version.toString())
 
-    relocate 'co.aikar.commands', 'cz.craftmania.crafteconomy.acf'
-    relocate 'co.aikar.locales', 'cz.craftmania.crafteconomy.locales'
+    relocate 'co.aikar.commands', 'cz.wake.manager.acf'
+    relocate 'co.aikar.locales', 'cz.wake.manager.locales'
+    relocate 'fr.mrmicky.fastboard', 'cz.wake.manager.libs.fastboard'
 }
 
 build.dependsOn shadowJar
@@ -93,6 +94,7 @@ dependencies {
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '2.7.4'
     implementation group: 'org.json', name: 'json', version: '20230227'
     implementation group: 'commons-io', name: 'commons-io', version: '2.7'
+    implementation 'fr.mrmicky:fastboard:2.1.3'
 }
 
 compileKotlin {

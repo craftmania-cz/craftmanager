@@ -1,6 +1,8 @@
 package cz.wake.manager.utils.scoreboard;
 
-import cz.craftmania.craftcore.fastboard.FastBoard;
+//import cz.craftmania.craftcore.fastboard.FastBoard;
+// TODO: Až bude CraftCore na MC 1.21 změnit zpět
+import fr.mrmicky.fastboard.FastBoard;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.configs.Config;
 import me.clip.placeholderapi.PlaceholderAPI;
