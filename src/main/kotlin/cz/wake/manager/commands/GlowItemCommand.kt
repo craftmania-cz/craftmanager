@@ -65,7 +65,7 @@ class GlowItemCommand : BaseCommand() {
             }
             val itemBuilder = ItemBuilder(item)
             sender.inventory.setItemInMainHand(null)
-            itemBuilder.setGlowing()
+            itemBuilder.setGlowing() // TODO: Od 1.21 nefunguje DURABILITY enchant
             itemBuilder.setAmount(1)
             sender.inventory.setItemInMainHand(itemBuilder.build())
             ChatInfo.SUCCESS.send(sender, "Item byl změněn na Glowing!")

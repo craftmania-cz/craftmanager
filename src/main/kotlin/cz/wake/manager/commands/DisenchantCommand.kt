@@ -59,12 +59,13 @@ class DisenchantCommand : BaseCommand() {
                     }
 
                     // Kontrola Glowing items
-                    if (itemInHand.enchantments.containsKey(Enchantment.DURABILITY)) {
+                    // TODO: Od 1.21 není DURABILITY
+                    /* if (itemInHand.enchantments.containsKey(Enchantment.DURABILITY)) {
                         if (itemInHand.enchantments[Enchantment.DURABILITY] == 0) {
                             ChatInfo.DANGER.send(player, "Nelze použít Disenchant na item, který má na sobě Glowing efekt.")
                             return
                         }
-                    }
+                    } */
                     if (player.level >= finalPriceLvls.get()) {
                         val withoutEnchant = ItemStack(itemInHand)
                         withoutEnchant.enchantments.forEach { (enchant: Enchantment, _: Int) ->

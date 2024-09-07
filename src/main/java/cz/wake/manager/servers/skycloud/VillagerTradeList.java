@@ -74,13 +74,13 @@ public class VillagerTradeList {
         tradeList.addTrade(new ItemStack(Material.ORANGE_GLAZED_TERRACOTTA, 32), e(2));
         tradeList.addTrade(new ItemStack(Material.YELLOW_GLAZED_TERRACOTTA, 32), e(2));
         tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.SLOW_FALLING, true, false).getItemStack()).build(), e(1));
-        tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.JUMP, true, false).getItemStack()).build(), e(1));
+        // 1.21 bug - tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.JUMP, true, false).getItemStack()).build(), e(1));
         tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.FIRE_RESISTANCE, false, true).getItemStack()).build(), e(2));
-        tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.SPEED, true, false).getItemStack()).build(), e(1));
-        tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.JUMP, true, false).getItemStack()).build(), e(1));
-        tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.REGEN, true, false).getItemStack()).build(), e(1));
-        tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.SPEED, true, false).getItemStack()).build(), e(1));
-        tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.INSTANT_DAMAGE, true, false).getItemStack()).build(), e(1));
+        // 1.21 bug - tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.SPEED, true, false).getItemStack()).build(), e(1));
+        // 1.21 bug - tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.JUMP, true, false).getItemStack()).build(), e(1));
+        // 1.21 bug - tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.REGEN, true, false).getItemStack()).build(), e(1));
+        // 1.21 bug - tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.SPEED, true, false).getItemStack()).build(), e(1));
+        // 1.21 bug - tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.INSTANT_DAMAGE, true, false).getItemStack()).build(), e(1));
         tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.SLOW_FALLING, false, true).getItemStack()).build(), e(1));
         tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.TURTLE_MASTER, false, true).getItemStack()).build(), e(1));
         tradeList.addTrade(new ItemBuilder(new CraftPotion(VillagerManager.PotionBase.NORMAL, PotionType.INVISIBILITY, false, true).getItemStack()).build(), e(1));
@@ -244,7 +244,7 @@ public class VillagerTradeList {
         tradeList.addTrade(e(10), new ItemStack(Material.FIREWORK_ROCKET, 32));
         tradeList.addTrade(eb(32), XEnchantment.MENDING.getBook(1));
         tradeList.addTrade(d(2), XEnchantment.DIG_SPEED.getBook(1));
-        tradeList.addTrade(eb(3), new ItemBuilder(Material.DIAMOND_PICKAXE).addEnchant(Enchantment.DIG_SPEED, 3).build());
+        // 1.21 bug - tradeList.addTrade(eb(3), new ItemBuilder(Material.DIAMOND_PICKAXE).addEnchant(Enchantment.DIG_SPEED, 3).build());
         tradeList.addTrade(db(4), new ItemStack(Material.END_PORTAL_FRAME));
         tradeList.addTrade(e(32), new ItemStack(Material.WOLF_SPAWN_EGG));
         tradeList.addTrade(d(1), new ItemStack(Material.LECTERN));
@@ -259,8 +259,8 @@ public class VillagerTradeList {
         tradeList.addTrade(db(1), new ItemStack(Material.DRAGON_BREATH, 4));
         tradeList.addTrade(d(10), XEnchantment.LOOT_BONUS_BLOCKS.getBook(1));
         tradeList.addTrade(e(32), new ItemStack(Material.PANDA_SPAWN_EGG, 1));
-        tradeList.addTrade(eb(3), new ItemBuilder(Material.IRON_AXE).addEnchant(Enchantment.DAMAGE_ALL, 2).build());
-        tradeList.addTrade(eb(4), new ItemBuilder(Material.DIAMOND_CHESTPLATE).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
+        // 1.21 bug - tradeList.addTrade(eb(3), new ItemBuilder(Material.IRON_AXE).addEnchant(Enchantment.DAMAGE_ALL, 2).build());
+        // 1.21 bug - tradeList.addTrade(eb(4), new ItemBuilder(Material.DIAMOND_CHESTPLATE).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
         tradeList.addTrade(e(32), new ItemStack(Material.PARROT_SPAWN_EGG));
         tradeList.addTrade(e(32), new ItemStack(Material.CAT_SPAWN_EGG));
 

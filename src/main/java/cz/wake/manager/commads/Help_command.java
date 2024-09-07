@@ -45,7 +45,7 @@ public class Help_command extends BaseCommand {
         if (Main.getInstance().getServerType() == ServerType.SKYBLOCK) {
             Inventory inv = Bukkit.createInventory(null, 45, "Help pro Skyblock");
 
-            ItemStack is = new ItemBuilder(Material.GRASS).setName("§aVytvoření a nastavení ostrova").setLore(
+            ItemStack is = new ItemBuilder(Material.GRASS_BLOCK).setName("§aVytvoření a nastavení ostrova").setLore(
                     "§e/is §f- §7Vytvoří nový ostrov nebo teleportuje",
                     "§7na již vytvořený ostrov, nebo kde jsi přidaný.",
                     "§e/is sethome §f- §7Nastaví teleport při používání příkazu §b/is",

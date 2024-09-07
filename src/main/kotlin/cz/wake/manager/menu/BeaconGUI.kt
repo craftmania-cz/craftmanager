@@ -21,10 +21,10 @@ class BeaconGUI : InventoryProvider {
             activateEffect(player, PotionEffectType.SPEED, 2, "Speed")
         })
         content.set(0, 3, ClickableItem.of(ItemBuilder(Material.GOLDEN_PICKAXE).setName("§e§lHaste").build()) {
-            activateEffect(player, PotionEffectType.FAST_DIGGING, 0, "Haste")
+            activateEffect(player, PotionEffectType.HASTE, 0, "Haste")
         })
         content.set(0, 4, ClickableItem.of(ItemBuilder(Material.IRON_BOOTS).setName("§a§lJump Boost").build()) {
-            activateEffect(player, PotionEffectType.JUMP, 1, "Jump Boost")
+            activateEffect(player, PotionEffectType.JUMP_BOOST, 1, "Jump Boost")
         })
         content.set(0, 5, ClickableItem.of(ItemBuilder(Material.BLAZE_POWDER).setName("§6§lFire Resistance").build()) {
             activateEffect(player, PotionEffectType.FIRE_RESISTANCE, 1, "Fire Resistance")

@@ -225,7 +225,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         manager.registerCommand(new SkullCommand());
         manager.registerCommand(new Coinshop_command());
         manager.registerCommand(new GlowCommand());
-        manager.registerCommand(new Help_command());
+        //manager.registerCommand(new Help_command());
         manager.registerCommand(new DisenchantCommand());
         manager.registerCommand(new Vote_command());
         manager.registerCommand(new BeaconCommand());
