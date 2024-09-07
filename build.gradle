@@ -81,7 +81,6 @@ dependencies {
     compileOnly group: 'me.clip', name: 'placeholderapi', version: '2.10.4'
     compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.5.0"
     compileOnly group: "com.github.MilkBowl", name: "VaultAPI", version: "1.7"
-    compileOnly group: 'com.gmail.filoghost.holographicdisplays', name: 'holographicdisplays-api', version: '2.3.3-SNAPSHOT'
     compileOnly group: 'com.sk89q.worldguard', name: 'worldguard-bukkit', version: '7.0.7'
     compileOnly group: 'com.github.FrancoBM12', name: 'API-MagicCosmetics', version: '1.9.8'
 

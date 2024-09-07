@@ -1,7 +1,5 @@
 package cz.wake.manager.servers.skycloud;
 
-import com.gmail.filoghost.holographicdisplays.api.Hologram;
-import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import cz.craftmania.craftcore.builders.villager.VillagerTradeBuilder;
 import cz.wake.manager.Main;
 import cz.wake.manager.utils.Log;
@@ -38,11 +36,11 @@ public class VillagerManager {
 
     // Pro Rare villagera
     private static Location rareHologramLocation = new Location(Bukkit.getWorld("vsbspawn"), 273.5, 112, -276.5, -90, 0);
-    private static Hologram rareHologram;
+    //private static Hologram rareHologram;
 
     public static void spawnVillagers() {
 
-        rareHologram = HologramsAPI.createHologram(Main.getInstance(), rareHologramLocation);
+        //rareHologram = HologramsAPI.createHologram(Main.getInstance(), rareHologramLocation);
 
         killVillagers(); // Nejdriv zabit vsechny co existuji
 
@@ -124,9 +122,9 @@ public class VillagerManager {
         setMetadata(villager, VillagerType.SELL_VILLAGER, VillagerType.SELL_VILLAGER, Main.getInstance());
 
         sellVillagerLocation.add(0, 3, 0);
-        Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), sellVillagerLocation);
-        hologram.appendTextLine("§lSell Villager");
-        hologram.appendTextLine("§7Hledáš co prodat? Prodávej! ZDE!");
+        //Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), sellVillagerLocation);
+        //hologram.appendTextLine("§lSell Villager");
+        //hologram.appendTextLine("§7Hledáš co prodat? Prodávej! ZDE!");
 
         villagerList.add(villager);
     }
@@ -147,9 +145,9 @@ public class VillagerManager {
         setMetadata(villager, VillagerType.SEA_VILLAGER, VillagerType.SEA_VILLAGER, Main.getInstance());
 
         seaVillagerLocation.add(0, 3, 0);
-        Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), seaVillagerLocation);
-        hologram.appendTextLine("§b§lSea Villager");
-        hologram.appendTextLine("§7Mořské plody přímo z vody!");
+        //Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), seaVillagerLocation);
+        //hologram.appendTextLine("§b§lSea Villager");
+        //hologram.appendTextLine("§7Mořské plody přímo z vody!");
 
         villagerList.add(villager);
     }
@@ -167,8 +165,8 @@ public class VillagerManager {
 
         // Priprava hologramu
         if (appendHologram) {
-            rareHologram.appendTextLine("§c§lRare Villager");
-            rareHologram.appendTextLine("§fse tu ještě neobjevil!");
+            //rareHologram.appendTextLine("§c§lRare Villager");
+            //rareHologram.appendTextLine("§fse tu ještě neobjevil!");
         }
 
         Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
@@ -188,9 +186,9 @@ public class VillagerManager {
 
             setMetadata(villager, VillagerType.RARE_VILLAGER, VillagerType.RARE_VILLAGER, Main.getInstance());
 
-            rareHologram.clearLines();
-            rareHologram.appendTextLine("§9§lRare Villager");
-            rareHologram.appendTextLine("§7Vzácné itemy, tady a teď!");
+            //rareHologram.clearLines();
+            //rareHologram.appendTextLine("§9§lRare Villager");
+            //rareHologram.appendTextLine("§7Vzácné itemy, tady a teď!");
 
             // Změna shopu při každém spawnu
             rareMerchant = tradeList.generateRareVillagerShop();
@@ -207,9 +205,9 @@ public class VillagerManager {
                 broadcast("§e§l[*] §9§lRare Villager §cjiž není k dispozici! Zkus to příště!");
 
                 villager.remove();
-                rareHologram.clearLines();
-                rareHologram.appendTextLine("§c§lRare Villager");
-                rareHologram.appendTextLine("§fse tu ještě neobjevil!");
+                //rareHologram.clearLines();
+                //rareHologram.appendTextLine("§c§lRare Villager");
+                //rareHologram.appendTextLine("§fse tu ještě neobjevil!");
 
                 Bukkit.getOnlinePlayers().forEach(player -> {
                     if (player.getOpenInventory().getTitle().equalsIgnoreCase("Wandering Trader")
@@ -244,9 +242,9 @@ public class VillagerManager {
         setMetadata(villager, VillagerType.NETHER_VILLAGER, VillagerType.NETHER_VILLAGER, Main.getInstance());
 
         netherVillagerLocation.add(0, 3, 0);
-        Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), netherVillagerLocation);
-        hologram.appendTextLine("§c§lNether Villager");
-        hologram.appendTextLine("§7V pekle je peklo!");
+        //Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), netherVillagerLocation);
+        //hologram.appendTextLine("§c§lNether Villager");
+        //hologram.appendTextLine("§7V pekle je peklo!");
 
         villagerList.add(villager);
     }
@@ -265,9 +263,9 @@ public class VillagerManager {
         setMetadata(villager, VillagerType.END_VILLAGER, VillagerType.END_VILLAGER, Main.getInstance());
 
         endVillagerLocation.add(0, 3, 0);
-        Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), endVillagerLocation);
-        hologram.appendTextLine("§e§lEnd Villager");
-        hologram.appendTextLine("§7End it now!");
+        //Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), endVillagerLocation);
+        //hologram.appendTextLine("§e§lEnd Villager");
+        //hologram.appendTextLine("§7End it now!");
 
         villagerList.add(villager);
     }
@@ -286,9 +284,9 @@ public class VillagerManager {
         setMetadata(villager, VillagerType.BUY_VILLAGER, VillagerType.BUY_VILLAGER, Main.getInstance());
 
         buyVilllagerLocaiton.add(0, 3,0);
-        Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), buyVilllagerLocaiton);
-        hologram.appendTextLine("§d§lBuy Villager");
-        hologram.appendTextLine("§7Nakup levně ZDE!");
+        //Hologram hologram = HologramsAPI.createHologram(Main.getInstance(), buyVilllagerLocaiton);
+        //hologram.appendTextLine("§d§lBuy Villager");
+        //hologram.appendTextLine("§7Nakup levně ZDE!");
 
         villagerList.add(villager);
     }
