@@ -1,28 +1,27 @@
 plugins {
     id 'java'
     id 'application'
-    id 'com.github.johnrengelman.shadow' version '7.1.0'
+    id 'com.gradleup.shadow' version '8.3.0'
     id 'org.jetbrains.kotlin.jvm' version '1.7.10'
 }
 
 mainClassName = 'cz.wake.manager.Main'
 
 group = 'cz.wake.manager'
-version = '1.8'
-
-description = """"""
-
-sourceCompatibility = 17
-targetCompatibility = 17
+version = '1.9'
 
 tasks.withType(JavaCompile) {
-	options.encoding = 'UTF-8'
+    options.encoding = 'UTF-8'
+}
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 }
 
 shadowJar {
-    baseName = 'craftmanager'
-    classifier = null
-    version = this.version
+    archiveBaseName.set('craftmanager')
+    archiveClassifier.set(null)
+    archiveVersion.set(this.version.toString())
 
     relocate 'co.aikar.commands', 'cz.craftmania.crafteconomy.acf'
     relocate 'co.aikar.locales', 'cz.craftmania.crafteconomy.locales'
@@ -59,8 +58,8 @@ repositories {
 
 dependencies {
 
-    // Spigot
-    compileOnly ('io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT')
+    // Paper API
+    compileOnly 'io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT'
 
     // Extra excludes
     compileOnly ("com.github.MyzelYam:SuperVanish:6.2.0") {
